@@ -1,0 +1,93 @@
+{
+  "nav": {
+    "home": "首页",
+    "projects": "项目",
+    "blog": "博客",
+    "skills": "技能",
+    "about": "关于",
+    "contact": "联系"
+  },
+  "home": {
+    "greeting": "你好，我是",
+    "title": "AI 应用开发者",
+    "summary": "专注 AI 应用开发的本科生，具备 RAG 系统、LLM Agent 和端侧 AI 的实战经验，擅长将 AI 技术落地为可用的产品。",
+    "viewProjects": "查看项目",
+    "aboutMe": "关于我",
+    "downloadResume": "下载简历"
+  },
+  "projects": {
+    "title": "项目",
+    "subtitle": "我的作品集",
+    "viewDemo": "查看演示",
+    "viewCode": "查看代码",
+    "readMore": "了解更多",
+    "techStack": "技术栈"
+  },
+  "blog": {
+    "title": "博客",
+    "subtitle": "我的文章",
+    "readMore": "阅读更多",
+    "minRead": "分钟阅读"
+  },
+  "skills": {
+    "title": "技能",
+    "subtitle": "技术栈",
+    "proficiency": "熟练度"
+  },
+  "about": {
+    "title": "关于",
+    "subtitle": "了解更多关于我",
+    "education": "教育经历",
+    "experience": "工作经验",
+    "awards": "获奖荣誉"
+  },
+  "contact": {
+    "title": "联系",
+    "subtitle": "与我联系",
+    "name": "姓名",
+    "email": "邮箱",
+    "subject": "主题",
+    "message": "消息",
+    "send": "发送消息",
+    "sending": "发送中...",
+    "success": "消息已发送！",
+    "error": "发送失败，请稍后重试。"
+  },
+  "footer": {
+    "copyright": "版权所有",
+    "allRightsReserved": "保留所有权利"
+  },
+  "theme": {
+    "toggle": "切换主题",
+    "light": "浅色",
+    "dark": "深色",
+    "system": "跟随系统"
+  },
+  "locale": {
+    "switch": "切换语言",
+    "zh": "中文",
+    "en": "English"
+  },
+  "nova": {
+    "title": "Nova",
+    "subtitle": "AI 向导",
+    "openNova": "打开 Nova",
+    "closeNova": "关闭 Nova",
+    "clear": "清空",
+    "send": "发送",
+    "inputPlaceholder": "输入消息...",
+    "greeting": "👋 你好！我是 Nova",
+    "askAnything": "有什么想了解的吗？",
+    "apiKeyNotConfigured": "⚠️ AI 功能未配置",
+    "apiKeyHint": "请在 .env.local 中设置 DEEPSEEK_API_KEY"
+  },
+  "resume": {
+    "viewQuickResume": "查看快速简历",
+    "coreSkills": "核心技能",
+    "coreProjects": "核心项目",
+    "education": "教育背景",
+    "contact": "联系方式",
+    "downloadPdf": "下载完整简历 (PDF)",
+    "close": "关闭简历"
+  }
+}

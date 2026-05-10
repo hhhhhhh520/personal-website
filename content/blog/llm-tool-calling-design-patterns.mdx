@@ -1,0 +1,120 @@
+# LLM 工具调用设计模式
+
+工具调用是 AI Agent 的核心能力。本文分析几种主流设计模式。
+
+## 模式 1: 单次调用
+
+最简单的模式，LLM 一次调用一个工具：
+
+```python
+response = llm.chat(messages, tools=tools)
+if response.tool_calls:
+    result = execute(response.tool_calls[0])
+    return result
+```
+
+适合简单场景。
+
+## 模式 2: 链式调用
+
+一个工具的输出作为下一个的输入：
+
+```python
+# 先搜索，再读取文件
+results = await chain(
+    search_files(query="config"),
+    read_file(path=results[0].path)
+)
+```
+
+LangGraph 的边可以表达这种依赖。
+
+## 模式 3: 并行调用
+
+多个独立工具同时执行：
+
+```python
+results = await parallel(
+    read_file(path="a.txt"),
+    read_file(path="b.txt"),
+    run_shell(cmd="git status")
+)
+```
+
+提升效率的关键。
+
+## 模式 4: 条件分支
+
+根据中间结果决定后续动作：
+
+```python
+result = await read_file(path="config.json")
+if result.is_valid_json():
+    return parse(result)
+else:
+    return fix_json(result)
+```
+
+## 模式 5: ReAct 循环
+
+推理-行动-观察的迭代：
+
+```python
+while not done:
+    thought = await think(state)
+    action = await decide_action(thought)
+    observation = await execute(action)
+    state = update(state, observation)
+```
+
+这是 Agent 的标准模式。
+
+## 工具设计原则
+
+### 原子性
+
+一个工具做一件事：
+
+```python
+# 好
+read_file(path: str) -> str
+write_file(path: str, content: str) -> None
+
+# 不好
+file_operation(action: str, path: str, content?: str) -> any
+```
+
+### 清晰的 Schema
+
+```python
+{
+    "name": "read_file",
+    "description": "Read the content of a file",
+    "parameters": {
+        "path": {
+            "type": "string",
+            "description": "The absolute path to the file"
+        }
+    },
+    "required": ["path"]
+}
+```
+
+### 错误处理
+
+```python
+class ToolResult:
+    success: bool
+    output: str
+    error: Optional[str]
+```
+
+## 安全考量
+
+- 工具权限控制
+- 敏感操作确认
+- 沙箱执行
+
+## 总结
+
+工具调用设计要平衡灵活性和可控性。从简单模式开始，逐步增加复杂度。

@@ -1,0 +1,69 @@
+# LangGraph 状态机最佳实践
+
+在构建 AI Agent 时，状态管理是核心挑战之一。LangGraph 提供了强大的状态机能力，但如何用好它？本文分享我在 Mini Claude Code 项目中的实践经验。
+
+## 为什么选择状态机？
+
+传统的线性流程在简单场景下足够，但当 Agent 需要：
+- 根据用户输入动态调整执行路径
+- 支持中断和恢复
+- 实现错误重试和降级
+
+状态机就变得不可或缺。
+
+## 状态设计的黄金法则
+
+### 1. 状态要精简
+
+```python
+# 不好的设计：状态臃肿
+class AgentState(TypedDict):
+    messages: list
+    tools: list
+    results: dict
+    errors: list
+    retries: int
+    # ... 20+ fields
+
+# 好的设计：核心状态 + 派生计算
+class AgentState(TypedDict):
+    messages: list      # 核心对话
+    pending_tools: list # 待执行工具
+    status: str         # 当前状态
+```
+
+### 2. 用路由函数控制流程
+
+```python
+def route_after_thinking(state: AgentState) -> str:
+    if state["pending_tools"]:
+        return "execute_tools"
+    if state["status"] == "complete":
+        return "end"
+    return "think"
+```
+
+### 3. 错误恢复要有策略
+
+不要在每个节点里处理错误，而是设计专门的错误恢复节点：
+
+```python
+def error_recovery_node(state: AgentState) -> AgentState:
+    error = state.get("error")
+    if is_retriable(error):
+        return {...state, "status": "retry"}
+    return {...state, "status": "failed"}
+```
+
+## 实战案例：Mini Claude Code
+
+我们的状态机从 18 个字段精简到 11 个，节点从 4 个扩展到 7 个，但代码更清晰了。
+
+关键改进：
+- 分离"思考"和"执行"节点
+- 添加 checkpointer 支持持久化
+- 实现超时和取消机制
+
+## 总结
+
+好的状态机设计不是功能堆砌，而是恰到好处的抽象。记住：简单的事情保持简单，复杂的事情变得可控。

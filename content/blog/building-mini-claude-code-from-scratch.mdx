@@ -1,0 +1,73 @@
+# 从零构建 Mini Claude Code
+
+这不是一个教程，而是一段旅程的记录。从"能不能做一个简化版的 Claude CLI"的想法，到 1497 个测试用例的生产级项目。
+
+## 起点：痛点驱动
+
+Claude Code 很强大，但我想了解它的底层原理。我需要：
+- 支持多种国产模型（DeepSeek、通义千问、讯飞星辰）
+- 可扩展的工具系统
+- 多 Agent 并发能力
+
+## 第一周：MVP
+
+使用 LangGraph + LiteLLM 搭建骨架：
+
+```python
+# 核心循环
+async def run_agent(state):
+    response = await llm.chat(state["messages"])
+    if response.tool_calls:
+        results = await execute_tools(response.tool_calls)
+        return {"messages": results}
+    return {"messages": [response]}
+```
+
+第一天就能跑起来了，但问题很多：token 统计不准、流式输出断断续续、工具调用经常失败。
+
+## 第二周：工具系统
+
+设计了一套标准的工具协议：
+
+```python
+class BaseTool(ABC):
+    @property
+    @abstractmethod
+    def name(self) -> str: ...
+
+    @property
+    @abstractmethod
+    def schema(self) -> dict: ...
+
+    @abstractmethod
+    async def execute(self, **params) -> ToolResult: ...
+```
+
+关键决策：让 LLM 决定工具参数，工具只负责执行和返回结果。
+
+## 第三周：状态机重构
+
+初版状态混乱，决定重构：
+- 从 18 个状态字段精简到 11 个
+- 引入 checkpointer 支持持久化
+- 实现优雅的中断和恢复
+
+## 第四周：测试驱动
+
+写了 1497 个测试用例，覆盖：
+- 单元测试：每个工具、每个状态转换
+- 集成测试：端到端工作流
+- 并发测试：多 Agent 协作场景
+
+## 经验总结
+
+1. **先让它跑起来**：MVP 一周内完成，快速验证想法
+2. **重构要果断**：发现架构问题立即重构，不要拖延
+3. **测试是最好的文档**：好的测试用例本身就是最好的使用文档
+4. **性能优化要适度**：先保证正确性，再考虑优化
+
+## 开源
+
+项目已开源：https://github.com/hhhhhhh520/mini-claude
+
+欢迎 Star 和贡献！

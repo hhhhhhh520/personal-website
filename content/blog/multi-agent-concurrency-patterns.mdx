@@ -1,0 +1,94 @@
+# 多 Agent 并发实战
+
+当我构建 Mini Claude Code 时，最大的挑战之一是让多个 Agent 高效协作。不是简单的并行，而是有依赖关系的任务编排。
+
+## 并发的三个层次
+
+### Level 1: 简单并行
+
+```python
+results = await asyncio.gather(*[
+    agent.run(task) for task in tasks
+])
+```
+
+适合独立任务，但缺乏控制。
+
+### Level 2: 受限并发
+
+```python
+semaphore = asyncio.Semaphore(3)  # 最多 3 个并发
+
+async def bounded_run(agent, task):
+    async with semaphore:
+        return await agent.run(task)
+
+results = await asyncio.gather(*[
+    bounded_run(agent, task) for task in tasks
+])
+```
+
+防止资源耗尽，更可控。
+
+### Level 3: 依赖感知编排
+
+```python
+# 任务 A 完成后才能执行 B
+results = await run_with_dependencies(
+    tasks=[
+        Task("A", agent_a, dependencies=[]),
+        Task("B", agent_b, dependencies=["A"]),
+        Task("C", agent_c, dependencies=["A"]),
+    ]
+)
+```
+
+这是最强大的模式，支持复杂的 DAG 依赖。
+
+## 实战经验
+
+### 经验 1: 用文件锁防止冲突
+
+多个 Agent 同时写文件会出问题：
+
+```python
+from filelock import FileLock
+
+async def safe_write(path, content):
+    with FileLock(f"{path}.lock"):
+        await aiofiles.write(path, content)
+```
+
+### 经验 2: 超时要有全局视角
+
+单个任务超时不够，需要整体超时：
+
+```python
+try:
+    results = await asyncio.wait_for(
+        run_all_agents(),
+        timeout=90.0
+    )
+except asyncio.TimeoutError:
+    # 收集已完成的结果
+    partial_results = collect_partial()
+```
+
+### 经验 3: 错误隔离
+
+一个 Agent 失败不应该影响其他：
+
+```python
+results = await asyncio.gather(*[
+    safe_run(agent, task)  # 内部 catch 异常
+    for task in tasks
+], return_exceptions=True)
+```
+
+## 性能数据
+
+在 Mini Claude Code 中，并发模式让复杂任务的执行时间从 45 秒降到 12 秒（3.75x 加速）。
+
+## 总结
+
+并发不是银弹，需要根据场景选择合适的模式。记住：先让它正确，再让它快。
