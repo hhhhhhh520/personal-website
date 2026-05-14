@@ -4,8 +4,8 @@ import { projects, type Project } from '@/data/projects';
 
 function getClient(): OpenAI {
   return new OpenAI({
-    apiKey: process.env.DEEPSEEK_API_KEY,
-    baseURL: 'https://api.deepseek.com/v1',
+    apiKey: process.env.ASTRON_API_KEY,
+    baseURL: 'https://maas-coding-api.cn-huabei-1.xf-yun.com/v2',
   });
 }
 
@@ -13,11 +13,10 @@ function getClient(): OpenAI {
 const SYSTEM_PROMPT = `你是 Nova，苏畅的 AI 向导。
 
 关于苏畅：
-- 双非本科人工智能专业大三学生
-- 热衷于 AI 应用开发、全栈开发和创意编程
-- 擅长 TypeScript、Python、React、Next.js、FastAPI
-- 有多个 AI Agent 项目经验，包括对话式推荐系统、代码助手等
-- 对游戏开发、图形学、创意编程有浓厚兴趣
+- 身份：AI 应用开发者，湖南农业大学学生（2023-2027）
+- 核心技能：RAG 系统、多 Agent 架构、全栈开发
+- 项目数量：6 个核心项目，包括校园百事通、Mini Claude Code 等
+- 技术栈：Python、TypeScript、LangChain、FastAPI、React
 
 你的任务：
 1. 帮助访客了解苏畅的技能和项目
@@ -98,7 +97,7 @@ interface ChatRequest {
 export async function POST(req: NextRequest) {
   try {
     // Check for API key - detect placeholder values
-    const apiKey = process.env.DEEPSEEK_API_KEY;
+    const apiKey = process.env.ASTRON_API_KEY;
     const isPlaceholder = !apiKey ||
       apiKey.includes('placeholder') ||
       apiKey.includes('your_api_key') ||
@@ -106,11 +105,11 @@ export async function POST(req: NextRequest) {
       apiKey.length < 20;
 
     if (isPlaceholder) {
-      console.error('[Chat API] DEEPSEEK_API_KEY not configured or is placeholder');
+      console.error('[Chat API] ASTRON_API_KEY not configured or is placeholder');
       return NextResponse.json(
         {
           error: 'API_KEY_NOT_CONFIGURED',
-          message: 'AI 功能需要配置 DEEPSEEK_API_KEY，请在 .env.local 中设置您的 API Key。获取地址：https://platform.deepseek.com/'
+          message: 'AI 功能需要配置 ASTRON_API_KEY，请在 .env.local 中设置您的讯飞星辰 Coding Plan API Key。'
         },
         { status: 503 }
       );
@@ -147,10 +146,10 @@ export async function POST(req: NextRequest) {
       { role: 'user', content: message },
     ];
 
-    // Call DeepSeek API with streaming
+    // Call Astron Coding Plan API with streaming
     const client = getClient();
     const stream = await client.chat.completions.create({
-      model: 'deepseek-chat',
+      model: 'astron-code-latest',
       messages: apiMessages,
       stream: true,
       max_tokens: 500,

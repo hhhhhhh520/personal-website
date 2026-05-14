@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__shadcn__get_project_registries",
+      "mcp__shadcn__list_items_in_registries",
+      "Bash(npx shadcn@latest add badge card input progress separator sheet toggle-group --yes)",
+      "Bash(npx next *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/zh/preview)",
+      "Skill(browse)",
+      "Bash(rm \"D:/my project/web/personal-website/app/[locale]/preview/page.tsx\")",
+      "Bash(rmdir \"D:/my project/web/personal-website/app/[locale]/preview\")",
+      "Bash(npm run *)",
+      "Bash(ls docs/)",
+      "Bash(find . -maxdepth 2 -name \"*.md\" -not -path \"*/node_modules/*\" -not -path \"*/.git/*\")"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "shadcn"
+  ]
+}

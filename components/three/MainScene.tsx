@@ -1,6 +1,5 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { Environment } from "./Environment";
@@ -10,46 +9,19 @@ import { ParticleBg } from "@/components/effects/ParticleBg";
 import { useSceneConfig } from "@/hooks/useSceneConfig";
 import { useDeviceCapabilities } from "@/hooks/useDeviceCapabilities";
 
-/**
- * Main 3D Scene Component
- * Contains the main Canvas setup with camera, lighting, and controls
- * Includes particle background, glow effects, energy core, and navigation portals
- *
- * Performance optimizations:
- * - Adaptive DPR based on GPU tier
- * - Conditional post-processing effects
- * - Touch-friendly controls
- * - Reduced motion support
- * - Client-only rendering to avoid SSR issues with Next.js 16 + Turbopack
- */
-export function MainScene() {
-  const [isClient, setIsClient] = useState(false);
-  const { dpr, antialias, autoRotate, autoRotateSpeed, rotateSpeed, enableBloom, enableTouchGestures, zoomSpeed } = useSceneConfig();
+export function MainScene({ locale = "zh" }: { locale?: string }) {
+  const portalColors = {
+    projects: "#3B82F6",
+    blog: "#22c55e",
+    skills: "#a855f7",
+    about: "#f59e0b",
+  };
+  const { dpr, antialias, autoRotate, autoRotateSpeed, rotateSpeed, enableTouchGestures, zoomSpeed } = useSceneConfig();
   const { hasTouch, shouldReduceMotion } = useDeviceCapabilities();
-
-  // Only render on client to avoid SSR issues with React Three Fiber
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  if (!isClient) {
-    return (
-      <div
-        style={{
-          background: "linear-gradient(to bottom, #0f0f23, #1a1a2e)",
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-        }}
-      />
-    );
-  }
 
   return (
     <Canvas
-      camera={{ position: [0, 2, 8], fov: 60 }}
+      camera={{ position: [0, 0.5, 10], fov: 50 }}
       style={{
         background: "linear-gradient(to bottom, #0f0f23, #1a1a2e)",
         position: "absolute",
@@ -88,8 +60,8 @@ export function MainScene() {
         rotateSpeed={rotateSpeed}
         autoRotate={autoRotate && !shouldReduceMotion}
         autoRotateSpeed={autoRotateSpeed}
-        maxPolarAngle={Math.PI / 1.8}
-        minPolarAngle={Math.PI / 3}
+        maxPolarAngle={Math.PI / 1.5}
+        minPolarAngle={Math.PI / 4}
         // Touch-friendly zoom settings
         zoomSpeed={zoomSpeed}
         minDistance={4}
@@ -99,14 +71,14 @@ export function MainScene() {
         enableDamping
       />
 
-      {/* Portal navigation to different sections */}
-      <Portal position={[-3, 0, -2]} label="项目展厅" target="/projects" />
-      <Portal position={[3, 0, -2]} label="知识图书馆" target="/blog" />
-      <Portal position={[-3, 0, 2]} label="技能矩阵" target="/skills" />
-      <Portal position={[3, 0, 2]} label="关于我" target="/about" />
+      {/* Portal navigation — spread to sides, below text area */}
+      <Portal position={[-5, -1.5, -2]} label="项目展厅" target="/projects" color={portalColors.projects} locale={locale} />
+      <Portal position={[5, -1.5, -2]} label="知识图书馆" target="/blog" color={portalColors.blog} locale={locale} />
+      <Portal position={[-5, -1.5, 3]} label="技能矩阵" target="/skills" color={portalColors.skills} locale={locale} />
+      <Portal position={[5, -1.5, 3]} label="关于我" target="/about" color={portalColors.about} locale={locale} />
 
-      {/* Central energy core */}
-      <EnergyCore position={[0, 1, 0]} />
+      {/* Energy core — below text, centered */}
+      <EnergyCore position={[0, -2, 0]} />
 
       {/* Post-processing glow effect — disabled, see import comment */}
       {/* <GlowEffect /> */}

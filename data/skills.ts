@@ -20,6 +20,7 @@ export interface Skill {
   icon: string; // Icon name or path
   color: string; // Brand/accent color
   description: string;
+  descriptionEn?: string; // English description
 }
 
 // Skill data array
@@ -34,7 +35,8 @@ export const skills: Skill[] = [
     projects: ['mini-claude', 'codecraft-agent', 'campus-agent', 'phone-pick-assistant', 'cv-generator', 'game-agent'],
     icon: 'python',
     color: '#3776AB',
-    description: 'Python 核心开发者，精通异步编程、类型注解、性能优化。熟悉 Python 生态系统的最佳实践。',
+    description: 'Python 核心开发者，精通异步编程、类型注解、性能优化。',
+    descriptionEn: 'Python core developer, proficient in async programming, type annotations, and performance optimization.',
   },
   {
     id: 'typescript',
@@ -45,7 +47,7 @@ export const skills: Skill[] = [
     projects: ['campus-agent', 'phone-pick-assistant'],
     icon: 'typescript',
     color: '#3178C6',
-    description: '熟悉 TypeScript 类型系统，掌握泛型、条件类型、类型推断等高级特性。有 React + TypeScript 开发经验。',
+    description: '熟悉 TypeScript 类型系统，掌握泛型、条件类型等高级特性。',
   },
   {
     id: 'kotlin',
@@ -56,7 +58,7 @@ export const skills: Skill[] = [
     projects: [],
     icon: 'kotlin',
     color: '#7F52FF',
-    description: '熟悉 Kotlin 语言特性，包括协程、扩展函数、DSL 等。有 Android 开发经验。',
+    description: '熟悉 Kotlin 语言特性，包括协程、扩展函数、DSL 等。',
   },
   {
     id: 'javascript',
@@ -78,7 +80,7 @@ export const skills: Skill[] = [
     projects: ['campus-agent', 'phone-pick-assistant'],
     icon: 'database',
     color: '#4479A1',
-    description: '熟悉 SQL 查询优化、索引设计、事务处理。有 MySQL、PostgreSQL、SQLite 使用经验。',
+    description: '熟悉 SQL 查询优化、索引设计、事务处理。',
   },
 
   // ==================== Frameworks ====================
@@ -91,7 +93,7 @@ export const skills: Skill[] = [
     projects: ['codecraft-agent'],
     icon: 'chain',
     color: '#1C3C3C',
-    description: '精通 LangChain 框架，深入理解 Chain、Agent、Memory、Tool 等核心概念。能够构建复杂的多步推理系统。',
+    description: '精通 LangChain 框架，深入理解 Chain、Agent、Memory、Tool 等核心概念。',
   },
   {
     id: 'langgraph',
@@ -102,7 +104,7 @@ export const skills: Skill[] = [
     projects: ['mini-claude'],
     icon: 'git-branch',
     color: '#00B4D8',
-    description: '精通 LangGraph 状态机架构，能够设计复杂的多 Agent 协作流程。深入理解节点、边、条件路由等概念。',
+    description: '精通 LangGraph 状态机架构，能够设计复杂的多 Agent 协作流程。',
   },
   {
     id: 'fastapi',
@@ -113,7 +115,7 @@ export const skills: Skill[] = [
     projects: ['codecraft-agent', 'campus-agent', 'phone-pick-assistant', 'cv-generator'],
     icon: 'api',
     color: '#009688',
-    description: '精通 FastAPI 框架，熟悉依赖注入、中间件、WebSocket、后台任务等特性。有生产环境部署经验。',
+    description: '精通 FastAPI 框架，熟悉依赖注入、中间件、WebSocket 等特性。',
   },
   {
     id: 'react',
@@ -124,7 +126,7 @@ export const skills: Skill[] = [
     projects: ['campus-agent', 'phone-pick-assistant'],
     icon: 'react',
     color: '#61DAFB',
-    description: '熟悉 React Hooks、状态管理、组件设计模式。有 React + TypeScript 项目开发经验。',
+    description: '熟悉 React Hooks、状态管理、组件设计模式。',
   },
   {
     id: 'nextjs',
@@ -135,7 +137,7 @@ export const skills: Skill[] = [
     projects: [],
     icon: 'nextjs',
     color: '#000000',
-    description: '熟悉 Next.js App Router、Server Components、路由处理、数据获取等特性。',
+    description: '熟悉 Next.js App Router、Server Components、路由处理等特性。',
   },
   {
     id: 'litellm',
@@ -146,7 +148,7 @@ export const skills: Skill[] = [
     projects: ['mini-claude'],
     icon: 'bot',
     color: '#FF6B6B',
-    description: '熟悉 LiteLLM 统一 LLM 接口，支持多模型切换、流式输出、成本追踪等功能。',
+    description: '熟悉 LiteLLM 统一 LLM 接口，支持多模型切换、流式输出。',
   },
 
   // ==================== Tools ====================
@@ -159,7 +161,7 @@ export const skills: Skill[] = [
     projects: ['mini-claude', 'codecraft-agent', 'campus-agent', 'phone-pick-assistant', 'cv-generator', 'game-agent'],
     icon: 'git',
     color: '#F05032',
-    description: '精通 Git 版本控制，熟悉分支策略、Rebase、Cherry-pick、子模块等高级操作。',
+    description: '精通 Git 版本控制，熟悉分支策略、Rebase 等高级操作。',
   },
   {
     id: 'docker',
@@ -181,7 +183,7 @@ export const skills: Skill[] = [
     projects: ['mini-claude', 'codecraft-agent', 'campus-agent', 'phone-pick-assistant'],
     icon: 'test-tube',
     color: '#0A9EDC',
-    description: '精通 Pytest 测试框架，熟悉 fixture、参数化、覆盖率报告、异步测试等特性。',
+    description: '精通 Pytest 测试框架，熟悉 fixture、参数化、覆盖率报告等特性。',
   },
   {
     id: 'vscode',
@@ -192,7 +194,7 @@ export const skills: Skill[] = [
     projects: [],
     icon: 'vscode',
     color: '#007ACC',
-    description: '熟练使用 VS Code 进行开发，熟悉扩展生态、调试配置、快捷键优化等。',
+    description: '熟练使用 VS Code 进行开发，熟悉扩展生态、调试配置。',
   },
   {
     id: 'chromadb',
@@ -203,7 +205,7 @@ export const skills: Skill[] = [
     projects: ['campus-agent'],
     icon: 'database',
     color: '#FF6B6B',
-    description: '熟悉 ChromaDB 向量数据库，掌握向量存储、相似度检索、元数据过滤等功能。',
+    description: '熟悉 ChromaDB 向量数据库，掌握向量存储、相似度检索等功能。',
   },
   {
     id: 'sqlite',
@@ -214,7 +216,7 @@ export const skills: Skill[] = [
     projects: ['phone-pick-assistant'],
     icon: 'database',
     color: '#003B57',
-    description: '熟悉 SQLite 数据库，掌握 SQL 查询优化、索引设计、全文检索等特性。',
+    description: '熟悉 SQLite 数据库，掌握 SQL 查询优化、索引设计。',
   },
 
   // ==================== Concepts ====================
@@ -227,7 +229,7 @@ export const skills: Skill[] = [
     projects: ['campus-agent', 'phone-pick-assistant'],
     icon: 'search',
     color: '#10B981',
-    description: '精通 RAG（检索增强生成）技术，熟悉向量检索、文档分块、重排序、多模态 RAG 等前沿技术。',
+    description: '精通 RAG（检索增强生成）技术，熟悉向量检索、文档分块、重排序。',
   },
   {
     id: 'agent',
@@ -238,7 +240,7 @@ export const skills: Skill[] = [
     projects: ['mini-claude', 'codecraft-agent', 'campus-agent', 'phone-pick-assistant'],
     icon: 'bot',
     color: '#8B5CF6',
-    description: '精通 AI Agent 架构设计，深入理解工具调用、规划推理、多 Agent 协作、状态管理等核心概念。',
+    description: '精通 AI Agent 架构设计，深入理解工具调用、规划推理、多 Agent 协作。',
   },
   {
     id: 'llm-prompt',
@@ -249,7 +251,7 @@ export const skills: Skill[] = [
     projects: ['mini-claude', 'codecraft-agent', 'campus-agent', 'phone-pick-assistant', 'cv-generator'],
     icon: 'message-square',
     color: '#F59E0B',
-    description: '精通 Prompt Engineering，掌握思维链、少样本学习、结构化输出、角色扮演等技术。',
+    description: '精通 Prompt Engineering，掌握思维链、少样本学习、结构化输出。',
   },
   {
     id: 'async',
@@ -260,7 +262,7 @@ export const skills: Skill[] = [
     projects: ['mini-claude', 'codecraft-agent', 'campus-agent'],
     icon: 'zap',
     color: '#06B6D4',
-    description: '精通 Python asyncio 异步编程，熟悉协程、事件循环、并发控制、异步上下文管理器等概念。',
+    description: '精通 Python asyncio 异步编程，熟悉协程、事件循环、并发控制。',
   },
   {
     id: 'testing',
@@ -271,7 +273,7 @@ export const skills: Skill[] = [
     projects: ['mini-claude', 'codecraft-agent', 'campus-agent', 'phone-pick-assistant'],
     icon: 'check-circle',
     color: '#22C55E',
-    description: '测试驱动开发实践者，掌握单元测试、集成测试、E2E 测试、Mock 技术等方法论。',
+    description: '测试驱动开发实践者，掌握单元测试、集成测试、Mock 技术等方法论。',
   },
   {
     id: 'api-design',
@@ -282,7 +284,7 @@ export const skills: Skill[] = [
     projects: ['codecraft-agent', 'campus-agent', 'phone-pick-assistant', 'cv-generator'],
     icon: 'api',
     color: '#EC4899',
-    description: '熟悉 RESTful API 设计原则，了解 GraphQL、WebSocket 等协议。有 OpenAPI 文档编写经验。',
+    description: '熟悉 RESTful API 设计原则，了解 GraphQL、WebSocket 等协议。',
   },
 ];
 
@@ -402,6 +404,27 @@ export function searchSkills(query: string): Skill[] {
   return skills.filter(
     skill =>
       skill.name.toLowerCase().includes(lowerQuery) ||
-      skill.description.toLowerCase().includes(lowerQuery)
+      skill.description.toLowerCase().includes(lowerQuery) ||
+      (skill.descriptionEn && skill.descriptionEn.toLowerCase().includes(lowerQuery))
   );
+}
+
+/**
+ * Get localized skill description
+ */
+export function getLocalizedDescription(skill: Skill, locale: 'zh' | 'en'): string {
+  if (locale === 'en' && skill.descriptionEn) {
+    return skill.descriptionEn;
+  }
+  return skill.description;
+}
+
+/**
+ * Get all skills with localized descriptions
+ */
+export function getLocalizedSkills(locale: 'zh' | 'en'): Skill[] {
+  return skills.map(skill => ({
+    ...skill,
+    description: getLocalizedDescription(skill, locale),
+  }));
 }

@@ -30,15 +30,16 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
+  const localized = locale === 'en'
+    ? { title: personal.titleEn || personal.title, summary: personal.summaryEn || personal.summary }
+    : { title: personal.title, summary: personal.summary };
 
   return {
     title: {
-      default: `${personal.name} - ${locale === 'en' ? 'AI Application Developer' : 'AI 应用开发者'}`,
+      default: `${personal.name} - ${localized.title}`,
       template: `%s | ${personal.name}`,
     },
-    description: locale === 'en'
-      ? "An undergraduate focused on AI application development with hands-on experience in RAG systems, LLM Agents, and on-device AI."
-      : personal.summary,
+    description: localized.summary,
     keywords: [
       personal.name,
       personal.title,
@@ -50,18 +51,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       type: "website",
       locale: locale === 'zh' ? "zh_CN" : "en_US",
-      title: `${personal.name} - ${locale === 'en' ? 'AI Application Developer' : 'AI 应用开发者'}`,
-      description: locale === 'en'
-        ? "An undergraduate focused on AI application development with hands-on experience in RAG systems, LLM Agents, and on-device AI."
-        : personal.summary,
+      title: `${personal.name} - ${localized.title}`,
+      description: localized.summary,
       siteName: locale === 'en' ? `${personal.name}'s Portfolio` : `${personal.name}的个人网站`,
     },
     twitter: {
       card: "summary_large_image",
-      title: `${personal.name} - ${locale === 'en' ? 'AI Application Developer' : 'AI 应用开发者'}`,
-      description: locale === 'en'
-        ? "An undergraduate focused on AI application development with hands-on experience in RAG systems, LLM Agents, and on-device AI."
-        : personal.summary,
+      title: `${personal.name} - ${localized.title}`,
+      description: localized.summary,
     },
   };
 }

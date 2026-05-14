@@ -36,7 +36,9 @@ export const useNovaStore = create<NovaState>((set) => ({
     set((state) => {
       if (state.messages.length === 0) return state;
       const messages = [...state.messages];
-      messages[messages.length - 1] = { ...messages[messages.length - 1], content };
+      const lastMessage = messages[messages.length - 1];
+      // 追加内容而不是替换（用于流式输出）
+      messages[messages.length - 1] = { ...lastMessage, content: lastMessage.content + content };
       return { messages };
     }),
   setLoading: (value) => set({ isLoading: value }),

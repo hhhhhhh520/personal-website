@@ -11,7 +11,6 @@ const navItems = [
   { href: "/blog", labelKey: "blog", icon: "M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v12a2 2 0 01-2 2zM16 2v4M8 2v4M3 10h18" },
   { href: "/skills", labelKey: "skills", icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M17.664 17.664l-.707.707M12 21v-1M6.343 17.657l-.707.707M3 12h1m1.636-6.364l.707-.707M12 12a4 4 0 108 0 4 4 0 00-8 0z" },
   { href: "/about", labelKey: "about", icon: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" },
-  { href: "/contact", labelKey: "contact", icon: "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" },
 ];
 
 const containerVariants: Variants = {

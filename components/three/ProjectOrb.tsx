@@ -2,7 +2,7 @@
 
 import { useRef, useState, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
-import { Float, Html, Sphere } from "@react-three/drei";
+import { Float, Html } from "@react-three/drei";
 import { useRouter } from "next/navigation";
 import * as THREE from "three";
 import type { Project } from "@/data/projects";
@@ -15,126 +15,161 @@ interface ProjectOrbProps {
 }
 
 /**
- * ProjectOrb Component
- * Interactive 3D sphere representing a project
- * Features floating animation, hover glow effects, and click navigation
+ * ProjectOrb — animated multi-layered orb with orbital rings
  *
- * Touch support:
- * - Tap to navigate on touch devices
- * - Visual feedback on tap
- *
- * Performance optimizations:
- * - Reduced geometry segments on low-perf devices
- * - Optional float animation
- * - Conditional label rendering
+ * Structure:
+ * - Inner core: glowing sphere with pulse animation
+ * - Outer shell: wireframe icosahedron, slow counter-rotation
+ * - Orbital ring: tilted torus ring rotating around the sphere
+ * - Label: always-visible project name below
  */
 export function ProjectOrb({ project, position = [0, 0, 0] }: ProjectOrbProps) {
-  const meshRef = useRef<THREE.Mesh>(null);
+  const coreRef = useRef<THREE.Mesh>(null);
+  const shellRef = useRef<THREE.Mesh>(null);
+  const ringRef = useRef<THREE.Mesh>(null);
   const [hovered, setHovered] = useState(false);
   const [tapped, setTapped] = useState(false);
   const router = useRouter();
   const { hasTouch, shouldReduceMotion } = useDeviceCapabilities();
-  const { geometryDetail, enableFloat, rotateSpeed } = useSceneConfig();
+  const { geometryDetail, enableFloat } = useSceneConfig();
   const segments = getGeometrySegments(geometryDetail);
 
-  // Active state (hover on desktop, tap on mobile)
   const isActive = hovered || tapped;
+  const baseColor = useMemo(() => new THREE.Color(project.color), [project.color]);
+  const brightColor = useMemo(() => new THREE.Color(project.color).multiplyScalar(1.4), [project.color]);
 
-  // Create material with project color
-  const material = useMemo(() => {
-    return new THREE.MeshStandardMaterial({
-      color: project.color,
-      emissive: project.color,
-      emissiveIntensity: isActive ? 0.8 : 0.3,
-      roughness: 0.2,
-      metalness: 0.7,
-    });
-  }, [project.color, isActive]);
+  // Navigate with locale-aware fallback
+  const navigate = () => {
+    const path = `/projects/${project.id}`;
+    try {
+      router.push(path);
+    } catch {
+      window.location.href = path;
+    }
+  };
 
-  // Update emissive intensity smoothly
-  useFrame(() => {
-    if (meshRef.current) {
-      const targetIntensity = isActive ? 0.8 : 0.3;
-      const currentMaterial = meshRef.current.material as THREE.MeshStandardMaterial;
-      currentMaterial.emissiveIntensity += (targetIntensity - currentMaterial.emissiveIntensity) * 0.1;
+  useFrame((state, delta) => {
+    if (shouldReduceMotion) return;
+
+    const t = state.clock.elapsedTime;
+
+    // Core pulse
+    if (coreRef.current) {
+      const pulse = 1 + Math.sin(t * 2.5) * 0.08;
+      coreRef.current.scale.setScalar(pulse);
+      const mat = coreRef.current.material as THREE.MeshStandardMaterial;
+      mat.emissiveIntensity = isActive ? 1.0 + Math.sin(t * 3) * 0.3 : 0.5 + Math.sin(t * 2) * 0.2;
+    }
+
+    // Shell counter-rotation
+    if (shellRef.current) {
+      shellRef.current.rotation.y -= delta * 0.3;
+      shellRef.current.rotation.x += delta * 0.15;
+      const mat = shellRef.current.material as THREE.MeshStandardMaterial;
+      mat.opacity = isActive ? 0.35 : 0.18;
+    }
+
+    // Ring orbit
+    if (ringRef.current) {
+      ringRef.current.rotation.z += delta * (isActive ? 1.5 : 0.6);
+      ringRef.current.rotation.x += delta * 0.2;
     }
   });
-
-  // Handle touch tap with visual feedback
-  const handlePointerDown = () => {
-    if (hasTouch) {
-      setTapped(true);
-    }
-  };
-
-  const handlePointerUp = () => {
-    if (hasTouch && tapped) {
-      router.push(`/projects/${project.id}`);
-      setTapped(false);
-    }
-  };
-
-  // Click handler for non-touch devices
-  const handleClick = () => {
-    if (!hasTouch) {
-      router.push(`/projects/${project.id}`);
-    }
-  };
 
   return (
     <Float
       speed={enableFloat ? 1.5 : 0}
-      rotationIntensity={enableFloat ? 0.5 : 0}
-      floatIntensity={enableFloat ? 0.8 : 0}
+      rotationIntensity={enableFloat ? 0.3 : 0}
+      floatIntensity={enableFloat ? 0.6 : 0}
     >
       <group
         position={position}
-        onClick={handleClick}
-        onPointerDown={handlePointerDown}
-        onPointerUp={handlePointerUp}
+        onClick={navigate}
+        onPointerDown={() => hasTouch && setTapped(true)}
+        onPointerUp={() => { if (tapped) { navigate(); setTapped(false); } }}
         onPointerOver={() => !hasTouch && setHovered(true)}
-        onPointerOut={() => {
-          setHovered(false);
-          setTapped(false);
-        }}
+        onPointerOut={() => { setHovered(false); setTapped(false); }}
       >
-        {/* Main sphere */}
-        <Sphere
-          ref={meshRef}
-          args={[0.5, segments.sphere, segments.sphere]}
-          material={material}
-        />
+        {/* Invisible hit area */}
+        <mesh visible={false}>
+          <sphereGeometry args={[1.0, 8, 8]} />
+          <meshBasicMaterial transparent opacity={0} />
+        </mesh>
 
-        {/* Outer glow ring - only on non-mobile for performance */}
-        {!hasTouch && (
-          <mesh scale={1.2}>
-            <ringGeometry args={[0.6, 0.65, segments.ring]} />
+        {/* Inner core — glowing sphere */}
+        <mesh ref={coreRef}>
+          <sphereGeometry args={[0.35, segments.sphere, segments.sphere]} />
+          <meshStandardMaterial
+            color={isActive ? brightColor : baseColor}
+            emissive={isActive ? brightColor : baseColor}
+            emissiveIntensity={0.5}
+            roughness={0.15}
+            metalness={0.8}
+          />
+        </mesh>
+
+        {/* Outer shell — wireframe icosahedron */}
+        <mesh ref={shellRef}>
+          <icosahedronGeometry args={[0.55, 1]} />
+          <meshStandardMaterial
+            color={baseColor}
+            emissive={baseColor}
+            emissiveIntensity={0.3}
+            wireframe
+            transparent
+            opacity={0.18}
+          />
+        </mesh>
+
+        {/* Orbital ring */}
+        <mesh ref={ringRef} rotation={[Math.PI / 3, 0, 0]}>
+          <torusGeometry args={[0.75, 0.02, 8, segments.ring]} />
+          <meshStandardMaterial
+            color={isActive ? brightColor : baseColor}
+            emissive={isActive ? brightColor : baseColor}
+            emissiveIntensity={isActive ? 0.8 : 0.4}
+            transparent
+            opacity={isActive ? 0.9 : 0.5}
+          />
+        </mesh>
+
+        {/* Glow halo — visible on hover */}
+        {isActive && (
+          <mesh>
+            <sphereGeometry args={[0.9, 16, 16]} />
             <meshBasicMaterial
-              color={project.color}
+              color={baseColor}
               transparent
-              opacity={isActive ? 0.6 : 0.2}
+              opacity={0.08}
+              side={THREE.BackSide}
             />
           </mesh>
         )}
 
-        {/* Project name label - visible on hover/tap */}
-        {isActive && (
-          <Html
-            position={[0, 0.9, 0]}
-            center
+        {/* Project label — always visible */}
+        <Html
+          position={[0, -1.1, 0]}
+          center
+          distanceFactor={8}
+          style={{ pointerEvents: "none", userSelect: "none" }}
+        >
+          <div
+            className="px-3 py-1.5 rounded-lg whitespace-nowrap text-center"
             style={{
-              transition: "opacity 0.2s ease",
-              opacity: isActive ? 1 : 0,
-              pointerEvents: "none",
+              background: `linear-gradient(135deg, ${project.color}66, ${project.color}22)`,
+              border: `1px solid ${project.color}88`,
+              boxShadow: `0 0 12px ${project.color}44`,
+              backdropFilter: "blur(8px)",
             }}
           >
-            <div className="px-3 py-1.5 rounded-lg bg-black/70 backdrop-blur-sm border border-white/10 whitespace-nowrap">
-              <span className="text-white text-sm font-medium">
-                {project.name}
-              </span>
-            </div>
-          </Html>
-        )}
+            <span
+              className="text-white text-sm font-medium"
+              style={{ textShadow: "0 1px 4px rgba(0,0,0,0.8)" }}
+            >
+              {project.name}
+            </span>
+          </div>
+        </Html>
       </group>
     </Float>
   );

@@ -1,24 +1,108 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Stars } from "@react-three/drei";
+import { useState, useEffect, useMemo, useRef } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
 import { ProjectOrb } from "./ProjectOrb";
 import { projects } from "@/data/projects";
 import { useSceneConfig, getGeometrySegments } from "@/hooks/useSceneConfig";
 import { useDeviceCapabilities } from "@/hooks/useDeviceCapabilities";
+import { ParticleBg } from "@/components/effects/ParticleBg";
+import * as THREE from "three";
 
 /**
- * ProjectScene Component
- * 3D exhibition hall displaying projects as interactive orbs
- * Features circular layout with orbital camera controls and starfield background
- *
- * Performance optimizations:
- * - Adaptive star count based on GPU tier
- * - Reduced geometry detail on low-perf devices
- * - Touch-friendly controls
- * - Reduced motion support
- * - Client-only rendering to avoid SSR issues with Next.js 16 + Turbopack
+ * CentralHub — animated energy core at the center of the project ring
+ * Multi-layered: inner glow + wireframe shell + orbiting ring
+ */
+function CentralHub() {
+  const coreRef = useRef<THREE.Mesh>(null);
+  const shellRef = useRef<THREE.Mesh>(null);
+  const ring1Ref = useRef<THREE.Mesh>(null);
+  const ring2Ref = useRef<THREE.Mesh>(null);
+
+  useFrame((state) => {
+    const t = state.clock.elapsedTime;
+
+    if (coreRef.current) {
+      const pulse = 1 + Math.sin(t * 2) * 0.12;
+      coreRef.current.scale.setScalar(pulse);
+      const mat = coreRef.current.material as THREE.MeshStandardMaterial;
+      mat.emissiveIntensity = 0.6 + Math.sin(t * 3) * 0.3;
+    }
+
+    if (shellRef.current) {
+      shellRef.current.rotation.y += 0.003;
+      shellRef.current.rotation.x -= 0.002;
+    }
+
+    if (ring1Ref.current) {
+      ring1Ref.current.rotation.z += 0.008;
+      ring1Ref.current.rotation.y += 0.003;
+    }
+
+    if (ring2Ref.current) {
+      ring2Ref.current.rotation.z -= 0.006;
+      ring2Ref.current.rotation.x += 0.004;
+    }
+  });
+
+  return (
+    <group position={[0, 0, 0]}>
+      {/* Inner core */}
+      <mesh ref={coreRef}>
+        <sphereGeometry args={[0.2, 24, 24]} />
+        <meshStandardMaterial
+          color="#818cf8"
+          emissive="#818cf8"
+          emissiveIntensity={0.6}
+          roughness={0.1}
+          metalness={0.9}
+        />
+      </mesh>
+
+      {/* Wireframe shell */}
+      <mesh ref={shellRef}>
+        <icosahedronGeometry args={[0.4, 1]} />
+        <meshStandardMaterial
+          color="#6366f1"
+          emissive="#6366f1"
+          emissiveIntensity={0.2}
+          wireframe
+          transparent
+          opacity={0.2}
+        />
+      </mesh>
+
+      {/* Orbital ring 1 */}
+      <mesh ref={ring1Ref} rotation={[Math.PI / 3, 0, 0]}>
+        <torusGeometry args={[0.6, 0.015, 8, 48]} />
+        <meshStandardMaterial
+          color="#818cf8"
+          emissive="#818cf8"
+          emissiveIntensity={0.5}
+          transparent
+          opacity={0.4}
+        />
+      </mesh>
+
+      {/* Orbital ring 2 */}
+      <mesh ref={ring2Ref} rotation={[Math.PI / 5, Math.PI / 4, 0]}>
+        <torusGeometry args={[0.75, 0.012, 8, 48]} />
+        <meshStandardMaterial
+          color="#22d3ee"
+          emissive="#22d3ee"
+          emissiveIntensity={0.4}
+          transparent
+          opacity={0.3}
+        />
+      </mesh>
+    </group>
+  );
+}
+
+/**
+ * ProjectScene — 3D project exhibition hall
+ * Projects orbit around a central energy hub
  */
 export function ProjectScene() {
   const [isClient, setIsClient] = useState(false);
@@ -28,30 +112,22 @@ export function ProjectScene() {
     autoRotate,
     autoRotateSpeed,
     rotateSpeed,
-    starCount,
-    starDepth,
-    starSpeed,
-    enableBloom,
     zoomSpeed,
     enableTouchGestures,
-    geometryDetail,
   } = useSceneConfig();
   const { hasTouch, shouldReduceMotion } = useDeviceCapabilities();
-  const segments = getGeometrySegments(geometryDetail);
 
-  // Only render on client to avoid SSR issues with React Three Fiber
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  // Calculate positions for projects in a circular layout
+  // Circular layout for project orbs
   const projectPositions = useMemo(() => {
     const radius = 4;
     const totalProjects = projects.length;
 
     return projects.map((_, index) => {
       const angle = (index / totalProjects) * Math.PI * 2;
-      // Add height variation for depth (alternating pattern)
       const heightVariation = index % 2 === 0 ? 0.3 : -0.2;
       const height = heightVariation + (index % 3) * 0.15;
 
@@ -98,28 +174,18 @@ export function ProjectScene() {
         preserveDrawingBuffer: false,
       }}
     >
-      {/* Ambient lighting for base illumination */}
       <ambientLight intensity={0.2} />
-
-      {/* Main directional light */}
       <pointLight position={[10, 10, 10]} intensity={1.2} color="#ffffff" />
-
-      {/* Accent lights for color depth */}
       <pointLight position={[-8, 5, -8]} intensity={0.6} color="#22d3ee" />
       <pointLight position={[8, -3, 8]} intensity={0.4} color="#a855f7" />
 
-      {/* Starfield background - adaptive based on device */}
-      <Stars
-        radius={50}
-        depth={starDepth}
-        count={starCount}
-        factor={4}
-        saturation={0.5}
-        fade
-        speed={starSpeed}
-      />
+      {/* Particle background */}
+      <ParticleBg />
 
-      {/* Project orbs arranged in a circle */}
+      {/* Central energy hub */}
+      <CentralHub />
+
+      {/* Project orbs */}
       {projects.map((project, index) => (
         <ProjectOrb
           key={project.id}
@@ -128,19 +194,6 @@ export function ProjectScene() {
         />
       ))}
 
-      {/* Central decorative element - glowing core */}
-      <mesh position={[0, 0, 0]}>
-        <sphereGeometry args={[0.15, segments.sphere, segments.sphere]} />
-        <meshStandardMaterial
-          color="#6366f1"
-          emissive="#6366f1"
-          emissiveIntensity={0.8}
-          transparent
-          opacity={0.6}
-        />
-      </mesh>
-
-      {/* Camera controls */}
       <OrbitControls
         enableZoom={true}
         enablePan={false}
@@ -153,7 +206,6 @@ export function ProjectScene() {
         autoRotateSpeed={autoRotateSpeed}
         maxPolarAngle={Math.PI / 1.5}
         minPolarAngle={Math.PI / 4}
-        // Smooth touch experience
         dampingFactor={0.05}
         enableDamping
       />

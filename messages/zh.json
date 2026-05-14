@@ -4,13 +4,12 @@
     "projects": "项目",
     "blog": "博客",
     "skills": "技能",
-    "about": "关于",
-    "contact": "联系"
+    "about": "关于"
   },
   "home": {
     "greeting": "你好，我是",
-    "title": "AI 应用开发者",
-    "summary": "专注 AI 应用开发的本科生，具备 RAG 系统、LLM Agent 和端侧 AI 的实战经验，擅长将 AI 技术落地为可用的产品。",
+    "title": "",
+    "summary": "独立完成多个 AI 应用的全栈开发，从需求分析到技术落地，追求代码质量和工程化实践。",
     "viewProjects": "查看项目",
     "aboutMe": "关于我",
     "downloadResume": "下载简历"
@@ -18,40 +17,120 @@
   "projects": {
     "title": "项目",
     "subtitle": "我的作品集",
+    "pageTitle": "项目展厅",
+    "pageDescription": "展示我的作品集，每个项目都代表了我在不同领域的探索和实践",
     "viewDemo": "查看演示",
     "viewCode": "查看代码",
     "readMore": "了解更多",
-    "techStack": "技术栈"
+    "techStack": "技术栈",
+    "viewToggle": {
+      "listView": "列表视图",
+      "3dView": "3D 视图"
+    },
+    "instructions": "拖拽旋转 | 滚轮缩放 | 点击项目查看详情",
+    "status": {
+      "completed": "已完成",
+      "inProgress": "进行中",
+      "archived": "已归档"
+    },
+    "category": {
+      "ai": "AI",
+      "web": "Web",
+      "android": "Android",
+      "tool": "Tool"
+    },
+    "detail": {
+      "description": "项目介绍",
+      "techStackTitle": "技术栈",
+      "highlights": "项目亮点",
+      "github": "GitHub",
+      "demo": "在线演示",
+      "backToProjects": "返回项目列表"
+    },
+    "backToHome": "返回首页"
   },
   "blog": {
     "title": "博客",
     "subtitle": "我的文章",
+    "pageTitle": "知识图书馆",
+    "pageDescription": "我的学习笔记、技术思考和行业见解",
     "readMore": "阅读更多",
-    "minRead": "分钟阅读"
+    "minRead": "分钟阅读",
+    "searchPlaceholder": "搜索标题、内容或标签...",
+    "categoryFilter": "分类筛选",
+    "all": "全部",
+    "tagFilter": "标签筛选",
+    "selected": "已选",
+    "foundArticles": "找到 {count} 篇文章",
+    "totalArticles": "共 {count} 篇文章",
+    "noResults": "没有找到匹配的文章",
+    "noResultsHint": "尝试调整筛选条件或搜索其他关键词",
+    "clearAllFilters": "清除所有筛选",
+    "clearFilters": "清除筛选",
+    "featured": "精选",
+    "backToHome": "返回首页",
+    "categories": {
+      "ai-development": "AI 开发",
+      "project-experience": "项目经验",
+      "technical-tutorial": "技术教程",
+      "career-growth": "职业成长",
+      "tech-insights": "技术洞察"
+    },
+    "detail": {
+      "backToBlog": "返回博客",
+      "relatedArticles": "相关文章",
+      "publishedOn": "发布于"
+    }
   },
   "skills": {
     "title": "技能",
     "subtitle": "技术栈",
-    "proficiency": "熟练度"
+    "proficiency": "熟练度",
+    "pageTitle": "技能矩阵",
+    "pageDescription": "我的技术栈和能力分布，每个技能都经过项目实践的检验",
+    "viewToggle": {
+      "listView": "列表视图",
+      "3dView": "3D 视图"
+    },
+    "instructions": "拖拽旋转 | 滚轮缩放 | 点击技能查看详情",
+    "categories": {
+      "all": "全部",
+      "language": "编程语言",
+      "framework": "框架",
+      "tool": "工具",
+      "concept": "概念"
+    },
+    "levels": {
+      "expert": "精通",
+      "proficient": "熟练",
+      "familiar": "了解"
+    },
+    "detail": {
+      "description": "描述",
+      "experience": "经验",
+      "years": "年",
+      "relatedProjects": "关联项目"
+    },
+    "stats": {
+      "totalSkills": "总技能数",
+      "expertSkills": "精通技能",
+      "totalProjects": "项目数量",
+      "programmingLanguages": "编程语言"
+    },
+    "relatedProjectsLabel": "关联项目",
+    "backToHome": "返回首页"
   },
   "about": {
     "title": "关于",
+    "pageTitle": "关于我",
     "subtitle": "了解更多关于我",
-    "education": "教育经历",
+    "contact": "联系方式",
+    "education": "教育背景",
+    "interests": "兴趣领域",
+    "backToHome": "返回首页",
+    "present": "至今",
     "experience": "工作经验",
     "awards": "获奖荣誉"
-  },
-  "contact": {
-    "title": "联系",
-    "subtitle": "与我联系",
-    "name": "姓名",
-    "email": "邮箱",
-    "subject": "主题",
-    "message": "消息",
-    "send": "发送消息",
-    "sending": "发送中...",
-    "success": "消息已发送！",
-    "error": "发送失败，请稍后重试。"
   },
   "footer": {
     "copyright": "版权所有",
@@ -79,7 +158,7 @@
     "greeting": "👋 你好！我是 Nova",
     "askAnything": "有什么想了解的吗？",
     "apiKeyNotConfigured": "⚠️ AI 功能未配置",
-    "apiKeyHint": "请在 .env.local 中设置 DEEPSEEK_API_KEY"
+    "apiKeyHint": "请在 .env.local 中设置 ASTRON_API_KEY"
   },
   "resume": {
     "viewQuickResume": "查看快速简历",

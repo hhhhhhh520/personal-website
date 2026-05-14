@@ -1,11 +1,11 @@
 'use client';
 
-import { useTheme } from 'next-themes';
+import { useTheme } from '@/components/providers/ThemeProvider';
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
@@ -18,7 +18,7 @@ export function ThemeToggle() {
     );
   }
 
-  const isDark = theme === 'dark';
+  const isDark = resolvedTheme === 'dark';
 
   return (
     <motion.button

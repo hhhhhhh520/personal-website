@@ -46,6 +46,24 @@ export interface SceneConfig {
   enableTouchGestures: boolean;
   /** Pinch-to-zoom sensitivity */
   zoomSpeed: number;
+
+  // EnergyCore settings
+  /** Number of orbital rings around the core */
+  coreOrbitalRings: number;
+  /** Enable core pulse animation */
+  enableCorePulse: boolean;
+
+  // Portal settings
+  /** Number of concentric rings per portal */
+  portalRings: number;
+  /** Enable portal center face */
+  enablePortalCenter: boolean;
+
+  // ParticleBg settings
+  /** Number of particle layers */
+  particleLayers: number;
+  /** Enable particle drift animation */
+  enableParticleDrift: boolean;
 }
 
 /**
@@ -70,6 +88,12 @@ function getConfigForTier(tier: GPUPerformanceTier, isMobile: boolean, hasTouch:
         rotateSpeed: 0.5,
         enableTouchGestures: hasTouch,
         zoomSpeed: 0.5,
+        coreOrbitalRings: 3,
+        enableCorePulse: true,
+        portalRings: 3,
+        enablePortalCenter: true,
+        particleLayers: 3,
+        enableParticleDrift: true,
       };
 
     case "medium":
@@ -89,6 +113,12 @@ function getConfigForTier(tier: GPUPerformanceTier, isMobile: boolean, hasTouch:
         rotateSpeed: 0.5,
         enableTouchGestures: hasTouch,
         zoomSpeed: 0.5,
+        coreOrbitalRings: 2,
+        enableCorePulse: true,
+        portalRings: 2,
+        enablePortalCenter: true,
+        particleLayers: 2,
+        enableParticleDrift: true,
       };
 
     case "low":
@@ -103,12 +133,18 @@ function getConfigForTier(tier: GPUPerformanceTier, isMobile: boolean, hasTouch:
         enableFog: false,
         enableBloom: false,
         enableDistortion: false,
-        enableFloat: !isMobile, // Disable float on mobile for performance
+        enableFloat: !isMobile,
         autoRotate: true,
         autoRotateSpeed: 0.2,
         rotateSpeed: 0.3,
         enableTouchGestures: hasTouch,
         zoomSpeed: 0.3,
+        coreOrbitalRings: 1,
+        enableCorePulse: false,
+        portalRings: 1,
+        enablePortalCenter: false,
+        particleLayers: 1,
+        enableParticleDrift: false,
       };
   }
 }
@@ -136,6 +172,8 @@ export function useSceneConfig(): SceneConfig {
       starSpeed: 0,
       autoRotate: false,
       enableDistortion: false,
+      enableCorePulse: false,
+      enableParticleDrift: false,
     };
   }
 

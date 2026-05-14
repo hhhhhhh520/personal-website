@@ -1,5 +1,5 @@
 /**
- * DeepSeek API 客户端封装
+ * 讯飞星辰 Astron Coding Plan API 客户端封装
  * 提供流式对话、错误分类和降级策略
  */
 

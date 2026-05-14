@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import {
   blogs,
   BlogPost,
@@ -12,24 +13,9 @@ import {
   getAllCategories,
   getBlogCountByCategory,
 } from "@/data/blogs";
-
-// Category display names
-const categoryNames: Record<BlogCategory, string> = {
-  "ai-development": "AI 开发",
-  "project-experience": "项目经验",
-  "technical-tutorial": "技术教程",
-  "career-growth": "职业成长",
-  "tech-insights": "技术洞察",
-};
-
-// Category badge colors
-const categoryColors: Record<BlogCategory, string> = {
-  "ai-development": "bg-blue-500/20 text-blue-400 border-blue-500/30",
-  "project-experience": "bg-purple-500/20 text-purple-400 border-purple-500/30",
-  "technical-tutorial": "bg-green-500/20 text-green-400 border-green-500/30",
-  "career-growth": "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
-  "tech-insights": "bg-pink-500/20 text-pink-400 border-pink-500/30",
-};
+import { Input } from "@/components/ui/input";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
+import { ArrowLeft } from "lucide-react";
 
 // Animation variants
 const containerVariants = {
@@ -144,18 +130,28 @@ const Icons = {
   ),
 };
 
+// Category badge colors
+const categoryColors: Record<BlogCategory, string> = {
+  "ai-development": "bg-blue-500/20 text-blue-400 border-blue-500/30",
+  "project-experience": "bg-purple-500/20 text-purple-400 border-purple-500/30",
+  "technical-tutorial": "bg-green-500/20 text-green-400 border-green-500/30",
+  "career-growth": "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
+  "tech-insights": "bg-pink-500/20 text-pink-400 border-pink-500/30",
+};
+
 // Category badge component
-function CategoryBadge({ category }: { category: BlogCategory }) {
+function CategoryBadge({ category, t }: { category: BlogCategory; t: ReturnType<typeof useTranslations<"blog">> }) {
   return (
     <span
       className={`px-2 py-0.5 text-xs rounded-full border ${categoryColors[category]}`}
     >
-      {categoryNames[category]}
+      {t(`categories.${category}`)}
     </span>
   );
 }
 
 export default function BlogPage() {
+  const t = useTranslations("blog");
   // State for filters
   const [selectedCategory, setSelectedCategory] = useState<BlogCategory | null>(null);
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
@@ -220,10 +216,10 @@ export default function BlogPage() {
           className="text-center mb-12"
         >
           <h1 className="text-4xl sm:text-5xl font-bold gradient-text mb-4">
-            知识图书馆
+            {t("pageTitle")}
           </h1>
           <p className="text-secondary text-lg max-w-2xl mx-auto">
-            我的学习笔记、技术思考和行业见解
+            {t("pageDescription")}
           </p>
         </motion.div>
 
@@ -240,12 +236,11 @@ export default function BlogPage() {
               <div className="absolute left-3 top-1/2 -translate-y-1/2 text-secondary">
                 {Icons.search}
               </div>
-              <input
-                type="text"
-                placeholder="搜索标题、内容或标签..."
+              <Input
+                placeholder={t("searchPlaceholder")}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 rounded-lg bg-foreground/5 border border-foreground/10 focus:border-primary/50 focus:outline-none text-foreground placeholder:text-secondary/50 transition-colors"
+                className="pl-10"
               />
             </div>
 
@@ -258,7 +253,7 @@ export default function BlogPage() {
                 onClick={clearFilters}
                 className="px-4 py-2.5 rounded-lg bg-foreground/5 hover:bg-foreground/10 border border-foreground/10 text-secondary hover:text-foreground transition-colors text-sm whitespace-nowrap"
               >
-                清除筛选
+                {t("clearFilters")}
               </motion.button>
             )}
           </div>
@@ -267,7 +262,7 @@ export default function BlogPage() {
           <div className="mb-4">
             <div className="flex items-center gap-2 mb-2 text-sm text-secondary">
               {Icons.filter}
-              <span>分类筛选</span>
+              <span>{t("categoryFilter")}</span>
             </div>
             <div className="flex flex-wrap gap-2">
               <motion.button
@@ -280,7 +275,7 @@ export default function BlogPage() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                全部 ({blogs.length})
+                {t("all")} ({blogs.length})
               </motion.button>
               {allCategories.map((category) => (
                 <motion.button
@@ -294,7 +289,7 @@ export default function BlogPage() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  {categoryNames[category]} ({getBlogCountByCategory(category)})
+                  {t(`categories.${category}`)} ({getBlogCountByCategory(category)})
                 </motion.button>
               ))}
             </div>
@@ -304,14 +299,14 @@ export default function BlogPage() {
           <div>
             <div className="flex items-center gap-2 mb-2 text-sm text-secondary">
               {Icons.tag}
-              <span>标签筛选</span>
+              <span>{t("tagFilter")}</span>
               {selectedTag && (
                 <motion.span
                   initial={{ opacity: 0, x: -5 }}
                   animate={{ opacity: 1, x: 0 }}
                   className="text-primary font-medium"
                 >
-                  (已选: {selectedTag})
+                  ({t("selected")}: {selectedTag})
                 </motion.span>
               )}
             </div>
@@ -345,11 +340,11 @@ export default function BlogPage() {
         >
           {hasActiveFilters ? (
             <span>
-              找到 <span className="text-primary font-medium">{filteredBlogs.length}</span> 篇文章
+              {t("foundArticles", { count: filteredBlogs.length })}
             </span>
           ) : (
             <span>
-              共 <span className="text-primary font-medium">{blogs.length}</span> 篇文章
+              {t("totalArticles", { count: blogs.length })}
             </span>
           )}
         </motion.div>
@@ -367,85 +362,85 @@ export default function BlogPage() {
             >
               {filteredBlogs.map((post, index) => (
                 <Link key={post.id} href={`/blog/${post.slug}`}>
-                  <motion.article
+                  <motion.div
                     variants={itemVariants}
-                    className="glass rounded-xl overflow-hidden hover:border-primary/50 transition-all duration-300 group cursor-pointer h-full"
                     whileHover={{ y: -4 }}
                   >
-                    {/* Cover Image */}
-                    <div className="relative h-48 bg-gradient-to-br from-primary/10 to-primary/5 overflow-hidden">
-                      {post.coverImage ? (
-                        <Image
-                          src={post.coverImage}
-                          alt={post.title}
-                          fill
-                          loading={index < 4 ? "eager" : "lazy"}
-                          className="object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300"
-                          unoptimized
-                        />
-                      ) : (
-                        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary/20 to-accent/20">
-                          <span className="text-6xl font-bold opacity-50 text-primary">
-                            {post.title.charAt(0)}
-                          </span>
-                        </div>
-                      )}
-                      {/* Featured Badge */}
-                      {post.featured && (
-                        <div className="absolute top-3 right-3">
-                          <span className="px-2 py-1 text-xs rounded-full bg-yellow-500/20 text-yellow-400 border border-yellow-500/30 backdrop-blur-sm">
-                            精选
-                          </span>
-                        </div>
-                      )}
-                      {/* Category Badge */}
-                      <div className="absolute top-3 left-3">
-                        <CategoryBadge category={post.category} />
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="p-5">
-                      {/* Title */}
-                      <h2 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2">
-                        {post.title}
-                      </h2>
-
-                      {/* Excerpt */}
-                      <p className="text-secondary text-sm mb-4 line-clamp-3">
-                        {post.excerpt}
-                      </p>
-
-                      {/* Tags */}
-                      <div className="flex flex-wrap gap-1.5 mb-4">
-                        {post.tags.slice(0, 3).map((tag) => (
-                          <span
-                            key={tag}
-                            className="px-2 py-0.5 text-xs rounded bg-primary/10 text-primary"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                        {post.tags.length > 3 && (
-                          <span className="px-2 py-0.5 text-xs rounded bg-foreground/5 text-secondary">
-                            +{post.tags.length - 3}
-                          </span>
+                    <Card className="hover:border-primary/50 transition-all duration-300 group cursor-pointer h-full">
+                      {/* Cover Image */}
+                      <div className="relative h-48 bg-gradient-to-br from-primary/10 to-primary/5 overflow-hidden">
+                        {post.coverImage ? (
+                          <Image
+                            src={post.coverImage}
+                            alt={post.title}
+                            fill
+                            loading={index < 4 ? "eager" : "lazy"}
+                            className="object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                            unoptimized
+                          />
+                        ) : (
+                          <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary/20 to-accent/20">
+                            <span className="text-6xl font-bold opacity-50 text-primary">
+                              {post.title.charAt(0)}
+                            </span>
+                          </div>
                         )}
+                        {/* Featured Badge */}
+                        {post.featured && (
+                          <div className="absolute top-3 right-3">
+                            <span className="px-2 py-1 text-xs rounded-full bg-yellow-500/20 text-yellow-400 border border-yellow-500/30 backdrop-blur-sm">
+                              {t("featured")}
+                            </span>
+                          </div>
+                        )}
+                        {/* Category Badge */}
+                        <div className="absolute top-3 left-3">
+                          <CategoryBadge category={post.category} t={t} />
+                        </div>
                       </div>
 
-                      {/* Meta info */}
-                      <div className="flex items-center justify-between text-xs text-secondary pt-3 border-t border-foreground/10">
-                        <div className="flex items-center gap-1">
-                          {Icons.calendar}
-                          <span>{post.createdAt}</span>
+                      <CardHeader>
+                        <CardTitle className="group-hover:text-primary transition-colors line-clamp-2">
+                          {post.title}
+                        </CardTitle>
+                        <CardDescription className="line-clamp-3">
+                          {post.excerpt}
+                        </CardDescription>
+                      </CardHeader>
+
+                      <CardContent>
+                        {/* Tags */}
+                        <div className="flex flex-wrap gap-1.5 mb-4">
+                          {post.tags.slice(0, 3).map((tag) => (
+                            <span
+                              key={tag}
+                              className="px-2 py-0.5 text-xs rounded bg-primary/10 text-primary"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                          {post.tags.length > 3 && (
+                            <span className="px-2 py-0.5 text-xs rounded bg-foreground/5 text-secondary">
+                              +{post.tags.length - 3}
+                            </span>
+                          )}
                         </div>
-                        <div className="flex items-center gap-1">
-                          {Icons.clock}
-                          <span>{post.readTime} 分钟</span>
+                      </CardContent>
+
+                      <CardFooter>
+                        <div className="flex items-center justify-between w-full text-xs text-secondary">
+                          <div className="flex items-center gap-1">
+                            {Icons.calendar}
+                            <span>{post.createdAt}</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            {Icons.clock}
+                            <span>{post.readTime} {t("minRead")}</span>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                  </motion.article>
+                      </CardFooter>
+                    </Card>
+                  </motion.div>
                 </Link>
               ))}
             </motion.div>
@@ -457,18 +452,18 @@ export default function BlogPage() {
               exit={{ opacity: 0, y: -20 }}
               className="text-center py-16"
             >
-              <div className="text-6xl mb-4 opacity-20">📚</div>
+              <div className="text-6xl mb-4 opacity-20 text-secondary">...</div>
               <h3 className="text-xl font-semibold text-foreground mb-2">
-                没有找到匹配的文章
+                {t("noResults")}
               </h3>
               <p className="text-secondary mb-6">
-                尝试调整筛选条件或搜索其他关键词
+                {t("noResultsHint")}
               </p>
               <button
                 onClick={clearFilters}
                 className="px-4 py-2 rounded-lg bg-primary/20 text-primary hover:bg-primary/30 transition-colors"
               >
-                清除所有筛选
+                {t("clearAllFilters")}
               </button>
             </motion.div>
           )}
@@ -485,8 +480,8 @@ export default function BlogPage() {
             href="/"
             className="inline-flex items-center gap-2 text-secondary hover:text-primary transition-colors"
           >
-            <span>←</span>
-            <span>返回首页</span>
+            <ArrowLeft className="w-4 h-4" />
+            <span>{t("backToHome")}</span>
           </Link>
         </motion.div>
       </div>

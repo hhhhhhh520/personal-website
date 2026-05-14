@@ -24,6 +24,7 @@ export interface Education {
   endDate?: string;
   gpa?: string;
   highlights?: string[];
+  highlightsEn?: string[];
 }
 
 /** Work experience */
@@ -34,16 +35,19 @@ export interface Experience {
   endDate?: string;
   location: string;
   description: string[];
+  descriptionEn?: string[];
   techStack?: string[];
 }
 
 /** Award or honor */
 export interface Award {
   title: string;
+  titleEn?: string;
   date: string;
   level: 'national' | 'provincial' | 'school' | 'other';
   issuer?: string;
   description?: string;
+  descriptionEn?: string;
 }
 
 /** Technical skill group */
@@ -56,12 +60,16 @@ export interface SkillGroup {
 export interface PersonalInfo {
   name: string;
   title: string;
+  titleEn?: string;
   avatar: string;
   email: string;
   phone?: string;
   location: string;
+  locationEn?: string;
   summary: string;
+  summaryEn?: string;
   focus: string[];
+  focusEn?: string[];
   education: Education[];
   experience?: Experience[];
   awards?: Award[];
@@ -73,20 +81,29 @@ export interface PersonalInfo {
 
 export const personal: PersonalInfo = {
   name: '苏畅',
-  title: 'AI 应用开发者',
+  title: '',
+  titleEn: '',
   avatar: '/images/avatar.svg',
 
   email: '1838722433@qq.com',
   phone: '19083149896',
   location: '湖南长沙',
+  locationEn: 'Changsha, China',
 
-  summary: '专注 AI 应用开发的本科生，具备 RAG 系统、LLM Agent 和端侧 AI 的实战经验，擅长将 AI 技术落地为可用的产品。',
+  summary: '独立完成多个 AI 应用的全栈开发，从需求分析到技术落地，追求代码质量和工程化实践。',
+  summaryEn: 'Independently completed full-stack development of multiple AI applications, from requirement analysis to technical implementation, pursuing code quality and engineering practices.',
 
   focus: [
-    'RAG 系统',
-    'LLM Agent',
-    '端侧 AI',
-    '全栈开发',
+    'AI 应用开发',
+    '后端开发',
+    '前端开发',
+    '工程化实践',
+  ],
+  focusEn: [
+    'AI Application Development',
+    'Backend Development',
+    'Frontend Development',
+    'Engineering Practices',
   ],
 
   education: [
@@ -94,12 +111,15 @@ export const personal: PersonalInfo = {
       school: '湖南农业大学',
       degree: '本科',
       major: '智能科学与技术',
-      startDate: '2022-09',
-      endDate: '2026-06',
+      startDate: '2023-09',
+      endDate: '2027-06',
       highlights: [
-        'GPA: 3.5+/4.0',
         '专注 AI 应用开发方向',
         '核心课程：机器学习、深度学习、自然语言处理',
+      ],
+      highlightsEn: [
+        'Focus on AI application development',
+        'Core courses: Machine Learning, Deep Learning, NLP',
       ],
     },
   ],
@@ -116,24 +136,17 @@ export const personal: PersonalInfo = {
         '创建手机选购助手 — AI 驱动的手机推荐系统',
         '实现 CV Generator — JD 关键词优化的简历生成工具',
       ],
+      descriptionEn: [
+        'Developed Mini Claude Code — lightweight AI coding assistant with 1497 tests',
+        'Built Campus Assistant — RAG-powered campus Q&A system',
+        'Created Phone Pick Assistant — AI-driven phone recommendation system',
+        'Implemented CV Generator — JD keyword-optimized resume generation tool',
+      ],
       techStack: ['Python', 'FastAPI', 'React', 'LangGraph', 'LiteLLM'],
     },
   ],
 
-  awards: [
-    {
-      title: '全国创新创业大赛参赛',
-      date: '2024-12',
-      level: 'national',
-      description: 'AI 驱动的学习平台项目',
-    },
-    {
-      title: '校级奖学金',
-      date: '2024-09',
-      level: 'school',
-      issuer: '湖南农业大学',
-    },
-  ],
+  awards: [],
 
   skills: [
     {
@@ -237,6 +250,67 @@ export function formatExperienceDuration(exp: Experience): string {
   const start = exp.startDate;
   const end = exp.endDate || 'Present';
   return `${start} - ${end}`;
+}
+
+/**
+ * Get localized personal information
+ */
+export function getLocalizedPersonal(locale: 'zh' | 'en'): {
+  title: string;
+  summary: string;
+  focus: string[];
+  location: string;
+} {
+  if (locale === 'en') {
+    return {
+      title: personal.titleEn || personal.title,
+      summary: personal.summaryEn || personal.summary,
+      focus: personal.focusEn || personal.focus,
+      location: personal.locationEn || personal.location,
+    };
+  }
+  return {
+    title: personal.title,
+    summary: personal.summary,
+    focus: personal.focus,
+    location: personal.location,
+  };
+}
+
+/**
+ * Get localized education highlights
+ */
+export function getLocalizedEducationHighlights(edu: Education, locale: 'zh' | 'en'): string[] {
+  if (locale === 'en' && edu.highlightsEn) {
+    return edu.highlightsEn;
+  }
+  return edu.highlights || [];
+}
+
+/**
+ * Get localized experience description
+ */
+export function getLocalizedExperienceDescription(exp: Experience, locale: 'zh' | 'en'): string[] {
+  if (locale === 'en' && exp.descriptionEn) {
+    return exp.descriptionEn;
+  }
+  return exp.description;
+}
+
+/**
+ * Get localized award title and description
+ */
+export function getLocalizedAward(award: Award, locale: 'zh' | 'en'): { title: string; description?: string } {
+  if (locale === 'en') {
+    return {
+      title: award.titleEn || award.title,
+      description: award.descriptionEn || award.description,
+    };
+  }
+  return {
+    title: award.title,
+    description: award.description,
+  };
 }
 
 // Types are already exported above with interface definitions
