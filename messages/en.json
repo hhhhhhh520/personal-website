@@ -3,7 +3,6 @@
     "home": "Home",
     "projects": "Projects",
     "blog": "Blog",
-    "skills": "Skills",
     "about": "About"
   },
   "home": {
@@ -81,44 +80,6 @@
       "relatedArticles": "Related Articles",
       "publishedOn": "Published on"
     }
-  },
-  "skills": {
-    "title": "Skills",
-    "subtitle": "Tech Stack",
-    "proficiency": "Proficiency",
-    "pageTitle": "Skills Matrix",
-    "pageDescription": "My tech stack and capabilities, each skill proven through real projects",
-    "viewToggle": {
-      "listView": "List View",
-      "3dView": "3D View"
-    },
-    "instructions": "Drag to rotate | Scroll to zoom | Click skill for details",
-    "categories": {
-      "all": "All",
-      "language": "Languages",
-      "framework": "Frameworks",
-      "tool": "Tools",
-      "concept": "Concepts"
-    },
-    "levels": {
-      "expert": "Expert",
-      "proficient": "Proficient",
-      "familiar": "Familiar"
-    },
-    "detail": {
-      "description": "Description",
-      "experience": "Experience",
-      "years": "years",
-      "relatedProjects": "Related Projects"
-    },
-    "stats": {
-      "totalSkills": "Total Skills",
-      "expertSkills": "Expert Skills",
-      "totalProjects": "Projects",
-      "programmingLanguages": "Languages"
-    },
-    "relatedProjectsLabel": "Related Projects",
-    "backToHome": "Back to Home"
   },
   "about": {
     "title": "About",

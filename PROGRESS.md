@@ -83,6 +83,15 @@
 | PageTransition 修复 | 移除 AnimatePresence 避免 WebGL context 丢失 | components/ui/PageTransition.tsx | 2026-05-14 |
 | 按钮颜色修复 | "关于我"按钮深色背景可见 | app/[locale]/page.tsx | 2026-05-14 |
 
+#### P12 — 简化页面结构（2026-05-14）
+| 阶段 | 内容 | 文件 | 完成日期 |
+|------|------|------|----------|
+| 删除技能页 | 移除 /skills 路由 | app/[locale]/skills/ | 2026-05-14 |
+| 删除3D视图 | 项目页移除 3D 场景 | app/[locale]/projects/page.tsx | 2026-05-14 |
+| 删除3D组件 | 移除 Three.js 相关组件 | components/three/ | 2026-05-14 |
+| 导航更新 | 移除技能页链接 | components/ui/Navigation.tsx, MobileNav.tsx | 2026-05-14 |
+| 翻译清理 | 移除 skills 相关翻译 | messages/zh.json, en.json | 2026-05-14 |
+
 ### ⏳ 进行中
 | 任务 | 状态 | 预计完成 |
 |------|------|----------|
@@ -105,7 +114,6 @@
 | `/zh/projects/[id]` | 动态 | ✅ | 项目详情 |
 | `/zh/blog` | 静态 | ✅ | 博客列表 |
 | `/zh/blog/[slug]` | 动态 | ✅ | 博客详情 |
-| `/zh/skills` | 静态 | ✅ | 技能矩阵 |
 | `/api/chat` | 动态 | ✅ | AI 对话 API |
 
 ## 数据源
@@ -115,7 +123,6 @@
 | `data/personal.ts` | 个人信息（唯一数据源） |
 | `data/projects.ts` | 项目数据 |
 | `data/blogs.ts` | 博客元数据 |
-| `data/skills.ts` | 技能数据 |
 | `content/blog/*.mdx` | 博客内容 |
 | `messages/zh.json` / `en.json` | 国际化翻译 |
 
@@ -132,11 +139,11 @@
 | 首页背景 | Light Rays (ogl) | 比 Three.js 更轻量，视觉效果更简洁 | 2026-05-14 |
 | 主题模式 | 固定深色 | 简化配置，专注内容展示 | 2026-05-14 |
 | 页面过渡 | 无 AnimatePresence | 避免 WebGL context 丢失 | 2026-05-14 |
+| 技能页 | 删除 | 简化页面结构，专注核心内容 | 2026-05-14 |
+| 3D视图 | 删除 | 项目页改为纯列表视图，更简洁 | 2026-05-14 |
 
 ## 技术债务
 
 | 项目 | 优先级 | 说明 |
 |------|--------|------|
-| THREE.Clock deprecated | 低 | Three.js 新版推荐 Timer，影响项目/技能页 3D 场景 |
-| WebGL context 数量 | 中 | 多页面 WebGL 可能超浏览器限制，需优化 context 管理 |
-| 博客内容双语 | 低 | 可选 |
+| 博客内容双语 | 低 | 6 篇 MDX 博客英文版本（可选） |

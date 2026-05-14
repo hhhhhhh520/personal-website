@@ -2,6 +2,5 @@
 // 统一导出所有数据模块
 
 export * from './projects';
-export * from './skills';
 export * from './nova-prompts';
 export * from './personal';

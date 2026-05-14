@@ -31,7 +31,6 @@ export default function Navigation() {
     { href: "/", label: t("home") },
     { href: "/projects", label: t("projects") },
     { href: "/blog", label: t("blog") },
-    { href: "/skills", label: t("skills") },
     { href: "/about", label: t("about") },
   ];
 

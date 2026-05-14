@@ -23,7 +23,6 @@ function getPageArea(pathname: string): string {
   if (pathname === '/' || pathname === '/home') return 'home';
   if (pathname.startsWith('/hall')) return 'hall';
   if (pathname.startsWith('/projects')) return 'projects';
-  if (pathname.startsWith('/skills')) return 'skills';
   if (pathname.startsWith('/about')) return 'about';
   if (pathname.startsWith('/blog')) return 'blog';
   return 'home';

@@ -57,29 +57,11 @@ export const PROJECT_INTROS: Record<string, string> = {
 模板匹配、OCR 识别、智能休眠...解放双手的神器！不过现在已经归档啦，但技术实现还是很值得参考的。`,
 };
 
-// 技能介绍模板
-export const SKILL_INTROS: Record<string, string> = {
-  'ai-development': `苏畅在 AI 应用开发方面经验丰富！
-
-擅长 RAG 系统构建、多 Agent 架构设计、提示词工程等。会用 LangChain、LiteLLM 等框架快速构建 AI 应用。`,
-
-  'fullstack': `全栈开发能力在线！
-
-前端：React、Next.js、TypeScript
-后端：Python、FastAPI
-数据库：SQLite、PostgreSQL、ChromaDB`,
-
-  'mobile': `Android 开发也有涉猎！
-
-Kotlin、Jetpack Compose、MVVM 架构都有实战经验。`,
-};
-
 // 主动询问消息 - 根据页面位置提示用户
 export const PROACTIVE_MESSAGES: Record<string, string> = {
   home: '欢迎来到苏畅的个人空间！需要我带你探索吗？点击传送门，或者问我任何问题！',
   hall: '这是大厅，从这里可以传送到任何地方。对哪个方向感兴趣？',
   projects: '看到这些项目球体了吗？点击任意一个查看详情，或者问我推荐！',
-  skills: '这里是技能星图，展示苏畅的技术栈。对哪个技能领域感兴趣？',
   about: '想了解苏畅的故事？这里有人物背景和成长经历。有什么想知道的尽管问！',
   blog: '博客区域正在建设中，敬请期待更多技术分享！',
 };
@@ -100,11 +82,6 @@ export const QUICK_REPLIES: Record<string, string[]> = {
     '教育背景？',
     '实习经历？',
     '为什么做 AI？',
-  ],
-  skills: [
-    '最擅长的技术？',
-    '在学什么？',
-    'AI 方向经验？',
   ],
 };
 

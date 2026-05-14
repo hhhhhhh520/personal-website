@@ -3,7 +3,6 @@
     "home": "首页",
     "projects": "项目",
     "blog": "博客",
-    "skills": "技能",
     "about": "关于"
   },
   "home": {
@@ -81,44 +80,6 @@
       "relatedArticles": "相关文章",
       "publishedOn": "发布于"
     }
-  },
-  "skills": {
-    "title": "技能",
-    "subtitle": "技术栈",
-    "proficiency": "熟练度",
-    "pageTitle": "技能矩阵",
-    "pageDescription": "我的技术栈和能力分布，每个技能都经过项目实践的检验",
-    "viewToggle": {
-      "listView": "列表视图",
-      "3dView": "3D 视图"
-    },
-    "instructions": "拖拽旋转 | 滚轮缩放 | 点击技能查看详情",
-    "categories": {
-      "all": "全部",
-      "language": "编程语言",
-      "framework": "框架",
-      "tool": "工具",
-      "concept": "概念"
-    },
-    "levels": {
-      "expert": "精通",
-      "proficient": "熟练",
-      "familiar": "了解"
-    },
-    "detail": {
-      "description": "描述",
-      "experience": "经验",
-      "years": "年",
-      "relatedProjects": "关联项目"
-    },
-    "stats": {
-      "totalSkills": "总技能数",
-      "expertSkills": "精通技能",
-      "totalProjects": "项目数量",
-      "programmingLanguages": "编程语言"
-    },
-    "relatedProjectsLabel": "关联项目",
-    "backToHome": "返回首页"
   },
   "about": {
     "title": "关于",
