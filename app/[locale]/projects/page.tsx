@@ -106,12 +106,12 @@ export default function ProjectsPage() {
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
           {projects.map((project) => (
-            <Link key={project.id} href={`/projects/${project.id}`}>
+            <Link key={project.id} href={`/projects/${project.id}`} className="cursor-target">
               <motion.div
                 variants={itemVariants}
                 whileHover={{ y: -4 }}
               >
-                <Card className="hover:border-primary/50 transition-all duration-300 group cursor-pointer h-full">
+                <Card className="hover:border-primary/50 transition-all duration-300 group h-full">
                   {/* Project image with SVG cover */}
                   <div className="relative w-full h-48 overflow-hidden group/cover">
                     <Image
@@ -202,7 +202,7 @@ export default function ProjectsPage() {
         >
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-secondary hover:text-primary transition-colors"
+            className="inline-flex items-center gap-2 text-secondary hover:text-primary transition-colors cursor-target"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>{t("backToHome")}</span>

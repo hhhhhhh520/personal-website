@@ -60,7 +60,7 @@ export default function Navigation() {
       <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="relative group">
+          <Link href="/" className="relative group cursor-target">
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -85,7 +85,7 @@ export default function Navigation() {
                 animate="animate"
                 transition={{ delay: index * 0.1 }}
               >
-                <Link href={link.href} className="relative px-4 py-2 group">
+                <Link href={link.href} className="relative px-4 py-2 group cursor-target">
                   <motion.span
                     className={`relative z-10 transition-colors duration-200 ${
                       pathname === link.href
@@ -180,7 +180,7 @@ export default function Navigation() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`relative block px-4 py-3 rounded-xl transition-all duration-200 ${
+                    className={`relative block px-4 py-3 rounded-xl transition-all duration-200 cursor-target ${
                       pathname === link.href
                         ? "text-primary bg-primary/10"
                         : "text-secondary hover:text-foreground hover:bg-white/5"

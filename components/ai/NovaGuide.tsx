@@ -4,9 +4,10 @@
  * NovaGuide - AI 向导悬浮组件
  * 提供对话式交互界面，帮助访客了解站长信息
  * 移动端优化：全屏对话面板、底部安全区域适配、手势支持
+ * 新增：悬浮气泡显示问候语，无需点开即可看到
  */
 
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { useChat } from '@/hooks/useChat';
@@ -17,6 +18,7 @@ import { usePathname } from 'next/navigation';
 import { QUICK_REPLIES } from '@/data/nova-prompts';
 import { QuickResume } from '@/components/QuickResume';
 import { LoadingDots } from './LoadingDots';
+import { useNovaStore } from '@/stores/novaStore';
 
 // 根据路径获取当前页面区域
 function getPageArea(pathname: string): string {
@@ -33,8 +35,12 @@ export function NovaGuide() {
   const tResume = useTranslations('resume');
   const [isOpen, setIsOpen] = useState(false);
   const [showResume, setShowResume] = useState(false);
+  const [showBubble, setShowBubble] = useState(false);
   const pathname = usePathname();
   const device = useDeviceCapabilities();
+
+  // 从 store 获取消息
+  const messages = useNovaStore(state => state.messages);
 
   // 检测移动端 - 使用 useMemo 避免在 useEffect 中同步调用 setState
   const isMobile = useMemo(
@@ -45,12 +51,22 @@ export function NovaGuide() {
   // 场景触发：进入项目页自动介绍、首次进入欢迎、长时间停留主动询问
   useNovaTriggers();
 
+  // 当有新消息且面板未打开时，显示气泡
+  useEffect(() => {
+    if (messages.length > 0 && !isOpen) {
+      setShowBubble(true);
+      // 5秒后自动隐藏气泡
+      const timer = setTimeout(() => setShowBubble(false), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [messages.length, isOpen]);
+
   // 从 URL 提取项目 ID
   const projectId = pathname.startsWith('/projects/')
     ? pathname.split('/')[2]
     : undefined;
 
-  const { messages, isLoading, error, sendMessage, clearMessages } = useChat({ projectId });
+  const { messages: chatMessages, isLoading, error, sendMessage, clearMessages } = useChat({ projectId });
 
   // 获取当前页面的快捷回复
   const pageArea = getPageArea(pathname);
@@ -72,6 +88,12 @@ export function NovaGuide() {
     swipeThreshold: 80,
   });
 
+  // 点击气泡打开面板
+  const handleBubbleClick = useCallback(() => {
+    setShowBubble(false);
+    setIsOpen(true);
+  }, []);
+
   // 面板动画变体 - 移动端从底部滑入
   const panelVariants = isMobile
     ? {
@@ -84,6 +106,16 @@ export function NovaGuide() {
         visible: { opacity: 1, y: 0, scale: 1 },
         exit: { opacity: 0, y: 20, scale: 0.95 },
       };
+
+  // 气泡动画变体
+  const bubbleVariants = {
+    hidden: { opacity: 0, scale: 0.8, y: 10 },
+    visible: { opacity: 1, scale: 1, y: 0 },
+    exit: { opacity: 0, scale: 0.8, y: 10 },
+  };
+
+  // 获取最后一条助手消息用于气泡显示
+  const lastAssistantMessage = messages.filter(m => m.role === 'assistant').pop()?.content;
 
   return (
     <>
@@ -105,9 +137,45 @@ export function NovaGuide() {
         )}
       </AnimatePresence>
 
+      {/* Nova 悬浮气泡 - 显示问候语 */}
+      <AnimatePresence>
+        {showBubble && lastAssistantMessage && !isOpen && (
+          <motion.div
+            variants={bubbleVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            transition={{ type: 'spring', damping: 20, stiffness: 300 }}
+            className={`fixed z-[51] cursor-target ${
+              isMobile
+                ? 'bottom-36 right-4 max-w-[200px]'
+                : 'bottom-24 right-24 max-w-[280px]'
+            }`}
+            onClick={handleBubbleClick}
+          >
+            <div className="relative bg-gradient-to-r from-indigo-500/90 to-purple-500/90 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-lg border border-white/20">
+              {/* 气泡内容 */}
+              <p className="text-white text-sm leading-relaxed">
+                {lastAssistantMessage.length > 60
+                  ? lastAssistantMessage.slice(0, 60) + '...'
+                  : lastAssistantMessage}
+              </p>
+              {/* 点击提示 */}
+              <p className="text-white/60 text-xs mt-1">点击对话 →</p>
+              {/* 小三角指向头像 */}
+              <div className={`absolute ${
+                isMobile
+                  ? 'bottom-0 right-4 translate-y-full'
+                  : 'bottom-0 right-0 translate-y-full'
+              } w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-indigo-500/90`} />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* 快速简历按钮 - 移动端调整位置避开底部导航 */}
       <motion.button
-        className={`fixed w-12 h-12 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 shadow-lg flex items-center justify-center z-50 ${
+        className={`fixed w-12 h-12 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 shadow-lg flex items-center justify-center z-50 cursor-target ${
           isMobile ? 'bottom-20 left-4' : 'bottom-6 left-6'
         }`}
         onClick={() => {
@@ -123,7 +191,7 @@ export function NovaGuide() {
 
       {/* 悬浮头像按钮 - 移动端调整位置避开底部导航 */}
       <motion.button
-        className={`fixed w-14 h-14 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 shadow-lg flex items-center justify-center z-50 ${
+        className={`fixed w-14 h-14 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 shadow-lg flex items-center justify-center z-50 cursor-target ${
           isMobile ? 'bottom-20 right-4' : 'bottom-6 right-6'
         }`}
         onClick={() => setIsOpen(!isOpen)}
@@ -132,6 +200,15 @@ export function NovaGuide() {
         aria-label={isOpen ? t('closeNova') : t('openNova')}
       >
         <span className="text-2xl">✨</span>
+        {/* 有消息时的脉冲提示 */}
+        {messages.length > 0 && !isOpen && !showBubble && (
+          <motion.span
+            className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full"
+            initial={{ scale: 1 }}
+            animate={{ scale: [1, 1.2, 1] }}
+            transition={{ repeat: Infinity, duration: 1.5 }}
+          />
+        )}
       </motion.button>
 
       {/* 对话面板 */}
@@ -212,7 +289,7 @@ export function NovaGuide() {
                       <button
                         key={i}
                         onClick={() => sendMessage(reply)}
-                        className="block w-full text-left px-4 py-3 bg-gray-800 hover:bg-gray-700 rounded-lg text-sm text-gray-300 transition-colors active:scale-[0.98]"
+                        className="block w-full text-left px-4 py-3 bg-gray-800 hover:bg-gray-700 rounded-lg text-sm text-gray-300 transition-colors active:scale-[0.98] cursor-target"
                       >
                         {reply}
                       </button>
@@ -276,7 +353,7 @@ export function NovaGuide() {
                 />
                 <button
                   type="submit"
-                  className="px-5 py-3 bg-indigo-500 text-white rounded-full hover:bg-indigo-600 disabled:opacity-50 transition-colors font-medium"
+                  className="px-5 py-3 bg-indigo-500 text-white rounded-full hover:bg-indigo-600 disabled:opacity-50 transition-colors font-medium cursor-target"
                   disabled={isLoading}
                 >
                   {t('send')}

@@ -2,6 +2,108 @@ import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import { projects, type Project } from '@/data/projects';
 
+// ============================================================================
+// RAG Integration Types
+// ============================================================================
+
+interface RAGSearchResult {
+  content: string;
+  score: number;
+  source: string;
+  sourceId: string;
+  title: string;
+}
+
+interface RAGResponse {
+  results: RAGSearchResult[];
+  query: string;
+  duration: number;
+}
+
+// ============================================================================
+// RAG Integration
+// ============================================================================
+
+/**
+ * Call RAG API to retrieve relevant documents
+ * @param query - User's message
+ * @param topK - Number of results to retrieve
+ * @returns Search results or empty array on failure
+ */
+async function retrieveRelevantDocs(query: string, topK: number = 3): Promise<RAGSearchResult[]> {
+  try {
+    // Use internal API call with absolute URL for server-side
+    const baseUrl = process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : 'http://localhost:3000';
+
+    const ragResponse = await fetch(`${baseUrl}/api/rag`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query, topK }),
+    });
+
+    if (!ragResponse.ok) {
+      console.warn('[Chat API] RAG request failed:', ragResponse.status);
+      return [];
+    }
+
+    const data: RAGResponse = await ragResponse.json();
+    return data.results || [];
+  } catch (error) {
+    console.warn('[Chat API] RAG retrieval error:', error);
+    return [];
+  }
+}
+
+/**
+ * Build context section from RAG results
+ * @param results - RAG search results
+ * @returns Formatted context string
+ */
+function buildRAGContext(results: RAGSearchResult[]): string {
+  if (results.length === 0) return '';
+
+  const contextSections = results.map((r, index) => {
+    const sourceLabel = r.source === 'project' ? '项目' : r.source === 'blog' ? '博客' : '资料';
+    return `[${sourceLabel}: ${r.title}]\n${r.content}`;
+  });
+
+  return `
+## 相关资料
+以下是与用户问题相关的资料，请参考这些内容回答：
+
+${contextSections.join('\n\n')}
+
+**重要提示**：
+- 如果资料中有相关信息，请基于资料回答
+- 如果资料中没有相关信息，请诚实告知并引导用户查看相关页面`;
+}
+
+/**
+ * Build source citations for the response
+ * @param results - RAG search results that were used
+ * @returns Formatted source citation string
+ */
+function buildSourceCitation(results: RAGSearchResult[]): string {
+  if (results.length === 0) return '';
+
+  const citations = results.map(r => {
+    if (r.source === 'project') {
+      return `[${r.title}](/projects/${r.sourceId})`;
+    } else if (r.source === 'blog') {
+      return `[${r.title}](/blog/${r.sourceId})`;
+    }
+    return r.title;
+  });
+
+  return `\n\n📚 来源：${citations.join('、')}`;
+}
+
+// ============================================================================
+// OpenAI Client
+// ============================================================================
+
 function getClient(): OpenAI {
   return new OpenAI({
     apiKey: process.env.ASTRON_API_KEY,
@@ -25,9 +127,10 @@ const SYSTEM_PROMPT = `你是 Nova，苏畅的 AI 向导。
 4. 可以根据访客兴趣推荐浏览网站的不同部分
 
 回答风格：
-- 简洁明了，避免冗长
+- 简洁明了，避免冗长（控制在 100 字以内）
 - 可以使用 emoji 增加亲和力
-- 如果不知道具体信息，诚实地说明`;
+- 如果不知道具体信息，诚实地说明
+- 如果使用了检索到的资料，在回复末尾标注来源`;
 
 /**
  * 构建项目上下文字符串
@@ -125,6 +228,16 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // RAG: Retrieve relevant documents before building context
+    // Skip RAG if projectId is provided (project context is already comprehensive)
+    let ragResults: RAGSearchResult[] = [];
+    if (!projectId) {
+      ragResults = await retrieveRelevantDocs(message, 3);
+      if (ragResults.length > 0) {
+        console.log('[Chat API] RAG retrieved:', ragResults.length, 'results');
+      }
+    }
+
     // Build context with project info if provided
     let contextualPrompt = SYSTEM_PROMPT;
     if (projectId) {
@@ -137,6 +250,9 @@ export async function POST(req: NextRequest) {
         // Project ID provided but not found - add generic context
         contextualPrompt += `\n\n注意：访客正在浏览一个项目页面（ID: ${projectId}), 但该项目的详细信息暂未加载。请根据一般知识回答，或引导访客查看项目列表页面。`;
       }
+    } else if (ragResults.length > 0) {
+      // Inject RAG context when no specific project is being viewed
+      contextualPrompt += buildRAGContext(ragResults);
     }
 
     // Build messages array for API
@@ -155,6 +271,9 @@ export async function POST(req: NextRequest) {
       max_tokens: 500,
     });
 
+    // Source citation disabled - no longer appending to response
+    // const sourceCitation = ragResults.length > 0 ? buildSourceCitation(ragResults) : '';
+
     // Create SSE stream
     const encoder = new TextEncoder();
     const readable = new ReadableStream({
@@ -168,6 +287,12 @@ export async function POST(req: NextRequest) {
               );
             }
           }
+          // Source citation disabled
+          // if (sourceCitation) {
+          //   controller.enqueue(
+          //     encoder.encode(`data: ${JSON.stringify({ text: sourceCitation })}\n\n`)
+          //   );
+          // }
           controller.enqueue(encoder.encode(`data: [DONE]\n\n`));
           controller.close();
         } catch (error) {

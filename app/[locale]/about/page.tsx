@@ -91,7 +91,7 @@ export default function AboutPage() {
                     <span className="text-secondary"><Mail className="w-4 h-4" /></span>
                     <a
                       href={`mailto:${personal.email}`}
-                      className="text-foreground hover:text-primary transition-colors"
+                      className="text-foreground hover:text-primary transition-colors cursor-target"
                     >
                       {personal.email}
                     </a>
@@ -116,7 +116,7 @@ export default function AboutPage() {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-lg glass flex items-center justify-center text-sm font-bold hover:border-primary hover:text-primary transition-colors"
+                      className="w-10 h-10 rounded-lg glass flex items-center justify-center text-sm font-bold hover:border-primary hover:text-primary transition-colors cursor-target"
                       aria-label={social.platform}
                     >
                       {social.platform === 'GitHub' ? 'GH' : social.platform === 'Email' ? '@' : social.platform.charAt(0)}
@@ -190,7 +190,7 @@ export default function AboutPage() {
         >
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-secondary hover:text-primary transition-colors"
+            className="inline-flex items-center gap-2 text-secondary hover:text-primary transition-colors cursor-target"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>{t("backToHome")}</span>

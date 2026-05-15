@@ -361,12 +361,12 @@ export default function BlogPage() {
               className="grid grid-cols-1 md:grid-cols-2 gap-6"
             >
               {filteredBlogs.map((post, index) => (
-                <Link key={post.id} href={`/blog/${post.slug}`}>
+                <Link key={post.id} href={`/blog/${post.slug}`} className="cursor-target">
                   <motion.div
                     variants={itemVariants}
                     whileHover={{ y: -4 }}
                   >
-                    <Card className="hover:border-primary/50 transition-all duration-300 group cursor-pointer h-full">
+                    <Card className="hover:border-primary/50 transition-all duration-300 group h-full">
                       {/* Cover Image */}
                       <div className="relative h-48 bg-gradient-to-br from-primary/10 to-primary/5 overflow-hidden">
                         {post.coverImage ? (
@@ -461,7 +461,7 @@ export default function BlogPage() {
               </p>
               <button
                 onClick={clearFilters}
-                className="px-4 py-2 rounded-lg bg-primary/20 text-primary hover:bg-primary/30 transition-colors"
+                className="px-4 py-2 rounded-lg bg-primary/20 text-primary hover:bg-primary/30 transition-colors cursor-target"
               >
                 {t("clearAllFilters")}
               </button>
@@ -478,7 +478,7 @@ export default function BlogPage() {
         >
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-secondary hover:text-primary transition-colors"
+            className="inline-flex items-center gap-2 text-secondary hover:text-primary transition-colors cursor-target"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>{t("backToHome")}</span>

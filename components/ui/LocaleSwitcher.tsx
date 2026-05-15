@@ -29,7 +29,7 @@ export function LocaleSwitcher() {
         <motion.button
           key={loc.code}
           onClick={() => handleLocaleChange(loc.code)}
-          className={`relative min-w-[44px] min-h-[44px] px-3 py-2 text-xs font-medium rounded-full transition-all duration-200 ${
+          className={`relative min-w-[44px] min-h-[44px] px-3 py-2 text-xs font-medium rounded-full transition-all duration-200 cursor-target ${
             locale === loc.code
               ? "text-primary"
               : "text-secondary hover:text-foreground"

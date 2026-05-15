@@ -248,7 +248,7 @@ export default async function BlogDetailPage({
             <AnimatedFade>
               <Link
                 href={`/${locale}/blog`}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass hover:border-primary/40 transition-all duration-300 mb-8 group"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass hover:border-primary/40 transition-all duration-300 mb-8 group cursor-target"
               >
                 <svg
                   className="w-4 h-4 text-secondary group-hover:text-primary group-hover:-translate-x-1 transition-all duration-300"
@@ -321,7 +321,7 @@ export default async function BlogDetailPage({
                       <Link
                         key={relatedBlog.id}
                         href={`/${locale}/blog/${relatedBlog.slug}`}
-                        className="glass rounded-xl p-5 hover:border-primary/40 transition-all duration-300 group"
+                        className="glass rounded-xl p-5 hover:border-primary/40 transition-all duration-300 group cursor-target"
                       >
                         {/* Category & Read Time */}
                         <div className="flex items-center gap-2 mb-3">
@@ -362,7 +362,7 @@ export default async function BlogDetailPage({
               <div className="text-center pt-8 border-t border-foreground/10">
                 <Link
                   href={`/${locale}/blog`}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 hover:border-primary/40 transition-all duration-300"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 hover:border-primary/40 transition-all duration-300 cursor-target"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />

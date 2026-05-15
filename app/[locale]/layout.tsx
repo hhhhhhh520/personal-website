@@ -10,6 +10,7 @@ import { PerformanceMonitor, emitWebVital } from "@/components/ui/PerformanceMon
 import { NovaGuide } from "@/components/ai";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { personal } from "@/data/personal";
+import TargetCursor from "@/components/effects/TargetCursor";
 
 // Web Vitals metric type (Next.js 16 compatible)
 interface WebVitalsMetric {
@@ -108,6 +109,9 @@ export default async function LocaleLayout({ children, params }: Props) {
 
         {/* AI 向导 - 全局可用 */}
         <NovaGuide />
+
+        {/* 自定义鼠标光标 */}
+        <TargetCursor />
 
         {/* 性能监控面板 - 仅开发环境显示 */}
         <PerformanceMonitor />

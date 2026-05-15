@@ -48,7 +48,7 @@ export default function Home() {
       >
         <button
           onClick={toggleMode}
-          className="px-4 py-2 rounded-full glass border border-border text-sm font-medium hover:border-primary hover:text-primary transition-all duration-300 pointer-events-auto"
+          className="px-4 py-2 rounded-full glass border border-border text-sm font-medium hover:border-primary hover:text-primary transition-all duration-300 pointer-events-auto cursor-target"
           aria-label={`Switch to ${mode === "home" ? "resume" : "home"} mode`}
         >
           {mode === "home" ? (t("viewProjects") === "View Projects" ? "View Resume" : "查看简历") : (t("viewProjects") === "View Projects" ? "Back to Home" : "返回首页")}
@@ -113,13 +113,13 @@ export default function Home() {
             >
               <Link
                 href="/projects"
-                className="px-8 py-3 rounded-full bg-gradient-to-r from-primary to-accent text-white font-medium hover:opacity-90 transition-opacity glow pointer-events-auto"
+                className="px-8 py-3 rounded-full bg-gradient-to-r from-primary to-accent text-white font-medium hover:opacity-90 transition-opacity glow pointer-events-auto cursor-target"
               >
                 {t("viewProjects")}
               </Link>
               <Link
                 href="/about"
-                className="px-8 py-3 rounded-full border border-white/30 text-white/80 font-medium hover:border-white/60 hover:text-white transition-colors pointer-events-auto"
+                className="px-8 py-3 rounded-full border border-white/30 text-white/80 font-medium hover:border-white/60 hover:text-white transition-colors pointer-events-auto cursor-target"
               >
                 {t("aboutMe")}
               </Link>
@@ -136,7 +136,7 @@ export default function Home() {
                 (tech, index) => (
                   <span
                     key={tech}
-                    className="px-4 py-2 rounded-full text-sm text-white/60 border border-white/10 hover:text-white hover:border-white/30 transition-colors pointer-events-auto"
+                    className="px-4 py-2 rounded-full text-sm text-white/60 border border-white/10 hover:text-white hover:border-white/30 transition-colors pointer-events-auto cursor-target"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     {tech}

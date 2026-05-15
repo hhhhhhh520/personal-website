@@ -1,5 +1,5 @@
 # 个人网站项目进度
-> 创建时间: 2026-05-09 | 最后更新: 2026-05-14
+> 创建时间: 2026-05-09 | 最后更新: 2026-05-15
 
 ## 项目概述
 **项目地址**: D:\my project\web\personal-website | **技术选型**: Next.js 16 + TypeScript + Tailwind CSS v4 + Three.js + Framer Motion | **目标**: AI 应用开发者的个人作品集网站
@@ -95,12 +95,75 @@
 ### ⏳ 进行中
 | 任务 | 状态 | 预计完成 |
 |------|------|----------|
-| — | — | — |
+| 无 | - | - |
 
 ### 📋 待办
 | 优先级 | 任务 | 说明 |
 |--------|------|------|
 | P5 | 博客内容双语 | 6 篇 MDX 博客英文版本（可选） |
+
+#### P17 — 自定义鼠标光标（2026-05-15）
+| 阶段 | 内容 | 文件 | 完成日期 |
+|------|------|------|----------|
+| GSAP 依赖 | 安装动画库 | package.json | 2026-05-15 |
+| TargetCursor 组件 | GSAP 驱动的旋转光标 | components/effects/TargetCursor.tsx | 2026-05-15 |
+| CSS 样式 | 光标样式 + cursor-target 隐藏默认指针 | components/effects/TargetCursor.css | 2026-05-15 |
+| 布局集成 | 全局引入 TargetCursor | app/[locale]/layout.tsx | 2026-05-15 |
+| 页面适配 | 所有可交互元素添加 cursor-target 类 | 各页面组件 | 2026-05-15 |
+| Nova 来源移除 | 禁用 RAG 来源链接显示 | app/api/chat/route.ts | 2026-05-15 |
+
+#### P16 — RRF 融合算法实现（2026-05-15）
+| 阶段 | 内容 | 文件 | 完成日期 |
+|------|------|------|----------|
+| RRF 融合模块 | reciprocalRankFusion 函数 | rag/utils/rrfFusion.ts | 2026-05-15 |
+| 关键词检索模块 | N-gram 分词 + BM25 风格评分 | rag/utils/keywordSearch.ts | 2026-05-15 |
+| 向量检索模块 | cosineSimilarity 封装 | rag/utils/vectorSearch.ts | 2026-05-15 |
+| API 重构 | hybridSearch 集成 RRF | app/api/rag/route.ts | 2026-05-15 |
+| 安全修复 | escapeRegExp 防止正则注入 | app/api/rag/route.ts, rag/utils/keywordSearch.ts | 2026-05-15 |
+| 数据提取修复 | 消除博客数据重复 | rag/scripts/extract_data.py | 2026-05-15 |
+| 索引重建 | 310 片段（无重复 doc_id） | public/rag-index/ | 2026-05-15 |
+| RRF 测试 | 单元测试 + 混合搜索测试 | rag/__tests__/rrf.test.ts, hybrid.test.ts | 2026-05-15 |
+| 个人信息检索测试 | RRF vs Legacy 对比 | rag/__tests__/personal-retrieval.test.ts | 2026-05-15 |
+
+#### P15 — 完整文档体系构建（2026-05-15）
+| 阶段 | 内容 | 文件 | 完成日期 |
+|------|------|------|----------|
+| 文档模板 | 设计项目文档模板结构 | docs/projects/TEMPLATE.md | 2026-05-15 |
+| 目录结构 | 创建 docs/projects/ 目录 | docs/projects/ | 2026-05-15 |
+| mini-claude 文档 | LangGraph 状态机 + 多 Agent 并发 | docs/projects/mini-claude.md | 2026-05-15 |
+| codecraft-agent 文档 | 8 状态机 + 沙箱执行 | docs/projects/codecraft-agent.md | 2026-05-15 |
+| campus-agent 文档 | 混合检索 + RRF 融合 | docs/projects/campus-agent.md | 2026-05-15 |
+| phone-pick-assistant 文档 | 多轮对话 + 场景排序 | docs/projects/phone-pick-assistant.md | 2026-05-15 |
+| cv-generator 文档 | JD 关键词注入 + ATS 优化 | docs/projects/cv-generator.md | 2026-05-15 |
+| game-agent 文档 | 模板匹配 + 智能休眠 | docs/projects/game-agent.md | 2026-05-15 |
+| 脚本扩展 | extract_data.py 支持 Markdown | rag/scripts/extract_data.py | 2026-05-15 |
+| 数据源更新 | build_index.py 包含项目文档 | rag/scripts/build_index.py | 2026-05-15 |
+| 索引重建 | 316 片段（54 项目文档片段） | public/rag-index/ | 2026-05-15 |
+| 维护指南 | 文档更新流程说明 | docs/MAINTENANCE.md | 2026-05-15 |
+
+#### P14 — RAG 测试编写（2026-05-15）
+| 阶段 | 内容 | 文件 | 完成日期 |
+|------|------|------|----------|
+| 测试框架 | Vitest 配置 + npm scripts | vitest.config.ts, package.json | 2026-05-15 |
+| TypeScript 单元测试 | 相似度、向量、关键词、缓存、混合搜索 | rag/__tests__/*.test.ts | 2026-05-15 |
+| TypeScript 集成测试 | API、安全、Chat-RAG、端到端 | rag/__tests__/*.test.ts | 2026-05-15 |
+| TypeScript 性能测试 | 性能基准、索引构建、增量更新 | rag/__tests__/*.test.ts | 2026-05-15 |
+| Python 测试 | 分块器、数据提取 | rag/scripts/test_*.py | 2026-05-15 |
+| 测试统计 | 279 测试全部通过 | - | 2026-05-15 |
+
+#### P13 — Nova RAG 功能开发（2026-05-14）
+| 阶段 | 内容 | 文件 | 完成日期 |
+|------|------|------|----------|
+| RAG 目录结构 | rag/{scripts,types,utils} | rag/ | 2026-05-14 |
+| Python 环境 | venv + sentence-transformers | rag/venv/, requirements.txt | 2026-05-14 |
+| TypeScript 类型 | RAGDocument, SearchResult 等 | rag/types/index.ts | 2026-05-14 |
+| 数据提取脚本 | 从 projects/personal/blogs 提取 | rag/scripts/extract_data.py | 2026-05-14 |
+| 分块策略 | TextChunker, DocumentChunker | rag/scripts/chunker.py | 2026-05-14 |
+| Embedding 集成 | bge-large-zh-v1.5 本地模型 | rag/scripts/build_index.py | 2026-05-14 |
+| 索引生成 | 89 文档片段 + 1024 维向量 | public/rag-index/ | 2026-05-14 |
+| RAG API | POST /api/rag 查询端点 | app/api/rag/route.ts | 2026-05-14 |
+| Chat 集成 | RAG 检索注入系统提示词 | app/api/chat/route.ts | 2026-05-14 |
+| 增量更新 | 数据哈希 + npm 脚本 | build_index.py, package.json | 2026-05-14 |
 
 ## 页面清单
 
@@ -115,6 +178,7 @@
 | `/zh/blog` | 静态 | ✅ | 博客列表 |
 | `/zh/blog/[slug]` | 动态 | ✅ | 博客详情 |
 | `/api/chat` | 动态 | ✅ | AI 对话 API |
+| `/api/rag` | 动态 | ✅ | RAG 检索 API |
 
 ## 数据源
 
@@ -141,6 +205,13 @@
 | 页面过渡 | 无 AnimatePresence | 避免 WebGL context 丢失 | 2026-05-14 |
 | 技能页 | 删除 | 简化页面结构，专注核心内容 | 2026-05-14 |
 | 3D视图 | 删除 | 项目页改为纯列表视图，更简洁 | 2026-05-14 |
+| RAG 方案 | 预构建索引 + JSON 部署 | Vercel serverless 兼容 | 2026-05-14 |
+| Embedding | bge-large-zh-v1.5 本地模型 | 中文优化，免费，已有资源 | 2026-05-14 |
+| 自定义光标 | TargetCursor (GSAP) | 提升交互体验，移动端自动禁用 | 2026-05-15 |
+| Nova 来源链接 | 移除 | 简化回答，不显示 RAG 来源 | 2026-05-15 |
+| 项目文档体系 | docs/projects/*.md 详细文档 | RAG 能回答项目细节问题 | 2026-05-15 |
+| 混合搜索算法 | RRF 融合 + N-gram 分词 | 解决 pseudo-query embedding 偏差问题 | 2026-05-15 |
+| 数据提取策略 | 只从 MDX 提取博客内容 | 消除 blogs.ts 和 MDX 重复 | 2026-05-15 |
 
 ## 技术债务
 
