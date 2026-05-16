@@ -54,10 +54,14 @@ export function NovaGuide() {
   // 当有新消息且面板未打开时，显示气泡
   useEffect(() => {
     if (messages.length > 0 && !isOpen) {
-      setShowBubble(true);
+      // 使用 setTimeout 避免同步调用 setState
+      const showTimer = setTimeout(() => setShowBubble(true), 0);
       // 5秒后自动隐藏气泡
-      const timer = setTimeout(() => setShowBubble(false), 5000);
-      return () => clearTimeout(timer);
+      const hideTimer = setTimeout(() => setShowBubble(false), 5000);
+      return () => {
+        clearTimeout(showTimer);
+        clearTimeout(hideTimer);
+      };
     }
   }, [messages.length, isOpen]);
 
