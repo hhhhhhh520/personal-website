@@ -29,10 +29,7 @@ interface ParticleLayerProps {
 function ParticleLayer({ count, size, speed, opacity, color, spread, enableDrift }: ParticleLayerProps) {
   const pointsRef = useRef<THREE.Points>(null);
 
-  // 使用 ref 存储随机数据，避免在 useMemo 中调用 Math.random
-  const randomDataRef = useRef<{ positions: Float32Array; velocities: Float32Array } | null>(null);
-
-  if (!randomDataRef.current) {
+  const { positions, velocities } = useMemo(() => {
     const pos = new Float32Array(count * 3);
     const vel = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
@@ -45,10 +42,8 @@ function ParticleLayer({ count, size, speed, opacity, color, spread, enableDrift
       vel[i3 + 1] = (Math.random() - 0.5) * 0.002;
       vel[i3 + 2] = (Math.random() - 0.5) * 0.002;
     }
-    randomDataRef.current = { positions: pos, velocities: vel };
-  }
-
-  const { positions, velocities } = randomDataRef.current;
+    return { positions: pos, velocities: vel };
+  }, [count, spread]);
 
   const geometry = useMemo(() => {
     const geo = new THREE.BufferGeometry();
