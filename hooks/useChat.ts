@@ -55,7 +55,7 @@ export function useChat(options: UseChatOptions = {}) {
         // API Key 未配置 - 显示配置引导
         if (aiError.type === 'API_KEY_NOT_CONFIGURED') {
           updateLastMessage(
-            '⚠️ AI 功能需要配置 DEEPSEEK_API_KEY。\n\n请在项目根目录的 `.env.local` 文件中设置：\n```\nDEEPSEEK_API_KEY=your_api_key\n```\n\n获取 API Key：https://platform.deepseek.com/'
+            '⚠️ AI 功能需要配置 ASTRON_API_KEY。\n\n请在项目根目录的 `.env.local` 文件中设置：\n```\nASTRON_API_KEY=your_api_key\n```\n\n获取 API Key：https://maas.xfyun.cn/packageSubscription'
           );
           setError({ type: 'API_KEY_NOT_CONFIGURED', message: aiError.message || '', retryable: false });
         } else {
