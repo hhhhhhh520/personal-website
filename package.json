@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.4.1",
+    "@cloudflare/next-on-pages": "^1.13.16",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.6.1",
     "@react-three/postprocessing": "^3.0.4",
@@ -24,7 +25,7 @@
     "framer-motion": "^12.38.0",
     "gsap": "^3.15.0",
     "lucide-react": "^1.14.0",
-    "next": "16.2.6",
+    "next": "^15.5.2",
     "next-intl": "^4.11.2",
     "next-mdx-remote": "^6.0.0",
     "next-themes": "^1.0.0-beta.0",
@@ -47,6 +48,7 @@
     "shadcn": "^4.7.0",
     "tailwindcss": "^4",
     "typescript": "^5",
+    "vercel": "^54.1.0",
     "vitest": "^4.1.6"
   }
 }
