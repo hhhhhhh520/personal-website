@@ -1,0 +1,119 @@
+# Windows CI 踩坑实录：从 8.3 路径到编码问题
+
+在 Mini Claude Code 项目中，我们花了整整三天解决 Windows CI 问题。这些问题在本地开发时完全正常，一到 GitHub Actions 就炸。
+
+## 问题 1：8.3 短路径名
+
+**现象**：测试断言路径匹配失败。
+
+```
+Expected: C:\Users\runneradmin\AppData\Local\Temp\pytest-of-runneradmin\test_foo0
+Actual: C:\Users\RUNNER~1\AppData\Local\Temp\PYTEST~1\test_foo0
+```
+
+Windows 会为长路径生成 8.3 格式的短路径名。在某些场景下，系统返回短路径，导致字符串比较失败。
+
+**解决**：统一使用 `os.path.normcase` 和 `pathlib.Path.resolve()`：
+
+```python
+from pathlib import Path
+
+def normalize_path(path: str) -> str:
+    return str(Path(path).resolve())
+```
+
+## 问题 2：PowerShell 多行命令
+
+**现象**：`run_command` 工具在 Windows 上执行失败。
+
+```python
+# macOS/Linux: 正常
+result = subprocess.run("echo hello && echo world", shell=True)
+
+# Windows: 只执行第一行
+```
+
+**解决**：检测操作系统，Windows 使用 `cmd /c`：
+
+```python
+import platform
+
+def get_shell_command(cmd: str) -> list[str]:
+    if platform.system() == "Windows":
+        return ["cmd", "/c", cmd]
+    return ["bash", "-c", cmd]
+```
+
+## 问题 3：编码问题
+
+**现象**：包含中文的文件名或内容在 CI 中报错。
+
+```
+UnicodeEncodeError: 'gbk' codec can't encode character
+```
+
+**解决**：强制 UTF-8 编码，并在测试中使用 ASCII 日期格式：
+
+```python
+# 测试中使用 ASCII 日期
+from datetime import datetime
+timestamp = datetime.now().strftime("%Y-%m-%d_%H%M%S")  # 而非 "%Y年%m月%d日"
+
+# 文件操作强制 UTF-8
+with open(file, "w", encoding="utf-8") as f:
+    f.write(content)
+```
+
+## 问题 4：Pydantic Mock 失败
+
+**现象**：`patch` 无法正确 Mock Pydantic 模型。
+
+```python
+# 失败
+with patch("module.Settings") as mock:
+    mock.return_value = settings
+
+# 原因：Pydantic 模型的验证逻辑在类创建时就执行了
+```
+
+**解决**：直接修改 settings 实例而非 Mock：
+
+```python
+# 成功
+from module import settings
+settings.some_value = "test_value"
+```
+
+## 问题 5：`~` 路径处理
+
+**现象**：删除 `~` 路径可能导致删除整个用户目录。
+
+**解决**：特殊处理 `~`，禁止删除 home 但允许子目录：
+
+```python
+from pathlib import Path
+
+def safe_delete(path: str) -> None:
+    resolved = Path(path).resolve()
+    home = Path.home().resolve()
+
+    if resolved == home:
+        raise ValueError("Cannot delete home directory")
+
+    # 允许删除 home 子目录
+    if not str(resolved).startswith(str(home)):
+        raise ValueError("Path outside home directory")
+
+    shutil.rmtree(resolved)
+```
+
+## 总结
+
+Windows CI 问题通常与路径、编码、Shell 差异相关。解决策略：
+
+1. **路径处理**：统一用 `pathlib.Path`，避免字符串操作
+2. **编码**：显式指定 UTF-8，测试用 ASCII
+3. **Shell**：检测操作系统，使用正确的命令格式
+4. **Mock**：优先直接修改实例，避免 patch 复杂对象
+
+这些问题本地难发现，CI 才暴露。建立 CI 优先的开发习惯很重要。

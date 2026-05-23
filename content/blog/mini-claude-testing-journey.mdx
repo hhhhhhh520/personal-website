@@ -1,0 +1,121 @@
+# 从零到 1733 测试：Mini Claude Code 的测试之路
+
+Mini Claude Code 现在有 1733 个测试用例。这些测试不是一次性写的，而是随着功能迭代逐步积累。
+
+## 测试金字塔
+
+我们的测试分层：
+
+| 层级 | 数量 | 覆盖范围 |
+|------|------|----------|
+| 单元测试 | 1200+ | 工具函数、状态转换 |
+| 集成测试 | 400+ | Agent 工作流、工具组合 |
+| 端到端测试 | 100+ | 完整 REPL 会话 |
+
+## 核心测试策略
+
+### 1. 工具测试：输入输出边界
+
+每个工具都有独立的测试文件：
+
+```python
+# tests/tools/test_read_file.py
+
+async def test_read_file_success():
+    result = await read_file("/path/to/file.txt")
+    assert result.success
+    assert "content" in result.output
+
+async def test_read_file_not_found():
+    result = await read_file("/nonexistent.txt")
+    assert not result.success
+    assert "not found" in result.error.lower()
+
+async def test_read_file_permission_denied():
+    with patch("os.access", return_value=False):
+        result = await read_file("/root/secret.txt")
+        assert "permission" in result.error.lower()
+```
+
+### 2. 状态机测试：转换覆盖率
+
+LangGraph 状态机的每个边都有测试：
+
+```python
+# tests/graph/test_transitions.py
+
+def test_think_to_act_with_tools():
+    state = {"messages": [...], "pending_tools": ["read_file"]}
+    next_node = route_after_thinking(state)
+    assert next_node == "execute_tools"
+
+def test_think_to_end_without_tools():
+    state = {"messages": [...], "pending_tools": [], "status": "complete"}
+    next_node = route_after_thinking(state)
+    assert next_node == "end"
+```
+
+### 3. Mock LLM：可控测试
+
+LLM 调用必须 Mock，否则测试不可控：
+
+```python
+@pytest.fixture
+def mock_llm():
+    with patch("llm.chat") as mock:
+        mock.return_value = MockResponse(
+            content="I will read the file",
+            tool_calls=[{"name": "read_file", "args": {"path": "test.txt"}}]
+        )
+        yield mock
+
+async def test_agent_calls_tool(mock_llm):
+    result = await agent.run("Read test.txt")
+    assert "read_file" in str(result.tool_calls)
+```
+
+## CI 流水线
+
+```yaml
+# .github/workflows/test.yml
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install -e ".[dev]"
+      - run: pytest --cov=src --cov-report=xml
+      - uses: codecov/codecov-action@v4
+```
+
+多系统、多 Python 版本的矩阵测试。
+
+## 测试覆盖率演进
+
+| 日期 | 测试数 | 覆盖率 | 里程碑 |
+|------|--------|--------|--------|
+| 2026-04-20 | 200 | 45% | MVP |
+| 2026-04-25 | 500 | 62% | 工具系统完善 |
+| 2026-05-01 | 900 | 75% | 状态机重构 |
+| 2026-05-10 | 1200 | 82% | Skills 系统 |
+| 2026-05-13 | 1733 | 87% | Windows CI 修复 |
+
+## 经验总结
+
+1. **测试先行**：写代码前先写测试，定义预期行为
+2. **Mock 一切外部依赖**：LLM、文件系统、网络请求
+3. **边界条件必测**：空输入、超长输入、异常类型
+4. **CI 驱动**：本地测试通过不代表 CI 通过
+5. **覆盖率不是目的**：测试质量比数量重要
+
+## 下一步
+
+- 性能测试：大量消息时的响应时间
+- 压力测试：并发请求处理
+- 回归测试：自动化回归套件
+
+测试是项目的安全网。1733 个测试意味着 1733 次信心。

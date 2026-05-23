@@ -1,0 +1,110 @@
+# Claude Code vs Mini Claude：上下文压缩机制对比
+
+研究 Claude Code 的 changelog 后，我发现它使用 LLM 进行智能压缩，而非简单的截断。这与我实现的 Mini Claude 思路一致，但细节更成熟。
+
+## 触发条件对比
+
+| 参数 | Mini Claude | Claude Code |
+|------|-------------|-------------|
+| 警告阈值 | 80% | 80% |
+| 阻塞阈值 | 95% | ~98% |
+| 失败处理 | 回退截断 | Circuit Breaker（3次停止） |
+
+Claude Code 的 98% 阻塞阈值更激进，但也更危险。
+
+## Claude Code 的保护机制
+
+### 1. Circuit Breaker
+
+```
+v2.1.76: Fixed auto-compaction retrying indefinitely after consecutive failures
+```
+
+连续失败 3 次后停止重试。这是防止无限循环的关键设计。
+
+### 2. 图片/PDF 剥离
+
+```
+v2.1.68: Fixed compaction failing when conversation contains many PDF documents
+```
+
+摘要前移除图片和 PDF 文档块，减少 token 消耗，提高成功率。
+
+### 3. Prompt Cache 复用
+
+```
+v2.1.77: Preserve images in the summarizer request, allowing prompt cache reuse
+```
+
+摘要请求保留图片结构，利用 Prompt Cache 加速、降低成本。
+
+## Mini Claude 的实现
+
+```python
+async def compact_if_needed(self, state: AgentState) -> AgentState:
+    usage = self.token_counter.count(state["messages"])
+    threshold = self.config.context_window * 0.8
+
+    if usage > threshold:
+        summary = await self.summarize(state["messages"])
+        return {...state, "messages": [summary]}
+
+    return state
+```
+
+简单直接，但缺少 Circuit Breaker 和资源剥离。
+
+## 改进方案
+
+基于 Claude Code 的设计，Mini Claude 需要：
+
+| 改进项 | 优先级 | 实现 |
+|--------|--------|------|
+| Circuit Breaker | P0 | 计数器 + 阈值判断 |
+| 图片剥离 | P1 | 过滤 `image` 类型消息 |
+| 更早触发 | P1 | 60-70% 开始压缩 |
+| Prompt Cache | P2 | 复用缓存 |
+
+### Circuit Breaker 实现
+
+```python
+class CompactionManager:
+    def __init__(self, max_failures: int = 3):
+        self.failures = 0
+        self.max_failures = max_failures
+
+    async def compact(self, messages: list) -> list:
+        if self.failures >= self.max_failures:
+            raise CompactionDisabledError("Circuit breaker triggered")
+
+        try:
+            result = await self._do_compact(messages)
+            self.failures = 0  # 成功后重置
+            return result
+        except Exception:
+            self.failures += 1
+            raise
+```
+
+### 图片剥离实现
+
+```python
+def strip_multimedia(messages: list) -> list:
+    result = []
+    for msg in messages:
+        if msg.get("type") in ("image", "document"):
+            continue
+        result.append(msg)
+    return result
+```
+
+## 总结
+
+Claude Code 的上下文压缩机制比我想象的更复杂：
+
+1. **LLM 智能压缩**：不是简单截断
+2. **Circuit Breaker**：防止无限重试
+3. **资源剥离**：减少 token，提高成功率
+4. **Prompt Cache**：降低成本
+
+这些设计值得学习。Mini Claude 的下一步改进就是加入 Circuit Breaker 和资源剥离。

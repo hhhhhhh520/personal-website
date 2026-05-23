@@ -1,0 +1,165 @@
+# AgentHub：从零构建 IM 式多 Agent 协作平台
+
+参加 AI 全栈挑战赛，我选择了一个有挑战性的课题：构建一个类似飞书/微信的多 Agent 协作平台。
+
+## 课题背景
+
+多 Agent 协作是提升复杂任务执行效率的关键趋势。AgentHub 的核心交互范式是 IM 聊天：
+
+- **新建对话**：创建会话，选择 Agent
+- **多会话并行**：同时开启多个对话窗口
+- **群聊协作**：@ 多个 Agent，Orchestrator 自动协调
+- **产物内联**：代码 Diff、网页预览卡片直接嵌入聊天流
+
+## 技术架构
+
+```
+┌─────────────────────────────────────────────┐
+│              Frontend (Next.js)              │
+│  ┌───────────┬───────────┬────────────────┐  │
+│  │ Session   │   Chat    │   Agent Panel  │  │
+│  │ Sidebar   │   Area    │   + Task Board │  │
+│  └───────────┴───────────┴────────────────┘  │
+└─────────────────────────────────────────────┘
+                      │ SSE Streaming
+┌─────────────────────────────────────────────┐
+│              Orchestrator Layer              │
+│  ┌─────────────┬─────────────────────────┐  │
+│  │  Scene      │  Role Generation        │  │
+│  │  Analysis   │  Task Decomposition     │  │
+│  └─────────────┴─────────────────────────┘  │
+└─────────────────────────────────────────────┘
+                      │
+┌─────────────────────────────────────────────┐
+│              Adapter Layer                  │
+│  ┌─────────┬─────────────┬───────────────┐  │
+│  │   LLM   │ Claude Code │    Codex      │  │
+│  │ Adapter │   Adapter   │   Adapter     │  │
+│  └─────────┴─────────────┴───────────────┘  │
+└─────────────────────────────────────────────┘
+```
+
+## 核心设计
+
+### 1. Orchestrator 三层 Prompt
+
+```
+Layer 1: 场景分析 → 判断任务类型和复杂度
+Layer 2: 角色生成 → 根据任务生成 Agent 团队
+Layer 3: 任务拆解 → 拓扑排序，分配子任务
+```
+
+每层都是独立的 LLM 调用，结果可观测。
+
+### 2. 拓扑排序调度
+
+```typescript
+function topologicalSort(tasks: ScheduledTask[]): ScheduledTask[] {
+  // 检测循环依赖
+  // 计算每条任务的批次号
+  // 按批次号排序
+}
+
+function groupByBatch(tasks: ScheduledTask[]): ScheduledTask[][] {
+  // 同批次任务可并行执行
+}
+```
+
+依赖无环时，同批次任务并发执行，提升效率。
+
+### 3. 统一适配器层
+
+```typescript
+interface AgentAdapter {
+  connect(config: AdapterConfig): Promise<void>
+  send(task: AgentTask): AsyncIterable<StreamChunk>
+  close(): Promise<void>
+}
+```
+
+LLM Adapter 使用 Vercel AI SDK，Claude Code Adapter 使用 CLI 子进程。
+
+### 4. SSE 流式输出
+
+```typescript
+// 服务端
+const stream = new ReadableStream({
+  async start(controller) {
+    sendEvent({ agentId: 'orchestrator', type: 'status', content: '分析中...' })
+    // ...
+  }
+})
+return new Response(stream, { headers: { 'Content-Type': 'text/event-stream' } })
+```
+
+```typescript
+// 客户端
+const reader = res.body.getReader()
+while (true) {
+  const { done, value } = await reader.read()
+  if (done) break
+  // 解析 SSE 事件，更新 UI
+}
+```
+
+## 关键实现细节
+
+### Claude Code CLI 集成
+
+```typescript
+const process = spawn('claude', [
+  '-p', prompt,
+  '--output-format', 'stream-json'
+], { cwd: workDir })
+
+for await (const chunk of readProcess(process)) {
+  yield chunk
+}
+```
+
+使用子进程管理，支持超时和取消。
+
+### 群聊模式
+
+用户发送 `@所有人` 时，Orchestrator 启动多轮讨论：
+
+1. 第 1 轮：每个 Agent 发表意见
+2. 第 2-3 轮：Agent 基于他人发言补充
+3. 汇总结果
+
+### 产物内联
+
+代码 Diff 使用 Monaco Editor，网页预览使用 iframe：
+
+```tsx
+<iframe
+  srcDoc={srcdoc}
+  sandbox="allow-scripts allow-same-origin"
+/>
+```
+
+## 开发过程
+
+| 阶段 | 内容 | 耗时 |
+|------|------|------|
+| Task 1-2 | 项目脚手架 + 适配器层 | 2天 |
+| Task 3 | Orchestrator 核心 | 3天 |
+| Task 4-6 | API + 前端聊天 | 4天 |
+| Task 7-9 | Agent 面板 + 预览 + 部署 | 3天 |
+| Task 10-12 | Claude Code 集成 + 打磨 | 4天 |
+
+## 经验总结
+
+1. **Prompt 设计是核心**：三层分离，每层职责清晰
+2. **流式输出体验好**：用户实时看到进度，不会焦虑
+3. **适配器抽象是关键**：后续接入新平台只需实现接口
+4. **IM 范式适合协作**：用户熟悉的交互方式
+
+## 未来改进
+
+- 支持 Agent 自建（对话式创建）
+- 代码冲突检测和合并
+- 真实的部署集成（Vercel/Cloudflare）
+- 移动端支持
+
+AgentHub 让多 Agent 协作像聊天一样自然。这是 AI 应用开发的新范式。
