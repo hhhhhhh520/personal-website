@@ -1,5 +1,5 @@
 # 个人网站项目进度
-> 创建时间: 2026-05-09 | 最后更新: 2026-05-15
+> 创建时间: 2026-05-09 | 最后更新: 2026-05-23
 
 ## 项目概述
 **项目地址**: D:\my project\web\personal-website | **技术选型**: Next.js 16 + TypeScript + Tailwind CSS v4 + Three.js + Framer Motion | **目标**: AI 应用开发者的个人作品集网站
@@ -91,6 +91,17 @@
 | 删除3D组件 | 移除 Three.js 相关组件 | components/three/ | 2026-05-14 |
 | 导航更新 | 移除技能页链接 | components/ui/Navigation.tsx, MobileNav.tsx | 2026-05-14 |
 | 翻译清理 | 移除 skills 相关翻译 | messages/zh.json, en.json | 2026-05-14 |
+
+#### P18 — 博客新增（2026-05-23）
+| 阶段 | 内容 | 文件 | 完成日期 |
+|------|------|------|----------|
+| RAG 混合搜索 | 关键词 + 向量 + RRF 融合实战 | content/blog/rag-hybrid-search-implementation.mdx | 2026-05-23 |
+| Windows CI 踩坑 | 8.3路径、编码、Pydantic Mock | content/blog/windows-ci-pitfalls.mdx | 2026-05-23 |
+| 上下文压缩对比 | Claude Code vs Mini Claude | content/blog/claude-code-vs-mini-claude-compression.mdx | 2026-05-23 |
+| 测试之路 | 从零到 1733 测试 | content/blog/mini-claude-testing-journey.mdx | 2026-05-23 |
+| AgentHub 平台 | IM 式多 Agent 协作 | content/blog/agenthub-multi-agent-collaboration.mdx | 2026-05-23 |
+| SSE 流式输出 | 让 AI 响应"活"起来 | content/blog/sse-streaming-for-ai-apps.mdx | 2026-05-23 |
+| 博客元数据 | 新增 6 篇博客配置 | data/blogs.ts | 2026-05-23 |
 
 ### ⏳ 进行中
 | 任务 | 状态 | 预计完成 |
@@ -212,6 +223,8 @@
 | 项目文档体系 | docs/projects/*.md 详细文档 | RAG 能回答项目细节问题 | 2026-05-15 |
 | 混合搜索算法 | RRF 融合 + N-gram 分词 | 解决 pseudo-query embedding 偏差问题 | 2026-05-15 |
 | 数据提取策略 | 只从 MDX 提取博客内容 | 消除 blogs.ts 和 MDX 重复 | 2026-05-15 |
+| Cloudflare 部署尝试 | 放弃 | workers.dev 被墙，需自定义域名或换 Zeabur | 2026-05-16 |
+| 博客新增 | 6 篇技术博客 | RAG混合搜索、Windows CI、上下文压缩、测试之路、AgentHub、SSE流式 | 2026-05-23 |
 
 ## 技术债务
 
