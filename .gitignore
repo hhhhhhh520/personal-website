@@ -54,3 +54,13 @@ venv/
 rag/venv/
 rag/scripts/__pycache__/
 rag/data/
+
+# OpenNext
+.open-next
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+
+!.env.example
