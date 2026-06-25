@@ -1,32 +1,7 @@
 import { describe, it, expect } from 'vitest'
+import { cosineSimilarity } from '../utils/similarity'
 
-// Extract the cosineSimilarity function from route.ts for testing
-// We need to test the implementation directly
-function cosineSimilarity(a: number[], b: number[]): number {
-  if (a.length !== b.length) {
-    throw new Error(`Vector length mismatch: ${a.length} vs ${b.length}`)
-  }
-
-  let dotProduct = 0
-  let normA = 0
-  let normB = 0
-
-  for (let i = 0; i < a.length; i++) {
-    dotProduct += a[i] * b[i]
-    normA += a[i] * a[i]
-    normB += b[i] * b[i]
-  }
-
-  const denominator = Math.sqrt(normA) * Math.sqrt(normB)
-
-  if (denominator === 0) {
-    return 0
-  }
-
-  return dotProduct / denominator
-}
-
-describe('Vector Operations (route.ts)', () => {
+describe('Vector Operations (rag/utils/similarity)', () => {
   describe('cosineSimilarity', () => {
     it('returns 1 for identical vectors', () => {
       const vec = [1, 2, 3, 4, 5]
@@ -61,7 +36,7 @@ describe('Vector Operations (route.ts)', () => {
     it('throws error for length mismatch', () => {
       const a = [1, 2, 3]
       const b = [1, 2]
-      expect(() => cosineSimilarity(a, b)).toThrow('Vector length mismatch')
+      expect(() => cosineSimilarity(a, b)).toThrow('Vectors must have the same length')
     })
 
     it('handles 1024-dim vectors (typical embedding size)', () => {

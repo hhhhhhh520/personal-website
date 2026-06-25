@@ -3,15 +3,17 @@ import fs from 'fs';
 import path from 'path';
 
 // ============================================================================
-// Types
+// Types & Imports from rag/utils
 // ============================================================================
 
 import type {
   SearchResult,
-  RRFConfig,
-  KeywordSearchConfig,
-  VectorSearchConfig,
 } from '../../../rag/types/index';
+
+import { cosineSimilarity } from '../../../rag/utils/similarity';
+import { rrfFusionTwoWay } from '../../../rag/utils/rrfFusion';
+import { tokenizeChinese, keywordSearch, escapeRegExp } from '../../../rag/utils/keywordSearch';
+import { vectorSearch as vectorSearchUtil, averageVectors } from '../../../rag/utils/vectorSearch';
 
 interface RAGResponse {
   results: SearchResult[];
@@ -115,212 +117,7 @@ function loadIndex(): void {
 loadIndex();
 
 // ============================================================================
-// Vector Operations
-// ============================================================================
-
-/**
- * Calculate cosine similarity between two vectors
- * Pure JS implementation, no external dependencies
- */
-function cosineSimilarity(a: number[], b: number[]): number {
-  if (a.length !== b.length) {
-    throw new Error(`Vector length mismatch: ${a.length} vs ${b.length}`);
-  }
-
-  let dotProduct = 0;
-  let normA = 0;
-  let normB = 0;
-
-  for (let i = 0; i < a.length; i++) {
-    dotProduct += a[i] * b[i];
-    normA += a[i] * a[i];
-    normB += b[i] * b[i];
-  }
-
-  const denominator = Math.sqrt(normA) * Math.sqrt(normB);
-
-  if (denominator === 0) {
-    return 0;
-  }
-
-  return dotProduct / denominator;
-}
-
-// ============================================================================
-// RRF Fusion Algorithm
-// ============================================================================
-
-/**
- * RRF (Reciprocal Rank Fusion) 双路融合
- *
- * 公式: score(d) = 1/(k + rank_vector) + 1/(k + rank_keyword)
- *
- * @param vectorResults 向量检索结果（按 score 降序）
- * @param keywordResults 关键词检索结果（按 score 降序）
- * @param k RRF 参数，默认 60
- * @returns 融合后的结果，按分数降序排列
- */
-function rrfFusion(
-  vectorResults: Array<{ docId: string; score: number }>,
-  keywordResults: Array<{ docId: string; score: number }>,
-  k: number = 60
-): Array<{ docId: string; score: number }> {
-  const docScores: Map<string, number> = new Map();
-
-  // 处理向量检索结果
-  for (let rank = 0; rank < vectorResults.length; rank++) {
-    const { docId } = vectorResults[rank];
-    const score = 1.0 / (k + rank + 1);
-    docScores.set(docId, (docScores.get(docId) || 0) + score);
-  }
-
-  // 处理关键词检索结果
-  for (let rank = 0; rank < keywordResults.length; rank++) {
-    const { docId } = keywordResults[rank];
-    const score = 1.0 / (k + rank + 1);
-    docScores.set(docId, (docScores.get(docId) || 0) + score);
-  }
-
-  // 按分数降序排序
-  return [...docScores.entries()]
-    .map(([docId, score]) => ({ docId, score }))
-    .sort((a, b) => b.score - a.score);
-}
-
-// ============================================================================
-// Keyword Search
-// ============================================================================
-
-/**
- * Escape special regex characters to prevent injection
- */
-function escapeRegExp(string: string): string {
-  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
-
-/**
- * 中文分词（N-gram 实现）
- *
- * 由于没有真正的中文分词器，使用 N-gram 方式提取关键词：
- * 1. 提取连续中文字符序列
- * 2. 对每个序列生成 2-4 字的 n-gram
- * 3. 提取英文单词
- */
-function tokenizeChinese(text: string, minLength: number = 2): string[] {
-  const normalizedText = text.toLowerCase();
-
-  // 提取连续中文字符序列
-  const chinesePattern = /[一-龥]+/g;
-  const chineseSequences = normalizedText.match(chinesePattern) || [];
-
-  const terms: string[] = [];
-
-  // 对每个中文序列生成 n-gram
-  for (const seq of chineseSequences) {
-    if (seq.length <= 4) {
-      // 短序列直接作为词
-      if (seq.length >= minLength) {
-        terms.push(seq);
-      }
-    } else {
-      // 长序列生成 2-4 字 n-gram
-      for (let n = 2; n <= 4; n++) {
-        for (let i = 0; i <= seq.length - n; i++) {
-          terms.push(seq.slice(i, i + n));
-        }
-      }
-    }
-  }
-
-  // 提取英文单词
-  const englishPattern = /[a-z0-9]+/g;
-  const englishMatches = normalizedText.match(englishPattern) || [];
-  terms.push(...englishMatches.filter((t) => t.length >= minLength));
-
-  // 去重
-  return [...new Set(terms)];
-}
-
-/**
- * 关键词检索
- */
-function keywordSearch(
-  query: string,
-  docs: Document[],
-  config: { titleWeight: number; contentWeight: number; maxResults: number } = {
-    titleWeight: 3.0,
-    contentWeight: 0.5,
-    maxResults: 20,
-  }
-): Array<{ docId: string; score: number }> {
-  const { titleWeight, contentWeight, maxResults } = config;
-  const queryTerms = tokenizeChinese(query);
-
-  if (queryTerms.length === 0) {
-    return [];
-  }
-
-  const scores: Map<string, number> = new Map();
-
-  for (const doc of docs) {
-    const title = doc.title.toLowerCase();
-    const content = doc.content.toLowerCase();
-    let docScore = 0;
-
-    for (const term of queryTerms) {
-      // Escape term to prevent regex injection
-      const escapedTerm = escapeRegExp(term);
-
-      // 标题匹配
-      if (title.includes(term)) {
-        const titleMatches = (title.match(new RegExp(escapedTerm, 'g')) || []).length;
-        docScore += titleMatches * titleWeight;
-      }
-
-      // 内容匹配
-      const contentMatches = (content.match(new RegExp(escapedTerm, 'g')) || []).length;
-      const saturatedScore = contentMatches / (1 + contentMatches * 0.1);
-      docScore += saturatedScore * contentWeight;
-    }
-
-    if (docScore > 0) {
-      scores.set(doc.id, docScore);
-    }
-  }
-
-  return [...scores.entries()]
-    .map(([docId, score]) => ({ docId, score }))
-    .sort((a, b) => b.score - a.score)
-    .slice(0, maxResults);
-}
-
-// ============================================================================
-// Vector Search
-// ============================================================================
-
-/**
- * 向量检索
- */
-function vectorSearch(
-  queryEmbedding: number[],
-  docIds: string[],
-  vectors: number[][],
-  maxResults: number = 20
-): Array<{ docId: string; score: number }> {
-  const results: Array<{ docId: string; score: number }> = [];
-
-  for (let i = 0; i < docIds.length; i++) {
-    const docId = docIds[i];
-    const vec = vectors[i];
-    const similarity = cosineSimilarity(queryEmbedding, vec);
-    results.push({ docId, score: similarity });
-  }
-
-  return results.sort((a, b) => b.score - a.score).slice(0, maxResults);
-}
-
-// ============================================================================
-// Query Embedding (Pseudo-query from keywords)
+// Helper: Compute pseudo-query embedding from keyword results
 // ============================================================================
 
 /**
@@ -333,32 +130,28 @@ function computePseudoQueryEmbedding(
   keywordResults: Array<{ docId: string; score: number }>,
   docIds: string[],
   vectors: number[][],
-  dimension: number,
   topK: number = 3
 ): number[] {
-  const queryEmbedding: number[] = new Array(dimension).fill(0);
-
   const topDocs = keywordResults.slice(0, topK);
-  if (topDocs.length === 0) {
-    return queryEmbedding;
+  if (topDocs.length === 0 || vectors.length === 0) {
+    return [];
   }
 
+  // 收集 top 文档的向量
+  const topVectors: number[][] = [];
   for (const { docId } of topDocs) {
     const idx = docIds.indexOf(docId);
     if (idx !== -1) {
-      const vec = vectors[idx];
-      for (let i = 0; i < vec.length; i++) {
-        queryEmbedding[i] += vec[i];
-      }
+      topVectors.push(vectors[idx]);
     }
   }
 
-  // 平均
-  for (let i = 0; i < queryEmbedding.length; i++) {
-    queryEmbedding[i] /= topDocs.length;
+  if (topVectors.length === 0) {
+    return [];
   }
 
-  return queryEmbedding;
+  // 使用 averageVectors 计算平均向量
+  return averageVectors(topVectors);
 }
 
 // ============================================================================
@@ -381,6 +174,7 @@ function hybridSearch(query: string, topK: number): SearchResult[] {
 
   // 1. 关键词检索
   const keywordResults = keywordSearch(query, documents, {
+    minTermLength: 2,
     titleWeight: 3.0,
     contentWeight: 0.5,
     maxResults: topK * 2,
@@ -391,20 +185,19 @@ function hybridSearch(query: string, topK: number): SearchResult[] {
     keywordResults,
     embeddings.doc_ids,
     embeddings.vectors,
-    embeddings.dimension,
     3
   );
 
   // 3. 向量检索
-  const vectorResults = vectorSearch(
+  const vectorResults = vectorSearchUtil(
     queryEmbedding,
     embeddings.doc_ids,
     embeddings.vectors,
-    topK * 2
+    { maxResults: topK * 2, minSimilarity: 0.0 }
   );
 
   // 4. RRF 融合
-  const fusedResults = rrfFusion(vectorResults, keywordResults, 60);
+  const fusedResults = rrfFusionTwoWay(vectorResults, keywordResults, 60);
 
   // 5. 构建最终结果
   const results: SearchResult[] = [];

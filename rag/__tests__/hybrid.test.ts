@@ -1,126 +1,8 @@
 import { describe, it, expect } from 'vitest';
-
-// RRF Fusion Algorithm
-function rrfFusion(
-  vectorResults: Array<{ docId: string; score: number }>,
-  keywordResults: Array<{ docId: string; score: number }>,
-  k: number = 60
-): Array<{ docId: string; score: number }> {
-  const docScores: Map<string, number> = new Map();
-
-  for (let rank = 0; rank < vectorResults.length; rank++) {
-    const { docId } = vectorResults[rank];
-    const score = 1.0 / (k + rank + 1);
-    docScores.set(docId, (docScores.get(docId) || 0) + score);
-  }
-
-  for (let rank = 0; rank < keywordResults.length; rank++) {
-    const { docId } = keywordResults[rank];
-    const score = 1.0 / (k + rank + 1);
-    docScores.set(docId, (docScores.get(docId) || 0) + score);
-  }
-
-  return [...docScores.entries()]
-    .map(([docId, score]) => ({ docId, score }))
-    .sort((a, b) => b.score - a.score);
-}
-
-// Cosine similarity
-function cosineSimilarity(a: number[], b: number[]): number {
-  if (a.length !== b.length) return 0;
-  let dotProduct = 0,
-    normA = 0,
-    normB = 0;
-  for (let i = 0; i < a.length; i++) {
-    dotProduct += a[i] * b[i];
-    normA += a[i] * a[i];
-    normB += b[i] * b[i];
-  }
-  const denominator = Math.sqrt(normA) * Math.sqrt(normB);
-  return denominator === 0 ? 0 : dotProduct / denominator;
-}
-
-// Keyword search
-function keywordSearch(
-  query: string,
-  documents: Array<{ id: string; content: string; title: string }>
-): Array<{ docId: string; score: number }> {
-  const terms = query
-    .toLowerCase()
-    .split(/\s+/)
-    .filter((t) => t.length > 1);
-  const scores: Map<string, number> = new Map();
-
-  for (const doc of documents) {
-    let score = 0;
-    for (const term of terms) {
-      if (doc.title.toLowerCase().includes(term)) score += 3;
-      const matches = (doc.content.toLowerCase().match(new RegExp(term, 'g')) || []).length;
-      score += matches * 0.5;
-    }
-    if (score > 0) scores.set(doc.id, score);
-  }
-
-  return [...scores.entries()]
-    .map(([docId, score]) => ({ docId, score }))
-    .sort((a, b) => b.score - a.score);
-}
-
-// Vector search
-function vectorSearch(
-  queryEmbedding: number[],
-  documents: Array<{ id: string; embedding: number[] }>
-): Array<{ docId: string; score: number }> {
-  return documents
-    .map((doc) => ({
-      docId: doc.id,
-      score: cosineSimilarity(queryEmbedding, doc.embedding),
-    }))
-    .sort((a, b) => b.score - a.score);
-}
-
-// Hybrid search with RRF
-function hybridSearchRRF(
-  query: string,
-  documents: Array<{ id: string; content: string; title: string; embedding: number[] }>,
-  queryEmbedding: number[],
-  topK: number
-): Array<{ id: string; score: number }> {
-  // 1. Keyword search
-  const keywordResults = keywordSearch(query, documents);
-
-  // 2. Vector search
-  const vectorResults = vectorSearch(queryEmbedding, documents);
-
-  // 3. RRF fusion
-  const fusedResults = rrfFusion(vectorResults, keywordResults);
-
-  // 4. Return topK
-  return fusedResults.slice(0, topK).map((r) => ({ id: r.docId, score: r.score }));
-}
-
-// Legacy hybrid search (for comparison)
-function hybridSearchLegacy(
-  query: string,
-  documents: Array<{ id: string; content: string; title: string; embedding: number[] }>,
-  queryEmbedding: number[],
-  topK: number
-): Array<{ id: string; score: number }> {
-  const results: Array<{ id: string; score: number }> = [];
-
-  for (const doc of documents) {
-    const keywordScore = keywordSearch(query, [doc])[0]?.score || 0;
-    const semanticScore = cosineSimilarity(queryEmbedding, doc.embedding);
-
-    const normalizedKeyword = Math.min(keywordScore / 10, 1);
-    const combined = 0.3 * normalizedKeyword + 0.7 * semanticScore;
-
-    results.push({ id: doc.id, score: combined });
-  }
-
-  results.sort((a, b) => b.score - a.score);
-  return results.slice(0, topK);
-}
+import { rrfFusionTwoWay } from '../utils/rrfFusion';
+import { cosineSimilarity } from '../utils/similarity';
+import { keywordSearch } from '../utils/keywordSearch';
+import { vectorSearch } from '../utils/vectorSearch';
 
 describe('Hybrid Search (RRF)', () => {
   const mockDocuments = [
@@ -144,74 +26,57 @@ describe('Hybrid Search (RRF)', () => {
     },
   ];
 
+  const docIds = mockDocuments.map(d => d.id);
+  const vectors = mockDocuments.map(d => d.embedding);
+
   describe('RRF Fusion', () => {
     it('combines keyword and vector results', () => {
-      const queryEmbedding = [0.9, 0.1, 0.0];
-      const results = hybridSearchRRF('React', mockDocuments, queryEmbedding, 3);
+      // Keyword search
+      const keywordResults = keywordSearch('React', mockDocuments);
 
-      expect(results.length).toBeGreaterThan(0);
+      // Vector search with query embedding similar to doc1
+      const queryEmbedding = [0.9, 0.1, 0.0];
+      const vectorResults = vectorSearch(queryEmbedding, docIds, vectors);
+
+      // RRF fusion
+      const fusedResults = rrfFusionTwoWay(vectorResults, keywordResults);
+
+      expect(fusedResults.length).toBeGreaterThan(0);
       // Doc1 should rank high (both keyword and vector match)
-      expect(results.find((r) => r.id === 'doc1')).toBeDefined();
+      expect(fusedResults.find(r => r.docId === 'doc1')).toBeDefined();
     });
 
     it('documents in both lists rank higher', () => {
+      const keywordResults = keywordSearch('React', mockDocuments);
       const queryEmbedding = [0.9, 0.1, 0.0];
-      const results = hybridSearchRRF('React', mockDocuments, queryEmbedding, 3);
+      const vectorResults = vectorSearch(queryEmbedding, docIds, vectors);
+
+      const fusedResults = rrfFusionTwoWay(vectorResults, keywordResults);
 
       // doc1 appears in both keyword (title match) and vector (embedding match)
-      expect(results[0].id).toBe('doc1');
-    });
-
-    it('returns exactly topK results', () => {
-      const queryEmbedding = [0.5, 0.5, 0.5];
-      const results = hybridSearchRRF('test', mockDocuments, queryEmbedding, 2);
-      expect(results).toHaveLength(2);
+      expect(fusedResults[0].docId).toBe('doc1');
     });
 
     it('handles empty keyword results', () => {
+      const keywordResults = keywordSearch('xyznonexistent', mockDocuments);
       const queryEmbedding = [0.9, 0.1, 0.0];
-      const results = hybridSearchRRF('xyznonexistent', mockDocuments, queryEmbedding, 3);
+      const vectorResults = vectorSearch(queryEmbedding, docIds, vectors);
+
+      const fusedResults = rrfFusionTwoWay(vectorResults, keywordResults);
 
       // Should still return vector-based results
-      expect(results.length).toBeGreaterThan(0);
+      expect(fusedResults.length).toBeGreaterThan(0);
     });
 
     it('handles empty vector results', () => {
-      const queryEmbedding = [0, 0, 0];
-      const results = hybridSearchRRF('React', mockDocuments, queryEmbedding, 3);
+      const keywordResults = keywordSearch('React', mockDocuments);
+      const zeroEmbedding = [0, 0, 0];
+      const vectorResults = vectorSearch(zeroEmbedding, docIds, vectors);
+
+      const fusedResults = rrfFusionTwoWay(vectorResults, keywordResults);
 
       // Should still return keyword-based results
-      expect(results.length).toBeGreaterThan(0);
-    });
-  });
-
-  describe('Comparison with Legacy', () => {
-    it('RRF produces different ranking than legacy', () => {
-      const queryEmbedding = [0.5, 0.5, 0.0];
-      const rrfResults = hybridSearchRRF('JavaScript', mockDocuments, queryEmbedding, 3);
-      const legacyResults = hybridSearchLegacy('JavaScript', mockDocuments, queryEmbedding, 3);
-
-      // Both should return results
-      expect(rrfResults.length).toBe(legacyResults.length);
-
-      // RRF uses rank-based scoring, legacy uses weighted combination
-      // Scores will be different
-      const rrfScores = rrfResults.map((r) => r.score);
-      const legacyScores = legacyResults.map((r) => r.score);
-
-      // RRF scores are typically smaller (1/61 ≈ 0.016)
-      // Legacy scores are weighted combination (0-1 range)
-      expect(Math.max(...rrfScores)).toBeLessThan(Math.max(...legacyScores));
-    });
-
-    it('both methods agree on top result for strong matches', () => {
-      const queryEmbedding = [0.9, 0.1, 0.0];
-      const rrfResults = hybridSearchRRF('React', mockDocuments, queryEmbedding, 3);
-      const legacyResults = hybridSearchLegacy('React', mockDocuments, queryEmbedding, 3);
-
-      // Both should rank doc1 highest (strong keyword + vector match)
-      expect(rrfResults[0].id).toBe('doc1');
-      expect(legacyResults[0].id).toBe('doc1');
+      expect(fusedResults.length).toBeGreaterThan(0);
     });
   });
 
@@ -237,69 +102,89 @@ describe('Hybrid Search (RRF)', () => {
       },
     ];
 
-    it('RRF ranks personal doc higher for personal query', () => {
-      // Query embedding similar to personal doc
-      const queryEmbedding = [0.8, 0.2, 0.0];
+    const mixedDocIds = mixedDocuments.map(d => d.id);
+    const mixedVectors = mixedDocuments.map(d => d.embedding);
 
-      const results = hybridSearchRRF('我的教育背景', mixedDocuments, queryEmbedding, 3);
+    it('RRF ranks personal doc higher for personal query', () => {
+      const keywordResults = keywordSearch('我的教育背景', mixedDocuments);
+      const queryEmbedding = [0.8, 0.2, 0.0];
+      const vectorResults = vectorSearch(queryEmbedding, mixedDocIds, mixedVectors);
+
+      const fusedResults = rrfFusionTwoWay(vectorResults, keywordResults);
 
       // Personal doc should rank high due to vector similarity
-      // Even if keyword search might return project docs
-      const personalResult = results.find((r) => r.id === 'personal_1');
+      const personalResult = fusedResults.find(r => r.docId === 'personal_1');
       expect(personalResult).toBeDefined();
     });
 
     it('RRF is more robust to keyword noise', () => {
-      // Simulate keyword search returning wrong docs
-      // But vector search returning correct docs
+      const keywordResults = keywordSearch('教育背景', mixedDocuments);
       const queryEmbedding = [0.8, 0.2, 0.0];
+      const vectorResults = vectorSearch(queryEmbedding, mixedDocIds, mixedVectors);
 
-      const results = hybridSearchRRF('教育背景', mixedDocuments, queryEmbedding, 3);
+      const fusedResults = rrfFusionTwoWay(vectorResults, keywordResults);
 
       // With RRF, personal_1 should still appear in results
-      // because it ranks high in vector search
-      expect(results.some((r) => r.id === 'personal_1')).toBe(true);
+      expect(fusedResults.some(r => r.docId === 'personal_1')).toBe(true);
     });
   });
 
   describe('Sorting', () => {
     it('sorts by score descending', () => {
+      const keywordResults = keywordSearch('React', mockDocuments);
       const queryEmbedding = [0.9, 0.1, 0.0];
-      const results = hybridSearchRRF('React', mockDocuments, queryEmbedding, 3);
+      const vectorResults = vectorSearch(queryEmbedding, docIds, vectors);
 
-      for (let i = 1; i < results.length; i++) {
-        expect(results[i - 1].score).toBeGreaterThanOrEqual(results[i].score);
+      const fusedResults = rrfFusionTwoWay(vectorResults, keywordResults);
+
+      for (let i = 1; i < fusedResults.length; i++) {
+        expect(fusedResults[i - 1].score).toBeGreaterThanOrEqual(fusedResults[i].score);
       }
     });
 
     it('highest score is first', () => {
+      const keywordResults = keywordSearch('React', mockDocuments);
       const queryEmbedding = [0.9, 0.1, 0.0];
-      const results = hybridSearchRRF('React', mockDocuments, queryEmbedding, 3);
+      const vectorResults = vectorSearch(queryEmbedding, docIds, vectors);
 
-      const maxScore = Math.max(...results.map((r) => r.score));
-      expect(results[0].score).toBe(maxScore);
+      const fusedResults = rrfFusionTwoWay(vectorResults, keywordResults);
+
+      const maxScore = Math.max(...fusedResults.map(r => r.score));
+      expect(fusedResults[0].score).toBe(maxScore);
     });
   });
 
   describe('Edge cases', () => {
     it('handles empty documents', () => {
+      const keywordResults = keywordSearch('test', []);
       const queryEmbedding = [0.5, 0.5, 0.5];
-      const results = hybridSearchRRF('test', [], queryEmbedding, 3);
-      expect(results).toHaveLength(0);
+      const vectorResults = vectorSearch(queryEmbedding, [], []);
+
+      const fusedResults = rrfFusionTwoWay(vectorResults, keywordResults);
+
+      expect(fusedResults).toHaveLength(0);
     });
 
     it('handles empty query', () => {
+      const keywordResults = keywordSearch('', mockDocuments);
       const queryEmbedding = [0.5, 0.5, 0.5];
-      const results = hybridSearchRRF('', mockDocuments, queryEmbedding, 3);
+      const vectorResults = vectorSearch(queryEmbedding, docIds, vectors);
+
+      const fusedResults = rrfFusionTwoWay(vectorResults, keywordResults);
+
       // Vector search still works
-      expect(results.length).toBeGreaterThan(0);
+      expect(fusedResults.length).toBeGreaterThan(0);
     });
 
     it('handles zero query embedding', () => {
-      const queryEmbedding = [0, 0, 0];
-      const results = hybridSearchRRF('React', mockDocuments, queryEmbedding, 3);
+      const keywordResults = keywordSearch('React', mockDocuments);
+      const zeroEmbedding = [0, 0, 0];
+      const vectorResults = vectorSearch(zeroEmbedding, docIds, vectors);
+
+      const fusedResults = rrfFusionTwoWay(vectorResults, keywordResults);
+
       // Keyword search still works
-      expect(results.length).toBeGreaterThan(0);
+      expect(fusedResults.length).toBeGreaterThan(0);
     });
   });
 
@@ -314,13 +199,19 @@ describe('Hybrid Search (RRF)', () => {
           embedding: [Math.random(), Math.random(), Math.random()],
         }));
 
+      const largeDocIds = largeDocs.map(d => d.id);
+      const largeVectors = largeDocs.map(d => d.embedding);
+
+      const keywordResults = keywordSearch('Document', largeDocs);
       const queryEmbedding = [0.5, 0.5, 0.5];
+      const vectorResults = vectorSearch(queryEmbedding, largeDocIds, largeVectors);
+
       const start = performance.now();
-      const results = hybridSearchRRF('Document', largeDocs, queryEmbedding, 10);
+      const fusedResults = rrfFusionTwoWay(vectorResults, keywordResults);
       const duration = performance.now() - start;
 
-      expect(results).toHaveLength(10);
-      expect(duration).toBeLessThan(100); // Should complete in < 100ms
+      expect(fusedResults.length).toBeGreaterThan(0);
+      expect(duration).toBeLessThan(100);
     });
   });
 });

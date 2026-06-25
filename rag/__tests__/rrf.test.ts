@@ -1,37 +1,10 @@
 import { describe, it, expect } from 'vitest';
-
-// RRF Fusion Algorithm Implementation (mirrors rrfFusion.ts)
-function rrfFusion(
-  vectorResults: Array<{ docId: string; score: number }>,
-  keywordResults: Array<{ docId: string; score: number }>,
-  k: number = 60
-): Array<{ docId: string; score: number }> {
-  const docScores: Map<string, number> = new Map();
-
-  // Process vector results
-  for (let rank = 0; rank < vectorResults.length; rank++) {
-    const { docId } = vectorResults[rank];
-    const score = 1.0 / (k + rank + 1);
-    docScores.set(docId, (docScores.get(docId) || 0) + score);
-  }
-
-  // Process keyword results
-  for (let rank = 0; rank < keywordResults.length; rank++) {
-    const { docId } = keywordResults[rank];
-    const score = 1.0 / (k + rank + 1);
-    docScores.set(docId, (docScores.get(docId) || 0) + score);
-  }
-
-  // Sort by score descending
-  return [...docScores.entries()]
-    .map(([docId, score]) => ({ docId, score }))
-    .sort((a, b) => b.score - a.score);
-}
+import { rrfFusionTwoWay, reciprocalRankFusion } from '../utils/rrfFusion';
 
 describe('RRF Fusion Algorithm', () => {
   describe('Basic functionality', () => {
     it('returns empty array for empty inputs', () => {
-      const result = rrfFusion([], []);
+      const result = rrfFusionTwoWay([], []);
       expect(result).toEqual([]);
     });
 
@@ -40,7 +13,7 @@ describe('RRF Fusion Algorithm', () => {
         { docId: 'doc1', score: 0.9 },
         { docId: 'doc2', score: 0.8 },
       ];
-      const result = rrfFusion(vectorResults, []);
+      const result = rrfFusionTwoWay(vectorResults, []);
 
       expect(result).toHaveLength(2);
       expect(result[0].docId).toBe('doc1');
@@ -52,7 +25,7 @@ describe('RRF Fusion Algorithm', () => {
         { docId: 'doc1', score: 10 },
         { docId: 'doc2', score: 5 },
       ];
-      const result = rrfFusion([], keywordResults);
+      const result = rrfFusionTwoWay([], keywordResults);
 
       expect(result).toHaveLength(2);
       expect(result[0].docId).toBe('doc1');
@@ -66,7 +39,7 @@ describe('RRF Fusion Algorithm', () => {
         { docId: 'doc2', score: 0.8 },
         { docId: 'doc3', score: 0.7 },
       ];
-      const result = rrfFusion(vectorResults, []);
+      const result = rrfFusionTwoWay(vectorResults, []);
 
       expect(result[0].score).toBeGreaterThan(result[1].score);
       expect(result[1].score).toBeGreaterThan(result[2].score);
@@ -78,7 +51,7 @@ describe('RRF Fusion Algorithm', () => {
         { docId: 'doc2', score: 0.8 },
         { docId: 'doc3', score: 0.7 },
       ];
-      const result = rrfFusion(results, []);
+      const result = rrfFusionTwoWay(results, []);
 
       // Rank 0: 1/(60+0+1) = 1/61 ≈ 0.0164
       expect(result[0].score).toBeCloseTo(1 / 61, 5);
@@ -99,9 +72,9 @@ describe('RRF Fusion Algorithm', () => {
         { docId: 'doc2', score: 10 },
         { docId: 'doc3', score: 5 },
       ];
-      const result = rrfFusion(vectorResults, keywordResults);
+      const result = rrfFusionTwoWay(vectorResults, keywordResults);
 
-      // doc2 appears in both: 1/61 (rank 1 in vector) + 1/61 (rank 0 in keyword)
+      // doc2 appears in both: 1/62 (rank 1 in vector) + 1/61 (rank 0 in keyword)
       const doc2Result = result.find((r) => r.docId === 'doc2');
       expect(doc2Result?.score).toBeCloseTo(1 / 62 + 1 / 61, 5);
     });
@@ -115,7 +88,7 @@ describe('RRF Fusion Algorithm', () => {
         { docId: 'doc2', score: 10 },
         { docId: 'doc3', score: 5 },
       ];
-      const result = rrfFusion(vectorResults, keywordResults);
+      const result = rrfFusionTwoWay(vectorResults, keywordResults);
 
       // doc3 appears in both, should rank highest
       expect(result[0].docId).toBe('doc3');
@@ -130,7 +103,7 @@ describe('RRF Fusion Algorithm', () => {
         { docId: 'doc3', score: 10 },
         { docId: 'doc4', score: 5 },
       ];
-      const result = rrfFusion(vectorResults, keywordResults);
+      const result = rrfFusionTwoWay(vectorResults, keywordResults);
 
       expect(result).toHaveLength(4);
       const docIds = result.map((r) => r.docId);
@@ -148,8 +121,8 @@ describe('RRF Fusion Algorithm', () => {
         { docId: 'doc2', score: 0.8 },
       ];
 
-      const resultK10 = rrfFusion(results, [], 10);
-      const resultK60 = rrfFusion(results, [], 60);
+      const resultK10 = rrfFusionTwoWay(results, [], 10);
+      const resultK60 = rrfFusionTwoWay(results, [], 60);
 
       // With k=10, rank 0 score = 1/11 ≈ 0.091
       // With k=60, rank 0 score = 1/61 ≈ 0.016
@@ -158,8 +131,8 @@ describe('RRF Fusion Algorithm', () => {
 
     it('k=60 is the default value', () => {
       const results = [{ docId: 'doc1', score: 0.9 }];
-      const resultDefault = rrfFusion(results, []);
-      const resultK60 = rrfFusion(results, [], 60);
+      const resultDefault = rrfFusionTwoWay(results, []);
+      const resultK60 = rrfFusionTwoWay(results, [], 60);
 
       expect(resultDefault[0].score).toBe(resultK60[0].score);
     });
@@ -176,8 +149,8 @@ describe('RRF Fusion Algorithm', () => {
         { docId: 'doc2', score: 0.02 },
       ];
 
-      const resultHigh = rrfFusion(highScores, []);
-      const resultLow = rrfFusion(lowScores, []);
+      const resultHigh = rrfFusionTwoWay(highScores, []);
+      const resultLow = rrfFusionTwoWay(lowScores, []);
 
       // Same rank positions = same RRF scores
       expect(resultHigh[0].score).toBe(resultLow[0].score);
@@ -189,7 +162,7 @@ describe('RRF Fusion Algorithm', () => {
         { docId: 'doc1', score: 100 },
         { docId: 'doc2', score: 1 },
       ];
-      const result = rrfFusion(results, []);
+      const result = rrfFusionTwoWay(results, []);
 
       // doc1 ranks first regardless of score magnitude
       expect(result[0].docId).toBe('doc1');
@@ -203,7 +176,7 @@ describe('RRF Fusion Algorithm', () => {
         { docId: 'doc1', score: 0.9 },
         { docId: 'doc1', score: 0.8 }, // Duplicate
       ];
-      const result = rrfFusion(results, []);
+      const result = rrfFusionTwoWay(results, []);
 
       // Should only appear once, with combined score
       expect(result).toHaveLength(1);
@@ -215,7 +188,7 @@ describe('RRF Fusion Algorithm', () => {
       const largeResults = Array(1000)
         .fill(null)
         .map((_, i) => ({ docId: `doc${i}`, score: Math.random() }));
-      const result = rrfFusion(largeResults, []);
+      const result = rrfFusionTwoWay(largeResults, []);
 
       expect(result).toHaveLength(1000);
       // First result should have highest score
@@ -224,7 +197,7 @@ describe('RRF Fusion Algorithm', () => {
 
     it('handles very large k values', () => {
       const results = [{ docId: 'doc1', score: 0.9 }];
-      const result = rrfFusion(results, [], 1000000);
+      const result = rrfFusionTwoWay(results, [], 1000000);
 
       expect(result[0].score).toBeCloseTo(1 / 1000001, 8);
     });
@@ -245,7 +218,7 @@ describe('RRF Fusion Algorithm', () => {
         { docId: 'project_1', score: 0.3 },
       ];
 
-      const result = rrfFusion(vectorResults, keywordResults);
+      const result = rrfFusionTwoWay(vectorResults, keywordResults);
 
       // personal_1 appears in both, should rank highest
       expect(result[0].docId).toBe('personal_1');
@@ -261,7 +234,7 @@ describe('RRF Fusion Algorithm', () => {
         { docId: 'project_codecraft', score: 0.9 },
       ];
 
-      const result = rrfFusion(vectorResults, keywordResults);
+      const result = rrfFusionTwoWay(vectorResults, keywordResults);
 
       // Both docs appear in both lists, mini-claude ranks higher in both
       expect(result[0].docId).toBe('project_mini-claude');
@@ -278,7 +251,7 @@ describe('RRF Fusion Algorithm', () => {
         .map((_, i) => ({ docId: `kw_${i}`, score: Math.random() }));
 
       const start = performance.now();
-      const result = rrfFusion(vectorResults, keywordResults);
+      const result = rrfFusionTwoWay(vectorResults, keywordResults);
       const duration = performance.now() - start;
 
       expect(result.length).toBe(1000);

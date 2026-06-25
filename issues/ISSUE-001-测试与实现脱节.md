@@ -1,5 +1,5 @@
 # 测试与实现脱节 — 13/14个测试文件是假的
-> 创建时间: 2026-06-25 | 状态: 🔴未解决
+> 创建时间: 2026-06-25 | 状态: 🟡修复中
 
 ## 问题描述
 
@@ -37,34 +37,14 @@ AI 生成测试时采用了"自包含"模式——每个测试文件内部实现
 
 **步骤**:
 
-1. 修改 `keyword.test.ts`:
-```typescript
-// 删除自定义的 computeQueryRelevance 函数
-// 改为导入
-import { computeQueryRelevance } from '../utils/keywordSearch';
-```
+1. ✅ 修改 `keyword.test.ts` — 导入 `keywordSearch`, `tokenizeChinese`, `computeTermScore`, `escapeRegExp`
+2. ✅ 修改 `vector.test.ts` — 导入 `cosineSimilarity`
+3. ✅ 修改 `rrf.test.ts` — 导入 `rrfFusionTwoWay`, `reciprocalRankFusion`
+4. ✅ 修改 `hybrid.test.ts` — 导入 `rrfFusionTwoWay`, `cosineSimilarity`, `keywordSearch`, `vectorSearch`
+5. ⏳ 待修复: `cache.test.ts`, `security.test.ts`, `api.test.ts`, `personal-retrieval.test.ts`, `e2e.test.ts`, `performance.test.ts`
 
-2. 修改 `vector.test.ts`:
-```typescript
-import { cosineSimilarity } from '../utils/similarity';
-```
-
-3. 修改 `rrf.test.ts`:
-```typescript
-import { rrfFusion } from '../utils/rrfFusion';
-```
-
-4. 修改 `cache.test.ts`:
-```typescript
-// 如果 QueryCache 在 rag/utils/ 中有实现，导入它
-// 否则需要先将 route.ts 中的缓存实现提取到 rag/utils/
-```
-
-5. 修改 `security.test.ts`、`api.test.ts`、`hybrid.test.ts`、`personal-retrieval.test.ts`、`e2e.test.ts`、`performance.test.ts` 类似处理。
-
-6. 运行测试验证：`npm test`
-
-**注意**: 某些测试中定义的函数（如 `sanitizeQuery`、`validateRequest`）在 `rag/utils/` 中可能没有对应实现，需要先确认或创建这些函数。
+**已修复测试**: 4个文件，68个测试用例全部通过
+**待修复测试**: 6个文件（这些文件测试的是API路由逻辑或辅助功能，rag/utils中无对应实现）
 
 ## 相关文件
 
