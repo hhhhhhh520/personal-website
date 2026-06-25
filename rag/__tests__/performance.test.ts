@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest'
+import { cosineSimilarity } from '../utils/similarity'
 
 // Performance benchmarking utilities
 
@@ -28,18 +29,6 @@ function benchmark(
     avgDuration: duration / iterations,
     opsPerSecond: (iterations / duration) * 1000,
   }
-}
-
-// Vector operations for benchmarking
-function cosineSimilarity(a: number[], b: number[]): number {
-  let dotProduct = 0, normA = 0, normB = 0
-  for (let i = 0; i < a.length; i++) {
-    dotProduct += a[i] * b[i]
-    normA += a[i] * a[i]
-    normB += b[i] * b[i]
-  }
-  const denominator = Math.sqrt(normA) * Math.sqrt(normB)
-  return denominator === 0 ? 0 : dotProduct / denominator
 }
 
 function generateRandomVector(dim: number): number[] {

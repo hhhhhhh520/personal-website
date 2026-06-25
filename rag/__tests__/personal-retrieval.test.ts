@@ -1,31 +1,7 @@
 import { describe, it, expect } from 'vitest';
+import { rrfFusionTwoWay } from '../utils/rrfFusion';
 
-// RRF Fusion Algorithm
-function rrfFusion(
-  vectorResults: Array<{ docId: string; score: number }>,
-  keywordResults: Array<{ docId: string; score: number }>,
-  k: number = 60
-): Array<{ docId: string; score: number }> {
-  const docScores: Map<string, number> = new Map();
-
-  for (let rank = 0; rank < vectorResults.length; rank++) {
-    const { docId } = vectorResults[rank];
-    const score = 1.0 / (k + rank + 1);
-    docScores.set(docId, (docScores.get(docId) || 0) + score);
-  }
-
-  for (let rank = 0; rank < keywordResults.length; rank++) {
-    const { docId } = keywordResults[rank];
-    const score = 1.0 / (k + rank + 1);
-    docScores.set(docId, (docScores.get(docId) || 0) + score);
-  }
-
-  return [...docScores.entries()]
-    .map(([docId, score]) => ({ docId, score }))
-    .sort((a, b) => b.score - a.score);
-}
-
-// Legacy weighted combination
+// Legacy weighted combination (for comparison testing)
 function legacyFusion(
   vectorResults: Array<{ docId: string; score: number }>,
   keywordResults: Array<{ docId: string; score: number }>,
@@ -99,7 +75,7 @@ describe('Personal Info Retrieval Precision', () => {
         { docId: 'project_codecraft_overview', score: 0.2 },
       ];
 
-      const rrfResults = rrfFusion(vectorResults, keywordResults);
+      const rrfResults = rrfFusionTwoWay(vectorResults, keywordResults);
 
       // personal_main appears in both lists, should rank highest
       expect(rrfResults[0].docId).toBe('personal_main');
@@ -141,7 +117,7 @@ describe('Personal Info Retrieval Precision', () => {
         { docId: 'project_mini-claude_overview', score: 0.3 },
       ];
 
-      const rrfResults = rrfFusion(vectorResults, keywordResults);
+      const rrfResults = rrfFusionTwoWay(vectorResults, keywordResults);
       const legacyResults = legacyFusion(
         vectorResults,
         keywordResults,
@@ -176,7 +152,7 @@ describe('Personal Info Retrieval Precision', () => {
         { docId: 'personal_main', score: 0.1 },
       ];
 
-      const rrfResults = rrfFusion(vectorResults, keywordResults);
+      const rrfResults = rrfFusionTwoWay(vectorResults, keywordResults);
 
       // project_mini-claude_technical appears in both, ranks highest
       expect(rrfResults[0].docId).toBe('project_mini-claude_technical');
@@ -199,7 +175,7 @@ describe('Personal Info Retrieval Precision', () => {
         { docId: 'project_mini-claude_technical', score: 0.4 },
       ];
 
-      const rrfResults = rrfFusion(vectorResults, keywordResults);
+      const rrfResults = rrfFusionTwoWay(vectorResults, keywordResults);
 
       // personal_main appears in both, should rank high
       const personalRank = rrfResults.findIndex(
@@ -217,7 +193,7 @@ describe('Personal Info Retrieval Precision', () => {
         { docId: 'project_mini-claude_overview', score: 0.3 },
       ];
 
-      const rrfResults = rrfFusion(vectorResults, keywordResults);
+      const rrfResults = rrfFusionTwoWay(vectorResults, keywordResults);
 
       expect(rrfResults[0].docId).toBe('personal_main');
       expect(rrfResults[0].score).toBeCloseTo(1 / 61, 5);
@@ -232,7 +208,7 @@ describe('Personal Info Retrieval Precision', () => {
       ];
       const vectorResults: Array<{ docId: string; score: number }> = [];
 
-      const rrfResults = rrfFusion(vectorResults, keywordResults);
+      const rrfResults = rrfFusionTwoWay(vectorResults, keywordResults);
 
       expect(rrfResults[0].docId).toBe('personal_main');
     });
@@ -245,7 +221,7 @@ describe('Personal Info Retrieval Precision', () => {
         { docId: 'doc2', score: 0.01 },
       ];
 
-      const rrfResults = rrfFusion(results, []);
+      const rrfResults = rrfFusionTwoWay(results, []);
 
       // Both get same RRF score contribution at same rank
       // Rank 0: 1/61, Rank 1: 1/62
@@ -287,7 +263,7 @@ describe('Personal Info Retrieval Precision', () => {
         { docId: 'project_codecraft_overview', score: 0.15 },
       ];
 
-      const rrfResults = rrfFusion(vectorResults, keywordResults, 60);
+      const rrfResults = rrfFusionTwoWay(vectorResults, keywordResults, 60);
 
       // personal_main appears in both lists
       // Keyword rank 1: 1/62

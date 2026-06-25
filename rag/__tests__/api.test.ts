@@ -1,49 +1,5 @@
 import { describe, it, expect } from 'vitest'
-
-// API validation logic for testing
-interface RAGRequest {
-  query: string
-  topK?: number
-}
-
-function validateRequest(body: unknown): { valid: true; data: RAGRequest } | { valid: false; error: string; status: number } {
-  if (!body || typeof body !== 'object') {
-    return { valid: false, error: 'Request body is required', status: 400 }
-  }
-
-  const { query, topK } = body as RAGRequest
-
-  // Validate query
-  if (!query || typeof query !== 'string') {
-    return { valid: false, error: 'Query is required and must be a string', status: 400 }
-  }
-
-  const trimmedQuery = query.trim()
-  if (trimmedQuery.length === 0) {
-    return { valid: false, error: 'Query cannot be empty', status: 400 }
-  }
-
-  // Validate topK
-  if (topK !== undefined) {
-    if (typeof topK !== 'number' || !Number.isInteger(topK)) {
-      return { valid: false, error: 'topK must be an integer', status: 400 }
-    }
-    if (topK < 1) {
-      return { valid: false, error: 'topK must be at least 1', status: 400 }
-    }
-    if (topK > 10) {
-      return { valid: false, error: 'topK cannot exceed 10', status: 400 }
-    }
-  }
-
-  return {
-    valid: true,
-    data: {
-      query: trimmedQuery,
-      topK: topK ? Math.max(1, Math.min(topK, 10)) : 3,
-    },
-  }
-}
+import { validateRequest, createResponse } from '../utils/validation'
 
 describe('RAG API Validation', () => {
   describe('Query validation', () => {
@@ -177,30 +133,8 @@ describe('RAG API Validation', () => {
 })
 
 describe('RAG API Response Format', () => {
-  interface SearchResult {
-    content: string
-    score: number
-    source: string
-    sourceId: string
-    title: string
-  }
-
-  interface RAGResponse {
-    results: SearchResult[]
-    query: string
-    duration: number
-  }
-
-  function createResponse(results: SearchResult[], query: string, duration: number): RAGResponse {
-    return {
-      results,
-      query,
-      duration,
-    }
-  }
-
   it('creates valid response structure', () => {
-    const mockResults: SearchResult[] = [
+    const mockResults = [
       { content: 'Test content', score: 0.9, source: 'project', sourceId: 'p1', title: 'Test' },
     ]
     const response = createResponse(mockResults, 'test query', 50)
@@ -214,7 +148,7 @@ describe('RAG API Response Format', () => {
   })
 
   it('includes all required fields in results', () => {
-    const mockResults: SearchResult[] = [
+    const mockResults = [
       { content: 'Test', score: 0.9, source: 'test', sourceId: '1', title: 'Title' },
     ]
     const response = createResponse(mockResults, 'test', 10)
@@ -228,7 +162,7 @@ describe('RAG API Response Format', () => {
   })
 
   it('score is a valid number', () => {
-    const mockResults: SearchResult[] = [
+    const mockResults = [
       { content: 'Test', score: 0.123, source: 'test', sourceId: '1', title: 'Title' },
     ]
     const response = createResponse(mockResults, 'test', 10)

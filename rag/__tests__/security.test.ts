@@ -1,43 +1,5 @@
 import { describe, it, expect } from 'vitest'
-
-// Security validation functions for testing
-function sanitizeQuery(query: string): string {
-  // Remove potential injection patterns
-  return query
-    .replace(/<[^>]*>/g, '') // Remove HTML tags
-    .replace(/[<>]/g, '') // Remove remaining angle brackets
-    .trim()
-}
-
-function validateQueryLength(query: string, maxLength: number = 500): { valid: boolean; error?: string } {
-  if (query.length > maxLength) {
-    return { valid: false, error: `Query exceeds maximum length of ${maxLength} characters` }
-  }
-  return { valid: true }
-}
-
-function checkSqlInjection(query: string): boolean {
-  const sqlPatterns = [
-    /(\bSELECT\b|\bINSERT\b|\bUPDATE\b|\bDELETE\b|\bDROP\b)/i,
-    /(--|\#|\/\*|\*\/)/,
-    /(\bOR\b|\bAND\b)\s+\d+\s*=\s*\d+/i,
-    /('|")\s*(OR|AND)\s*('|")/i,
-  ]
-
-  return sqlPatterns.some(pattern => pattern.test(query))
-}
-
-function checkXss(query: string): boolean {
-  const xssPatterns = [
-    /<script\b/i,
-    /javascript:/i,
-    /on\w+\s*=/i,
-    /<iframe\b/i,
-    /<img\b[^>]*onerror/i,
-  ]
-
-  return xssPatterns.some(pattern => pattern.test(query))
-}
+import { sanitizeQuery, validateQueryLength, checkSqlInjection, checkXss } from '../utils/security'
 
 describe('Security Validation', () => {
   describe('Query length validation', () => {

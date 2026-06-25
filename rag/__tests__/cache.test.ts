@@ -1,48 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-
-// Cache implementation for testing
-interface CacheEntry {
-  results: Array<{ content: string; score: number; source: string }>
-  timestamp: number
-}
-
-const CACHE_TTL = 5 * 60 * 1000 // 5 minutes
-
-class QueryCache {
-  private cache = new Map<string, CacheEntry>()
-
-  getCacheKey(query: string, topK: number): string {
-    return `${query.toLowerCase().trim()}::${topK}`
-  }
-
-  get(key: string): Array<{ content: string; score: number; source: string }> | null {
-    const entry = this.cache.get(key)
-    if (!entry) return null
-
-    const now = Date.now()
-    if (now - entry.timestamp > CACHE_TTL) {
-      this.cache.delete(key)
-      return null
-    }
-
-    return entry.results
-  }
-
-  set(key: string, results: Array<{ content: string; score: number; source: string }>): void {
-    this.cache.set(key, {
-      results,
-      timestamp: Date.now(),
-    })
-  }
-
-  clear(): void {
-    this.cache.clear()
-  }
-
-  size(): number {
-    return this.cache.size
-  }
-}
+import { QueryCache, DEFAULT_CACHE_TTL } from '../utils/cache'
 
 describe('Cache Mechanism', () => {
   let cache: QueryCache
@@ -83,8 +40,8 @@ describe('Cache Mechanism', () => {
 
   describe('Cache operations', () => {
     const mockResults = [
-      { content: 'Result 1', score: 0.9, source: 'test' },
-      { content: 'Result 2', score: 0.7, source: 'test' },
+      { content: 'Result 1', score: 0.9, source: 'test', sourceId: '1', title: 'Test 1' },
+      { content: 'Result 2', score: 0.7, source: 'test', sourceId: '2', title: 'Test 2' },
     ]
 
     it('returns null for non-existent key', () => {
@@ -118,7 +75,7 @@ describe('Cache Mechanism', () => {
 
   describe('TTL expiration', () => {
     const mockResults = [
-      { content: 'Result', score: 0.9, source: 'test' },
+      { content: 'Result', score: 0.9, source: 'test', sourceId: '1', title: 'Test' },
     ]
 
     it('returns results for fresh cache', () => {
@@ -127,15 +84,15 @@ describe('Cache Mechanism', () => {
       expect(cache.get(key)).toEqual(mockResults)
     })
 
-    it('returns null for expired cache', async () => {
+    it('returns null for expired cache', () => {
       // Manually set expired timestamp
       const key = 'test::3'
       cache.set(key, mockResults)
 
       // Simulate expiration by modifying timestamp
-      const entry = (cache as unknown as { cache: Map<string, CacheEntry> }).cache.get(key)
+      const entry = (cache as unknown as { cache: Map<string, { timestamp: number }> }).cache.get(key)
       if (entry) {
-        entry.timestamp = Date.now() - CACHE_TTL - 1000
+        entry.timestamp = Date.now() - DEFAULT_CACHE_TTL - 1000
       }
 
       expect(cache.get(key)).toBeNull()
@@ -143,13 +100,13 @@ describe('Cache Mechanism', () => {
     })
 
     it('TTL is 5 minutes', () => {
-      expect(CACHE_TTL).toBe(5 * 60 * 1000)
+      expect(DEFAULT_CACHE_TTL).toBe(5 * 60 * 1000)
     })
   })
 
   describe('Cache hit/miss scenarios', () => {
     const mockResults = [
-      { content: 'Result', score: 0.9, source: 'test' },
+      { content: 'Result', score: 0.9, source: 'test', sourceId: '1', title: 'Test' },
     ]
 
     it('cache hit for same query', () => {
@@ -177,7 +134,7 @@ describe('Cache Mechanism', () => {
 
   describe('Performance', () => {
     it('cache operations are fast', () => {
-      const mockResults = Array(10).fill({ content: 'Result', score: 0.9, source: 'test' })
+      const mockResults = Array(10).fill({ content: 'Result', score: 0.9, source: 'test', sourceId: '1', title: 'Test' })
 
       const start = performance.now()
       for (let i = 0; i < 1000; i++) {
@@ -196,7 +153,7 @@ describe('Cache Mechanism', () => {
     })
 
     it('handles large cache', () => {
-      const mockResults = [{ content: 'Result', score: 0.9, source: 'test' }]
+      const mockResults = [{ content: 'Result', score: 0.9, source: 'test', sourceId: '1', title: 'Test' }]
 
       for (let i = 0; i < 10000; i++) {
         cache.set(`key${i}`, mockResults)
