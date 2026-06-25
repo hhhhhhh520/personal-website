@@ -1,5 +1,5 @@
 # 个人网站项目进度
-> 创建时间: 2026-05-09 | 最后更新: 2026-05-23
+> 创建时间: 2026-05-09 | 最后更新: 2026-06-25
 
 ## 项目概述
 **项目地址**: D:\my project\web\personal-website | **技术选型**: Next.js 16 + TypeScript + Tailwind CSS v4 + Three.js + Framer Motion | **目标**: AI 应用开发者的个人作品集网站
@@ -102,6 +102,15 @@
 | AgentHub 平台 | IM 式多 Agent 协作 | content/blog/agenthub-multi-agent-collaboration.mdx | 2026-05-23 |
 | SSE 流式输出 | 让 AI 响应"活"起来 | content/blog/sse-streaming-for-ai-apps.mdx | 2026-05-23 |
 | 博客元数据 | 新增 6 篇博客配置 | data/blogs.ts | 2026-05-23 |
+
+#### P19 — 代码质量修复（2026-06-25）
+| 阶段 | 内容 | 文件 | 完成日期 |
+|------|------|------|----------|
+| 问题追踪 | 创建 issues/ 目录，记录 9 个问题 | issues/*.md | 2026-06-25 |
+| ISSUE-002 | route.ts 改为从 rag/utils 导入，删除重复代码 | app/api/rag/route.ts | 2026-06-25 |
+| ISSUE-001 | 9 个测试文件改为导入实际实现 | rag/__tests__/*.test.ts | 2026-06-25 |
+| 新增模块 | security.ts, validation.ts, cache.ts | rag/utils/*.ts | 2026-06-25 |
+| 测试统计 | 243 个测试全部通过 | - | 2026-06-25 |
 
 ### ⏳ 进行中
 | 任务 | 状态 | 预计完成 |

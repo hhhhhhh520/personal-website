@@ -128,5 +128,17 @@ npm run test:coverage # 测试覆盖率报告
 ```
 
 测试目录：
-- `rag/__tests__/` - TypeScript 测试（219 个测试）
+- `rag/__tests__/` - TypeScript 测试（243 个测试）
 - `rag/scripts/test_*.py` - Python 测试（60 个测试）
+
+### RAG 工具模块
+
+| 模块 | 说明 |
+|------|------|
+| `rag/utils/similarity.ts` | 余弦相似度、欧氏距离 |
+| `rag/utils/keywordSearch.ts` | N-gram 分词、BM25 评分 |
+| `rag/utils/vectorSearch.ts` | 向量检索、平均向量 |
+| `rag/utils/rrfFusion.ts` | RRF 融合算法 |
+| `rag/utils/security.ts` | 输入验证、XSS/SQL 注入检测 |
+| `rag/utils/validation.ts` | API 请求验证 |
+| `rag/utils/cache.ts` | 查询结果缓存 |

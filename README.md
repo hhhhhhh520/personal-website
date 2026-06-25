@@ -89,7 +89,7 @@ npm run start
 ## 测试
 
 ```bash
-npm test              # 运行测试
+npm test              # 运行测试 (243 个测试)
 npm run test:coverage # 测试覆盖率
 ```
 
