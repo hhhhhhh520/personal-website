@@ -1,5 +1,5 @@
 # 测试与实现脱节 — 13/14个测试文件是假的
-> 创建时间: 2026-06-25 | 状态: 🟢已解决
+> 创建时间: 2026-06-25 | 状态: 🟡部分解决
 
 ## 问题描述
 
@@ -54,6 +54,16 @@ AI 生成测试时采用了"自包含"模式——每个测试文件内部实现
 - `rag/utils/cache.ts` — 缓存类
 
 **已修复测试**: 9个文件，243个测试用例全部通过
+
+## 2026-07-01 审查复核
+
+3 个测试文件仍为 STUB（自标注释承认"validate the test-only code, not the actual production system"），未真正导入生产实现：
+
+- `rag/__tests__/chat-integration.test.ts` — 内联 `buildRAGContext`/`buildSourceCitation`/`shouldUseRAG`，无对应生产模块
+- `rag/__tests__/e2e.test.ts` — 内联 `RAGPipeline` 类
+- `rag/__tests__/incremental.test.ts` — 内联 `computeContentHash`/`computeDocumentHash`/`checkNeedsUpdate`
+
+第 10 步原把 `e2e.test.ts` 当"可接受的测试辅助类"，但 STUB 注释自否定了这个辩解。真实状态：9/13 修复，4 个仍为 stub（含上述 3 个 + 可能的 `index.test.ts`）。状态降级为 🟡部分解决。
 
 ## 相关文件
 

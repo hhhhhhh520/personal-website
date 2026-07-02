@@ -71,6 +71,22 @@ npm run rag:force
 
 ## 注意事项
 
+### Python 环境（重要）
+
+embedding 模型用 `bge-large-zh-v1.5`，需要 `sentence-transformers` + `torch`。**项目自带的 `rag/venv/` 是 CPU 版 torch**，构建慢且用不上 GPU。要 GPU 加速必须用本机的 CUDA 环境：
+
+```bash
+# 用 CUDA 版 venv（不要用 rag/venv，那是 CPU 版）
+"D:/python/project/.venv/Scripts/python.exe" rag/scripts/extract_data.py
+"D:/python/project/.venv/Scripts/python.exe" rag/scripts/build_index.py --force
+```
+
+CPU 版 310 片段约 30-60 秒，CUDA 版约 7 秒。
+
+### extract_data 是前置步骤
+
+`build_index.py` 只读 `rag/data/extracted_content.json`，**不会自动重新提取**。新增/修改博客或项目文档后必须先跑 `extract_data.py`，否则索引不包含新内容（本次就因漏跑导致 blog 只有 6 篇）。
+
 ### 文档格式
 
 - 使用 Markdown 格式
@@ -130,10 +146,15 @@ cat public/rag-index/metadata.json | grep data_hash
 
 ### 构建失败
 
-1. 检查 Python 环境：`python --version`
-2. 检查 embedding 模型路径
-3. 查看错误日志
+1. 检查 Python 环境：用 CUDA venv（`D:/python/project/.venv`），别用 `rag/venv`（CPU 版）
+2. 确认 `torch.cuda.is_available()` 返回 True
+3. 检查 embedding 模型路径
+4. 查看错误日志
+
+### 索引缺少新内容
+
+新增了博客/文档但检索不到 → 忘了跑 `extract_data.py`。`build_index.py` 不自动提取，必须手动前置。
 
 ---
 
-> 最后更新：2026-05-15
+> 最后更新：2026-07-01

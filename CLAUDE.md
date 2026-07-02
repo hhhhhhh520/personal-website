@@ -69,8 +69,10 @@ npm run rag:update   # 检查是否需要更新
 npm run rag:force    # 强制重建
 ```
 
+> **踩坑**：`npm run rag:*` 用系统 `python`，指向 CPU 版 torch（慢）。要 GPU 加速直接用 `D:/python/project/.venv/Scripts/python.exe` 调脚本。新增博客/文档后必须先手动跑 `extract_data.py`，`build_index.py` 不自动提取。
+
 ### 索引文件
-- `public/rag-index/documents.json` - 文档片段（310 个）
+- `public/rag-index/documents.json` - 文档片段（546 个）
 - `public/rag-index/embeddings.json` - 1024 维向量
 - `public/rag-index/metadata.json` - 元数据（含数据哈希）
 
@@ -79,13 +81,13 @@ npm run rag:force    # 强制重建
 |------|------|------|
 | `data/projects.ts` | 6 | 项目概述 |
 | `data/personal.ts` | 1 | 个人简介 |
-| `content/blog/*.mdx` | 6 | 博客内容 |
+| `content/blog/*.mdx` | 17 | 博客内容 |
 | `docs/projects/*.md` | 54 | 项目详细文档 |
 
 ### Embedding 模型
 - 模型：bge-large-zh-v1.5（中文优化）
 - 路径：`D:/my project/xybst/校园百事通项目/campus_helper/models/embedding/BAAI_bge-large-zh-v1.5/`
-- Python 环境：`rag/venv/`
+- Python 环境：用 `D:/python/project/.venv`（CUDA 版 torch），不要用 `rag/venv`（CPU 版）
 
 ### 深入文档
 - [docs/MAINTENANCE.md](docs/MAINTENANCE.md) — RAG 文档维护指南
