@@ -1,5 +1,10 @@
 import { describe, it, expect } from 'vitest'
 
+// STUB: This file defines test-only helper functions (buildRAGContext, buildSourceCitation, shouldUseRAG) inline.
+// These functions have no corresponding production module.
+// Tests validate the test-only code, not the actual production system.
+// See ISSUE-001 for background.
+
 // Chat-RAG integration logic for testing
 interface SearchResult {
   content: string

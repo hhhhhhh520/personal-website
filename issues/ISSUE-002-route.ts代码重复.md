@@ -31,33 +31,43 @@ AI 在生成 `app/api/rag/route.ts` 时，采用了"自包含"模式——将所
 
 **目标**: `app/api/rag/route.ts` 改为从 `rag/utils/` 导入所有函数
 
-**步骤**:
+**已完成**（2026-06-25 第一轮 + 2026-06-26 第二轮）：
 
-1. 在 `app/api/rag/route.ts` 顶部添加导入：
+第一轮（2026-06-25）：
+1. 提取核心算法到 `rag/utils/` 模块（similarity, rrfFusion, keywordSearch, vectorSearch）
+2. 新建 `rag/utils/security.ts`, `validation.ts`, `cache.ts` 模块
+3. route.ts 添加从 rag/utils 的导入，删除内联算法函数（~200 行）
+
+第二轮（2026-06-26）— 补完集成：
+4. route.ts 内联 cache 替换为 `QueryCache`（from `rag/utils/cache.ts`）
+5. route.ts 内联验证替换为 `validateRequest()`（from `rag/utils/validation.ts`）
+6. 删除 stale imports（cosineSimilarity, tokenizeChinese, escapeRegExp）
+7. JSON 解析错误独立 try/catch 返回 400（而非 500）
+8. 错误处理不再泄露 `error.message`
+
+最终导入：
 ```typescript
-import { cosineSimilarity } from '@/rag/utils/similarity';
-import { rrfFusion } from '@/rag/utils/rrfFusion';
-import { tokenizeChinese, keywordSearch, escapeRegExp } from '@/rag/utils/keywordSearch';
-import { vectorSearch, computePseudoQueryEmbedding } from '@/rag/utils/vectorSearch';
+import { rrfFusionTwoWay } from '../../../rag/utils/rrfFusion';
+import { keywordSearch } from '../../../rag/utils/keywordSearch';
+import { vectorSearch as vectorSearchUtil, averageVectors } from '../../../rag/utils/vectorSearch';
+import { validateRequest } from '../../../rag/utils/validation';
+import { QueryCache } from '../../../rag/utils/cache';
 ```
 
-2. 删除 `app/api/rag/route.ts` 中重复的函数定义（约200-300行代码）
-
-3. 确认路径别名 `@/rag` 是否在 `tsconfig.json` 中配置正确
-
-4. 运行测试验证功能不变
-
-**注意**: 需要检查 `rag/utils/` 中的函数签名是否与 route.ts 中使用的完全一致，可能需要调整。
+243 个测试全部通过。
 
 ## 相关文件
 
-- `app/api/rag/route.ts` — 需要修改的文件
+- `app/api/rag/route.ts` — 已修改
 - `rag/utils/keywordSearch.ts` — 关键词搜索实现
 - `rag/utils/similarity.ts` — 余弦相似度实现
 - `rag/utils/rrfFusion.ts` — RRF融合实现
 - `rag/utils/vectorSearch.ts` — 向量搜索实现
-- `tsconfig.json` — 路径别名配置
+- `rag/utils/validation.ts` — API 请求验证
+- `rag/utils/cache.ts` — 查询结果缓存
+- `rag/utils/security.ts` — 安全验证（已实现，暂未集成到 route）
 
 ## 参考资料
 
 - 与 ISSUE-001 同源，都是 AI 生成代码时的自包含模式导致
+- security.ts 的 sanitizeQuery/checkSqlInjection/checkXss 已实现但暂未集成，因该 API 为只读搜索，无数据库写入，实际攻击面有限

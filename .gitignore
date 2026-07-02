@@ -54,3 +54,6 @@ venv/
 rag/venv/
 rag/scripts/__pycache__/
 rag/data/
+
+# Debug scripts
+test-rag*.js

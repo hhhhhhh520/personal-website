@@ -1,0 +1,219 @@
+# str.format() 的隐藏陷阱：用户输入一个 `{`，我的服务崩了
+
+一个花括号，能让你的 LLM 服务直接 500。
+
+不是提示词注入，不是越狱攻击，就是用户在对话框里敲了一个 `{`。这个 bug 在手机选购助手里躺了很久，直到一次代码审查才被挖出来。它属于那种"写的时候完全意识不到，看 diff 时一拍大腿"的问题。
+
+## 背景：用 format 拼提示词
+
+意图识别服务要把用户输入塞进 prompt 模板，再发给 LLM。原始代码长这样：
+
+```python
+INTENT_PROMPT = """你是一个手机选购助手。分析用户意图并提取关键信息。
+
+{history_context}
+用户输入: "{user_message}"
+
+返回JSON格式(不要有其他内容):
+{{"intent": "recommend", "budget_max": 10000}}
+"""
+
+prompt = INTENT_PROMPT.format(
+    user_message=user_message,
+    history_context=history_context,
+)
+```
+
+看起来人畜无害。`{user_message}` 和 `{history_context}` 是占位符，`{{ }}` 是字面花括号（JSON 示例）。`format()` 填充后得到完整 prompt，发给 LLM。
+
+问题在哪？`user_message` 是用户输入。
+
+## 复现：一个花括号引发的 500
+
+试着在对话框输入 `{history_context}`：
+
+```python
+>>> INTENT_PROMPT.format(user_message="{history_context}", history_context="")
+KeyError: 'history_context'
+```
+
+`format()` 不区分"模板里的占位符"和"填充值里的花括号"。它扫描整个字符串，看到 `{history_context}` 就尝试用参数填充——但这个 `{history_context}` 来自用户输入，已经被外层 `format` 当成了新的占位符。
+
+结果：`KeyError`，未捕获，HTTP 500。
+
+更阴险的输入：
+
+```python
+# 用户输入
+user_message = "{user_message.__class__.__init__.__globals__}"
+
+# format 会尝试解析这个属性链
+# 在某些模板场景下可能泄露对象内部结构
+```
+
+这次不是崩溃，是信息泄露。`str.format()` 会真的去访问对象的属性，直到链路走不通才报错。如果你的模板变量绑定了一个携带敏感配置的对象，攻击者能通过精心构造的属性链把它掏出来。
+
+这就是为什么这个 bug 被归到"DoS/安全"而不是单纯的"健壮性"。
+
+## 为什么会这样
+
+`str.format()` 的设计目标是模板引擎，不是安全拼接。它的语义是：**字符串里所有 `{xxx}` 都是占位符，都要被解析**。
+
+这意味着填充值里的花括号会被"二次解析"。Python 文档里写了 `{{` 和 `}}` 是字面花括号的转义，但这个转义只对**模板字符串**生效，对**填充值**不生效——填充值原样塞进去后，又会被下一轮扫描当成占位符。
+
+一句话：`format()` 假设模板可控，但用户输入不可控。
+
+## 修复：转义填充值
+
+最直接的修复——在填充前转义用户输入里的花括号：
+
+```python
+# 转义用户输入中的花括号，防止 str.format() KeyError DoS
+safe_user_message = user_message.replace("{", "{{").replace("}", "}}")
+safe_history = history_context.replace("{", "{{").replace("}", "}}")
+
+prompt = INTENT_PROMPT.format(
+    user_message=safe_user_message,
+    history_context=safe_history,
+    profile_context=profile_context,
+)
+```
+
+`{{` 在 `format()` 里会被解析成字面的 `{`，所以用户输入 `{history_context}` 经过转义变成 `{{history_context}}`，`format` 把它还原成 `{history_context}` 字面量，不再尝试解析。KeyError 消失。
+
+注意转义顺序：先转 `{` 再转 `}`，且必须**两个都转**。只转一个没用，`format` 仍会尝试解析未转义的那个。
+
+## 更好的替代方案
+
+转义能修，但只要还在用 `format()`，每次都要记得转义，迟早漏一处。几个更稳的方案：
+
+### 方案一：`string.Template`（最安全）
+
+```python
+from string import Template
+
+INTENT_PROMPT = Template("""你是一个手机选购助手。
+$history_context
+用户输入: "$user_message"
+""")
+
+prompt = INTENT_PROMPT.safe_substitute(
+    user_message=user_message,
+    history_context=history_context,
+)
+```
+
+`Template` 只认 `$placeholder`，对花括号无感。用户输入 `{anything}` 原样保留，不会被解析。`safe_substitute` 还能防止缺失占位符抛 `KeyError`。代价是模板里写 JSON 示例不再需要 `{{ }}` 转义，反而更干净。
+
+### 方案二：直接 replace 占位符
+
+```python
+prompt = INTENT_PROMPT.replace("{user_message}", user_message)
+```
+
+最朴素，不依赖任何解析。但要注意：如果 `user_message` 本身包含 `{user_message}` 字符串，会产生意外替换（虽然概率极低）。适合占位符名字足够独特的场景。
+
+### 方案三：f-string（但要小心）
+
+```python
+prompt = f'用户输入: "{user_message}"'
+```
+
+f-string 在**字面量**里是安全的——它只解析源码里写死的 `{expr}`，不解析变量值里的花括号。但代价是模板不能存成字符串变量动态加载，必须写死在源码里。对于需要把 prompt 存配置文件的场景不适用。
+
+**结论**：prompt 模板存字符串、又要插用户输入 → 用 `string.Template`。这是唯一不用每次惦记转义的方案。
+
+## 测试：覆盖花括号边界
+
+修完必须加针对性测试，否则下次重构又会回归：
+
+```python
+import pytest
+from backend.services.intent import IntentService
+
+class TestFormatBraceSafety:
+    """花括号注入安全测试"""
+
+    @pytest.mark.parametrize("malicious_input", [
+        "{history_context}",      # 伪造占位符
+        "{user_message}",         # 自引用
+        "{__class__}",            # 属性链探测
+        "{{already_escaped}}",    # 预转义输入
+        "{",                      # 单个花括号
+        "}",                      # 单个闭花括号
+        "{0.__class__}",          # 位置参数属性链
+        "{a}{b}{c}",              # 多占位符轰炸
+    ])
+    async def test_brace_input_does_not_crash(
+        self, intent_service, malicious_input
+    ):
+        """任何花括号组合都不应抛 KeyError"""
+        result = await intent_service.recognize(malicious_input, history=[])
+        # 关键：不抛异常即通过，结果合理性由其他测试覆盖
+        assert result is not None
+
+    async def test_brace_input_preserved_in_prompt(self, intent_service):
+        """花括号应作为字面量保留在发给 LLM 的 prompt 里"""
+        # 通过 mock LLM 捕获实际收到的 prompt
+        with mock_llm() as mock:
+            await intent_service.recognize("{history_context}", history=[])
+            sent_prompt = mock.call_args[0][0][0]["content"]
+            assert "{history_context}" in sent_prompt
+            # 而不是被解析成空或抛错
+```
+
+两个关键断言：**不崩溃** + **字面保留**。后者尤其重要——光不崩不够，要确认花括号真的作为普通字符传给了 LLM，而不是被悄悄吞掉。
+
+## 顺带修的另一个语法陷阱
+
+同一个提交里还修了个正则 bug，同源问题：**语法误用导致的隐蔽错误**。
+
+预算识别里有这么一句：
+
+```python
+# 原代码：匹配"以内"或"以下"
+budget_max_match = re.search(r'(\d+)元[以内以下]', message)
+```
+
+`[以内以下]` 是字符类（character class），语义是"匹配 括号里任意一个字符"。它会匹配"以""内""以""下"中的任意一个，等价于 `[以内以下]` = `[以内下]`（去重后）。
+
+所以 `"3000元以"` 会匹配成功，`"3000元内"` 也会匹配，但 `"3000元以内"` 匹配的是末尾的"内"——逻辑上虽然碰巧能用，但完全不是"以内或以下"的语义。如果用户说"3000元以里"（口语），也会被错误匹配。
+
+修复：把字符类改成非捕获分组：
+
+```python
+# 修复后：精确匹配"以内"或"以下"两个词
+budget_max_match = re.search(r'(\d+)元(?:以内|以下)', message)
+```
+
+`(?:...)` 是非捕获分组，`|` 是分支。这下 `"3000元以内"` 和 `"3000元以下"` 都能精确匹配，`"3000元以里"` 不会误匹配。
+
+**记忆点**：`[abc]` 匹配单个字符，`(?:a|b|c)` 匹配多个词。想匹配"几个词之一"永远用分组+管道，字符类只用于"单个字符之一"。
+
+## 总结
+
+两个 bug，一个安全一个正确性，根子都是"对语法语义的想当然"：
+
+| 陷阱 | 错误认知 | 实际语义 | 修复 |
+|------|----------|----------|------|
+| `format({user_input})` | 填充值原样保留 | 填充值会被二次解析 | 转义 `{{` `}}` 或用 `Template` |
+| `[以内以下]` | "以内或以下" | "以/内/下 任意一个字符" | `(?:以内\|以下)` |
+
+它们有个共同特征：**单测能跑过、功能看起来正常、只在特定输入下才暴露**。花括号 bug 要等用户真的输入 `{` 才崩；正则 bug 要等"以里"这种边界词才误匹配。这类问题靠 happy-path 测试发现不了，只能靠：
+
+1. 代码审查时盯着"用户输入流向"和"正则字符类"这两个高风险点
+2. 针对性的边界输入测试（恶意字符、边界词）
+
+下次写 `format()` 拼用户输入，或者写正则字符类匹配多字词，停一秒想想：**这是真的安全，还是只是没被触发？**
+
+## 相关文件
+
+- `backend/services/intent.py` — 花括号转义 + 正则字符类修复
+- `backend/services/recommend.py` — 同步花括号转义
+- `rag/__tests__/` — 花括号安全 + 预算边界测试
+
+## 参考资料
+
+- [Python string.Template 文档](https://docs.python.org/3/library/string.html#template-strings)
+- [str.format() 格式化语法](https://docs.python.org/3/library/stdtypes.html#str.format)
+- [OWASP: Template Injection](https://owasp.org/www-community/attacks/Server_Side_Template_Injection)

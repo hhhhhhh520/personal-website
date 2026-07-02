@@ -1,5 +1,5 @@
 # 个人网站项目进度
-> 创建时间: 2026-05-09 | 最后更新: 2026-06-25
+> 创建时间: 2026-05-09 | 最后更新: 2026-07-01
 
 ## 项目概述
 **项目地址**: D:\my project\web\personal-website | **技术选型**: Next.js 16 + TypeScript + Tailwind CSS v4 + Three.js + Framer Motion | **目标**: AI 应用开发者的个人作品集网站
@@ -102,6 +102,26 @@
 | AgentHub 平台 | IM 式多 Agent 协作 | content/blog/agenthub-multi-agent-collaboration.mdx | 2026-05-23 |
 | SSE 流式输出 | 让 AI 响应"活"起来 | content/blog/sse-streaming-for-ai-apps.mdx | 2026-05-23 |
 | 博客元数据 | 新增 6 篇博客配置 | data/blogs.ts | 2026-05-23 |
+
+#### P20 — 博客新增（2026-06-26）
+| 阶段 | 内容 | 文件 | 完成日期 |
+|------|------|------|----------|
+| Contract v1 | AgentHub 多 Agent 安全契约实战 | content/blog/agenthub-contract-v1.mdx | 2026-06-26 |
+| 代码审查 | 三轮审查实战：从"能跑"到"能扛" | content/blog/multi-round-code-review.mdx | 2026-06-26 |
+| 容错设计 | ToolDegradation + SQLite 持久化 | content/blog/agent-fault-tolerance.mdx | 2026-06-26 |
+| 封面图 | 3 个 SVG 封面 | public/images/blogs/*.svg | 2026-06-26 |
+| 博客元数据 | 新增 3 篇博客配置 | data/blogs.ts | 2026-06-26 |
+
+#### P21 — 博客新增 + RAG 索引重建（2026-07-01）
+| 阶段 | 内容 | 文件 | 完成日期 |
+|------|------|------|----------|
+| format DoS 博客 | str.format() 花括号 DoS 陷阱 | content/blog/python-format-string-brace-dos.mdx | 2026-07-01 |
+| 安全清单博客 | LLM 应用上线安全清单 | content/blog/llm-app-security-hardening.mdx | 2026-07-01 |
+| 封面图 | 2 个 SVG 封面（brace-dos + security-hardening） | public/images/blogs/*.svg | 2026-07-01 |
+| 博客元数据 | 新增 2 篇博客配置 | data/blogs.ts | 2026-07-01 |
+| RAG 索引重建 | 310→546 片段，blog 6→17 篇全量纳入 | public/rag-index/*.json | 2026-07-01 |
+| GPU 构建修复 | 改用 CUDA venv，embedding 30s→7s | rag/scripts/build_index.py | 2026-07-01 |
+| ISSUE-002 完成 | route.ts 删重复代码改导入 utils | app/api/rag/route.ts | 2026-07-01 |
 
 #### P19 — 代码质量修复（2026-06-25）
 | 阶段 | 内容 | 文件 | 完成日期 |

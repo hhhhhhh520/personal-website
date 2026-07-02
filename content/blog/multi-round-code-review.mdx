@@ -1,0 +1,263 @@
+# 三轮代码审查实战：从"能跑"到"能扛"
+
+代码审查做一轮够不够？不够。
+
+Mini Claude Code 和 AgentHub 两个项目在一周内分别经历了 3 轮和 2 波代码审查，修了 30+ 个问题。单次 review 能发现表面问题，多轮 review + 不同视角才能挖出深层 bug。
+
+## 审查轮次对比
+
+| 项目 | 轮次 | 修复数 | 重点 |
+|------|------|--------|------|
+| Mini Claude | 第 1 轮 | 7 | mock 路径、死代码、返回值检查 |
+| Mini Claude | 第 2 轮 | 14 | P0-P1 优先级修复 |
+| Mini Claude | 第 3 轮 | 11 | ToolDegradation、SQLite 持久化 |
+| AgentHub | 第 1 波 | 14 | RCE 链、XSS、API Key 泄露 |
+| AgentHub | 第 2 波 | 10 | Contract v1 集成、shadow-git |
+
+每轮的发现都不同。第 1 轮找"明显的"，第 2 轮找"隐藏的"，第 3 轮找"架构层面的"。
+
+## 第 1 轮：表面问题
+
+Mini Claude 第 1 轮修了 7 个问题，都是"一眼能看出来但平时不会注意"的：
+
+### 1. Mock 路径错误
+
+```python
+# 之前：mock 路径不匹配实际导入
+@patch("src.tools.read_file.os.path.exists")
+
+# 之后：mock 实际被测模块的路径
+@patch("mini_claude.tools.read_file.os.path.exists")
+```
+
+测试通过不代表测试有效。Mock 路径错了，测试永远"通过"，但什么都没测到。
+
+### 2. 死代码
+
+```python
+# 之前：未使用的 import 和函数
+from typing import Optional, List, Dict  # Dict 未使用
+def legacy_search(query):  # 从未被调用
+    ...
+```
+
+### 3. 返回值检查缺失
+
+```python
+# 之前：忽略返回值
+await tool_registry.execute("read_file", {"path": path})
+
+# 之后：检查返回值
+result = await tool_registry.execute("read_file", {"path": path})
+if not result.success:
+    log.error(f"Tool execution failed: {result.error}")
+    return fallback_response(result.error)
+```
+
+### 4. CI 过滤不当
+
+```yaml
+# 之前：集成测试混入单元测试
+- run: pytest tests/
+
+# 之后：分离单元测试和集成测试
+- run: pytest tests/ -m "not integration"
+- run: pytest tests/ -m "integration" --timeout=60
+```
+
+## 第 2 轮：安全问题
+
+AgentHub 第 1 波审查发现了真正的安全漏洞。这不是代码风格问题，是会被利用的漏洞。
+
+### RCE 链（远程代码执行）
+
+```python
+# 之前：直接拼接用户输入到 shell 命令
+def execute_command(user_input):
+    cmd = f"python {user_input}"
+    subprocess.run(cmd, shell=True)  # 💀 RCE
+
+# 之后：白名单 + 参数分离
+def execute_command(script_path, args):
+    allowed_scripts = {"build.py", "test.py"}
+    if script_path not in allowed_scripts:
+        raise ValueError(f"Script not allowed: {script_path}")
+    subprocess.run(
+        ["python", script_path] + args,
+        shell=False  # 关闭 shell 模式
+    )
+```
+
+`shell=True` + 用户输入 = RCE。这不是理论，是实际可利用的漏洞。
+
+### XSS（跨站脚本攻击）
+
+```typescript
+// 之前：file-card 直接渲染文件内容
+<div dangerouslySetInnerHTML={{ __html: fileContent }} />
+
+// 之后：转义 + CSP
+<div>{escapeHtml(fileContent)}</div>
+```
+
+### API Key 泄露
+
+```python
+# 之前：审计报告中明文存储 API Key
+report = f"API Key: {api_key}"  # 写入日志文件
+
+# 之后：脱敏处理
+report = f"API Key: {mask_key(api_key)}"  # sk-***abc
+```
+
+## 第 3 轮：架构问题
+
+Mini Claude 第 3 轮是最有价值的一轮。前两轮修的是"代码"，这轮修的是"架构"。
+
+### ToolDegradation
+
+工具调用失败时，之前的行为是直接报错。现在有了优雅降级：
+
+```python
+class ToolDegradation:
+    """工具降级策略"""
+
+    STRATEGIES = {
+        "read_file": lambda args: f"[文件不可用: {args.get('path')}]",
+        "search": lambda args: "[搜索服务暂时不可用]",
+        "execute": lambda args: "[执行器离线]",
+    }
+
+    @staticmethod
+    def degrade(tool_name, error, args):
+        strategy = ToolDegradation.STRATEGIES.get(tool_name)
+        if strategy:
+            return ToolResult(
+                success=False,
+                output=strategy(args),
+                degraded=True
+            )
+        raise ToolExecutionError(f"No degradation strategy for {tool_name}")
+```
+
+集成到 `ToolRegistry.execute`：
+
+```python
+async def execute(self, tool_name, args):
+    try:
+        return await self._execute_impl(tool_name, args)
+    except ToolExecutionError as e:
+        return ToolDegradation.degrade(tool_name, e, args)
+```
+
+### SQLite 持久化
+
+LangGraph 的 Checkpointer 之前用内存存储，进程重启后会话丢失：
+
+```python
+# 之前：内存 checkpointer
+from langgraph.checkpoint.memory import MemorySaver
+checkpointer = MemorySaver()
+
+# 之后：SQLite 持久化
+from langgraph.checkpoint.sqlite import SqliteSaver
+checkpointer = SqliteSaver.from_conn_string("checkpoints.db")
+```
+
+### 会话恢复提示
+
+```python
+def generate_recovery_prompt(previous_state):
+    """中断后重新连接时的恢复提示"""
+    return f"""检测到之前的会话中断。
+
+上次进度：
+- 任务：{previous_state.get('task', '未知')}
+- 阶段：{previous_state.get('phase', '未知')}
+- 已完成：{len(previous_state.get('completed_steps', []))} 步
+
+是否继续？"""
+```
+
+## 审查方法论
+
+### 视角分层
+
+| 轮次 | 视角 | 关注点 |
+|------|------|--------|
+| 第 1 轮 | 代码质量 | 死代码、命名、返回值、mock |
+| 第 2 轮 | 安全性 | RCE、XSS、注入、越界、泄露 |
+| 第 3 轮 | 架构 | 降级、持久化、恢复、一致性 |
+
+每轮用不同的眼睛看代码，才能发现不同层次的问题。
+
+### 问题分级
+
+```
+❌  必须修复：安全漏洞、数据丢失、功能缺陷
+⚠️  强烈建议：性能问题、一致性问题、潜在 bug
+💡  可选优化：代码风格、命名改进、文档补充
+```
+
+### 修复顺序
+
+```
+❌ 安全类 → ❌ 功能类 → ⚠️ 一致性类 → ⚠️ 性能类 → 💡 优化类
+```
+
+安全永远第一。一个 RCE 漏洞比 100 个命名不规范都严重。
+
+## 跨项目经验
+
+两个项目的审查发现了共性问题：
+
+| 问题类型 | Mini Claude | AgentHub | 共性 |
+|----------|-------------|----------|------|
+| shell=True | ✅ 修了 | ✅ 修了 | subprocess 必须 shell=False |
+| 返回值未检查 | ✅ 修了 | ✅ 修了 | 异步调用必须检查结果 |
+| 测试 Mock 路径 | ✅ 修了 | - | mock 路径必须匹配实际导入 |
+| 事务一致性 | - | ✅ 修了 | 跨表更新必须用事务 |
+| 持久化缺失 | ✅ 修了 | ✅ 修了 | 关键状态必须落盘 |
+
+## 工具支持
+
+审查过程中用到的工具和命令：
+
+```bash
+# 安全扫描
+grep -rn "shell=True" src/
+grep -rn "subprocess.run" src/
+grep -rn "dangerouslySetInnerHTML" src/
+grep -rn "api_key\|API_KEY\|apiKey" --include="*.py" --include="*.ts" src/
+
+# 死代码检测
+vulture src/ --min-confidence 80
+
+# 未使用 import
+ruff check src/ --select F401
+
+# 类型检查
+mypy src/ --strict
+```
+
+## 数据总结
+
+| 指标 | Mini Claude | AgentHub | 合计 |
+|------|-------------|----------|------|
+| 审查轮次 | 3 | 2 | 5 |
+| 修复总数 | 32 | 24 | 56 |
+| 安全漏洞 | 5 | 14 | 19 |
+| 架构改进 | 4 | 6 | 10 |
+| 代码质量 | 23 | 4 | 27 |
+
+AgentHub 的安全问题更多，因为它涉及多 Agent 间通信和文件系统操作。Mini Claude 的代码质量问题更多，因为它代码量更大。
+
+## 经验总结
+
+1. **一次审查不够**：第 1 轮只能发现表面问题，深层问题需要不同视角
+2. **安全优先**：RCE、XSS、注入比命名规范重要 100 倍
+3. **审查驱动设计**：最好的安全机制来自真实漏洞
+4. **工具辅助**：grep、vulture、ruff 能发现人眼遗漏的问题
+5. **跨项目复用**：一个项目发现的问题，在另一个项目中也要检查
+
+从"能跑"到"能扛"，差的就是这几轮审查。

@@ -1,5 +1,10 @@
 import { describe, it, expect } from 'vitest'
 
+// STUB: This file defines test-only helper functions (computeContentHash, computeDocumentHash, checkNeedsUpdate) inline.
+// These functions have no corresponding production module.
+// Tests validate the test-only code, not the actual production system.
+// See ISSUE-001 for background.
+
 // Incremental update logic for testing
 interface DocumentHash {
   id: string

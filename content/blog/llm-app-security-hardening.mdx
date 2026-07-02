@@ -1,0 +1,268 @@
+# LLM 应用上线前的安全清单：提示词注入、API 耗尽、SSE 崩溃与 XSS
+
+过去一周，我在三个项目上各做了一轮安全审查——手机选购助手、校园百事通、CodeCraft Agent——加起来修了 30 多个问题。修完发现，LLM 应用的安全问题高度集中：来来回回就是那几类。
+
+把散落在各提交里的修复整理成一份清单，按"漏洞类型"而非"审查过程"组织。每类配真实代码：现象、原因、修复。下次上线前照着过一遍，能省一轮 review。
+
+## 1. 提示词注入：系统提示词别和用户输入混在一起
+
+**现象**：系统提示词拼在 user message 里，用户一句"忽略以上指令"就能改写助手行为，更糟的是能套出系统提示词原文。
+
+**问题代码**：
+
+```python
+messages = [
+    {"role": "user", "content": f"你是手机选购助手。规则：{RULES}\n\n用户问题：{user_message}"}
+]
+```
+
+系统角色和用户角色挤在一条 user message 里，LLM 无法区分"指令"和"数据"。
+
+**修复**：系统提示词走 `system` 角色：
+
+```python
+messages = [
+    {"role": "system", "content": SYSTEM_PROMPT},
+    {"role": "user", "content": user_message},
+]
+```
+
+`system` 角色在主流 LLM 里有更高的指令优先级，且不会被当作"用户说的话"参与后续上下文。这不是银弹——prompt 注入仍可能通过用户输入里的"假装我是管理员"生效——但至少把"指令/数据"分层了，攻击成本显著上升。
+
+**配套**：日志里别打完整 system prompt，否则一次日志泄露等于全盘暴露。
+
+## 2. 错误信息泄露：生产环境别回吐原始错误
+
+**现象**：LLM 调用失败，API 把原始异常字符串塞进响应返回前端。攻击者从中读出 API key 片段、内部模型名、请求结构。
+
+**问题代码**：
+
+```python
+try:
+    response = await llm.chat(messages)
+except Exception as e:
+    return {"error": str(e), "original_error": e.__class__.__name__}
+```
+
+`str(e)` 在 OpenAI SDK 里可能包含 `api.openai.com/v1/chat/completions` 这类端点信息，`e.__class__.__name__` 暴露依赖栈。开发期方便，上线期是漏洞。
+
+**修复**：按环境区分错误响应：
+
+```python
+try:
+    response = await llm.chat(messages)
+except Exception as e:
+    logger.exception("LLM call failed")  # 完整 traceback 进日志
+    error_body = {"error": "服务暂时不可用，请稍后重试"}
+    if settings.app_env == "development":
+        error_body["original_error"] = str(e)  # 仅开发环境
+    return error_body
+```
+
+原则：**日志要详尽，响应要精简**。排查问题靠日志，不靠把错误推给前端。
+
+## 3. API 额度耗尽：健康检查别真的调 LLM
+
+**现象**：`/health` 端点为了"真实验证 LLM 可用性"，每次都调一次 LLM。监控脚本每 10 秒探一次，CDN 每分钟探一次，半天烧完一个月额度。
+
+**问题代码**：
+
+```python
+@app.get("/health")
+async def health():
+    response = await llm.chat([{"role": "user", "content": "ping"}])
+    return {"status": "ok" if response else "down"}
+```
+
+健康检查的语义是"服务活着"，不是"完整链路通"。两者代价天差地别。
+
+**修复**：缓存 + 分层探活：
+
+```python
+_health_cache = {"result": None, "ts": 0}
+HEALTH_CACHE_TTL = 60  # 秒
+
+@app.get("/health")
+async def health():
+    now = time.time()
+    if _health_cache["result"] and now - _health_cache["ts"] < HEALTH_CACHE_TTL:
+        return _health_cache["result"]  # 60秒内复用结果
+
+    # 轻量探活：检查配置 + DB 连接，不调 LLM
+    try:
+        db.execute("SELECT 1")
+        result = {"status": "ok", "llm_configured": bool(settings.llm_api_key)}
+    except Exception:
+        result = {"status": "degraded"}
+
+    _health_cache["result"] = result
+    _health_cache["ts"] = now
+    return result
+```
+
+LLM 真实可用性另开 `/health/llm` 慢速探活（5 分钟一次），和基础健康检查分离。
+
+## 4. SSE 流式崩溃：生成器没兜住异常
+
+**现象**：SSE 流式输出跑到一半，LLM 抛异常，生成器直接挂掉，前端收到半个响应后连接断开，没有错误事件，用户卡在加载状态。
+
+**问题代码**：
+
+```python
+async def generate():
+    yield f"data: {json.dumps({'type': 'session', 'data': session_id})}\n\n"
+    # ... 中途 LLM 流式输出
+    async for chunk in llm.stream(messages):
+        yield f"data: {json.dumps({'type': 'token', 'data': chunk})}\n\n"
+    yield f"data: {json.dumps({'type': 'done'})}\n\n"
+# 任何一步抛异常 → 生成器静默死亡 → 前端断连无提示
+```
+
+**修复**：整个生成器包 try/except，异常时主动 yield error 事件：
+
+```python
+async def generate():
+    try:
+        yield f"data: {json.dumps({'type': 'session', 'data': session_id})}\n\n"
+        async for chunk in llm.stream(messages):
+            yield f"data: {json.dumps({'type': 'token', 'data': chunk})}\n\n"
+        yield f"data: {json.dumps({'type': 'done'})}\n\n"
+    except Exception as e:
+        logger.error(f"SSE generator error: {type(e).__name__}: {e}")
+        yield f"data: {json.dumps({'type': 'error', 'code': 'INTERNAL_ERROR', 'data': '服务处理异常，请重试'})}\n\n"
+        yield f"data: {json.dumps({'type': 'done'})}\n\n"
+```
+
+两个细节：error 事件带 `code` 字段（前端可按 code 分支处理），且异常后仍发 `done` 事件（前端能正常关闭连接而非超时）。SSE 的契约是"必须以 done 结束"，异常不能破坏这个契约。
+
+## 5. XSS：LLM 输出和检索来源都要转义
+
+**现象**：校园百事通前端把检索来源的文档标题直接 `innerHTML` 拼接，LLM 输出也直接渲染 markdown。如果知识库里有恶意文档（标题含 `<script>`），或 LLM 被 prompt 注入输出 HTML，XSS 触发。
+
+**问题代码**：
+
+```javascript
+// sources 标题直接拼接
+sourcesDiv.innerHTML = sources.map(s => `<div>${s.title}</div>`).join('');
+
+// LLM 输出直接渲染 markdown
+contentDiv.innerHTML = marked.parse(llmOutput);
+```
+
+知识库内容看似可控，但 RAG 系统经常 ingestion 外部文档（爬取的网页、用户上传的 PDF），等于半可控。LLM 输出更不可控——prompt 注入能让它输出任意 HTML。
+
+**修复**：先转义再渲染，所有外部数据一视同仁：
+
+```javascript
+function escapeHtml(str) {
+    return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+// sources 转义标题
+sourcesDiv.innerHTML = sources
+    .map(s => `<div>${escapeHtml(s.title)}</div>`)
+    .join('');
+
+// LLM 输出：先转义 HTML 特殊字符，再渲染 markdown
+// marked 会把转义后的 &lt; 等还原成 HTML 实体显示，不会执行
+contentDiv.innerHTML = marked.parse(llmOutput);
+// 注意：marked 默认会转义 markdown 内的 HTML，但要确认配置 sanitize 开启
+// 更稳的做法是用 DOMPurify 二次清洗
+contentDiv.innerHTML = DOMPurify.sanitize(marked.parse(llmOutput));
+```
+
+原则：**任何进入 innerHTML 的字符串都要经过转义或 sanitize**，无论它来自数据库、LLM 还是用户。markdown 渲染器不是安全边界，DOMPurify 才是。
+
+## 6. 遍历与硬编码：分页参数 + 魔数检查
+
+**现象**：手机列表接口无分页，一次返回全部 353 台；某处硬编码 `353` 做总数校验，数据增减后校验失效。
+
+**修复**：
+
+```python
+@router.get("/phones")
+async def list_phones(
+    brand: str | None = None,
+    price_min: int | None = None,
+    price_max: int | None = None,
+    offset: int = 0,
+    limit: int = 50,
+    db: Session = Depends(get_db),
+):
+    # 限制 offset/limit 范围，防止恶意大分页
+    offset = max(0, min(offset, 10000))
+    limit = max(1, min(limit, 100))
+
+    query = db.query(Phone)
+    if brand:
+        query = query.filter(Phone.brand == brand)
+    if price_max:
+        query = query.filter(Phone.price <= price_max)
+
+    total = query.count()  # 动态统计，不硬编码
+    phones = query.offset(offset).limit(limit).all()
+    return {"items": phones, "total": total, "offset": offset}
+```
+
+两点：分页防遍历（虽然列表数据不敏感，但全量拉取可被用于竞品分析或流量攻击），魔数改动态统计（`total = query.count()` 而非 `353`）。
+
+## 7. 重构回归：意图分类静默失效
+
+最隐蔽的一类——不是漏洞，是**测试没覆盖导致的回归**。校园百事通某次重构把 `_call_zhipu()` 改名为 `_dispatch()`，但调用方没全部更新，意图分类走到了一个不存在的分支，**静默返回默认结果**。所有用户输入都被当成"通用问答"，RAG 检索路径完全失效。
+
+可怕的是测试全绿——因为当时 LLM 分类路径**测试覆盖为 0**，只测了规则降级路径。重构破坏的是没被测的那条路。
+
+**修复**：补测试 + 加防御：
+
+```python
+def test_llm_classify_parses_json(self, intent_service, monkeypatch):
+    """覆盖 LLM 意图分类路径，防止重构回归"""
+    monkeypatch.setattr(intent_service, "_call_llm",
+                        lambda *a: '{"intent": "compare", "phones": ["iPhone 15"]}')
+    result = intent_service.classify("对比 iPhone 15 和小米 14")
+    assert result.intent == IntentType.COMPARE
+    assert "iPhone 15" in result.phones
+
+def test_classify_falls_back_on_unknown_branch(self, intent_service):
+    """未知分支不应静默返回默认，应显式标记降级"""
+    result = intent_service.classify("随便说点什么")
+    assert result.intent in (IntentType.UNKNOWN, IntentType.GENERAL)
+    assert result.degraded is True  # 显式标记，而非假装成功
+```
+
+教训：**每条生产代码路径至少有一个测试**。重构后跑测试全绿不代表没回归，只代表你没测到回归的路。给关键路径加 `degraded` 标记，让"降级"从静默变成可观测。
+
+## 清单总结
+
+按优先级排序，上线前逐项过：
+
+| 优先级 | 检查项 | 快速判断方法 |
+|--------|--------|-------------|
+| P0 | 系统提示词是否走 `system` 角色 | grep `role.*system` |
+| P0 | 错误响应是否泄露原始异常 | 生产环境请求故意触发错误，看返回 |
+| P0 | LLM 输出/检索内容是否转义 | 搜索 `innerHTML =` 检查来源 |
+| P1 | 健康检查是否调 LLM | 看 `/health` 实现 |
+| P1 | SSE 生成器是否有 try/except | 看 `generate()` 函数 |
+| P1 | 每条代码路径是否有测试 | 看覆盖率报告的 0% 行 |
+| P2 | 分页参数是否限范围 | 看列表接口 |
+| P2 | 是否有硬编码的计数/魔数 | grep 数字字面量 |
+
+这份清单不完整——它只覆盖我这周实际修到的问题。真正的安全是个无底洞，但上面这 7 类是 LLM Web 应用的"高频复发病"，性价比最高。先把它们堵住，再谈深度加固。
+
+## 相关项目
+
+- 手机选购助手（phone-pick-assistant）— 第 1/2/3/4/6 项
+- 校园百事通（xybst）— 第 5/7 项
+- CodeCraft Agent — 第 1/2 项
+
+## 参考资料
+
+- [OWASP Top 10](https://owasp.org/www-project-top-ten/)
+- [OWASP LLM Top 10](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+- [Prompt Injection 攻击与防御](https://simonwillison.net/2023/April/14/worst-that-can-happen/)
+- [DOMPurify](https://github.com/cure53/DOMPurify)

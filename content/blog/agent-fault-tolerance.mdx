@@ -1,0 +1,317 @@
+# Agent 容错设计：ToolDegradation + SQLite 持久化
+
+AI Agent 最怕什么？不是答错，是崩溃。
+
+工具调用失败就报错、进程重启就丢状态、网络抖动就断连——这些问题在开发环境里无所谓，在生产环境里是致命的。Mini Claude Code 最近做了两个关键改进：ToolDegradation 和 SQLite 持久化。
+
+## 问题场景
+
+```python
+# 场景 1：工具调用失败
+result = await tool.execute("read_file", {"path": "/data/input.csv"})
+# FileNotFoundError → 整个 Agent 链路中断
+
+# 场景 2：进程重启
+agent.run("帮我分析这个项目")
+# 用户关闭终端 → 所有上下文丢失 → 重新开始
+
+# 场景 3：网络抖动
+response = await llm.chat(messages)
+# ConnectionError → 重试 3 次后放弃 → 任务失败
+```
+
+这些场景在真实使用中经常发生。用户不会因为一次文件读取失败就放弃整个任务。
+
+## ToolDegradation：优雅降级
+
+核心思想：工具失败时，给一个合理的降级响应，而不是直接崩掉。
+
+### 降级策略设计
+
+```python
+class ToolDegradation:
+    """工具降级策略注册表"""
+
+    # 每个工具有自己的降级逻辑
+    STRATEGIES = {
+        "read_file": degrade_read_file,
+        "search": degrade_search,
+        "execute": degrade_execute,
+        "web_fetch": degrade_web_fetch,
+    }
+
+    @staticmethod
+    def degrade(tool_name: str, error: Exception, args: dict) -> ToolResult:
+        strategy = ToolDegradation.STRATEGIES.get(tool_name)
+        if strategy:
+            return strategy(error, args)
+        # 没有专门策略时，返回通用降级
+        return ToolResult(
+            success=False,
+            output=f"[工具 {tool_name} 暂时不可用: {error}]",
+            degraded=True
+        )
+```
+
+### 各工具的降级逻辑
+
+```python
+def degrade_read_file(error, args):
+    """文件读取失败：返回文件元信息"""
+    path = args.get("path", "unknown")
+    return ToolResult(
+        success=False,
+        output=f"[文件不可用: {path}]({type(error).__name__})",
+        degraded=True,
+        fallback_action="skip"  # 告诉 Agent 跳过这个文件
+    )
+
+def degrade_search(error, args):
+    """搜索失败：返回空结果而非报错"""
+    return ToolResult(
+        success=True,  # 标记为成功，避免 Agent 重试
+        output="[]",
+        degraded=True,
+        note="搜索服务暂时不可用，返回空结果"
+    )
+
+def degrade_execute(error, args):
+    """代码执行失败：返回错误信息而非崩溃"""
+    return ToolResult(
+        success=False,
+        output=f"执行失败: {error}",
+        degraded=True,
+        suggest="请检查代码语法或依赖是否正确"
+    )
+```
+
+### 集成到 ToolRegistry
+
+```python
+class ToolRegistry:
+    async def execute(self, tool_name: str, args: dict) -> ToolResult:
+        tool = self.tools.get(tool_name)
+        if not tool:
+            return ToolResult(success=False, output=f"Unknown tool: {tool_name}")
+
+        try:
+            return await tool.execute(args)
+        except Exception as e:
+            # 降级而非崩溃
+            return ToolDegradation.degrade(tool_name, e, args)
+```
+
+一行 `except` 改变了整个行为模式：从"一错全崩"到"局部降级"。
+
+### 降级后的 Agent 行为
+
+```python
+# Agent 收到降级响应后的处理
+async def handle_tool_result(self, result: ToolResult):
+    if result.degraded:
+        # 记录降级事件
+        self.degradation_log.append({
+            "tool": result.tool_name,
+            "reason": result.note,
+            "timestamp": now()
+        })
+        # 根据 fallback_action 决定下一步
+        if result.fallback_action == "skip":
+            return self.skip_and_continue()
+        elif result.fallback_action == "retry":
+            return self.retry_with_backoff()
+        else:
+            return self.ask_user_for_help()
+```
+
+## SQLite 持久化：会话不丢失
+
+LangGraph 的 Checkpointer 负责保存 Agent 状态。之前用的是内存存储：
+
+```python
+# 之前：内存 checkpointer
+from langgraph.checkpoint.memory import MemorySaver
+
+checkpointer = MemorySaver()
+graph = graph.compile(checkpointer=checkpointer)
+
+# 问题：进程重启后，所有会话状态丢失
+```
+
+改为 SQLite：
+
+```python
+# 之后：SQLite 持久化
+from langgraph.checkpoint.sqlite import SqliteSaver
+
+checkpointer = SqliteSaver.from_conn_string("checkpoints.db")
+graph = graph.compile(checkpointer=checkpointer)
+
+# 好处：进程重启后，会话状态自动恢复
+```
+
+### 为什么选 SQLite
+
+| 方案 | 优势 | 劣势 |
+|------|------|------|
+| 内存 | 速度快 | 进程重启丢失 |
+| Redis | 快、支持集群 | 需要额外服务 |
+| PostgreSQL | 功能完整 | 重量级 |
+| SQLite | 零依赖、文件级 | 不支持并发写入 |
+
+Mini Claude 是单用户 CLI 工具，SQLite 的"不支持并发写入"反而是优势——不需要处理锁竞争。
+
+### 会话恢复流程
+
+```python
+class SessionRecovery:
+    """会话恢复管理"""
+
+    def __init__(self, checkpointer):
+        self.checkpointer = checkpointer
+
+    def find_interrupted_sessions(self):
+        """查找中断的会话"""
+        sessions = []
+        for checkpoint in self.checkpointer.list():
+            if checkpoint.status == "interrupted":
+                sessions.append(checkpoint)
+        return sessions
+
+    def generate_recovery_prompt(self, session):
+        """生成恢复提示"""
+        return f"""检测到之前的会话中断。
+
+会话信息：
+- ID: {session.id}
+- 任务: {session.metadata.get('task', '未知')}
+- 阶段: {session.metadata.get('phase', '未知')}
+- 已完成: {len(session.metadata.get('completed', []))} 步
+- 中断时间: {session.interrupted_at}
+
+是否继续上次的任务？"""
+```
+
+### 恢复时的状态重建
+
+```python
+async def resume_session(self, session_id: str):
+    """恢复中断的会话"""
+    # 从 SQLite 加载 checkpoint
+    checkpoint = await self.checkpointer.get(session_id)
+    if not checkpoint:
+        raise SessionNotFoundError(session_id)
+
+    # 重建状态
+    state = checkpoint.state
+
+    # 检查状态完整性
+    if not self.validate_state(state):
+        log.warning(f"State validation failed for {session_id}, using partial recovery")
+        state = self.partial_recovery(state)
+
+    # 生成恢复提示
+    recovery_prompt = self.generate_recovery_prompt(checkpoint)
+
+    # 从断点继续执行
+    return await self.graph.ainvoke(
+        {"messages": [SystemMessage(content=recovery_prompt)]},
+        config={"configurable": {"thread_id": session_id}}
+    )
+```
+
+## FAISS 更新修复
+
+ToolDegradation 的另一个应用场景是 FAISS 向量索引更新：
+
+```python
+async def update_faiss_index(self, new_documents):
+    """更新 FAISS 索引，失败时降级"""
+    try:
+        # 尝试增量更新
+        self.index.add(new_documents)
+        self.index.save(self.index_path)
+        return UpdateResult(success=True, count=len(new_documents))
+    except Exception as e:
+        # 降级：保留旧索引，记录待更新文档
+        self.pending_updates.extend(new_documents)
+        return UpdateResult(
+            success=False,
+            error=str(e),
+            degraded=True,
+            pending_count=len(self.pending_updates)
+        )
+```
+
+旧索引仍然可用，只是暂时不能检索新文档。比"索引损坏、全部不可用"好得多。
+
+## 测试策略
+
+### 测试降级路径
+
+```python
+async def test_read_file_degrades_on_missing():
+    """文件不存在时应降级而非崩溃"""
+    registry = ToolRegistry()
+    result = await registry.execute("read_file", {"path": "/nonexistent.txt"})
+
+    assert not result.success
+    assert result.degraded
+    assert "不可用" in result.output
+
+async def test_search_degrades_gracefully():
+    """搜索失败时应返回空结果"""
+    registry = ToolRegistry()
+    with patch("search_engine.search", side_effect=ConnectionError):
+        result = await registry.execute("search", {"query": "test"})
+
+    assert result.success  # 标记为成功
+    assert result.degraded
+    assert result.output == "[]"
+```
+
+### 测试会话恢复
+
+```python
+async def test_session_recovery_after_restart():
+    """进程重启后能恢复会话"""
+    # 创建会话并执行几步
+    session_id = "test-session-001"
+    await graph.ainvoke(
+        {"messages": [HumanMessage(content="读取 data.csv")]},
+        config={"configurable": {"thread_id": session_id}}
+    )
+
+    # 模拟进程重启：重新创建 checkpointer
+    new_checkpointer = SqliteSaver.from_conn_string("checkpoints.db")
+    recovery = SessionRecovery(new_checkpointer)
+
+    # 验证能找回会话
+    sessions = recovery.find_interrupted_sessions()
+    assert any(s.id == session_id for s in sessions)
+
+    # 验证能恢复执行
+    result = await recovery.resume_session(session_id)
+    assert result is not None
+```
+
+## 性能影响
+
+| 指标 | 之前 | 之后 | 变化 |
+|------|------|------|------|
+| 工具失败时的行为 | 崩溃 | 降级 | ✅ 改善 |
+| 会话持久化 | 无 | SQLite | ~2ms 写入延迟 |
+| 内存占用 | 状态在内存 | 状态在磁盘 | ✅ 降低 |
+| 恢复时间 | 不可恢复 | <100ms | ✅ 改善 |
+
+SQLite 写入延迟约 2ms，对 Agent 执行链路来说可以忽略。
+
+## 经验总结
+
+1. **降级优于崩溃**：给用户一个"部分可用"的结果，比"完全不可用"好
+2. **持久化是必须的**：关键状态必须落盘，不能只在内存中
+3. **SQLite 够用**：单用户场景不需要 Redis/PostgreSQL
+4. **恢复要平滑**：中断后重新连接，用户不应该重复之前的操作
+5. **测试降级路径**：不只测"正常路径"，降级路径也要覆盖
+
+从"能用"到"可靠"，就是这两步。

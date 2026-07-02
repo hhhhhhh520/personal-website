@@ -1,5 +1,10 @@
 import { describe, it, expect, beforeAll } from 'vitest'
 
+// STUB: This file defines test-only helper functions (RAGPipeline) inline.
+// These functions have no corresponding production module.
+// Tests validate the test-only code, not the actual production system.
+// See ISSUE-001 for background.
+
 // End-to-end RAG flow simulation
 
 interface Document {

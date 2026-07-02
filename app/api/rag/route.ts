@@ -10,10 +10,11 @@ import type {
   SearchResult,
 } from '../../../rag/types/index';
 
-import { cosineSimilarity } from '../../../rag/utils/similarity';
 import { rrfFusionTwoWay } from '../../../rag/utils/rrfFusion';
-import { tokenizeChinese, keywordSearch, escapeRegExp } from '../../../rag/utils/keywordSearch';
+import { keywordSearch } from '../../../rag/utils/keywordSearch';
 import { vectorSearch as vectorSearchUtil, averageVectors } from '../../../rag/utils/vectorSearch';
+import { validateRequest } from '../../../rag/utils/validation';
+import { QueryCache } from '../../../rag/utils/cache';
 
 interface RAGResponse {
   results: SearchResult[];
@@ -41,46 +42,12 @@ interface EmbeddingsData {
   vectors: number[][];
 }
 
-interface RAGRequest {
-  query: string;
-  topK?: number;
-}
 
 // ============================================================================
-// Cache
+// Cache (uses QueryCache from rag/utils/cache)
 // ============================================================================
 
-interface CacheEntry {
-  results: SearchResult[];
-  timestamp: number;
-}
-
-const queryCache = new Map<string, CacheEntry>();
-const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
-
-function getCacheKey(query: string, topK: number): string {
-  return `${query.toLowerCase().trim()}::${topK}`;
-}
-
-function getFromCache(key: string): SearchResult[] | null {
-  const entry = queryCache.get(key);
-  if (!entry) return null;
-
-  const now = Date.now();
-  if (now - entry.timestamp > CACHE_TTL) {
-    queryCache.delete(key);
-    return null;
-  }
-
-  return entry.results;
-}
-
-function setCache(key: string, results: SearchResult[]): void {
-  queryCache.set(key, {
-    results,
-    timestamp: Date.now(),
-  });
-}
+const queryCache = new QueryCache();
 
 // ============================================================================
 // Index Data (loaded once at module level)
@@ -240,59 +207,57 @@ export async function POST(req: NextRequest): Promise<NextResponse<RAGResponse |
       );
     }
 
-    // Parse request
-    const body: RAGRequest = await req.json();
-    const { query, topK = 3 } = body;
-
-    // Validate query
-    if (!query || typeof query !== 'string') {
+    // Parse and validate request
+    let body: unknown;
+    try {
+      body = await req.json();
+    } catch {
       return NextResponse.json(
-        { error: 'Query is required and must be a string' },
+        { error: 'Invalid JSON in request body' },
         { status: 400 }
       );
     }
 
-    const trimmedQuery = query.trim();
-    if (trimmedQuery.length === 0) {
+    const validation = validateRequest(body);
+    if (!validation.valid) {
       return NextResponse.json(
-        { error: 'Query cannot be empty' },
-        { status: 400 }
+        { error: validation.error },
+        { status: validation.status }
       );
     }
 
-    // Validate topK
-    const validTopK = Math.max(1, Math.min(topK, 10));
+    const { query, topK } = validation.data;
 
     // Check cache
-    const cacheKey = getCacheKey(trimmedQuery, validTopK);
-    const cachedResults = getFromCache(cacheKey);
+    const cacheKey = queryCache.getCacheKey(query, topK);
+    const cachedResults = queryCache.get(cacheKey);
 
     if (cachedResults) {
       const duration = Date.now() - startTime;
       return NextResponse.json({
         results: cachedResults,
-        query: trimmedQuery,
+        query,
         duration,
       });
     }
 
     // Perform search
-    const results = hybridSearch(trimmedQuery, validTopK);
+    const results = hybridSearch(query, topK);
 
     // Cache results
-    setCache(cacheKey, results);
+    queryCache.set(cacheKey, results);
 
     const duration = Date.now() - startTime;
 
     return NextResponse.json({
       results,
-      query: trimmedQuery,
+      query,
       duration,
     });
   } catch (error) {
     console.error('[RAG API] Error:', error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : 'An unexpected error occurred' },
+      { error: 'An unexpected error occurred' },
       { status: 500 }
     );
   }
