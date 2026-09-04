@@ -81,11 +81,11 @@ embedding 模型用 `bge-large-zh-v1.5`，需要 `sentence-transformers` + `torc
 "D:/python/project/.venv/Scripts/python.exe" rag/scripts/build_index.py --force
 ```
 
-CPU 版 310 片段约 30-60 秒，CUDA 版约 7 秒。
+约 563 片段：CPU 版约 30-60 秒，CUDA 版约 7 秒。
 
 ### extract_data 是前置步骤
 
-`build_index.py` 只读 `rag/data/extracted_content.json`，**不会自动重新提取**。新增/修改博客或项目文档后必须先跑 `extract_data.py`，否则索引不包含新内容（本次就因漏跑导致 blog 只有 6 篇）。
+`build_index.py` 只读 `rag/data/extracted_content.json`，**不会自动重新提取**。新增/修改博客或项目文档后必须先跑 `extract_data.py`，否则索引不包含新内容。
 
 ### 文档格式
 
@@ -157,4 +157,4 @@ cat public/rag-index/metadata.json | grep data_hash
 
 ---
 
-> 最后更新：2026-07-01
+> 最后更新：2026-09-04

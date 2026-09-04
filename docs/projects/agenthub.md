@@ -10,7 +10,7 @@
 |------|------|
 | **项目名称** | AgentHub |
 | **简介** | 以聊天为中心的多 Agent 协作平台，Orchestrator 编排「先对齐再干活」的团队协作闭环 |
-| **状态** | 进行中（平台已完整可用，持续研究与迭代，最近提交 2026-09-03） |
+| **状态** | 进行中（平台已完整可用，持续研究与迭代） |
 | **创建日期** | 2026-05 |
 | **仓库** | https://github.com/hhhhhhh520/agenthub |
 | **技术栈** | Next.js + React + TypeScript · Vercel AI SDK · Prisma + libSQL · shadcn/ui · Playwright |

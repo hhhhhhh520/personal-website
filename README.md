@@ -22,6 +22,7 @@ AI 应用开发者的沉浸式个人作品集网站，基于 Next.js 16 构建�
 | `/[locale]/blog` | 博客列表 (MDX) |
 | `/[locale]/blog/[slug]` | 博客详情 |
 | `/api/chat` | AI 对话 API |
+| `/api/rag` | RAG 检索 API |
 
 ## 快速开始
 
@@ -65,7 +66,7 @@ AI 对话功能需要 API Key。未配置时页面仍可正常浏览，Nova 向�
 
 | 文件 | 说明 |
 |------|------|
-| `docs/projects/*.md` | 6 个项目详细文档 |
+| `docs/projects/*.md` | 8 个项目详细文档 |
 | `docs/MAINTENANCE.md` | RAG 文档维护指南 |
 
 ## RAG 索引
@@ -77,7 +78,7 @@ npm run rag:build    # 构建索引
 npm run rag:force    # 强制重建
 ```
 
-索引包含 546 个文档片段，覆盖项目、博客（17篇）、个人简介。使用 RRF 融合算法进行混合搜索。
+索引包含 563 个文档片段，覆盖 8 个项目、17 篇博客、个人简介与项目详细文档。使用 RRF 融合算法进行混合搜索。
 
 ## 构建
 
@@ -89,7 +90,7 @@ npm run start
 ## 测试
 
 ```bash
-npm test              # 运行测试 (204 个测试，另含 8 个 pytest)
+npm test              # 运行 TypeScript 测试（204 个；另有 69 个 pytest 在 rag/scripts/）
 npm run test:coverage # 测试覆盖率
 ```
 

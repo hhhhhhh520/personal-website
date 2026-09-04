@@ -1,5 +1,81 @@
 [
   {
+    "id": "agenthub_0",
+    "content": "项目名称: AgentHub\n简介: IM 风格的多 Agent 协作平台，Orchestrator 智能编排任务\n详细描述: 用户通过聊天与多个 AI Agent 协作，Orchestrator 负责选人、拆任务、监督与纠偏。核心是 9-action 状态机编排闭环（self/delegate/discuss/align_confirm/align_decompose/align_qa/execute/verify/done），并用 Contract v1 契约化协作（权威输入注入 + declaredFiles 越界校验 + outputSchema 结构校验）约束 LLM 的不可靠性。执行层强制验证，进程池按配置指纹隔离，Claude Code / OpenCode 双 CLI 适配层统一抽象。",
+    "source": "project",
+    "source_id": "agenthub",
+    "title": "AgentHub",
+    "metadata": {
+      "original_metadata": {
+        "shortDesc": "IM 风格的多 Agent 协作平台，Orchestrator 智能编排任务",
+        "fullDesc": "用户通过聊天与多个 AI Agent 协作，Orchestrator 负责选人、拆任务、监督与纠偏。核心是 9-action 状态机编排闭环（self/delegate/discuss/align_confirm/align_decompose/align_qa/execute/verify/done），并用 Contract v1 契约化协作（权威输入注入 + declaredFiles 越界校验 + outputSchema 结构校验）约束 LLM 的不可靠性。执行层强制验证，进程池按配置指纹隔离，Claude Code / OpenCode 双 CLI 适配层统一抽象。1050 个单元测试，每次修复配「真回归守卫」，pre-commit 三视角审查（攻击者/生命周期/声明vs实现）。",
+        "techStack": [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Vercel AI SDK",
+          "Prisma + libSQL",
+          "Playwright"
+        ],
+        "highlights": [
+          "Orchestrator 9-action 状态机",
+          "Contract v1 契约化协作",
+          "双 CLI 适配层",
+          "1050 单元测试 + 真回归守卫"
+        ],
+        "category": "ai",
+        "status": "in-progress",
+        "source": "project",
+        "source_id": "agenthub",
+        "title": "AgentHub",
+        "doc_id": "8600d0439dce"
+      },
+      "chunk_type": "text"
+    },
+    "chunk_index": 0,
+    "total_chunks": 2,
+    "char_count": 355,
+    "embedding_hash": "0cd93b0c"
+  },
+  {
+    "id": "agenthub_1",
+    "content": "证，进程池按配置指纹隔离，Claude Code / OpenCode 双 CLI 适配层统一抽象。1050 个单元测试，每次修复配「真回归守卫」，pre-commit 三视角审查（攻击者/生命周期/声明vs实现）。\n技术栈: Next.js, React, TypeScript, Vercel AI SDK, Prisma + libSQL, Playwright\n特点: Orchestrator 9-action 状态机, Contract v1 契约化协作, 双 CLI 适配层, 1050 单元测试 + 真回归守卫\n分类: ai\n状态: in-progress",
+    "source": "project",
+    "source_id": "agenthub",
+    "title": "AgentHub",
+    "metadata": {
+      "original_metadata": {
+        "shortDesc": "IM 风格的多 Agent 协作平台，Orchestrator 智能编排任务",
+        "fullDesc": "用户通过聊天与多个 AI Agent 协作，Orchestrator 负责选人、拆任务、监督与纠偏。核心是 9-action 状态机编排闭环（self/delegate/discuss/align_confirm/align_decompose/align_qa/execute/verify/done），并用 Contract v1 契约化协作（权威输入注入 + declaredFiles 越界校验 + outputSchema 结构校验）约束 LLM 的不可靠性。执行层强制验证，进程池按配置指纹隔离，Claude Code / OpenCode 双 CLI 适配层统一抽象。1050 个单元测试，每次修复配「真回归守卫」，pre-commit 三视角审查（攻击者/生命周期/声明vs实现）。",
+        "techStack": [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Vercel AI SDK",
+          "Prisma + libSQL",
+          "Playwright"
+        ],
+        "highlights": [
+          "Orchestrator 9-action 状态机",
+          "Contract v1 契约化协作",
+          "双 CLI 适配层",
+          "1050 单元测试 + 真回归守卫"
+        ],
+        "category": "ai",
+        "status": "in-progress",
+        "source": "project",
+        "source_id": "agenthub",
+        "title": "AgentHub",
+        "doc_id": "8600d0439dce"
+      },
+      "chunk_type": "text"
+    },
+    "chunk_index": 1,
+    "total_chunks": 2,
+    "char_count": 286,
+    "embedding_hash": "961169ec"
+  },
+  {
     "id": "mini-claude_0",
     "content": "项目名称: Mini Claude Code\n简介: 迷你版 Claude CLI，支持工具调用和多 Agent 并发\n详细描述: 基于 LangGraph 和 LiteLLM 构建的轻量级 AI 编程助手。支持多模型切换（DeepSeek、通义千问、讯飞星辰等），实现工具调用、文件操作、Shell 命令执行等核心功能。采用多 Agent 并发架构，支持任务分解和并行执行。完整测试覆盖，包含 1677 个测试用例。\n技术栈: Python, LiteLLM, LangGraph, asyncio\n特点: 1677 测试用例, 多模型支持, 并发 Agent, 工具调用\n分类: ai\n状态: completed",
     "source": "project",
@@ -68,7 +144,7 @@
     "chunk_index": 0,
     "total_chunks": 1,
     "char_count": 224,
-    "embedding_hash": "4a039f4c"
+    "embedding_hash": "9083b8b2"
   },
   {
     "id": "campus-agent_0",
@@ -214,82 +290,6 @@
     "total_chunks": 1,
     "char_count": 209,
     "embedding_hash": "a9df42c4"
-  },
-  {
-    "id": "agenthub_0",
-    "content": "项目名称: AgentHub\n简介: IM 风格的多 Agent 协作平台，Orchestrator 智能编排任务\n详细描述: 用户通过聊天与多个 AI Agent 协作，Orchestrator 负责选人、拆任务、监督与纠偏。核心是 9-action 状态机编排闭环（self/delegate/discuss/align_confirm/align_decompose/align_qa/execute/verify/done），并用 Contract v1 契约化协作（权威输入注入 + declaredFiles 越界校验 + outputSchema 结构校验）约束 LLM 的不可靠性。执行层强制验证，进程池按配置指纹隔离，Claude Code / OpenCode 双 CLI 适配层统一抽象。",
-    "source": "project",
-    "source_id": "agenthub",
-    "title": "AgentHub",
-    "metadata": {
-      "original_metadata": {
-        "shortDesc": "IM 风格的多 Agent 协作平台，Orchestrator 智能编排任务",
-        "fullDesc": "用户通过聊天与多个 AI Agent 协作，Orchestrator 负责选人、拆任务、监督与纠偏。核心是 9-action 状态机编排闭环（self/delegate/discuss/align_confirm/align_decompose/align_qa/execute/verify/done），并用 Contract v1 契约化协作（权威输入注入 + declaredFiles 越界校验 + outputSchema 结构校验）约束 LLM 的不可靠性。执行层强制验证，进程池按配置指纹隔离，Claude Code / OpenCode 双 CLI 适配层统一抽象。1050 个单元测试，每次修复配「真回归守卫」，pre-commit 三视角审查（攻击者/生命周期/声明vs实现）。",
-        "techStack": [
-          "Next.js",
-          "React",
-          "TypeScript",
-          "Vercel AI SDK",
-          "Prisma + libSQL",
-          "Playwright"
-        ],
-        "highlights": [
-          "Orchestrator 9-action 状态机",
-          "Contract v1 契约化协作",
-          "双 CLI 适配层",
-          "1050 单元测试 + 真回归守卫"
-        ],
-        "category": "ai",
-        "status": "in-progress",
-        "source": "project",
-        "source_id": "agenthub",
-        "title": "AgentHub",
-        "doc_id": "8600d0439dce"
-      },
-      "chunk_type": "text"
-    },
-    "chunk_index": 0,
-    "total_chunks": 2,
-    "char_count": 355,
-    "embedding_hash": "0cd93b0c"
-  },
-  {
-    "id": "agenthub_1",
-    "content": "证，进程池按配置指纹隔离，Claude Code / OpenCode 双 CLI 适配层统一抽象。1050 个单元测试，每次修复配「真回归守卫」，pre-commit 三视角审查（攻击者/生命周期/声明vs实现）。\n技术栈: Next.js, React, TypeScript, Vercel AI SDK, Prisma + libSQL, Playwright\n特点: Orchestrator 9-action 状态机, Contract v1 契约化协作, 双 CLI 适配层, 1050 单元测试 + 真回归守卫\n分类: ai\n状态: in-progress",
-    "source": "project",
-    "source_id": "agenthub",
-    "title": "AgentHub",
-    "metadata": {
-      "original_metadata": {
-        "shortDesc": "IM 风格的多 Agent 协作平台，Orchestrator 智能编排任务",
-        "fullDesc": "用户通过聊天与多个 AI Agent 协作，Orchestrator 负责选人、拆任务、监督与纠偏。核心是 9-action 状态机编排闭环（self/delegate/discuss/align_confirm/align_decompose/align_qa/execute/verify/done），并用 Contract v1 契约化协作（权威输入注入 + declaredFiles 越界校验 + outputSchema 结构校验）约束 LLM 的不可靠性。执行层强制验证，进程池按配置指纹隔离，Claude Code / OpenCode 双 CLI 适配层统一抽象。1050 个单元测试，每次修复配「真回归守卫」，pre-commit 三视角审查（攻击者/生命周期/声明vs实现）。",
-        "techStack": [
-          "Next.js",
-          "React",
-          "TypeScript",
-          "Vercel AI SDK",
-          "Prisma + libSQL",
-          "Playwright"
-        ],
-        "highlights": [
-          "Orchestrator 9-action 状态机",
-          "Contract v1 契约化协作",
-          "双 CLI 适配层",
-          "1050 单元测试 + 真回归守卫"
-        ],
-        "category": "ai",
-        "status": "in-progress",
-        "source": "project",
-        "source_id": "agenthub",
-        "title": "AgentHub",
-        "doc_id": "8600d0439dce"
-      },
-      "chunk_type": "text"
-    },
-    "chunk_index": 1,
-    "total_chunks": 2,
-    "char_count": 286,
-    "embedding_hash": "961169ec"
   },
   {
     "id": "iflytek-agent-challenge_0",
@@ -1035,7 +1035,7 @@
     "chunk_index": 21,
     "total_chunks": 36,
     "char_count": 224,
-    "embedding_hash": "d7b610d6"
+    "embedding_hash": "d879d225"
   },
   {
     "id": "agent-fault-tolerance_0",
@@ -1947,7 +1947,7 @@
     "chunk_index": 23,
     "total_chunks": 28,
     "char_count": 145,
-    "embedding_hash": "92d1847f"
+    "embedding_hash": "63eca54c"
   },
   {
     "id": "agenthub-contract-v1_24",
@@ -3411,7 +3411,7 @@
     "chunk_index": 5,
     "total_chunks": 10,
     "char_count": 145,
-    "embedding_hash": "d3124bf0"
+    "embedding_hash": "4036f8af"
   },
   {
     "id": "langgraph-state-machine-best-practices_6",
@@ -7998,7 +7998,7 @@
   },
   {
     "id": "agenthub_项目概述_0",
-    "content": "| 属性 | 内容 |\n|------|------|\n| **项目名称** | AgentHub |\n| **简介** | 以聊天为中心的多 Agent 协作平台，Orchestrator 编排「先对齐再干活」的团队协作闭环 |\n| **状态** | 进行中（平台已完整可用，持续研究与迭代，最近提交 2026-09-03） |\n| **创建日期** | 2026-05 |\n| **仓库** | https://github.com/hhhhhhh520/agenthub |\n| **技术栈** | Next.js + React + TypeScript · Vercel AI SDK · Prisma + libSQL · shadcn/ui · Playwright |",
+    "content": "| 属性 | 内容 |\n|------|------|\n| **项目名称** | AgentHub |\n| **简介** | 以聊天为中心的多 Agent 协作平台，Orchestrator 编排「先对齐再干活」的团队协作闭环 |\n| **状态** | 进行中（平台已完整可用，持续研究与迭代） |\n| **创建日期** | 2026-05 |\n| **仓库** | https://github.com/hhhhhhh520/agenthub |\n| **技术栈** | Next.js + React + TypeScript · Vercel AI SDK · Prisma + libSQL · shadcn/ui · Playwright |",
     "source": "project_doc",
     "source_id": "agenthub_项目概述",
     "title": "AgentHub - 项目概述",
@@ -8010,14 +8010,14 @@
         "source": "project_doc",
         "source_id": "agenthub_项目概述",
         "title": "AgentHub - 项目概述",
-        "doc_id": "bc2742c14c8d"
+        "doc_id": "6d173afd63a5"
       },
       "chunk_type": "text"
     },
     "chunk_index": 0,
     "total_chunks": 1,
-    "char_count": 342,
-    "embedding_hash": "eafb1ee2"
+    "char_count": 326,
+    "embedding_hash": "9411c2bb"
   },
   {
     "id": "agenthub_核心架构_0",
@@ -12571,7 +12571,7 @@
     "chunk_index": 2,
     "total_chunks": 4,
     "char_count": 395,
-    "embedding_hash": "b35f9eb9"
+    "embedding_hash": "00df7480"
   },
   {
     "id": "mini-claude_测试覆盖_3",
@@ -12755,7 +12755,7 @@
     "chunk_index": 0,
     "total_chunks": 2,
     "char_count": 395,
-    "embedding_hash": "8efb137f"
+    "embedding_hash": "0d34cd5a"
   },
   {
     "id": "mini-claude_附录_1",

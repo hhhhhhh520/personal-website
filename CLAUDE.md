@@ -72,17 +72,17 @@ npm run rag:force    # 强制重建
 > **踩坑**：`npm run rag:*` 用系统 `python`，指向 CPU 版 torch（慢）。要 GPU 加速直接用 `D:/python/project/.venv/Scripts/python.exe` 调脚本。新增博客/文档后必须先手动跑 `extract_data.py`，`build_index.py` 不自动提取。
 
 ### 索引文件
-- `public/rag-index/documents.json` - 文档片段（546 个）
+- `public/rag-index/documents.json` - 文档片段（563 个）
 - `public/rag-index/embeddings.json` - 1024 维向量
 - `public/rag-index/metadata.json` - 元数据（含数据哈希）
 
 ### 数据来源
 | 来源 | 数量 | 说明 |
 |------|------|------|
-| `data/projects.ts` | 6 | 项目概述 |
+| `data/projects.ts` | 8 | 项目概述 |
 | `data/personal.ts` | 1 | 个人简介 |
 | `content/blog/*.mdx` | 17 | 博客内容 |
-| `docs/projects/*.md` | 54 | 项目详细文档 |
+| `docs/projects/*.md` | 66 | 项目详细文档 |
 
 ### Embedding 模型
 - 模型：bge-large-zh-v1.5（中文优化）
@@ -131,7 +131,7 @@ npm run test:coverage # 测试覆盖率报告
 
 测试目录：
 - `rag/__tests__/` - TypeScript 测试（204 个测试，测真实实现）
-- `rag/scripts/test_*.py` - Python 测试（60 个测试）
+- `rag/scripts/test_*.py` - Python 测试（69 个测试）
 
 ### RAG 工具模块
 
@@ -144,3 +144,5 @@ npm run test:coverage # 测试覆盖率报告
 | `rag/utils/security.ts` | 输入验证、XSS/SQL 注入检测 |
 | `rag/utils/validation.ts` | API 请求验证 |
 | `rag/utils/cache.ts` | 查询结果缓存 |
+| `rag/utils/ragIndex.ts` | 索引加载 + 混合检索（/api/rag 与 /api/chat 共用，进程内直接调用） |
+| `rag/utils/ragContext.ts` | 检索结果格式化为注入提示词的资料段 |
