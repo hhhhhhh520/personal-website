@@ -49,6 +49,9 @@ interface LightRaysProps {
   className?: string;
 }
 
+// 帧率上限（约 60fps），避免高刷屏上 GPU 满载
+const FRAME_INTERVAL = 1000 / 60;
+
 const LightRays = ({
   raysOrigin = 'top-center',
   raysColor = DEFAULT_COLOR,
@@ -71,10 +74,25 @@ const LightRays = ({
   const meshRef = useRef<Mesh | null>(null);
   const mouseRef = useRef({ x: 0.5, y: 0.5 });
 
-  // 单个 useEffect 处理所有 WebGL 初始化和清理
+  // 把 props 收进 ref：仅挂载时初始化一次，避免任一 prop 引用变化触发整个 WebGL 上下文重建。
+  // 首页对 LightRays 传入的均为静态常量，运行时不会变化。
+  const propsRef = useRef({
+    raysOrigin, raysColor, raysSpeed, lightSpread, rayLength, pulsating,
+    fadeDistance, saturation, followMouse, mouseInfluence, noiseAmount, distortion,
+  });
+  propsRef.current = {
+    raysOrigin, raysColor, raysSpeed, lightSpread, rayLength, pulsating,
+    fadeDistance, saturation, followMouse, mouseInfluence, noiseAmount, distortion,
+  };
+
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
+
+    // 尊重系统「减少动态效果」：只渲染一帧静态画面，不启动动画循环（省 GPU + 无障碍）
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const p = propsRef.current;
 
     // 初始化 WebGL
     const renderer = new Renderer({
@@ -174,17 +192,17 @@ void main() {
       iResolution: { value: [1, 1] },
       rayPos: { value: [0, 0] },
       rayDir: { value: [0, 1] },
-      raysColor: { value: hexToRgb(raysColor) },
-      raysSpeed: { value: raysSpeed },
-      lightSpread: { value: lightSpread },
-      rayLength: { value: rayLength },
-      pulsating: { value: pulsating ? 1.0 : 0.0 },
-      fadeDistance: { value: fadeDistance },
-      saturation: { value: saturation },
+      raysColor: { value: hexToRgb(p.raysColor) },
+      raysSpeed: { value: p.raysSpeed },
+      lightSpread: { value: p.lightSpread },
+      rayLength: { value: p.rayLength },
+      pulsating: { value: p.pulsating ? 1.0 : 0.0 },
+      fadeDistance: { value: p.fadeDistance },
+      saturation: { value: p.saturation },
       mousePos: { value: [0.5, 0.5] },
-      mouseInfluence: { value: mouseInfluence },
-      noiseAmount: { value: noiseAmount },
-      distortion: { value: distortion }
+      mouseInfluence: { value: p.mouseInfluence },
+      noiseAmount: { value: p.noiseAmount },
+      distortion: { value: p.distortion }
     };
     uniformsRef.current = uniforms;
 
@@ -202,23 +220,27 @@ void main() {
       const w = wCSS * dpr;
       const h = hCSS * dpr;
       uniforms.iResolution.value = [w, h];
-      const { anchor, dir } = getAnchorAndDir(raysOrigin, w, h);
+      const { anchor, dir } = getAnchorAndDir(propsRef.current.raysOrigin, w, h);
       uniforms.rayPos.value = anchor;
       uniforms.rayDir.value = dir;
     };
 
-    // 动画循环
+    // 动画循环（含帧率上限）
+    let lastFrame = 0;
     const animate = (t: number) => {
+      animationIdRef.current = requestAnimationFrame(animate);
+      if (t - lastFrame < FRAME_INTERVAL) return; // 帧率限制，避免高刷屏满载
+      lastFrame = t;
       if (!rendererRef.current || !uniformsRef.current) return;
       uniforms.iTime.value = t * 0.001;
-      if (followMouse && mouseInfluence > 0.0) {
+      const cp = propsRef.current;
+      if (cp.followMouse && cp.mouseInfluence > 0.0) {
         uniforms.mousePos.value = [mouseRef.current.x, mouseRef.current.y];
       }
       try {
         renderer.render({ scene: mesh });
-        animationIdRef.current = requestAnimationFrame(animate);
-      } catch {
-        // 忽略渲染错误
+      } catch (error) {
+        console.debug('[LightRays] render error:', error);
       }
     };
 
@@ -231,11 +253,21 @@ void main() {
     };
 
     window.addEventListener('resize', updateSize);
-    if (followMouse) {
+    if (p.followMouse) {
       window.addEventListener('mousemove', handleMouseMove);
     }
     updateSize();
-    animationIdRef.current = requestAnimationFrame(animate);
+
+    if (prefersReducedMotion) {
+      // 只渲染一帧静态画面
+      try {
+        renderer.render({ scene: mesh });
+      } catch (error) {
+        console.debug('[LightRays] static render error:', error);
+      }
+    } else {
+      animationIdRef.current = requestAnimationFrame(animate);
+    }
 
     // 清理函数 - 必须正确释放 WebGL context
     return () => {
@@ -244,7 +276,7 @@ void main() {
         animationIdRef.current = null;
       }
       window.removeEventListener('resize', updateSize);
-      if (followMouse) {
+      if (propsRef.current.followMouse) {
         window.removeEventListener('mousemove', handleMouseMove);
       }
 
@@ -257,8 +289,8 @@ void main() {
           if (gl.canvas.parentNode) {
             gl.canvas.parentNode.removeChild(gl.canvas);
           }
-        } catch {
-          // 忽略清理错误
+        } catch (error) {
+          console.debug('[LightRays] cleanup error:', error);
         }
       }
 
@@ -266,7 +298,8 @@ void main() {
       uniformsRef.current = null;
       meshRef.current = null;
     };
-  }, [raysOrigin, raysColor, raysSpeed, lightSpread, rayLength, pulsating, fadeDistance, saturation, followMouse, mouseInfluence, noiseAmount, distortion]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // props 为静态常量且经 propsRef 读取，挂载时初始化一次即可
 
   return <div ref={containerRef} className={`light-rays-container ${className}`.trim()} />;
 };
