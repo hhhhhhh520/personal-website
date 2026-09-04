@@ -19,7 +19,7 @@ export interface RAGRequest {
  * 验证结果类型
  */
 export type ValidationResult =
-  | { valid: true; data: RAGRequest }
+  | { valid: true; data: { query: string; topK: number } }
   | { valid: false; error: string; status: number };
 
 /**

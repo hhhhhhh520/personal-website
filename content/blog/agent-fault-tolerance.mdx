@@ -302,7 +302,7 @@ async def test_session_recovery_after_restart():
 | 工具失败时的行为 | 崩溃 | 降级 | ✅ 改善 |
 | 会话持久化 | 无 | SQLite | ~2ms 写入延迟 |
 | 内存占用 | 状态在内存 | 状态在磁盘 | ✅ 降低 |
-| 恢复时间 | 不可恢复 | <100ms | ✅ 改善 |
+| 恢复时间 | 不可恢复 | `<100ms` | ✅ 改善 |
 
 SQLite 写入延迟约 2ms，对 Agent 执行链路来说可以忽略。
 
