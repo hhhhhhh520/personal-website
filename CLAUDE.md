@@ -130,7 +130,7 @@ npm run test:coverage # 测试覆盖率报告
 ```
 
 测试目录：
-- `rag/__tests__/` - TypeScript 测试（243 个测试）
+- `rag/__tests__/` - TypeScript 测试（204 个测试，测真实实现）
 - `rag/scripts/test_*.py` - Python 测试（60 个测试）
 
 ### RAG 工具模块

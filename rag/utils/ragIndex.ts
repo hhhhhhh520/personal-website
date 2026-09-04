@@ -42,13 +42,14 @@ let indexLoadError: string | null = null;
 
 /**
  * 加载索引（惰性、仅一次）。失败时记录原因并返回 false。
+ * @param indexDir 可选，覆盖默认索引目录（供测试注入夹具）
  */
-export function loadIndex(): boolean {
+export function loadIndex(indexDir?: string): boolean {
   if (documents && embeddings) return true;
   if (indexLoadError) return false;
 
+  const indexPath = indexDir ?? path.join(process.cwd(), 'public', 'rag-index');
   try {
-    const indexPath = path.join(process.cwd(), 'public', 'rag-index');
     const documentsData = fs.readFileSync(path.join(indexPath, 'documents.json'), 'utf-8');
     documents = JSON.parse(documentsData) as RagDocument[];
     const embeddingsData = fs.readFileSync(path.join(indexPath, 'embeddings.json'), 'utf-8');
@@ -60,6 +61,13 @@ export function loadIndex(): boolean {
     console.error('[RAG] Failed to load index:', indexLoadError);
     return false;
   }
+}
+
+/** 清空已加载的索引（测试隔离用） */
+export function resetIndex(): void {
+  documents = null;
+  embeddings = null;
+  indexLoadError = null;
 }
 
 /** 索引是否可用（已加载且无加载错误） */

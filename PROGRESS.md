@@ -8,6 +8,15 @@
 
 ### ✅ 已完成
 
+#### P24 — ISSUE-001 STUB 测试改测真实实现（2026-09-04）
+| 阶段 | 内容 | 文件 | 完成日期 |
+|------|------|------|----------|
+| 删除 | ~40 个自包含假测试（测内联副本非生产代码） | 4 个 STUB 文件 | 2026-09-04 |
+| 重写 | chat-integration/e2e/index 改导入真实模块（ragContext/ragIndex） | 3 个测试文件 | 2026-09-04 |
+| 新增 | 增量逻辑真实 Python 测试（测 build_index.py 的 hash/check） | rag/scripts/test_build_index.py（8 用例） | 2026-09-04 |
+| 抽取 | `buildRAGContext` 抽为独立模块 + 删死代码 `buildSourceCitation` | rag/utils/ragContext.ts, chat/route.ts | 2026-09-04 |
+| 结果 | TS 204/204 + pytest 8/8；测试数 243→204（删的是假测试，非回归） | — | 2026-09-04 |
+
 #### P23 — 死代码清理 + zustand 幻影依赖（2026-09-04）
 | 阶段 | 内容 | 文件 | 完成日期 |
 |------|------|------|----------|

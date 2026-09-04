@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import { projects, type Project } from '@/data/projects';
 import { isIndexReady, hybridSearch } from '@/rag/utils/ragIndex';
+import { buildRAGContext } from '@/rag/utils/ragContext';
 
 // ============================================================================
 // RAG Integration Types
@@ -45,50 +46,6 @@ function retrieveRelevantDocs(query: string, topK: number = 3): RAGSearchResult[
     console.warn('[Chat API] RAG retrieval error:', error);
     return [];
   }
-}
-
-/**
- * Build context section from RAG results
- * @param results - RAG search results
- * @returns Formatted context string
- */
-function buildRAGContext(results: RAGSearchResult[]): string {
-  if (results.length === 0) return '';
-
-  const contextSections = results.map((r, index) => {
-    const sourceLabel = r.source === 'project' ? '项目' : r.source === 'blog' ? '博客' : '资料';
-    return `[${sourceLabel}: ${r.title}]\n${r.content}`;
-  });
-
-  return `
-## 相关资料
-以下是与用户问题相关的资料，请参考这些内容回答：
-
-${contextSections.join('\n\n')}
-
-**重要提示**：
-- 如果资料中有相关信息，请基于资料回答
-- 如果资料中没有相关信息，请诚实告知并引导用户查看相关页面`;
-}
-
-/**
- * Build source citations for the response
- * @param results - RAG search results that were used
- * @returns Formatted source citation string
- */
-function buildSourceCitation(results: RAGSearchResult[]): string {
-  if (results.length === 0) return '';
-
-  const citations = results.map(r => {
-    if (r.source === 'project') {
-      return `[${r.title}](/projects/${r.sourceId})`;
-    } else if (r.source === 'blog') {
-      return `[${r.title}](/blog/${r.sourceId})`;
-    }
-    return r.title;
-  });
-
-  return `\n\n📚 来源：${citations.join('、')}`;
 }
 
 // ============================================================================
@@ -262,8 +219,7 @@ export async function POST(req: NextRequest) {
       max_tokens: 500,
     });
 
-    // Source citation disabled - no longer appending to response
-    // const sourceCitation = ragResults.length > 0 ? buildSourceCitation(ragResults) : '';
+    // Source citation removed (buildSourceCitation was dead code, deleted)
 
     // Create SSE stream
     const encoder = new TextEncoder();
@@ -278,12 +234,7 @@ export async function POST(req: NextRequest) {
               );
             }
           }
-          // Source citation disabled
-          // if (sourceCitation) {
-          //   controller.enqueue(
-          //     encoder.encode(`data: ${JSON.stringify({ text: sourceCitation })}\n\n`)
-          //   );
-          // }
+          // Source citation removed
           controller.enqueue(encoder.encode(`data: [DONE]\n\n`));
           controller.close();
         } catch (error) {
