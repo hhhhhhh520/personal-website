@@ -1,6 +1,6 @@
 {
   "version": "1.1.0",
-  "created_at": "2026-09-04T20:37:34.884810",
+  "created_at": "2026-09-04T21:18:38.260661",
   "embedding_model": "D:/my project/xybst/校园百事通项目/campus_helper/models/embedding/BAAI_bge-large-zh-v1.5/",
   "embedding_dimension": 1024,
   "total_documents": 92,
@@ -17,10 +17,10 @@
     "overlap": 50
   },
   "statistics": {
-    "total_characters": 140820,
-    "average_chunk_size": 250.12,
+    "total_characters": 140881,
+    "average_chunk_size": 250.23,
     "min_chunk_size": 7,
     "max_chunk_size": 582
   },
-  "data_hash": "7886d4ce7b6a25b8bdf56b4814222bb9"
+  "data_hash": "53e461ea692670a604f031004beb7393"
 }

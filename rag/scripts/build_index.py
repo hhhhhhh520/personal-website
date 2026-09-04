@@ -523,7 +523,7 @@ Examples:
     # Load documents
     if not data_path.exists():
         logger.error(f"Data file not found: {data_path}")
-        logger.error("Run 'python rag/scripts/extract_content.py' first")
+        logger.error("Run 'python rag/scripts/extract_data.py' first")
         return 1
 
     with open(data_path, 'r', encoding='utf-8') as f:

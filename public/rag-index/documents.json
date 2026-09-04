@@ -555,7 +555,7 @@
     "chunk_index": 1,
     "total_chunks": 36,
     "char_count": 18,
-    "embedding_hash": "36b791c8"
+    "embedding_hash": "7866b84f"
   },
   {
     "id": "agent-fault-tolerance_2",
@@ -603,7 +603,7 @@
     "chunk_index": 3,
     "total_chunks": 36,
     "char_count": 35,
-    "embedding_hash": "8172a760"
+    "embedding_hash": "d311c27d"
   },
   {
     "id": "agent-fault-tolerance_4",
@@ -627,7 +627,7 @@
     "chunk_index": 4,
     "total_chunks": 36,
     "char_count": 33,
-    "embedding_hash": "b094ec0c"
+    "embedding_hash": "d90e3890"
   },
   {
     "id": "agent-fault-tolerance_5",
@@ -651,7 +651,7 @@
     "chunk_index": 5,
     "total_chunks": 36,
     "char_count": 25,
-    "embedding_hash": "4828bc22"
+    "embedding_hash": "4e5f44e8"
   },
   {
     "id": "agent-fault-tolerance_6",
@@ -867,7 +867,7 @@
     "chunk_index": 14,
     "total_chunks": 36,
     "char_count": 28,
-    "embedding_hash": "f999cdcb"
+    "embedding_hash": "0ab1aad3"
   },
   {
     "id": "agent-fault-tolerance_15",
@@ -1011,7 +1011,7 @@
     "chunk_index": 20,
     "total_chunks": 36,
     "char_count": 23,
-    "embedding_hash": "8ef3d1f8"
+    "embedding_hash": "cc2f6cb3"
   },
   {
     "id": "agent-fault-tolerance_21",
@@ -1467,7 +1467,7 @@
     "chunk_index": 3,
     "total_chunks": 28,
     "char_count": 18,
-    "embedding_hash": "9a57564a"
+    "embedding_hash": "a5a5f7d7"
   },
   {
     "id": "agenthub-contract-v1_4",
@@ -1635,7 +1635,7 @@
     "chunk_index": 10,
     "total_chunks": 28,
     "char_count": 17,
-    "embedding_hash": "f843bb8c"
+    "embedding_hash": "87059ccc"
   },
   {
     "id": "agenthub-contract-v1_11",
@@ -1827,7 +1827,7 @@
     "chunk_index": 18,
     "total_chunks": 28,
     "char_count": 18,
-    "embedding_hash": "ff07e8a9"
+    "embedding_hash": "3bd84e04"
   },
   {
     "id": "agenthub-contract-v1_19",
@@ -1947,7 +1947,7 @@
     "chunk_index": 23,
     "total_chunks": 28,
     "char_count": 145,
-    "embedding_hash": "63eca54c"
+    "embedding_hash": "92d1847f"
   },
   {
     "id": "agenthub-contract-v1_24",
@@ -2163,7 +2163,7 @@
     "chunk_index": 4,
     "total_chunks": 18,
     "char_count": 361,
-    "embedding_hash": "ba11424a"
+    "embedding_hash": "83d01fcb"
   },
   {
     "id": "agenthub-multi-agent-collaboration_3",
@@ -2787,7 +2787,7 @@
     "chunk_index": 12,
     "total_chunks": 13,
     "char_count": 67,
-    "embedding_hash": "c433855b"
+    "embedding_hash": "a5354bd0"
   },
   {
     "id": "building-mini-claude-code-from-scratch_0",
@@ -3075,7 +3075,7 @@
     "chunk_index": 2,
     "total_chunks": 11,
     "char_count": 20,
-    "embedding_hash": "f1421ece"
+    "embedding_hash": "984a673c"
   },
   {
     "id": "claude-code-vs-mini-claude-compression_3",
@@ -3171,7 +3171,7 @@
     "chunk_index": 6,
     "total_chunks": 11,
     "char_count": 391,
-    "embedding_hash": "2f89c5f0"
+    "embedding_hash": "61f12042"
   },
   {
     "id": "claude-code-vs-mini-claude-compression_7",
@@ -3363,7 +3363,7 @@
     "chunk_index": 3,
     "total_chunks": 10,
     "char_count": 23,
-    "embedding_hash": "c52e555f"
+    "embedding_hash": "457f0547"
   },
   {
     "id": "langgraph-state-machine-best-practices_4",
@@ -3651,7 +3651,7 @@
     "chunk_index": 5,
     "total_chunks": 18,
     "char_count": 386,
-    "embedding_hash": "3c8c5b2e"
+    "embedding_hash": "ff6c65dd"
   },
   {
     "id": "llm-app-security-hardening_2",
@@ -4155,7 +4155,7 @@
     "chunk_index": 8,
     "total_chunks": 15,
     "char_count": 29,
-    "embedding_hash": "184fdcfd"
+    "embedding_hash": "c0d2f173"
   },
   {
     "id": "llm-tool-calling-design-patterns_9",
@@ -4275,7 +4275,7 @@
     "chunk_index": 13,
     "total_chunks": 15,
     "char_count": 33,
-    "embedding_hash": "8cc98eb9"
+    "embedding_hash": "bf599d8e"
   },
   {
     "id": "llm-tool-calling-design-patterns_14",
@@ -4299,7 +4299,7 @@
     "chunk_index": 14,
     "total_chunks": 15,
     "char_count": 40,
-    "embedding_hash": "5c6408f8"
+    "embedding_hash": "86fb3182"
   },
   {
     "id": "mini-claude-testing-journey_0",
@@ -4515,7 +4515,7 @@
     "chunk_index": 8,
     "total_chunks": 13,
     "char_count": 18,
-    "embedding_hash": "b69eee53"
+    "embedding_hash": "42fe6a97"
   },
   {
     "id": "mini-claude-testing-journey_9",
@@ -4731,7 +4731,7 @@
     "chunk_index": 4,
     "total_chunks": 12,
     "char_count": 30,
-    "embedding_hash": "038c3f73"
+    "embedding_hash": "aae8d634"
   },
   {
     "id": "multi-agent-concurrency-patterns_5",
@@ -4899,7 +4899,7 @@
     "chunk_index": 11,
     "total_chunks": 12,
     "char_count": 42,
-    "embedding_hash": "ef4fc27a"
+    "embedding_hash": "d61ce03f"
   },
   {
     "id": "multi-round-code-review_0",
@@ -4995,7 +4995,7 @@
     "chunk_index": 3,
     "total_chunks": 42,
     "char_count": 27,
-    "embedding_hash": "766816a9"
+    "embedding_hash": "bc7b0c40"
   },
   {
     "id": "multi-round-code-review_4",
@@ -5043,7 +5043,7 @@
     "chunk_index": 5,
     "total_chunks": 42,
     "char_count": 117,
-    "embedding_hash": "9cfbb3ad"
+    "embedding_hash": "05844197"
   },
   {
     "id": "multi-round-code-review_6",
@@ -5067,7 +5067,7 @@
     "chunk_index": 6,
     "total_chunks": 42,
     "char_count": 21,
-    "embedding_hash": "01f79cff"
+    "embedding_hash": "d569d6ba"
   },
   {
     "id": "multi-round-code-review_7",
@@ -5115,7 +5115,7 @@
     "chunk_index": 8,
     "total_chunks": 42,
     "char_count": 25,
-    "embedding_hash": "9d106dbd"
+    "embedding_hash": "ec0385cf"
   },
   {
     "id": "multi-round-code-review_9",
@@ -5187,7 +5187,7 @@
     "chunk_index": 11,
     "total_chunks": 42,
     "char_count": 23,
-    "embedding_hash": "f31bdd1f"
+    "embedding_hash": "5952b1b8"
   },
   {
     "id": "multi-round-code-review_12",
@@ -5211,7 +5211,7 @@
     "chunk_index": 12,
     "total_chunks": 42,
     "char_count": 36,
-    "embedding_hash": "372205ad"
+    "embedding_hash": "02bdc344"
   },
   {
     "id": "multi-round-code-review_13",
@@ -5283,7 +5283,7 @@
     "chunk_index": 15,
     "total_chunks": 42,
     "char_count": 28,
-    "embedding_hash": "83a73931"
+    "embedding_hash": "f4005a60"
   },
   {
     "id": "multi-round-code-review_16",
@@ -5379,7 +5379,7 @@
     "chunk_index": 19,
     "total_chunks": 42,
     "char_count": 25,
-    "embedding_hash": "bcf0ebfb"
+    "embedding_hash": "2de61367"
   },
   {
     "id": "multi-round-code-review_20",
@@ -5427,7 +5427,7 @@
     "chunk_index": 21,
     "total_chunks": 42,
     "char_count": 67,
-    "embedding_hash": "3fa3f4aa"
+    "embedding_hash": "829fb76f"
   },
   {
     "id": "multi-round-code-review_22",
@@ -5763,7 +5763,7 @@
     "chunk_index": 35,
     "total_chunks": 42,
     "char_count": 32,
-    "embedding_hash": "5afa86fb"
+    "embedding_hash": "e01ae2cd"
   },
   {
     "id": "multi-round-code-review_36",
@@ -5811,7 +5811,7 @@
     "chunk_index": 37,
     "total_chunks": 42,
     "char_count": 40,
-    "embedding_hash": "95a22a27"
+    "embedding_hash": "835b3b32"
   },
   {
     "id": "multi-round-code-review_38",
@@ -5859,7 +5859,7 @@
     "chunk_index": 39,
     "total_chunks": 42,
     "char_count": 29,
-    "embedding_hash": "5ba8f1b4"
+    "embedding_hash": "43716a02"
   },
   {
     "id": "multi-round-code-review_40",
@@ -6027,7 +6027,7 @@
     "chunk_index": 4,
     "total_chunks": 23,
     "char_count": 19,
-    "embedding_hash": "32166539"
+    "embedding_hash": "a82211b6"
   },
   {
     "id": "python-format-string-brace-dos_5",
@@ -6915,7 +6915,7 @@
     "chunk_index": 6,
     "total_chunks": 16,
     "char_count": 19,
-    "embedding_hash": "4f9282ba"
+    "embedding_hash": "afc6727b"
   },
   {
     "id": "rag-powered-campus-assistant_7",
@@ -6963,7 +6963,7 @@
     "chunk_index": 8,
     "total_chunks": 16,
     "char_count": 18,
-    "embedding_hash": "0f528a90"
+    "embedding_hash": "8593e33e"
   },
   {
     "id": "rag-powered-campus-assistant_9",
@@ -7059,7 +7059,7 @@
     "chunk_index": 12,
     "total_chunks": 16,
     "char_count": 41,
-    "embedding_hash": "952a74ae"
+    "embedding_hash": "ddc5f3ad"
   },
   {
     "id": "rag-powered-campus-assistant_13",
@@ -7419,7 +7419,7 @@
     "chunk_index": 11,
     "total_chunks": 21,
     "char_count": 117,
-    "embedding_hash": "fd874fe7"
+    "embedding_hash": "c6e5cb34"
   },
   {
     "id": "sse-streaming-for-ai-apps_12",
@@ -9650,7 +9650,7 @@
     "chunk_index": 0,
     "total_chunks": 7,
     "char_count": 395,
-    "embedding_hash": "05d75872"
+    "embedding_hash": "e499d8f4"
   },
   {
     "id": "codecraft-agent_design_decisions_1",
@@ -12518,7 +12518,7 @@
         "source": "project_doc",
         "source_id": "mini-claude_测试覆盖",
         "title": "Mini Claude Code - 测试覆盖",
-        "doc_id": "b0ddb86f6f09"
+        "doc_id": "61b6996ee82c"
       },
       "chunk_type": "text"
     },
@@ -12541,7 +12541,7 @@
         "source": "project_doc",
         "source_id": "mini-claude_测试覆盖",
         "title": "Mini Claude Code - 测试覆盖",
-        "doc_id": "b0ddb86f6f09"
+        "doc_id": "61b6996ee82c"
       },
       "chunk_type": "text"
     },
@@ -12552,7 +12552,7 @@
   },
   {
     "id": "mini-claude_测试覆盖_2",
-    "content": "3  |   98.0  |\n utils/           |   93.5  |   85.6   |   88.9  |   92.8  |\n------------------|---------|----------|---------|---------|\n```\n\n### 测试统计\n\n| 指标 | 数值 |\n|------|------|\n| 测试文件数 | 68 |\n| 测试用例数 | 1677 |\n| 测试通过率 | 100% |\n\n### 测试命令\n\n```bash\n# 运行所有测试\npytest tests/\n\n# 运行单元测试\npytest tests/test_agent/ tests/test_tools/\n\n# 运行集成测试\npytest tests/test_integration/\n\n# 生成覆盖率报告",
+    "content": "3  |   98.0  |\n utils/           |   93.5  |   85.6   |   88.9  |   92.8  |\n------------------|---------|----------|---------|---------|\n```\n\n### 测试统计\n\n| 指标 | 数值 |\n|------|------|\n| 测试文件数 | 68 |\n| 测试用例数 | 1677 |\n| 测试通过率 | 99.8%（1673/1677，4 个为预已知的网络/健康检查类用例） |\n\n### 测试命令\n\n```bash\n# 运行所有测试\npytest tests/\n\n# 运行单元测试\npytest tests/test_agent/ tests/test_tools/\n\n# 运行集成测试\npytest tests/test_integration/",
     "source": "project_doc",
     "source_id": "mini-claude_测试覆盖",
     "title": "Mini Claude Code - 测试覆盖",
@@ -12564,18 +12564,18 @@
         "source": "project_doc",
         "source_id": "mini-claude_测试覆盖",
         "title": "Mini Claude Code - 测试覆盖",
-        "doc_id": "b0ddb86f6f09"
+        "doc_id": "61b6996ee82c"
       },
       "chunk_type": "text"
     },
     "chunk_index": 2,
     "total_chunks": 4,
-    "char_count": 375,
-    "embedding_hash": "fff81034"
+    "char_count": 395,
+    "embedding_hash": "b35f9eb9"
   },
   {
     "id": "mini-claude_测试覆盖_3",
-    "content": "运行集成测试\npytest tests/test_integration/\n\n# 生成覆盖率报告\npytest --cov=src/mini_claude tests/\n\n# 运行压力测试\npytest tests/test_stress.py -v\n```\n\n---",
+    "content": "_tools/\n\n# 运行集成测试\npytest tests/test_integration/\n\n# 生成覆盖率报告\npytest --cov=src/mini_claude tests/\n\n# 运行压力测试\npytest tests/test_stress.py -v\n```\n\n---",
     "source": "project_doc",
     "source_id": "mini-claude_测试覆盖",
     "title": "Mini Claude Code - 测试覆盖",
@@ -12587,14 +12587,14 @@
         "source": "project_doc",
         "source_id": "mini-claude_测试覆盖",
         "title": "Mini Claude Code - 测试覆盖",
-        "doc_id": "b0ddb86f6f09"
+        "doc_id": "61b6996ee82c"
       },
       "chunk_type": "text"
     },
     "chunk_index": 3,
     "total_chunks": 4,
-    "char_count": 134,
-    "embedding_hash": "a7e1b174"
+    "char_count": 145,
+    "embedding_hash": "924223e2"
   },
   {
     "id": "mini-claude_部署说明_0",
@@ -12679,7 +12679,7 @@
         "source": "project_doc",
         "source_id": "mini-claude_项目亮点",
         "title": "Mini Claude Code - 项目亮点",
-        "doc_id": "dd1984d9186e"
+        "doc_id": "82f75d48e66c"
       },
       "chunk_type": "text"
     },
@@ -12702,7 +12702,7 @@
         "source": "project_doc",
         "source_id": "mini-claude_项目亮点",
         "title": "Mini Claude Code - 项目亮点",
-        "doc_id": "dd1984d9186e"
+        "doc_id": "82f75d48e66c"
       },
       "chunk_type": "text"
     },
@@ -12713,7 +12713,7 @@
   },
   {
     "id": "mini-claude_项目亮点_2",
-    "content": "标值 | 实际值 | 说明 |\n|------|--------|--------|------|\n| 测试用例数 | `> 1000` | `1677` | 全面覆盖 |\n| 测试通过率 | `100%` | `100%` | 所有测试通过 |\n| 代码覆盖率 | `> 80%` | `95.2%` | 行覆盖率 |\n| 工具数量 | `> 10` | `18` | 丰富的工具集 |\n\n### 创新点\n\n1. **智能并行执行**：自动分析任务依赖，按层级并行执行，无需手动管理并发\n2. **文件锁机制**：乐观锁 + 哈希检测，支持多 Agent 安全并行开发同一项目\n3. **状态精简**：从 18 个字段精简到 11 个，降低状态复杂度同时保持功能完整\n\n---",
+    "content": "标值 | 实际值 | 说明 |\n|------|--------|--------|------|\n| 测试用例数 | `> 1000` | `1677` | 全面覆盖 |\n| 测试通过率 | `100%` | `99.8%` | 1673/1677，4 个预已知网络/健康检查用例 |\n| 代码覆盖率 | `> 80%` | `~66%` | 行覆盖率（源仓库实测，待优化） |\n| 工具数量 | `> 10` | `18` | 丰富的工具集 |\n\n### 创新点\n\n1. **智能并行执行**：自动分析任务依赖，按层级并行执行，无需手动管理并发\n2. **文件锁机制**：乐观锁 + 哈希检测，支持多 Agent 安全并行开发同一项目\n3. **状态精简**：从 18 个字段精简到 11 个，降低状态复杂度同时保持功能完整\n\n---",
     "source": "project_doc",
     "source_id": "mini-claude_项目亮点",
     "title": "Mini Claude Code - 项目亮点",
@@ -12725,14 +12725,14 @@
         "source": "project_doc",
         "source_id": "mini-claude_项目亮点",
         "title": "Mini Claude Code - 项目亮点",
-        "doc_id": "dd1984d9186e"
+        "doc_id": "82f75d48e66c"
       },
       "chunk_type": "text"
     },
     "chunk_index": 2,
     "total_chunks": 3,
-    "char_count": 339,
-    "embedding_hash": "b432ae19"
+    "char_count": 369,
+    "embedding_hash": "6dd4b8be"
   },
   {
     "id": "mini-claude_附录_0",
@@ -12801,7 +12801,7 @@
     "chunk_index": 0,
     "total_chunks": 1,
     "char_count": 13,
-    "embedding_hash": "7e48f983"
+    "embedding_hash": "dd080807"
   },
   {
     "id": "phone-pick-assistant_项目概述_0",
