@@ -7,10 +7,9 @@ import Navigation from "@/components/ui/Navigation";
 import MobileNav from "@/components/ui/MobileNav";
 import PageTransition from "@/components/ui/PageTransition";
 import { PerformanceMonitor, emitWebVital } from "@/components/ui/PerformanceMonitor";
-import { NovaGuide } from "@/components/ai";
+import { LazyOverlays } from "@/components/lazy/LazyOverlays";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { personal } from "@/data/personal";
-import TargetCursor from "@/components/effects/TargetCursor";
 
 // Web Vitals metric type (Next.js 16 compatible)
 interface WebVitalsMetric {
@@ -107,11 +106,8 @@ export default async function LocaleLayout({ children, params }: Props) {
         {/* Mobile bottom navigation */}
         <MobileNav />
 
-        {/* AI 向导 - 全局可用 */}
-        <NovaGuide />
-
-        {/* 自定义鼠标光标 */}
-        <TargetCursor />
+        {/* AI 向导 + 自定义光标（客户端懒加载，见 LazyOverlays） */}
+        <LazyOverlays />
 
         {/* 性能监控面板 - 仅开发环境显示 */}
         <PerformanceMonitor />

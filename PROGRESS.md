@@ -8,6 +8,12 @@
 
 ### ✅ 已完成
 
+#### P25 — ISSUE-003 代码分割（2026-09-04）
+| 阶段 | 内容 | 文件 | 完成日期 |
+|------|------|------|----------|
+| 懒加载 | LightRays(next/dynamic ssr:false,客户端首页)+ NovaGuide/TargetCursor(客户端包装,根布局为 Server Component) | app/[locale]/page.tsx, layout.tsx, components/lazy/LazyOverlays.tsx | 2026-09-04 |
+| 结果 | build 全绿,30 chunk,重型库拆出首屏关键路径 | — | 2026-09-04 |
+
 #### P24 — ISSUE-001 STUB 测试改测真实实现（2026-09-04）
 | 阶段 | 内容 | 文件 | 完成日期 |
 |------|------|------|----------|

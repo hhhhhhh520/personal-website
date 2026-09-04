@@ -1,5 +1,5 @@
 # 无代码分割 — 首屏加载巨大JS包
-> 创建时间: 2026-06-25 | 状态: 🔴未解决
+> 创建时间: 2026-06-25 | 状态: 🟢已解决（2026-09-04，核心懒加载落地）
 
 ## 问题描述
 
@@ -79,3 +79,10 @@ const TargetCursor = dynamic(() => import('@/components/effects/TargetCursor'), 
 ## 参考资料
 
 - Next.js Dynamic Imports: https://nextjs.org/docs/app/building-your-application/optimizing/lazy-loading
+
+## 解决记录（2026-09-04）
+
+- `LightRays`（ogl/WebGL 背景）在客户端首页改 `next/dynamic` + `ssr:false` 懒加载（父级已有渐变底色，`loading:()=>null` 无闪烁）。
+- `NovaGuide` + `TargetCursor`（gsap）新增 `components/lazy/LazyOverlays.tsx` 客户端包装（根布局是 Server Component，`ssr:false` 只能在客户端组件用），懒加载后渲染。
+- 构建产物 30 个 chunk，重型库已拆出首屏关键路径。
+- **未做（遗留）**：ParticleBg/GlowEffect 当前无页面引用；「ogl 迁移到 three」属较大重构，未动。

@@ -8,7 +8,13 @@ import { useDeviceCapabilities } from "@/hooks/useDeviceCapabilities";
 import { personal } from "@/data/personal";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import LightRays from "@/components/effects/LightRays";
+import dynamic from "next/dynamic";
+
+// 懒加载 WebGL 背景（ogl 较重）；父级已有渐变底色，加载完成后光线淡入
+const LightRays = dynamic(() => import("@/components/effects/LightRays"), {
+  ssr: false,
+  loading: () => null,
+});
 
 type ViewMode = "home" | "resume";
 
