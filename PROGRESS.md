@@ -1,5 +1,5 @@
 # 个人网站项目进度
-> 创建时间: 2026-05-09 | 最后更新: 2026-07-01
+> 创建时间: 2026-05-09 | 最后更新: 2026-09-04
 
 ## 项目概述
 **项目地址**: D:\my project\web\personal-website | **技术选型**: Next.js 16 + TypeScript + Tailwind CSS v4 + Three.js + Framer Motion | **目标**: AI 应用开发者的个人作品集网站
@@ -7,6 +7,18 @@
 ## 当前进度
 
 ### ✅ 已完成
+
+#### P22 — 作品集新增 2 个项目（2026-09-04）
+| 阶段 | 内容 | 文件 | 完成日期 |
+|------|------|------|----------|
+| 数据层 | `projects.ts` 新增 AgentHub、讯飞 Agent 算法挑战赛（6→8） | data/projects.ts | 2026-09-04 |
+| 封面 | 2 个 SVG 封面（仿现有风格） | public/images/projects/{agenthub,iflytek-agent-challenge}.svg | 2026-09-04 |
+| 文档 | 2 份项目详细文档 + 索引表登记 | docs/projects/{agenthub,iflytek-agent-challenge}.md, docs/projects/README.md | 2026-09-04 |
+| Nova 接线 | `PROJECT_INTROS` 补 2 键；"6→8 个核心项目"（含**实际生效的** `chat/route.ts` 系统提示词） | data/nova-prompts.ts, app/api/chat/route.ts | 2026-09-04 |
+| RAG 索引 | 重建 546→563 片段，project 6→8，data_hash `f840f4a` | public/rag-index/*.json | 2026-09-04 |
+| 提交审查 | pre-commit 三视角审查（攻击者/生命周期/声明vs实现），修正 62.65 归因不实、train200、AgentHub status、9-action 计数 | — | 2026-09-04 |
+
+**pre-commit 审查发现的既有问题（本次未修，登记待办）**：`tsc --noEmit` 有 2 个 `topK: number\|undefined` 报错（`rag/utils/validation.ts` 返回值类型漏了非 optional）；详情页 OG 图指向不存在的 `.png`；`data/nova-prompts.ts` 的 `SYSTEM_PROMPT` 是与 route.ts 内联副本**重复的死配置**；JSON-LD `dangerouslySetInnerHTML` 未转义 `<`；`build_index.py:526` 报错提示写成 `extract_content.py`（实为 `extract_data.py`）。
 
 #### P0 — 数据统一（2026-05-09）
 | 阶段 | 内容 | 文件 | 完成日期 |

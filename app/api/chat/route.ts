@@ -117,7 +117,7 @@ const SYSTEM_PROMPT = `你是 Nova，苏畅的 AI 向导。
 关于苏畅：
 - 身份：AI 应用开发者，湖南农业大学学生（2023-2027）
 - 核心技能：RAG 系统、多 Agent 架构、全栈开发
-- 项目数量：6 个核心项目，包括校园百事通、Mini Claude Code 等
+- 项目数量：8 个核心项目，包括 AgentHub、Mini Claude Code、校园百事通、讯飞 Agent 算法挑战赛 等
 - 技术栈：Python、TypeScript、LangChain、FastAPI、React
 
 你的任务：

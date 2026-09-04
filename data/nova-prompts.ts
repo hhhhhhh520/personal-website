@@ -6,7 +6,7 @@ export const SYSTEM_PROMPT = `你是 Nova，苏畅的 AI 向导。你的任务�
 ## 关于苏畅
 - 身份：AI 应用开发者，湖南农业大学学生（2023-2027）
 - 核心技能：RAG 系统、多 Agent 架构、全栈开发
-- 项目数量：6 个核心项目，包括校园百事通、Mini Claude Code、CodeCraft Agent 等
+- 项目数量：8 个核心项目，包括校园百事通、Mini Claude Code、CodeCraft Agent 等
 - 技术栈：Python、TypeScript、LangChain、FastAPI、React
 
 ## 回答风格
@@ -55,6 +55,18 @@ export const PROJECT_INTROS: Record<string, string> = {
   'game-agent': `GameAuto Agent 是一个游戏自动化框架！
 
 模板匹配、OCR 识别、智能休眠...解放双手的神器！不过现在已经归档啦，但技术实现还是很值得参考的。`,
+
+  'agenthub': `AgentHub 是一个 IM 风格的多 Agent 协作平台！
+
+用聊天驱动多个 AI Agent 协作，Orchestrator 智能编排——9-action 状态机 + Contract v1 契约化协作，管住 LLM 的不可靠性，还支持 Claude Code / OpenCode 双 CLI。有 1050+ 单元测试和「真回归守卫」方法论。
+
+想了解它怎么把「多 Agent 协作」工程化的吗？`,
+
+  'iflytek-agent-challenge': `这是苏畅参加讯飞 AI 开发者大赛「Agent 算法挑战赛」的方案！
+
+赛题是从自然语言生成可执行工作流，用三阶段架构（意图理解 / 显式状态机 / 结果构造）在官方仿真器上拿到最优 71.47 分。
+
+想知道怎么用状态机兜住 LLM 的不确定性吗？`,
 };
 
 // 时间段问候消息 - 根据当前时间打招呼
@@ -79,7 +91,7 @@ export function getTimeGreeting(): string {
 // 主动询问消息 - 根据页面位置提示用户
 export const PROACTIVE_MESSAGES: Record<string, string> = {
   home: '欢迎来到苏畅的个人空间！需要我带你探索吗？',
-  projects: '这里是项目展厅！展示了苏畅的 6 个核心项目，每个都有独特的技术亮点。想让我推荐吗？',
+  projects: '这里是项目展厅！展示了苏畅的 8 个核心项目，每个都有独特的技术亮点。想让我推荐吗？',
   about: '关于苏畅 📖 这里有他的教育背景、技术栈和成长故事。有什么想知道的尽管问！',
   blog: '博客区域 📝 苏畅在这里分享技术心得和项目经验，欢迎阅读！',
 };
@@ -87,7 +99,7 @@ export const PROACTIVE_MESSAGES: Record<string, string> = {
 // 页面介绍消息 - 进入页面时气泡显示的内容
 export const PAGE_INTROS: Record<string, string> = {
   home: '欢迎来到苏畅的个人空间！✨ 这里展示了他的项目和技能，需要我带你探索吗？',
-  projects: '项目展厅 🚀 这里有 6 个核心项目，涵盖 RAG、Agent、全栈开发等领域。想让我推荐吗？',
+  projects: '项目展厅 🚀 这里有 8 个核心项目，涵盖 RAG、Agent、全栈开发等领域。想让我推荐吗？',
   about: '关于苏畅 📖 这里记录了他的成长轨迹和技术栈。有什么想知道的尽管问！',
   blog: '技术博客 📝 分享 RAG、Agent、全栈开发的心得。欢迎阅读！',
 };

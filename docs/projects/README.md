@@ -12,6 +12,8 @@
 | 手机选购助手 | [phone-pick-assistant.md](./phone-pick-assistant.md) | ✅ 已完成 | 2026-05-15 |
 | CV Generator | [cv-generator.md](./cv-generator.md) | ✅ 已完成 | 2026-05-15 |
 | GameAuto Agent | [game-agent.md](./game-agent.md) | ✅ 已完成 | 2026-05-15 |
+| AgentHub | [agenthub.md](./agenthub.md) | 🔄 进行中 | 2026-09-04 |
+| 讯飞 Agent 算法挑战赛 | [iflytek-agent-challenge.md](./iflytek-agent-challenge.md) | 🔄 进行中 | 2026-09-04 |
 
 ## 文档模板
 
@@ -19,7 +21,7 @@
 
 ## 文档维护
 
-1. 更新项目文档后，运行 `npm run rag:build` 重建索引
+1. 更新项目文档/`data/*.ts` 后，先运行 `python rag/scripts/extract_data.py` 重新提取，再 `npm run rag:build` 重建索引（`build_index.py` 只读 `rag/data/extracted_content.json`，不会自动重提取；顺序颠倒会让 `--check` 误报 up-to-date 而静默漏掉新内容）
 2. 文档应包含：技术架构、核心功能、设计决策、测试覆盖、部署说明
 3. 使用 Mermaid 图表展示架构和流程
 
