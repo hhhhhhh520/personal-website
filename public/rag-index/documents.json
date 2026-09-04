@@ -68,7 +68,7 @@
     "chunk_index": 0,
     "total_chunks": 1,
     "char_count": 224,
-    "embedding_hash": "def389d2"
+    "embedding_hash": "4a039f4c"
   },
   {
     "id": "campus-agent_0",
@@ -105,7 +105,7 @@
     "chunk_index": 0,
     "total_chunks": 1,
     "char_count": 230,
-    "embedding_hash": "6b39467c"
+    "embedding_hash": "a633592f"
   },
   {
     "id": "phone-pick-assistant_0",
@@ -142,7 +142,7 @@
     "chunk_index": 0,
     "total_chunks": 1,
     "char_count": 234,
-    "embedding_hash": "d9d47357"
+    "embedding_hash": "734cd2d1"
   },
   {
     "id": "cv-generator_0",
@@ -177,7 +177,7 @@
     "chunk_index": 0,
     "total_chunks": 1,
     "char_count": 203,
-    "embedding_hash": "b00291b3"
+    "embedding_hash": "1313036e"
   },
   {
     "id": "game-agent_0",
@@ -213,7 +213,155 @@
     "chunk_index": 0,
     "total_chunks": 1,
     "char_count": 209,
-    "embedding_hash": "42effc71"
+    "embedding_hash": "a9df42c4"
+  },
+  {
+    "id": "agenthub_0",
+    "content": "项目名称: AgentHub\n简介: IM 风格的多 Agent 协作平台，Orchestrator 智能编排任务\n详细描述: 用户通过聊天与多个 AI Agent 协作，Orchestrator 负责选人、拆任务、监督与纠偏。核心是 9-action 状态机编排闭环（self/delegate/discuss/align_confirm/align_decompose/align_qa/execute/verify/done），并用 Contract v1 契约化协作（权威输入注入 + declaredFiles 越界校验 + outputSchema 结构校验）约束 LLM 的不可靠性。执行层强制验证，进程池按配置指纹隔离，Claude Code / OpenCode 双 CLI 适配层统一抽象。",
+    "source": "project",
+    "source_id": "agenthub",
+    "title": "AgentHub",
+    "metadata": {
+      "original_metadata": {
+        "shortDesc": "IM 风格的多 Agent 协作平台，Orchestrator 智能编排任务",
+        "fullDesc": "用户通过聊天与多个 AI Agent 协作，Orchestrator 负责选人、拆任务、监督与纠偏。核心是 9-action 状态机编排闭环（self/delegate/discuss/align_confirm/align_decompose/align_qa/execute/verify/done），并用 Contract v1 契约化协作（权威输入注入 + declaredFiles 越界校验 + outputSchema 结构校验）约束 LLM 的不可靠性。执行层强制验证，进程池按配置指纹隔离，Claude Code / OpenCode 双 CLI 适配层统一抽象。1050 个单元测试，每次修复配「真回归守卫」，pre-commit 三视角审查（攻击者/生命周期/声明vs实现）。",
+        "techStack": [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Vercel AI SDK",
+          "Prisma + libSQL",
+          "Playwright"
+        ],
+        "highlights": [
+          "Orchestrator 9-action 状态机",
+          "Contract v1 契约化协作",
+          "双 CLI 适配层",
+          "1050 单元测试 + 真回归守卫"
+        ],
+        "category": "ai",
+        "status": "in-progress",
+        "source": "project",
+        "source_id": "agenthub",
+        "title": "AgentHub",
+        "doc_id": "8600d0439dce"
+      },
+      "chunk_type": "text"
+    },
+    "chunk_index": 0,
+    "total_chunks": 2,
+    "char_count": 355,
+    "embedding_hash": "0cd93b0c"
+  },
+  {
+    "id": "agenthub_1",
+    "content": "证，进程池按配置指纹隔离，Claude Code / OpenCode 双 CLI 适配层统一抽象。1050 个单元测试，每次修复配「真回归守卫」，pre-commit 三视角审查（攻击者/生命周期/声明vs实现）。\n技术栈: Next.js, React, TypeScript, Vercel AI SDK, Prisma + libSQL, Playwright\n特点: Orchestrator 9-action 状态机, Contract v1 契约化协作, 双 CLI 适配层, 1050 单元测试 + 真回归守卫\n分类: ai\n状态: in-progress",
+    "source": "project",
+    "source_id": "agenthub",
+    "title": "AgentHub",
+    "metadata": {
+      "original_metadata": {
+        "shortDesc": "IM 风格的多 Agent 协作平台，Orchestrator 智能编排任务",
+        "fullDesc": "用户通过聊天与多个 AI Agent 协作，Orchestrator 负责选人、拆任务、监督与纠偏。核心是 9-action 状态机编排闭环（self/delegate/discuss/align_confirm/align_decompose/align_qa/execute/verify/done），并用 Contract v1 契约化协作（权威输入注入 + declaredFiles 越界校验 + outputSchema 结构校验）约束 LLM 的不可靠性。执行层强制验证，进程池按配置指纹隔离，Claude Code / OpenCode 双 CLI 适配层统一抽象。1050 个单元测试，每次修复配「真回归守卫」，pre-commit 三视角审查（攻击者/生命周期/声明vs实现）。",
+        "techStack": [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Vercel AI SDK",
+          "Prisma + libSQL",
+          "Playwright"
+        ],
+        "highlights": [
+          "Orchestrator 9-action 状态机",
+          "Contract v1 契约化协作",
+          "双 CLI 适配层",
+          "1050 单元测试 + 真回归守卫"
+        ],
+        "category": "ai",
+        "status": "in-progress",
+        "source": "project",
+        "source_id": "agenthub",
+        "title": "AgentHub",
+        "doc_id": "8600d0439dce"
+      },
+      "chunk_type": "text"
+    },
+    "chunk_index": 1,
+    "total_chunks": 2,
+    "char_count": 286,
+    "embedding_hash": "961169ec"
+  },
+  {
+    "id": "iflytek-agent-challenge_0",
+    "content": "项目名称: 讯飞 Agent 算法挑战赛\n简介: 从自然语言到可执行工作流的 Agent，平台最优 71.47\n详细描述: 讯飞 AI 开发者大赛「Agent 算法挑战赛」参赛方案，赛题为从自然语言到可执行工作流，在官方仿真器上按 TSR(60) / 动作合法性(20) / 效率(10) / 鲁棒性(10) 评分。采用三阶段架构：Phase1 LLM 意图理解（不计步）→ Phase2 显式状态机推进（计步）→ Phase3 构造最终结果，用确定性状态机兜住 LLM 的步数与动作合法性。平台得分受 ±1.7 方差影响，多轮迭代后达到的最优为 71.47（2026-09-02）。\n技术栈: Python, LLM Agent, 显式状态机, Qwen\n特点: 三阶段架构（意图/状态机/结果）, 平台最优 71.47, 官方仿真器端到端验证, 鲁棒性变体测试\n分类: ai",
+    "source": "project",
+    "source_id": "iflytek-agent-challenge",
+    "title": "讯飞 Agent 算法挑战赛",
+    "metadata": {
+      "original_metadata": {
+        "shortDesc": "从自然语言到可执行工作流的 Agent，平台最优 71.47",
+        "fullDesc": "讯飞 AI 开发者大赛「Agent 算法挑战赛」参赛方案，赛题为从自然语言到可执行工作流，在官方仿真器上按 TSR(60) / 动作合法性(20) / 效率(10) / 鲁棒性(10) 评分。采用三阶段架构：Phase1 LLM 意图理解（不计步）→ Phase2 显式状态机推进（计步）→ Phase3 构造最终结果，用确定性状态机兜住 LLM 的步数与动作合法性。平台得分受 ±1.7 方差影响，多轮迭代后达到的最优为 71.47（2026-09-02）。",
+        "techStack": [
+          "Python",
+          "LLM Agent",
+          "显式状态机",
+          "Qwen"
+        ],
+        "highlights": [
+          "三阶段架构（意图/状态机/结果）",
+          "平台最优 71.47",
+          "官方仿真器端到端验证",
+          "鲁棒性变体测试"
+        ],
+        "category": "ai",
+        "status": "in-progress",
+        "source": "project",
+        "source_id": "iflytek-agent-challenge",
+        "title": "讯飞 Agent 算法挑战赛",
+        "doc_id": "bdb8a86b2769"
+      },
+      "chunk_type": "text"
+    },
+    "chunk_index": 0,
+    "total_chunks": 2,
+    "char_count": 389,
+    "embedding_hash": "5ac6482b"
+  },
+  {
+    "id": "iflytek-agent-challenge_1",
+    "content": "图/状态机/结果）, 平台最优 71.47, 官方仿真器端到端验证, 鲁棒性变体测试\n分类: ai\n状态: in-progress",
+    "source": "project",
+    "source_id": "iflytek-agent-challenge",
+    "title": "讯飞 Agent 算法挑战赛",
+    "metadata": {
+      "original_metadata": {
+        "shortDesc": "从自然语言到可执行工作流的 Agent，平台最优 71.47",
+        "fullDesc": "讯飞 AI 开发者大赛「Agent 算法挑战赛」参赛方案，赛题为从自然语言到可执行工作流，在官方仿真器上按 TSR(60) / 动作合法性(20) / 效率(10) / 鲁棒性(10) 评分。采用三阶段架构：Phase1 LLM 意图理解（不计步）→ Phase2 显式状态机推进（计步）→ Phase3 构造最终结果，用确定性状态机兜住 LLM 的步数与动作合法性。平台得分受 ±1.7 方差影响，多轮迭代后达到的最优为 71.47（2026-09-02）。",
+        "techStack": [
+          "Python",
+          "LLM Agent",
+          "显式状态机",
+          "Qwen"
+        ],
+        "highlights": [
+          "三阶段架构（意图/状态机/结果）",
+          "平台最优 71.47",
+          "官方仿真器端到端验证",
+          "鲁棒性变体测试"
+        ],
+        "category": "ai",
+        "status": "in-progress",
+        "source": "project",
+        "source_id": "iflytek-agent-challenge",
+        "title": "讯飞 Agent 算法挑战赛",
+        "doc_id": "bdb8a86b2769"
+      },
+      "chunk_type": "text"
+    },
+    "chunk_index": 1,
+    "total_chunks": 2,
+    "char_count": 65,
+    "embedding_hash": "31a23e57"
   },
   {
     "id": "main_0",
@@ -359,7 +507,7 @@
     "chunk_index": 1,
     "total_chunks": 2,
     "char_count": 144,
-    "embedding_hash": "3870ea57"
+    "embedding_hash": "f1504abc"
   },
   {
     "id": "agent-fault-tolerance_0",
@@ -383,7 +531,7 @@
     "chunk_index": 0,
     "total_chunks": 36,
     "char_count": 178,
-    "embedding_hash": "17071700"
+    "embedding_hash": "e2e73e1d"
   },
   {
     "id": "agent-fault-tolerance_1",
@@ -431,7 +579,7 @@
     "chunk_index": 2,
     "total_chunks": 36,
     "char_count": 83,
-    "embedding_hash": "8267eb9c"
+    "embedding_hash": "f6b58462"
   },
   {
     "id": "agent-fault-tolerance_3",
@@ -455,7 +603,7 @@
     "chunk_index": 3,
     "total_chunks": 36,
     "char_count": 35,
-    "embedding_hash": "d311c27d"
+    "embedding_hash": "8172a760"
   },
   {
     "id": "agent-fault-tolerance_4",
@@ -479,7 +627,7 @@
     "chunk_index": 4,
     "total_chunks": 36,
     "char_count": 33,
-    "embedding_hash": "d90e3890"
+    "embedding_hash": "b094ec0c"
   },
   {
     "id": "agent-fault-tolerance_5",
@@ -503,7 +651,7 @@
     "chunk_index": 5,
     "total_chunks": 36,
     "char_count": 25,
-    "embedding_hash": "4e5f44e8"
+    "embedding_hash": "4828bc22"
   },
   {
     "id": "agent-fault-tolerance_6",
@@ -551,7 +699,7 @@
     "chunk_index": 7,
     "total_chunks": 36,
     "char_count": 79,
-    "embedding_hash": "3ffe325f"
+    "embedding_hash": "4361cee3"
   },
   {
     "id": "agent-fault-tolerance_8",
@@ -719,7 +867,7 @@
     "chunk_index": 14,
     "total_chunks": 36,
     "char_count": 28,
-    "embedding_hash": "0ab1aad3"
+    "embedding_hash": "f999cdcb"
   },
   {
     "id": "agent-fault-tolerance_15",
@@ -767,7 +915,7 @@
     "chunk_index": 16,
     "total_chunks": 36,
     "char_count": 81,
-    "embedding_hash": "d0ad6af6"
+    "embedding_hash": "116e45c1"
   },
   {
     "id": "agent-fault-tolerance_17",
@@ -839,7 +987,7 @@
     "chunk_index": 19,
     "total_chunks": 36,
     "char_count": 179,
-    "embedding_hash": "df42a69b"
+    "embedding_hash": "34890f9a"
   },
   {
     "id": "agent-fault-tolerance_20",
@@ -887,7 +1035,7 @@
     "chunk_index": 21,
     "total_chunks": 36,
     "char_count": 224,
-    "embedding_hash": "eefc7def"
+    "embedding_hash": "d7b610d6"
   },
   {
     "id": "agent-fault-tolerance_0",
@@ -1007,7 +1155,7 @@
     "chunk_index": 26,
     "total_chunks": 36,
     "char_count": 118,
-    "embedding_hash": "579201ff"
+    "embedding_hash": "f0be1c8b"
   },
   {
     "id": "agent-fault-tolerance_0",
@@ -1031,7 +1179,7 @@
     "chunk_index": 27,
     "total_chunks": 36,
     "char_count": 385,
-    "embedding_hash": "982ed197"
+    "embedding_hash": "85982463"
   },
   {
     "id": "agent-fault-tolerance_1",
@@ -1079,7 +1227,7 @@
     "chunk_index": 29,
     "total_chunks": 36,
     "char_count": 7,
-    "embedding_hash": "719ee9bd"
+    "embedding_hash": "cac3e36f"
   },
   {
     "id": "agent-fault-tolerance_0",
@@ -1199,7 +1347,7 @@
     "chunk_index": 34,
     "total_chunks": 36,
     "char_count": 227,
-    "embedding_hash": "565991ce"
+    "embedding_hash": "d02cf7e7"
   },
   {
     "id": "agent-fault-tolerance_35",
@@ -1223,7 +1371,7 @@
     "chunk_index": 35,
     "total_chunks": 36,
     "char_count": 208,
-    "embedding_hash": "6a14a063"
+    "embedding_hash": "1b7137aa"
   },
   {
     "id": "agenthub-contract-v1_0",
@@ -1247,7 +1395,7 @@
     "chunk_index": 0,
     "total_chunks": 28,
     "char_count": 174,
-    "embedding_hash": "1411d4bf"
+    "embedding_hash": "2d72cc3f"
   },
   {
     "id": "agenthub-contract-v1_1",
@@ -1343,7 +1491,7 @@
     "chunk_index": 4,
     "total_chunks": 28,
     "char_count": 123,
-    "embedding_hash": "e209fe3a"
+    "embedding_hash": "3ace9c6d"
   },
   {
     "id": "agenthub-contract-v1_5",
@@ -1415,7 +1563,7 @@
     "chunk_index": 7,
     "total_chunks": 28,
     "char_count": 105,
-    "embedding_hash": "44fa1591"
+    "embedding_hash": "8c1999e3"
   },
   {
     "id": "agenthub-contract-v1_8",
@@ -1511,7 +1659,7 @@
     "chunk_index": 11,
     "total_chunks": 28,
     "char_count": 81,
-    "embedding_hash": "472ab7a4"
+    "embedding_hash": "a9de0500"
   },
   {
     "id": "agenthub-contract-v1_12",
@@ -1583,7 +1731,7 @@
     "chunk_index": 14,
     "total_chunks": 28,
     "char_count": 74,
-    "embedding_hash": "8312e7c2"
+    "embedding_hash": "6c604f61"
   },
   {
     "id": "agenthub-contract-v1_15",
@@ -1607,7 +1755,7 @@
     "chunk_index": 15,
     "total_chunks": 28,
     "char_count": 85,
-    "embedding_hash": "af6d6f92"
+    "embedding_hash": "b82ed3e0"
   },
   {
     "id": "agenthub-contract-v1_0",
@@ -1847,7 +1995,7 @@
     "chunk_index": 25,
     "total_chunks": 28,
     "char_count": 185,
-    "embedding_hash": "7c827b35"
+    "embedding_hash": "5e804cb6"
   },
   {
     "id": "agenthub-contract-v1_26",
@@ -1871,7 +2019,7 @@
     "chunk_index": 26,
     "total_chunks": 28,
     "char_count": 208,
-    "embedding_hash": "50c131b3"
+    "embedding_hash": "26c40086"
   },
   {
     "id": "agenthub-contract-v1_27",
@@ -1895,7 +2043,7 @@
     "chunk_index": 27,
     "total_chunks": 28,
     "char_count": 132,
-    "embedding_hash": "b65b4619"
+    "embedding_hash": "0ed0f9d3"
   },
   {
     "id": "agenthub-multi-agent-collaboration_0",
@@ -1919,7 +2067,7 @@
     "chunk_index": 0,
     "total_chunks": 18,
     "char_count": 85,
-    "embedding_hash": "6a2c7464"
+    "embedding_hash": "e699cb01"
   },
   {
     "id": "agenthub-multi-agent-collaboration_1",
@@ -1943,7 +2091,7 @@
     "chunk_index": 1,
     "total_chunks": 18,
     "char_count": 182,
-    "embedding_hash": "037d0dd1"
+    "embedding_hash": "ed8cdcde"
   },
   {
     "id": "agenthub-multi-agent-collaboration_0",
@@ -1967,7 +2115,7 @@
     "chunk_index": 2,
     "total_chunks": 18,
     "char_count": 391,
-    "embedding_hash": "7d912eeb"
+    "embedding_hash": "e08776ce"
   },
   {
     "id": "agenthub-multi-agent-collaboration_1",
@@ -2039,7 +2187,7 @@
     "chunk_index": 5,
     "total_chunks": 18,
     "char_count": 101,
-    "embedding_hash": "7983e4c1"
+    "embedding_hash": "d9fa8782"
   },
   {
     "id": "agenthub-multi-agent-collaboration_6",
@@ -2063,7 +2211,7 @@
     "chunk_index": 6,
     "total_chunks": 18,
     "char_count": 7,
-    "embedding_hash": "8ba8b73d"
+    "embedding_hash": "2456417e"
   },
   {
     "id": "agenthub-multi-agent-collaboration_7",
@@ -2111,7 +2259,7 @@
     "chunk_index": 8,
     "total_chunks": 18,
     "char_count": 251,
-    "embedding_hash": "032289b3"
+    "embedding_hash": "a6d930cd"
   },
   {
     "id": "agenthub-multi-agent-collaboration_9",
@@ -2135,7 +2283,7 @@
     "chunk_index": 9,
     "total_chunks": 18,
     "char_count": 221,
-    "embedding_hash": "5578a31a"
+    "embedding_hash": "485a134c"
   },
   {
     "id": "agenthub-multi-agent-collaboration_10",
@@ -2183,7 +2331,7 @@
     "chunk_index": 11,
     "total_chunks": 18,
     "char_count": 9,
-    "embedding_hash": "1bb5fbb4"
+    "embedding_hash": "0e96d32f"
   },
   {
     "id": "agenthub-multi-agent-collaboration_12",
@@ -2207,7 +2355,7 @@
     "chunk_index": 12,
     "total_chunks": 18,
     "char_count": 232,
-    "embedding_hash": "d2985bc8"
+    "embedding_hash": "c8191ba5"
   },
   {
     "id": "agenthub-multi-agent-collaboration_13",
@@ -2231,7 +2379,7 @@
     "chunk_index": 13,
     "total_chunks": 18,
     "char_count": 102,
-    "embedding_hash": "73ce537b"
+    "embedding_hash": "b8f1712a"
   },
   {
     "id": "agenthub-multi-agent-collaboration_14",
@@ -2279,7 +2427,7 @@
     "chunk_index": 15,
     "total_chunks": 18,
     "char_count": 227,
-    "embedding_hash": "aaadaff5"
+    "embedding_hash": "40219401"
   },
   {
     "id": "agenthub-multi-agent-collaboration_16",
@@ -2303,7 +2451,7 @@
     "chunk_index": 16,
     "total_chunks": 18,
     "char_count": 126,
-    "embedding_hash": "32a0ff4b"
+    "embedding_hash": "e9f1bf2c"
   },
   {
     "id": "agenthub-multi-agent-collaboration_17",
@@ -2327,7 +2475,7 @@
     "chunk_index": 17,
     "total_chunks": 18,
     "char_count": 123,
-    "embedding_hash": "6a3ea0c9"
+    "embedding_hash": "6132ddb7"
   },
   {
     "id": "ai-application-engineer-job-hunting-guide-2026_0",
@@ -2375,7 +2523,7 @@
     "chunk_index": 1,
     "total_chunks": 13,
     "char_count": 7,
-    "embedding_hash": "806563bb"
+    "embedding_hash": "d1122dd4"
   },
   {
     "id": "ai-application-engineer-job-hunting-guide-2026_2",
@@ -2447,7 +2595,7 @@
     "chunk_index": 4,
     "total_chunks": 13,
     "char_count": 7,
-    "embedding_hash": "76ce0914"
+    "embedding_hash": "b75de56c"
   },
   {
     "id": "ai-application-engineer-job-hunting-guide-2026_5",
@@ -2471,7 +2619,7 @@
     "chunk_index": 5,
     "total_chunks": 13,
     "char_count": 135,
-    "embedding_hash": "004e43ab"
+    "embedding_hash": "ae1c5702"
   },
   {
     "id": "ai-application-engineer-job-hunting-guide-2026_6",
@@ -2495,7 +2643,7 @@
     "chunk_index": 6,
     "total_chunks": 13,
     "char_count": 84,
-    "embedding_hash": "5915c9fc"
+    "embedding_hash": "e15108ae"
   },
   {
     "id": "ai-application-engineer-job-hunting-guide-2026_7",
@@ -2519,7 +2667,7 @@
     "chunk_index": 7,
     "total_chunks": 13,
     "char_count": 8,
-    "embedding_hash": "0fa50568"
+    "embedding_hash": "e1891af0"
   },
   {
     "id": "ai-application-engineer-job-hunting-guide-2026_8",
@@ -2543,7 +2691,7 @@
     "chunk_index": 8,
     "total_chunks": 13,
     "char_count": 87,
-    "embedding_hash": "0cfe0a59"
+    "embedding_hash": "4e2d4ccf"
   },
   {
     "id": "ai-application-engineer-job-hunting-guide-2026_9",
@@ -2591,7 +2739,7 @@
     "chunk_index": 10,
     "total_chunks": 13,
     "char_count": 73,
-    "embedding_hash": "9d59484a"
+    "embedding_hash": "28100114"
   },
   {
     "id": "ai-application-engineer-job-hunting-guide-2026_11",
@@ -2663,7 +2811,7 @@
     "chunk_index": 0,
     "total_chunks": 9,
     "char_count": 90,
-    "embedding_hash": "f005c54d"
+    "embedding_hash": "0e3fdcd6"
   },
   {
     "id": "building-mini-claude-code-from-scratch_1",
@@ -2687,7 +2835,7 @@
     "chunk_index": 1,
     "total_chunks": 9,
     "char_count": 101,
-    "embedding_hash": "bc71053b"
+    "embedding_hash": "109d9b6f"
   },
   {
     "id": "building-mini-claude-code-from-scratch_2",
@@ -2783,7 +2931,7 @@
     "chunk_index": 5,
     "total_chunks": 9,
     "char_count": 84,
-    "embedding_hash": "d3c744ac"
+    "embedding_hash": "223f58fa"
   },
   {
     "id": "building-mini-claude-code-from-scratch_6",
@@ -2807,7 +2955,7 @@
     "chunk_index": 6,
     "total_chunks": 9,
     "char_count": 83,
-    "embedding_hash": "3da748db"
+    "embedding_hash": "54d1dd83"
   },
   {
     "id": "building-mini-claude-code-from-scratch_7",
@@ -2831,7 +2979,7 @@
     "chunk_index": 7,
     "total_chunks": 9,
     "char_count": 130,
-    "embedding_hash": "10743935"
+    "embedding_hash": "97a300d9"
   },
   {
     "id": "building-mini-claude-code-from-scratch_8",
@@ -2855,7 +3003,7 @@
     "chunk_index": 8,
     "total_chunks": 9,
     "char_count": 68,
-    "embedding_hash": "ff687f85"
+    "embedding_hash": "e051d805"
   },
   {
     "id": "claude-code-vs-mini-claude-compression_0",
@@ -2879,7 +3027,7 @@
     "chunk_index": 0,
     "total_chunks": 11,
     "char_count": 126,
-    "embedding_hash": "1b2b5533"
+    "embedding_hash": "cb965896"
   },
   {
     "id": "claude-code-vs-mini-claude-compression_1",
@@ -2903,7 +3051,7 @@
     "chunk_index": 1,
     "total_chunks": 11,
     "char_count": 199,
-    "embedding_hash": "56021984"
+    "embedding_hash": "30a16c17"
   },
   {
     "id": "claude-code-vs-mini-claude-compression_2",
@@ -2951,7 +3099,7 @@
     "chunk_index": 3,
     "total_chunks": 11,
     "char_count": 141,
-    "embedding_hash": "01ed5f6d"
+    "embedding_hash": "3246915a"
   },
   {
     "id": "claude-code-vs-mini-claude-compression_4",
@@ -2975,7 +3123,7 @@
     "chunk_index": 4,
     "total_chunks": 11,
     "char_count": 142,
-    "embedding_hash": "40c6b0db"
+    "embedding_hash": "a43a3298"
   },
   {
     "id": "claude-code-vs-mini-claude-compression_5",
@@ -3023,7 +3171,7 @@
     "chunk_index": 6,
     "total_chunks": 11,
     "char_count": 391,
-    "embedding_hash": "61f12042"
+    "embedding_hash": "2f89c5f0"
   },
   {
     "id": "claude-code-vs-mini-claude-compression_7",
@@ -3047,7 +3195,7 @@
     "chunk_index": 7,
     "total_chunks": 11,
     "char_count": 217,
-    "embedding_hash": "98796230"
+    "embedding_hash": "eb904673"
   },
   {
     "id": "claude-code-vs-mini-claude-compression_8",
@@ -3095,7 +3243,7 @@
     "chunk_index": 9,
     "total_chunks": 11,
     "char_count": 231,
-    "embedding_hash": "a06dc0ff"
+    "embedding_hash": "c3db8137"
   },
   {
     "id": "claude-code-vs-mini-claude-compression_10",
@@ -3119,7 +3267,7 @@
     "chunk_index": 10,
     "total_chunks": 11,
     "char_count": 198,
-    "embedding_hash": "c63b42ad"
+    "embedding_hash": "968950bc"
   },
   {
     "id": "langgraph-state-machine-best-practices_0",
@@ -3143,7 +3291,7 @@
     "chunk_index": 0,
     "total_chunks": 10,
     "char_count": 110,
-    "embedding_hash": "2f5e036c"
+    "embedding_hash": "ce474632"
   },
   {
     "id": "langgraph-state-machine-best-practices_1",
@@ -3167,7 +3315,7 @@
     "chunk_index": 1,
     "total_chunks": 10,
     "char_count": 94,
-    "embedding_hash": "3d904ca0"
+    "embedding_hash": "151369c1"
   },
   {
     "id": "langgraph-state-machine-best-practices_2",
@@ -3191,7 +3339,7 @@
     "chunk_index": 2,
     "total_chunks": 10,
     "char_count": 12,
-    "embedding_hash": "c4dc9c70"
+    "embedding_hash": "c6e5d856"
   },
   {
     "id": "langgraph-state-machine-best-practices_3",
@@ -3287,7 +3435,7 @@
     "chunk_index": 6,
     "total_chunks": 10,
     "char_count": 223,
-    "embedding_hash": "fc3556d5"
+    "embedding_hash": "8980932e"
   },
   {
     "id": "langgraph-state-machine-best-practices_7",
@@ -3335,7 +3483,7 @@
     "chunk_index": 8,
     "total_chunks": 10,
     "char_count": 131,
-    "embedding_hash": "15e033aa"
+    "embedding_hash": "10dccf39"
   },
   {
     "id": "langgraph-state-machine-best-practices_9",
@@ -3383,7 +3531,7 @@
     "chunk_index": 0,
     "total_chunks": 18,
     "char_count": 220,
-    "embedding_hash": "de0d67d7"
+    "embedding_hash": "a0e27e60"
   },
   {
     "id": "llm-app-security-hardening_1",
@@ -3575,7 +3723,7 @@
     "chunk_index": 8,
     "total_chunks": 18,
     "char_count": 216,
-    "embedding_hash": "0039d924"
+    "embedding_hash": "8455b9e8"
   },
   {
     "id": "llm-app-security-hardening_0",
@@ -3599,7 +3747,7 @@
     "chunk_index": 9,
     "total_chunks": 18,
     "char_count": 361,
-    "embedding_hash": "eac32b68"
+    "embedding_hash": "8392e54f"
   },
   {
     "id": "llm-app-security-hardening_1",
@@ -3647,7 +3795,7 @@
     "chunk_index": 11,
     "total_chunks": 18,
     "char_count": 198,
-    "embedding_hash": "c13999d2"
+    "embedding_hash": "54179664"
   },
   {
     "id": "llm-app-security-hardening_0",
@@ -3767,7 +3915,7 @@
     "chunk_index": 16,
     "total_chunks": 18,
     "char_count": 106,
-    "embedding_hash": "47696596"
+    "embedding_hash": "60bda6e9"
   },
   {
     "id": "llm-app-security-hardening_17",
@@ -3839,7 +3987,7 @@
     "chunk_index": 1,
     "total_chunks": 15,
     "char_count": 189,
-    "embedding_hash": "450ab927"
+    "embedding_hash": "248b5e81"
   },
   {
     "id": "llm-tool-calling-design-patterns_2",
@@ -3887,7 +4035,7 @@
     "chunk_index": 3,
     "total_chunks": 15,
     "char_count": 133,
-    "embedding_hash": "06b6f4dc"
+    "embedding_hash": "de57476b"
   },
   {
     "id": "llm-tool-calling-design-patterns_4",
@@ -3911,7 +4059,7 @@
     "chunk_index": 4,
     "total_chunks": 15,
     "char_count": 169,
-    "embedding_hash": "b45bdb49"
+    "embedding_hash": "49e522c1"
   },
   {
     "id": "llm-tool-calling-design-patterns_5",
@@ -3935,7 +4083,7 @@
     "chunk_index": 5,
     "total_chunks": 15,
     "char_count": 174,
-    "embedding_hash": "db72c0a6"
+    "embedding_hash": "b70e71f6"
   },
   {
     "id": "llm-tool-calling-design-patterns_6",
@@ -3959,7 +4107,7 @@
     "chunk_index": 6,
     "total_chunks": 15,
     "char_count": 233,
-    "embedding_hash": "ff764ed6"
+    "embedding_hash": "f986a734"
   },
   {
     "id": "llm-tool-calling-design-patterns_7",
@@ -3983,7 +4131,7 @@
     "chunk_index": 7,
     "total_chunks": 15,
     "char_count": 9,
-    "embedding_hash": "acab6730"
+    "embedding_hash": "83db8079"
   },
   {
     "id": "llm-tool-calling-design-patterns_8",
@@ -4007,7 +4155,7 @@
     "chunk_index": 8,
     "total_chunks": 15,
     "char_count": 29,
-    "embedding_hash": "c0d2f173"
+    "embedding_hash": "184fdcfd"
   },
   {
     "id": "llm-tool-calling-design-patterns_9",
@@ -4031,7 +4179,7 @@
     "chunk_index": 9,
     "total_chunks": 15,
     "char_count": 75,
-    "embedding_hash": "442e59b2"
+    "embedding_hash": "ec8d6428"
   },
   {
     "id": "llm-tool-calling-design-patterns_10",
@@ -4055,7 +4203,7 @@
     "chunk_index": 10,
     "total_chunks": 15,
     "char_count": 69,
-    "embedding_hash": "6162a2ab"
+    "embedding_hash": "b4ed4505"
   },
   {
     "id": "llm-tool-calling-design-patterns_11",
@@ -4103,7 +4251,7 @@
     "chunk_index": 12,
     "total_chunks": 15,
     "char_count": 100,
-    "embedding_hash": "4dab397f"
+    "embedding_hash": "87aa5508"
   },
   {
     "id": "llm-tool-calling-design-patterns_13",
@@ -4127,7 +4275,7 @@
     "chunk_index": 13,
     "total_chunks": 15,
     "char_count": 33,
-    "embedding_hash": "bf599d8e"
+    "embedding_hash": "8cc98eb9"
   },
   {
     "id": "llm-tool-calling-design-patterns_14",
@@ -4151,7 +4299,7 @@
     "chunk_index": 14,
     "total_chunks": 15,
     "char_count": 40,
-    "embedding_hash": "86fb3182"
+    "embedding_hash": "5c6408f8"
   },
   {
     "id": "mini-claude-testing-journey_0",
@@ -4175,7 +4323,7 @@
     "chunk_index": 0,
     "total_chunks": 13,
     "char_count": 95,
-    "embedding_hash": "3ed3b588"
+    "embedding_hash": "7851bdb9"
   },
   {
     "id": "mini-claude-testing-journey_1",
@@ -4223,7 +4371,7 @@
     "chunk_index": 2,
     "total_chunks": 13,
     "char_count": 9,
-    "embedding_hash": "8c252dd5"
+    "embedding_hash": "52fb61fa"
   },
   {
     "id": "mini-claude-testing-journey_3",
@@ -4463,7 +4611,7 @@
     "chunk_index": 12,
     "total_chunks": 13,
     "char_count": 87,
-    "embedding_hash": "3ee3d3af"
+    "embedding_hash": "fef1354b"
   },
   {
     "id": "multi-agent-concurrency-patterns_0",
@@ -4487,7 +4635,7 @@
     "chunk_index": 0,
     "total_chunks": 12,
     "char_count": 84,
-    "embedding_hash": "30110972"
+    "embedding_hash": "0ab6ba15"
   },
   {
     "id": "multi-agent-concurrency-patterns_1",
@@ -4511,7 +4659,7 @@
     "chunk_index": 1,
     "total_chunks": 12,
     "char_count": 10,
-    "embedding_hash": "afce2d46"
+    "embedding_hash": "1e1652ff"
   },
   {
     "id": "multi-agent-concurrency-patterns_2",
@@ -4535,7 +4683,7 @@
     "chunk_index": 2,
     "total_chunks": 12,
     "char_count": 122,
-    "embedding_hash": "c9d95227"
+    "embedding_hash": "4fe4b454"
   },
   {
     "id": "multi-agent-concurrency-patterns_3",
@@ -4583,7 +4731,7 @@
     "chunk_index": 4,
     "total_chunks": 12,
     "char_count": 30,
-    "embedding_hash": "aae8d634"
+    "embedding_hash": "038c3f73"
   },
   {
     "id": "multi-agent-concurrency-patterns_5",
@@ -4607,7 +4755,7 @@
     "chunk_index": 5,
     "total_chunks": 12,
     "char_count": 244,
-    "embedding_hash": "4818b918"
+    "embedding_hash": "dc79d4b6"
   },
   {
     "id": "multi-agent-concurrency-patterns_6",
@@ -4631,7 +4779,7 @@
     "chunk_index": 6,
     "total_chunks": 12,
     "char_count": 7,
-    "embedding_hash": "c35de2f6"
+    "embedding_hash": "63fc7873"
   },
   {
     "id": "multi-agent-concurrency-patterns_7",
@@ -4655,7 +4803,7 @@
     "chunk_index": 7,
     "total_chunks": 12,
     "char_count": 201,
-    "embedding_hash": "dac2b659"
+    "embedding_hash": "d10f17ea"
   },
   {
     "id": "multi-agent-concurrency-patterns_8",
@@ -4679,7 +4827,7 @@
     "chunk_index": 8,
     "total_chunks": 12,
     "char_count": 231,
-    "embedding_hash": "0b36b199"
+    "embedding_hash": "75507ac7"
   },
   {
     "id": "multi-agent-concurrency-patterns_9",
@@ -4703,7 +4851,7 @@
     "chunk_index": 9,
     "total_chunks": 12,
     "char_count": 174,
-    "embedding_hash": "5388652e"
+    "embedding_hash": "f08e11ad"
   },
   {
     "id": "multi-agent-concurrency-patterns_10",
@@ -4727,7 +4875,7 @@
     "chunk_index": 10,
     "total_chunks": 12,
     "char_count": 68,
-    "embedding_hash": "0bf9d503"
+    "embedding_hash": "fc553994"
   },
   {
     "id": "multi-agent-concurrency-patterns_11",
@@ -4751,7 +4899,7 @@
     "chunk_index": 11,
     "total_chunks": 12,
     "char_count": 42,
-    "embedding_hash": "d61ce03f"
+    "embedding_hash": "ef4fc27a"
   },
   {
     "id": "multi-round-code-review_0",
@@ -4847,7 +4995,7 @@
     "chunk_index": 3,
     "total_chunks": 42,
     "char_count": 27,
-    "embedding_hash": "bc7b0c40"
+    "embedding_hash": "766816a9"
   },
   {
     "id": "multi-round-code-review_4",
@@ -4895,7 +5043,7 @@
     "chunk_index": 5,
     "total_chunks": 42,
     "char_count": 117,
-    "embedding_hash": "d8437481"
+    "embedding_hash": "9cfbb3ad"
   },
   {
     "id": "multi-round-code-review_6",
@@ -4943,7 +5091,7 @@
     "chunk_index": 7,
     "total_chunks": 42,
     "char_count": 119,
-    "embedding_hash": "87453353"
+    "embedding_hash": "0a04f1eb"
   },
   {
     "id": "multi-round-code-review_8",
@@ -4991,7 +5139,7 @@
     "chunk_index": 9,
     "total_chunks": 42,
     "char_count": 67,
-    "embedding_hash": "1296b52e"
+    "embedding_hash": "725b1fc9"
   },
   {
     "id": "multi-round-code-review_10",
@@ -5015,7 +5163,7 @@
     "chunk_index": 10,
     "total_chunks": 42,
     "char_count": 202,
-    "embedding_hash": "8eb26933"
+    "embedding_hash": "0da401d1"
   },
   {
     "id": "multi-round-code-review_11",
@@ -5063,7 +5211,7 @@
     "chunk_index": 12,
     "total_chunks": 42,
     "char_count": 36,
-    "embedding_hash": "02bdc344"
+    "embedding_hash": "372205ad"
   },
   {
     "id": "multi-round-code-review_13",
@@ -5087,7 +5235,7 @@
     "chunk_index": 13,
     "total_chunks": 42,
     "char_count": 113,
-    "embedding_hash": "c14233db"
+    "embedding_hash": "615b0ef3"
   },
   {
     "id": "multi-round-code-review_14",
@@ -5135,7 +5283,7 @@
     "chunk_index": 15,
     "total_chunks": 42,
     "char_count": 28,
-    "embedding_hash": "f4005a60"
+    "embedding_hash": "83a73931"
   },
   {
     "id": "multi-round-code-review_16",
@@ -5159,7 +5307,7 @@
     "chunk_index": 16,
     "total_chunks": 42,
     "char_count": 134,
-    "embedding_hash": "f62405f7"
+    "embedding_hash": "8c3378f8"
   },
   {
     "id": "multi-round-code-review_17",
@@ -5207,7 +5355,7 @@
     "chunk_index": 18,
     "total_chunks": 42,
     "char_count": 101,
-    "embedding_hash": "1bda5bf2"
+    "embedding_hash": "b44281a9"
   },
   {
     "id": "multi-round-code-review_19",
@@ -5231,7 +5379,7 @@
     "chunk_index": 19,
     "total_chunks": 42,
     "char_count": 25,
-    "embedding_hash": "2de61367"
+    "embedding_hash": "bcf0ebfb"
   },
   {
     "id": "multi-round-code-review_20",
@@ -5279,7 +5427,7 @@
     "chunk_index": 21,
     "total_chunks": 42,
     "char_count": 67,
-    "embedding_hash": "829fb76f"
+    "embedding_hash": "3fa3f4aa"
   },
   {
     "id": "multi-round-code-review_22",
@@ -5375,7 +5523,7 @@
     "chunk_index": 25,
     "total_chunks": 42,
     "char_count": 214,
-    "embedding_hash": "2557f2e5"
+    "embedding_hash": "b8a5c25f"
   },
   {
     "id": "multi-round-code-review_26",
@@ -5399,7 +5547,7 @@
     "chunk_index": 26,
     "total_chunks": 42,
     "char_count": 70,
-    "embedding_hash": "d75544ad"
+    "embedding_hash": "94b77b89"
   },
   {
     "id": "multi-round-code-review_27",
@@ -5423,7 +5571,7 @@
     "chunk_index": 27,
     "total_chunks": 42,
     "char_count": 101,
-    "embedding_hash": "60288f3a"
+    "embedding_hash": "b504d954"
   },
   {
     "id": "multi-round-code-review_28",
@@ -5447,7 +5595,7 @@
     "chunk_index": 28,
     "total_chunks": 42,
     "char_count": 133,
-    "embedding_hash": "3ba01100"
+    "embedding_hash": "e024fe9a"
   },
   {
     "id": "multi-round-code-review_29",
@@ -5495,7 +5643,7 @@
     "chunk_index": 30,
     "total_chunks": 42,
     "char_count": 8,
-    "embedding_hash": "4671adc6"
+    "embedding_hash": "3f65fcdd"
   },
   {
     "id": "multi-round-code-review_31",
@@ -5519,7 +5667,7 @@
     "chunk_index": 31,
     "total_chunks": 42,
     "char_count": 179,
-    "embedding_hash": "8e956061"
+    "embedding_hash": "98d5683f"
   },
   {
     "id": "multi-round-code-review_32",
@@ -5543,7 +5691,7 @@
     "chunk_index": 32,
     "total_chunks": 42,
     "char_count": 90,
-    "embedding_hash": "d4925fa6"
+    "embedding_hash": "6842a163"
   },
   {
     "id": "multi-round-code-review_33",
@@ -5567,7 +5715,7 @@
     "chunk_index": 33,
     "total_chunks": 42,
     "char_count": 92,
-    "embedding_hash": "7f7505ae"
+    "embedding_hash": "075eb76e"
   },
   {
     "id": "multi-round-code-review_34",
@@ -5615,7 +5763,7 @@
     "chunk_index": 35,
     "total_chunks": 42,
     "char_count": 32,
-    "embedding_hash": "e01ae2cd"
+    "embedding_hash": "5afa86fb"
   },
   {
     "id": "multi-round-code-review_36",
@@ -5639,7 +5787,7 @@
     "chunk_index": 36,
     "total_chunks": 42,
     "char_count": 179,
-    "embedding_hash": "f87fb343"
+    "embedding_hash": "d62f78bb"
   },
   {
     "id": "multi-round-code-review_37",
@@ -5663,7 +5811,7 @@
     "chunk_index": 37,
     "total_chunks": 42,
     "char_count": 40,
-    "embedding_hash": "835b3b32"
+    "embedding_hash": "95a22a27"
   },
   {
     "id": "multi-round-code-review_38",
@@ -5711,7 +5859,7 @@
     "chunk_index": 39,
     "total_chunks": 42,
     "char_count": 29,
-    "embedding_hash": "43716a02"
+    "embedding_hash": "5ba8f1b4"
   },
   {
     "id": "multi-round-code-review_40",
@@ -5759,7 +5907,7 @@
     "chunk_index": 41,
     "total_chunks": 42,
     "char_count": 210,
-    "embedding_hash": "78606dd6"
+    "embedding_hash": "a8d061d4"
   },
   {
     "id": "python-format-string-brace-dos_0",
@@ -5783,7 +5931,7 @@
     "chunk_index": 0,
     "total_chunks": 23,
     "char_count": 167,
-    "embedding_hash": "cc57525d"
+    "embedding_hash": "9bc02492"
   },
   {
     "id": "python-format-string-brace-dos_1",
@@ -5855,7 +6003,7 @@
     "chunk_index": 3,
     "total_chunks": 23,
     "char_count": 69,
-    "embedding_hash": "b93cbc6a"
+    "embedding_hash": "128f9cea"
   },
   {
     "id": "python-format-string-brace-dos_4",
@@ -5927,7 +6075,7 @@
     "chunk_index": 6,
     "total_chunks": 23,
     "char_count": 228,
-    "embedding_hash": "38200223"
+    "embedding_hash": "d4ac6d89"
   },
   {
     "id": "python-format-string-brace-dos_7",
@@ -6047,7 +6195,7 @@
     "chunk_index": 11,
     "total_chunks": 23,
     "char_count": 194,
-    "embedding_hash": "dbbf6b7d"
+    "embedding_hash": "3a7729ad"
   },
   {
     "id": "python-format-string-brace-dos_12",
@@ -6071,7 +6219,7 @@
     "chunk_index": 12,
     "total_chunks": 23,
     "char_count": 253,
-    "embedding_hash": "cc81d215"
+    "embedding_hash": "ee93b3f2"
   },
   {
     "id": "python-format-string-brace-dos_0",
@@ -6191,7 +6339,7 @@
     "chunk_index": 17,
     "total_chunks": 23,
     "char_count": 78,
-    "embedding_hash": "0575eb24"
+    "embedding_hash": "0853c5cf"
   },
   {
     "id": "python-format-string-brace-dos_18",
@@ -6239,7 +6387,7 @@
     "chunk_index": 19,
     "total_chunks": 23,
     "char_count": 242,
-    "embedding_hash": "c4d81d49"
+    "embedding_hash": "7c952375"
   },
   {
     "id": "python-format-string-brace-dos_20",
@@ -6287,7 +6435,7 @@
     "chunk_index": 21,
     "total_chunks": 23,
     "char_count": 137,
-    "embedding_hash": "efbfc885"
+    "embedding_hash": "6810a8a1"
   },
   {
     "id": "python-format-string-brace-dos_22",
@@ -6335,7 +6483,7 @@
     "chunk_index": 0,
     "total_chunks": 12,
     "char_count": 117,
-    "embedding_hash": "c7dc8957"
+    "embedding_hash": "fc9affa5"
   },
   {
     "id": "rag-hybrid-search-implementation_1",
@@ -6551,7 +6699,7 @@
     "chunk_index": 9,
     "total_chunks": 12,
     "char_count": 101,
-    "embedding_hash": "b5612ee0"
+    "embedding_hash": "7e5b55e7"
   },
   {
     "id": "rag-hybrid-search-implementation_10",
@@ -6575,7 +6723,7 @@
     "chunk_index": 10,
     "total_chunks": 12,
     "char_count": 202,
-    "embedding_hash": "9f96ecc1"
+    "embedding_hash": "2a4b4c47"
   },
   {
     "id": "rag-hybrid-search-implementation_11",
@@ -6599,7 +6747,7 @@
     "chunk_index": 11,
     "total_chunks": 12,
     "char_count": 103,
-    "embedding_hash": "82901eff"
+    "embedding_hash": "918b5e23"
   },
   {
     "id": "rag-powered-campus-assistant_0",
@@ -6623,7 +6771,7 @@
     "chunk_index": 0,
     "total_chunks": 16,
     "char_count": 88,
-    "embedding_hash": "07b6f384"
+    "embedding_hash": "a332c39f"
   },
   {
     "id": "rag-powered-campus-assistant_1",
@@ -6647,7 +6795,7 @@
     "chunk_index": 1,
     "total_chunks": 16,
     "char_count": 7,
-    "embedding_hash": "9c96e707"
+    "embedding_hash": "b83c3e0f"
   },
   {
     "id": "rag-powered-campus-assistant_2",
@@ -6671,7 +6819,7 @@
     "chunk_index": 2,
     "total_chunks": 16,
     "char_count": 240,
-    "embedding_hash": "81bdaad7"
+    "embedding_hash": "6824e3f8"
   },
   {
     "id": "rag-powered-campus-assistant_3",
@@ -6695,7 +6843,7 @@
     "chunk_index": 3,
     "total_chunks": 16,
     "char_count": 139,
-    "embedding_hash": "ccb5ecf1"
+    "embedding_hash": "39735934"
   },
   {
     "id": "rag-powered-campus-assistant_4",
@@ -6719,7 +6867,7 @@
     "chunk_index": 4,
     "total_chunks": 16,
     "char_count": 7,
-    "embedding_hash": "38fc9c80"
+    "embedding_hash": "cea22108"
   },
   {
     "id": "rag-powered-campus-assistant_5",
@@ -6743,7 +6891,7 @@
     "chunk_index": 5,
     "total_chunks": 16,
     "char_count": 75,
-    "embedding_hash": "25b4c99c"
+    "embedding_hash": "c2d65505"
   },
   {
     "id": "rag-powered-campus-assistant_6",
@@ -6839,7 +6987,7 @@
     "chunk_index": 9,
     "total_chunks": 16,
     "char_count": 182,
-    "embedding_hash": "40d203cb"
+    "embedding_hash": "7bcc3f61"
   },
   {
     "id": "rag-powered-campus-assistant_10",
@@ -6863,7 +7011,7 @@
     "chunk_index": 10,
     "total_chunks": 16,
     "char_count": 7,
-    "embedding_hash": "2f6160af"
+    "embedding_hash": "df2ee897"
   },
   {
     "id": "rag-powered-campus-assistant_11",
@@ -6887,7 +7035,7 @@
     "chunk_index": 11,
     "total_chunks": 16,
     "char_count": 186,
-    "embedding_hash": "580c4d19"
+    "embedding_hash": "7eb6470c"
   },
   {
     "id": "rag-powered-campus-assistant_12",
@@ -6911,7 +7059,7 @@
     "chunk_index": 12,
     "total_chunks": 16,
     "char_count": 41,
-    "embedding_hash": "ddc5f3ad"
+    "embedding_hash": "952a74ae"
   },
   {
     "id": "rag-powered-campus-assistant_13",
@@ -6959,7 +7107,7 @@
     "chunk_index": 14,
     "total_chunks": 16,
     "char_count": 80,
-    "embedding_hash": "ddc82318"
+    "embedding_hash": "8f9f0b2a"
   },
   {
     "id": "rag-powered-campus-assistant_15",
@@ -6983,7 +7131,7 @@
     "chunk_index": 15,
     "total_chunks": 16,
     "char_count": 72,
-    "embedding_hash": "43dee45f"
+    "embedding_hash": "a0582274"
   },
   {
     "id": "sse-streaming-for-ai-apps_0",
@@ -7007,7 +7155,7 @@
     "chunk_index": 0,
     "total_chunks": 21,
     "char_count": 110,
-    "embedding_hash": "04f2ae73"
+    "embedding_hash": "4a1ea169"
   },
   {
     "id": "sse-streaming-for-ai-apps_1",
@@ -7031,7 +7179,7 @@
     "chunk_index": 1,
     "total_chunks": 21,
     "char_count": 195,
-    "embedding_hash": "5e07e5f2"
+    "embedding_hash": "39ae1bee"
   },
   {
     "id": "sse-streaming-for-ai-apps_2",
@@ -7055,7 +7203,7 @@
     "chunk_index": 2,
     "total_chunks": 21,
     "char_count": 8,
-    "embedding_hash": "81ed5995"
+    "embedding_hash": "e6aa6809"
   },
   {
     "id": "sse-streaming-for-ai-apps_0",
@@ -7151,7 +7299,7 @@
     "chunk_index": 6,
     "total_chunks": 21,
     "char_count": 8,
-    "embedding_hash": "7643fa5d"
+    "embedding_hash": "2b8a1fa8"
   },
   {
     "id": "sse-streaming-for-ai-apps_0",
@@ -7271,7 +7419,7 @@
     "chunk_index": 11,
     "total_chunks": 21,
     "char_count": 117,
-    "embedding_hash": "3d3eb8aa"
+    "embedding_hash": "fd874fe7"
   },
   {
     "id": "sse-streaming-for-ai-apps_12",
@@ -7295,7 +7443,7 @@
     "chunk_index": 12,
     "total_chunks": 21,
     "char_count": 7,
-    "embedding_hash": "4f257827"
+    "embedding_hash": "6992cb10"
   },
   {
     "id": "sse-streaming-for-ai-apps_13",
@@ -7319,7 +7467,7 @@
     "chunk_index": 13,
     "total_chunks": 21,
     "char_count": 141,
-    "embedding_hash": "7269ace1"
+    "embedding_hash": "9044346c"
   },
   {
     "id": "sse-streaming-for-ai-apps_14",
@@ -7343,7 +7491,7 @@
     "chunk_index": 14,
     "total_chunks": 21,
     "char_count": 170,
-    "embedding_hash": "65cbedf1"
+    "embedding_hash": "310cc650"
   },
   {
     "id": "sse-streaming-for-ai-apps_15",
@@ -7415,7 +7563,7 @@
     "chunk_index": 17,
     "total_chunks": 21,
     "char_count": 7,
-    "embedding_hash": "a495ef54"
+    "embedding_hash": "88c6ab79"
   },
   {
     "id": "sse-streaming-for-ai-apps_18",
@@ -7487,7 +7635,7 @@
     "chunk_index": 20,
     "total_chunks": 21,
     "char_count": 188,
-    "embedding_hash": "bf2d157d"
+    "embedding_hash": "2d570ebb"
   },
   {
     "id": "windows-ci-pitfalls_0",
@@ -7511,7 +7659,7 @@
     "chunk_index": 0,
     "total_chunks": 14,
     "char_count": 117,
-    "embedding_hash": "0768e9d3"
+    "embedding_hash": "9d861df1"
   },
   {
     "id": "windows-ci-pitfalls_1",
@@ -7559,7 +7707,7 @@
     "chunk_index": 2,
     "total_chunks": 14,
     "char_count": 75,
-    "embedding_hash": "daf9d14b"
+    "embedding_hash": "f9dc5fa9"
   },
   {
     "id": "windows-ci-pitfalls_3",
@@ -7583,7 +7731,7 @@
     "chunk_index": 3,
     "total_chunks": 14,
     "char_count": 81,
-    "embedding_hash": "e8a51523"
+    "embedding_hash": "420dca83"
   },
   {
     "id": "windows-ci-pitfalls_4",
@@ -7607,7 +7755,7 @@
     "chunk_index": 4,
     "total_chunks": 14,
     "char_count": 223,
-    "embedding_hash": "310f3752"
+    "embedding_hash": "12dd209a"
   },
   {
     "id": "windows-ci-pitfalls_5",
@@ -7655,7 +7803,7 @@
     "chunk_index": 6,
     "total_chunks": 14,
     "char_count": 119,
-    "embedding_hash": "547f3b62"
+    "embedding_hash": "828933bd"
   },
   {
     "id": "windows-ci-pitfalls_7",
@@ -7679,7 +7827,7 @@
     "chunk_index": 7,
     "total_chunks": 14,
     "char_count": 84,
-    "embedding_hash": "a2aebddc"
+    "embedding_hash": "06d3b169"
   },
   {
     "id": "windows-ci-pitfalls_8",
@@ -7703,7 +7851,7 @@
     "chunk_index": 8,
     "total_chunks": 14,
     "char_count": 74,
-    "embedding_hash": "cefcfabc"
+    "embedding_hash": "ce69342a"
   },
   {
     "id": "windows-ci-pitfalls_9",
@@ -7727,7 +7875,7 @@
     "chunk_index": 9,
     "total_chunks": 14,
     "char_count": 76,
-    "embedding_hash": "695be0c8"
+    "embedding_hash": "91f49496"
   },
   {
     "id": "windows-ci-pitfalls_10",
@@ -7751,7 +7899,7 @@
     "chunk_index": 10,
     "total_chunks": 14,
     "char_count": 78,
-    "embedding_hash": "b864b26c"
+    "embedding_hash": "0630477b"
   },
   {
     "id": "windows-ci-pitfalls_11",
@@ -7775,7 +7923,7 @@
     "chunk_index": 11,
     "total_chunks": 14,
     "char_count": 71,
-    "embedding_hash": "0f4ae0a9"
+    "embedding_hash": "83addf59"
   },
   {
     "id": "windows-ci-pitfalls_12",
@@ -7823,7 +7971,168 @@
     "chunk_index": 13,
     "total_chunks": 14,
     "char_count": 217,
-    "embedding_hash": "6dc74367"
+    "embedding_hash": "b5626e10"
+  },
+  {
+    "id": "agenthub_overview_0",
+    "content": "# AgentHub\n\n> IM 风格的多 Agent 协作平台。用户通过聊天与多个 AI Agent 协作，Orchestrator 智能调度任务。\n\n---",
+    "source": "project_doc",
+    "source_id": "agenthub_overview",
+    "title": "AgentHub - 概述",
+    "metadata": {
+      "original_metadata": {
+        "project_id": "agenthub",
+        "section": "overview",
+        "file": "docs\\projects\\agenthub.md",
+        "source": "project_doc",
+        "source_id": "agenthub_overview",
+        "title": "AgentHub - 概述",
+        "doc_id": "8794b086a0bf"
+      },
+      "chunk_type": "text"
+    },
+    "chunk_index": 0,
+    "total_chunks": 1,
+    "char_count": 80,
+    "embedding_hash": "8176a8ca"
+  },
+  {
+    "id": "agenthub_项目概述_0",
+    "content": "| 属性 | 内容 |\n|------|------|\n| **项目名称** | AgentHub |\n| **简介** | 以聊天为中心的多 Agent 协作平台，Orchestrator 编排「先对齐再干活」的团队协作闭环 |\n| **状态** | 进行中（平台已完整可用，持续研究与迭代，最近提交 2026-09-03） |\n| **创建日期** | 2026-05 |\n| **仓库** | https://github.com/hhhhhhh520/agenthub |\n| **技术栈** | Next.js + React + TypeScript · Vercel AI SDK · Prisma + libSQL · shadcn/ui · Playwright |",
+    "source": "project_doc",
+    "source_id": "agenthub_项目概述",
+    "title": "AgentHub - 项目概述",
+    "metadata": {
+      "original_metadata": {
+        "project_id": "agenthub",
+        "section": "项目概述",
+        "file": "docs\\projects\\agenthub.md",
+        "source": "project_doc",
+        "source_id": "agenthub_项目概述",
+        "title": "AgentHub - 项目概述",
+        "doc_id": "bc2742c14c8d"
+      },
+      "chunk_type": "text"
+    },
+    "chunk_index": 0,
+    "total_chunks": 1,
+    "char_count": 342,
+    "embedding_hash": "eafb1ee2"
+  },
+  {
+    "id": "agenthub_核心架构_0",
+    "content": "### Orchestrator 9-action 状态机\n\n系统级协调器围绕 9 个动作构成编排闭环：`self / delegate / discuss / align_confirm / align_decompose / align_qa / execute / verify / done`。对齐流程学习人类团队的协作方式——PM 确认需求 → 架构师拆解任务 → 其他 Agent 提问澄清——先对齐再执行。\n\n### Contract v1 契约化协作\n\n用三份契约管住 LLM 的不可靠性：\n- **`<authoritative_input>` 权威输入注入** — 明确哪些内容是权威上下文\n- **`declaredFiles` 分级越界校验** — Agent 声明将修改的文件，执行后 Git diff 检测越界",
+    "source": "project_doc",
+    "source_id": "agenthub_核心架构",
+    "title": "AgentHub - 核心架构",
+    "metadata": {
+      "original_metadata": {
+        "project_id": "agenthub",
+        "section": "核心架构",
+        "file": "docs\\projects\\agenthub.md",
+        "source": "project_doc",
+        "source_id": "agenthub_核心架构",
+        "title": "AgentHub - 核心架构",
+        "doc_id": "e190e62e7f2b"
+      },
+      "chunk_type": "text"
+    },
+    "chunk_index": 0,
+    "total_chunks": 2,
+    "char_count": 369,
+    "embedding_hash": "1acca03f"
+  },
+  {
+    "id": "agenthub_核心架构_1",
+    "content": "iles` 分级越界校验** — Agent 声明将修改的文件，执行后 Git diff 检测越界\n- **`outputSchema` 结构校验** — 强制输出符合约定结构\n\n### 执行层强制验证\n\n纯 prompt 引导被证明无效，改为在**执行层强制**：代码任务拆解后自动追加 verify 任务，代码完成自动触发验证。\n\n### 双 CLI 适配层\n\nClaude Code + OpenCode 统一抽象，spawn 子进程 + NDJSON 流式解析，Agent 工具白名单通过 CLI 参数（Claude Code）和配置文件（OpenCode）硬限制。\n\n### 进程池 + 配置指纹\n\n每 `(会话, Agent, 配置)` 独立 CLI 进程，配置 hash 隔离，10 分钟空闲回收，优雅关闭。",
+    "source": "project_doc",
+    "source_id": "agenthub_核心架构",
+    "title": "AgentHub - 核心架构",
+    "metadata": {
+      "original_metadata": {
+        "project_id": "agenthub",
+        "section": "核心架构",
+        "file": "docs\\projects\\agenthub.md",
+        "source": "project_doc",
+        "source_id": "agenthub_核心架构",
+        "title": "AgentHub - 核心架构",
+        "doc_id": "e190e62e7f2b"
+      },
+      "chunk_type": "text"
+    },
+    "chunk_index": 1,
+    "total_chunks": 2,
+    "char_count": 361,
+    "embedding_hash": "98b077ce"
+  },
+  {
+    "id": "agenthub_主要功能_0",
+    "content": "- 三栏 IM 布局：会话列表 | 聊天区 | Agent 面板\n- 拉群流程：描述任务 → AI 推荐 Agent → 用户增减 → 确认建群\n- 三种会话：Orchestrator 主会话 | 群聊（多 Agent 协作）| 私聊（1v1）\n- Agent 预设池：7 个预设 Agent（架构师/前后端/测试/PM/设计师/Orchestrator）\n- 多供应商：每个 Agent 可独立配置 model / baseUrl / apiKey\n- SSE 流式、@ 提及、产物内联（代码块 / Web 预览 / Diff 视图 / Accept-Reject）\n- 工作区与权限、变更检测、任务重做（级联下游）",
+    "source": "project_doc",
+    "source_id": "agenthub_主要功能",
+    "title": "AgentHub - 主要功能",
+    "metadata": {
+      "original_metadata": {
+        "project_id": "agenthub",
+        "section": "主要功能",
+        "file": "docs\\projects\\agenthub.md",
+        "source": "project_doc",
+        "source_id": "agenthub_主要功能",
+        "title": "AgentHub - 主要功能",
+        "doc_id": "5fecfdad94b6"
+      },
+      "chunk_type": "text"
+    },
+    "chunk_index": 0,
+    "total_chunks": 1,
+    "char_count": 309,
+    "embedding_hash": "0b2a0fdb"
+  },
+  {
+    "id": "agenthub_测试质量方法论_0",
+    "content": "- **1050 单元测试** + Playwright E2E\n- 每次修复配「真回归守卫」——回退修复该测试必须变红\n- pre-commit 三视角审查：攻击者 / 生命周期 / 声明 vs 实现",
+    "source": "project_doc",
+    "source_id": "agenthub_测试质量方法论",
+    "title": "AgentHub - 测试质量方法论",
+    "metadata": {
+      "original_metadata": {
+        "project_id": "agenthub",
+        "section": "测试质量方法论",
+        "file": "docs\\projects\\agenthub.md",
+        "source": "project_doc",
+        "source_id": "agenthub_测试质量方法论",
+        "title": "AgentHub - 测试质量方法论",
+        "doc_id": "1f9a5f03b405"
+      },
+      "chunk_type": "text"
+    },
+    "chunk_index": 0,
+    "total_chunks": 1,
+    "char_count": 101,
+    "embedding_hash": "b0ccdea1"
+  },
+  {
+    "id": "agenthub_设计亮点_0",
+    "content": "1. 把「多 Agent 协作」从 prompt 工程上升为**契约 + 状态机 + 执行层强制**的工程系统\n2. 双 CLI 适配层屏蔽 Claude Code / OpenCode 差异，工具白名单硬限制收敛权限\n3. 以「回退必红」的回归守卫和三视角审查制度化质量，而非依赖单次跑通",
+    "source": "project_doc",
+    "source_id": "agenthub_设计亮点",
+    "title": "AgentHub - 设计亮点",
+    "metadata": {
+      "original_metadata": {
+        "project_id": "agenthub",
+        "section": "设计亮点",
+        "file": "docs\\projects\\agenthub.md",
+        "source": "project_doc",
+        "source_id": "agenthub_设计亮点",
+        "title": "AgentHub - 设计亮点",
+        "doc_id": "2d00b6e6dd63"
+      },
+      "chunk_type": "text"
+    },
+    "chunk_index": 0,
+    "total_chunks": 1,
+    "char_count": 145,
+    "embedding_hash": "47f377eb"
   },
   {
     "id": "campus-agent_overview_0",
@@ -8007,7 +8316,7 @@
     "chunk_index": 5,
     "total_chunks": 6,
     "char_count": 235,
-    "embedding_hash": "4cbf4463"
+    "embedding_hash": "df8fee4c"
   },
   {
     "id": "campus-agent_核心功能_0",
@@ -8306,7 +8615,7 @@
     "chunk_index": 12,
     "total_chunks": 13,
     "char_count": 248,
-    "embedding_hash": "7868b3f8"
+    "embedding_hash": "47380f35"
   },
   {
     "id": "campus-agent_设计决策_0",
@@ -8444,7 +8753,7 @@
     "chunk_index": 2,
     "total_chunks": 3,
     "char_count": 93,
-    "embedding_hash": "8d4e7dc5"
+    "embedding_hash": "cbf44422"
   },
   {
     "id": "campus-agent_部署说明_0",
@@ -8605,7 +8914,7 @@
     "chunk_index": 1,
     "total_chunks": 2,
     "char_count": 134,
-    "embedding_hash": "b7d945c5"
+    "embedding_hash": "69398350"
   },
   {
     "id": "codecraft-agent_overview_0",
@@ -8628,7 +8937,7 @@
     "chunk_index": 0,
     "total_chunks": 1,
     "char_count": 113,
-    "embedding_hash": "2041d9d6"
+    "embedding_hash": "80f9d03e"
   },
   {
     "id": "codecraft-agent_project_overview_0",
@@ -8674,7 +8983,7 @@
     "chunk_index": 1,
     "total_chunks": 2,
     "char_count": 142,
-    "embedding_hash": "d3952ddf"
+    "embedding_hash": "4328601f"
   },
   {
     "id": "codecraft-agent_technical_architecture_0",
@@ -8858,7 +9167,7 @@
     "chunk_index": 7,
     "total_chunks": 8,
     "char_count": 125,
-    "embedding_hash": "8a67c2a0"
+    "embedding_hash": "6d4fb943"
   },
   {
     "id": "codecraft-agent_core_features_0",
@@ -9134,7 +9443,7 @@
     "chunk_index": 11,
     "total_chunks": 20,
     "char_count": 395,
-    "embedding_hash": "c4c13e95"
+    "embedding_hash": "659b89d4"
   },
   {
     "id": "codecraft-agent_core_features_12",
@@ -9341,7 +9650,7 @@
     "chunk_index": 0,
     "total_chunks": 7,
     "char_count": 395,
-    "embedding_hash": "e499d8f4"
+    "embedding_hash": "05d75872"
   },
   {
     "id": "codecraft-agent_design_decisions_1",
@@ -9617,7 +9926,7 @@
     "chunk_index": 5,
     "total_chunks": 6,
     "char_count": 164,
-    "embedding_hash": "48dea7b4"
+    "embedding_hash": "ac483b94"
   },
   {
     "id": "codecraft-agent_deployment_instructions_0",
@@ -9778,7 +10087,7 @@
     "chunk_index": 1,
     "total_chunks": 6,
     "char_count": 361,
-    "embedding_hash": "9789c495"
+    "embedding_hash": "bf6574df"
   },
   {
     "id": "codecraft-agent_project_highlights_2",
@@ -9916,7 +10225,7 @@
     "chunk_index": 1,
     "total_chunks": 2,
     "char_count": 141,
-    "embedding_hash": "a80d34f3"
+    "embedding_hash": "5f7aca7f"
   },
   {
     "id": "cv-generator_overview_0",
@@ -9962,7 +10271,7 @@
     "chunk_index": 0,
     "total_chunks": 1,
     "char_count": 250,
-    "embedding_hash": "5f214fba"
+    "embedding_hash": "b4ce4a06"
   },
   {
     "id": "cv-generator_技术架构_0",
@@ -10031,7 +10340,7 @@
     "chunk_index": 2,
     "total_chunks": 3,
     "char_count": 135,
-    "embedding_hash": "e09c4279"
+    "embedding_hash": "5ca33640"
   },
   {
     "id": "cv-generator_核心功能_0",
@@ -10606,7 +10915,7 @@
     "chunk_index": 4,
     "total_chunks": 5,
     "char_count": 235,
-    "embedding_hash": "93b65650"
+    "embedding_hash": "4b21b288"
   },
   {
     "id": "game-agent_核心功能_0",
@@ -10974,7 +11283,7 @@
     "chunk_index": 15,
     "total_chunks": 16,
     "char_count": 70,
-    "embedding_hash": "33d31b64"
+    "embedding_hash": "e6e85c34"
   },
   {
     "id": "game-agent_设计决策_0",
@@ -11043,7 +11352,7 @@
     "chunk_index": 2,
     "total_chunks": 3,
     "char_count": 78,
-    "embedding_hash": "0f966c0d"
+    "embedding_hash": "544e3a75"
   },
   {
     "id": "game-agent_测试覆盖_0",
@@ -11089,7 +11398,7 @@
     "chunk_index": 1,
     "total_chunks": 2,
     "char_count": 217,
-    "embedding_hash": "b98e4d5d"
+    "embedding_hash": "3870db23"
   },
   {
     "id": "game-agent_部署说明_0",
@@ -11227,7 +11536,7 @@
     "chunk_index": 2,
     "total_chunks": 3,
     "char_count": 242,
-    "embedding_hash": "27b95f65"
+    "embedding_hash": "6b04ed94"
   },
   {
     "id": "game-agent_附录_0",
@@ -11253,6 +11562,144 @@
     "embedding_hash": "b392271e"
   },
   {
+    "id": "iflytek-agent-challenge_overview_0",
+    "content": "# 讯飞 Agent 算法挑战赛\n\n> 讯飞 AI 开发者大赛「Agent 算法挑战赛」参赛方案。赛题：从自然语言到可执行工作流。\n\n---",
+    "source": "project_doc",
+    "source_id": "iflytek-agent-challenge_overview",
+    "title": "讯飞 Agent 算法挑战赛 - 概述",
+    "metadata": {
+      "original_metadata": {
+        "project_id": "iflytek-agent-challenge",
+        "section": "overview",
+        "file": "docs\\projects\\iflytek-agent-challenge.md",
+        "source": "project_doc",
+        "source_id": "iflytek-agent-challenge_overview",
+        "title": "讯飞 Agent 算法挑战赛 - 概述",
+        "doc_id": "8cb763f33783"
+      },
+      "chunk_type": "text"
+    },
+    "chunk_index": 0,
+    "total_chunks": 1,
+    "char_count": 70,
+    "embedding_hash": "a394e8ea"
+  },
+  {
+    "id": "iflytek-agent-challenge_项目概述_0",
+    "content": "| 属性 | 内容 |\n|------|------|\n| **项目名称** | 讯飞 Agent 算法挑战赛 |\n| **赛题** | 从自然语言到可执行工作流的 Agent 算法挑战赛 |\n| **状态** | 进行中（比赛截止 2026-09-04，持续迭代提交） |\n| **开始时间** | 2026-07 |\n| **平台最优成绩** | 71.47（2026-09-02） |\n| **技术栈** | Python · LLM Agent · 显式状态机 |",
+    "source": "project_doc",
+    "source_id": "iflytek-agent-challenge_项目概述",
+    "title": "讯飞 Agent 算法挑战赛 - 项目概述",
+    "metadata": {
+      "original_metadata": {
+        "project_id": "iflytek-agent-challenge",
+        "section": "项目概述",
+        "file": "docs\\projects\\iflytek-agent-challenge.md",
+        "source": "project_doc",
+        "source_id": "iflytek-agent-challenge_项目概述",
+        "title": "讯飞 Agent 算法挑战赛 - 项目概述",
+        "doc_id": "607fba88c339"
+      },
+      "chunk_type": "text"
+    },
+    "chunk_index": 0,
+    "total_chunks": 1,
+    "char_count": 236,
+    "embedding_hash": "f04bae51"
+  },
+  {
+    "id": "iflytek-agent-challenge_评分规则_0",
+    "content": "官方仿真器按四个维度评分：\n\n| 维度 | 分值 | 说明 |\n|------|------|------|\n| TSR | 60 | 任务成功率（must_satisfy 条件） |\n| AS | 20 | 动作合法性（error 扣 5 分 / forbidden 直接 0） |\n| ES | 10 | 效率分（步数越少越好） |\n| RS | 10 | 鲁棒性（变体通过率） |",
+    "source": "project_doc",
+    "source_id": "iflytek-agent-challenge_评分规则",
+    "title": "讯飞 Agent 算法挑战赛 - 评分规则",
+    "metadata": {
+      "original_metadata": {
+        "project_id": "iflytek-agent-challenge",
+        "section": "评分规则",
+        "file": "docs\\projects\\iflytek-agent-challenge.md",
+        "source": "project_doc",
+        "source_id": "iflytek-agent-challenge_评分规则",
+        "title": "讯飞 Agent 算法挑战赛 - 评分规则",
+        "doc_id": "8155676d642c"
+      },
+      "chunk_type": "text"
+    },
+    "chunk_index": 0,
+    "total_chunks": 1,
+    "char_count": 193,
+    "embedding_hash": "df2f0080"
+  },
+  {
+    "id": "iflytek-agent-challenge_三阶段架构_0",
+    "content": "核心设计是用**确定性状态机**兜住 LLM 的不确定性，尤其是步数与动作合法性：\n\n1. **Phase 1 — LLM 意图理解（不计步）**：LLM 解析自然语言需求，提取意图与槽位。此阶段不计入步数预算。\n2. **Phase 2 — 显式状态机推进（计步）**：把意图交给有限状态机逐步推进工作流，每步产生合法动作。用状态机而非纯 LLM 决策，控制步数、避免 forbidden 动作直接归零。\n3. **Phase 3 — 构造最终结果**：汇总执行轨迹，构造满足 must_satisfy 条件的最终输出。",
+    "source": "project_doc",
+    "source_id": "iflytek-agent-challenge_三阶段架构",
+    "title": "讯飞 Agent 算法挑战赛 - 三阶段架构",
+    "metadata": {
+      "original_metadata": {
+        "project_id": "iflytek-agent-challenge",
+        "section": "三阶段架构",
+        "file": "docs\\projects\\iflytek-agent-challenge.md",
+        "source": "project_doc",
+        "source_id": "iflytek-agent-challenge_三阶段架构",
+        "title": "讯飞 Agent 算法挑战赛 - 三阶段架构",
+        "doc_id": "fd3f1b296a0b"
+      },
+      "chunk_type": "text"
+    },
+    "chunk_index": 0,
+    "total_chunks": 1,
+    "char_count": 261,
+    "embedding_hash": "0b4c52e2"
+  },
+  {
+    "id": "iflytek-agent-challenge_工程实践_0",
+    "content": "- **端到端本地验证**：用官方仿真器在本地 train(200)/val(50) 集上复现评分，避免只看单元测试\n- **鲁棒性变体测试**：针对 RS 维度构造输入变体，验证 Agent 不因边界输入崩溃\n- **LLM 槽位健壮性**：LLM 返回值不裸用 int/float，run() 全程 try/except；槽位前缀污染在确定性入口剥前缀（raw 优先，miss 才剥）\n- **迭代提分**：平台得分受约 ±1.7 测量方差影响，多轮架构迭代 + 端点/密钥调整共同推动，最优达 71.47（2026-09-02，阿里云端点首次上平台）",
+    "source": "project_doc",
+    "source_id": "iflytek-agent-challenge_工程实践",
+    "title": "讯飞 Agent 算法挑战赛 - 工程实践",
+    "metadata": {
+      "original_metadata": {
+        "project_id": "iflytek-agent-challenge",
+        "section": "工程实践",
+        "file": "docs\\projects\\iflytek-agent-challenge.md",
+        "source": "project_doc",
+        "source_id": "iflytek-agent-challenge_工程实践",
+        "title": "讯飞 Agent 算法挑战赛 - 工程实践",
+        "doc_id": "0862b543e3b1"
+      },
+      "chunk_type": "text"
+    },
+    "chunk_index": 0,
+    "total_chunks": 1,
+    "char_count": 278,
+    "embedding_hash": "7b65531f"
+  },
+  {
+    "id": "iflytek-agent-challenge_设计亮点_0",
+    "content": "1. 认识到「纯 LLM 决策」在计步/合法性约束下的脆弱，改用**显式状态机**接管可控部分\n2. 三阶段解耦「理解 / 执行 / 构造」，把不计步的意图理解与计步的执行分离，优化 TSR 与 ES 的平衡\n3. 坚持官方仿真器端到端验证 + 变体鲁棒测试，而非依赖单测绿灯\n\n> 比赛提交物为单文件 `my_agent.py` + `config.json`（`submission.zip`），未公开。",
+    "source": "project_doc",
+    "source_id": "iflytek-agent-challenge_设计亮点",
+    "title": "讯飞 Agent 算法挑战赛 - 设计亮点",
+    "metadata": {
+      "original_metadata": {
+        "project_id": "iflytek-agent-challenge",
+        "section": "设计亮点",
+        "file": "docs\\projects\\iflytek-agent-challenge.md",
+        "source": "project_doc",
+        "source_id": "iflytek-agent-challenge_设计亮点",
+        "title": "讯飞 Agent 算法挑战赛 - 设计亮点",
+        "doc_id": "57a0c26e39fd"
+      },
+      "chunk_type": "text"
+    },
+    "chunk_index": 0,
+    "total_chunks": 1,
+    "char_count": 204,
+    "embedding_hash": "f1969be8"
+  },
+  {
     "id": "mini-claude_overview_0",
     "content": "# Mini Claude Code\n\n> 一个迷你版 Claude CLI，支持工具调用和多 Agent 并发处理复杂任务。\n\n---",
     "source": "project_doc",
@@ -11273,7 +11720,7 @@
     "chunk_index": 0,
     "total_chunks": 1,
     "char_count": 68,
-    "embedding_hash": "eba609b1"
+    "embedding_hash": "f1d8520d"
   },
   {
     "id": "mini-claude_项目概述_0",
@@ -11503,7 +11950,7 @@
     "chunk_index": 8,
     "total_chunks": 9,
     "char_count": 122,
-    "embedding_hash": "b3976abd"
+    "embedding_hash": "5adf7aa1"
   },
   {
     "id": "mini-claude_核心功能_0",
@@ -11963,7 +12410,7 @@
     "chunk_index": 19,
     "total_chunks": 20,
     "char_count": 231,
-    "embedding_hash": "1a48e9f3"
+    "embedding_hash": "a6531e74"
   },
   {
     "id": "mini-claude_设计决策_0",
@@ -12055,7 +12502,7 @@
     "chunk_index": 3,
     "total_chunks": 4,
     "char_count": 91,
-    "embedding_hash": "ec69ef54"
+    "embedding_hash": "b5b9b7c5"
   },
   {
     "id": "mini-claude_测试覆盖_0",
@@ -12147,7 +12594,7 @@
     "chunk_index": 3,
     "total_chunks": 4,
     "char_count": 134,
-    "embedding_hash": "a9b7d42f"
+    "embedding_hash": "a7e1b174"
   },
   {
     "id": "mini-claude_部署说明_0",
@@ -12331,7 +12778,7 @@
     "chunk_index": 1,
     "total_chunks": 2,
     "char_count": 102,
-    "embedding_hash": "bb7ace58"
+    "embedding_hash": "ca666cad"
   },
   {
     "id": "phone-pick-assistant_overview_0",
@@ -12492,7 +12939,7 @@
     "chunk_index": 4,
     "total_chunks": 5,
     "char_count": 224,
-    "embedding_hash": "a8162f7a"
+    "embedding_hash": "ca841fb2"
   },
   {
     "id": "phone-pick-assistant_核心功能_0",
@@ -12699,7 +13146,7 @@
     "chunk_index": 8,
     "total_chunks": 9,
     "char_count": 217,
-    "embedding_hash": "59208a28"
+    "embedding_hash": "1d4c83b6"
   },
   {
     "id": "phone-pick-assistant_设计决策_0",
@@ -12837,7 +13284,7 @@
     "chunk_index": 2,
     "total_chunks": 3,
     "char_count": 104,
-    "embedding_hash": "b2532c29"
+    "embedding_hash": "151b33da"
   },
   {
     "id": "phone-pick-assistant_部署说明_0",
@@ -12929,7 +13376,7 @@
     "chunk_index": 3,
     "total_chunks": 4,
     "char_count": 250,
-    "embedding_hash": "48616dba"
+    "embedding_hash": "a4402703"
   },
   {
     "id": "phone-pick-assistant_项目亮点_0",
@@ -13021,7 +13468,7 @@
     "chunk_index": 3,
     "total_chunks": 4,
     "char_count": 142,
-    "embedding_hash": "43f1b0d9"
+    "embedding_hash": "96c6bfce"
   },
   {
     "id": "phone-pick-assistant_附录_0",
