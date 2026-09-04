@@ -8,6 +8,11 @@
 
 ### ✅ 已完成
 
+#### P28 — ISSUE-009 占位符文本（2026-09-04）
+| 阶段 | 内容 | 文件 | 完成日期 |
+|------|------|------|----------|
+| 修复 | 根布局 title "Create Next App"→个人标题；Navigation Logo "D"/"Portfolio"→personal.name | app/layout.tsx, components/ui/Navigation.tsx | 2026-09-04 |
+
 #### P27 — ISSUE-008 去重（2026-09-04）
 | 阶段 | 内容 | 文件 | 完成日期 |
 |------|------|------|----------|

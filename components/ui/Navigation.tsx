@@ -7,6 +7,7 @@ import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { LocaleSwitcher } from "./LocaleSwitcher";
 import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle } from "./sheet";
+import { personal } from "@/data/personal";
 
 const linkVariants = {
   initial: { y: -20, opacity: 0 },
@@ -69,10 +70,10 @@ export default function Navigation() {
               className="flex items-center gap-2"
             >
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                <span className="text-white font-bold text-sm">D</span>
+                <span className="text-white font-bold text-sm">{personal.name.charAt(0)}</span>
               </div>
               <span className="font-semibold text-lg gradient-text hidden sm:block">
-                Portfolio
+                {personal.name}
               </span>
             </motion.div>
           </Link>
