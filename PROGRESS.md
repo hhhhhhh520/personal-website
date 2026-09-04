@@ -8,6 +8,14 @@
 
 ### ✅ 已完成
 
+#### P23 — 死代码清理 + zustand 幻影依赖（2026-09-04）
+| 阶段 | 内容 | 文件 | 完成日期 |
+|------|------|------|----------|
+| 删除 | 5 个无消费者文件(~1311行):3D/转场时代遗留 sceneStore/usePreload/OptimizedImage/ProjectTransition/examples | 对应 5 文件 + `rmdir examples/` | 2026-09-04 |
+| 同步 | barrel 删导出 | stores/index.ts, hooks/index.ts, components/effects/index.ts | 2026-09-04 |
+| 加固 | zustand 由幻影(transitive)依赖 → 显式 `^5.0.13` + lock | package.json, package-lock.json | 2026-09-04 |
+| 验证 | build exit0 / tsc0 / 243 测试 / 8 项目页×2 语言 SSG 不变；关 ISSUE-005 | — | 2026-09-04 |
+
 #### P22 — 作品集新增 2 个项目（2026-09-04）
 | 阶段 | 内容 | 文件 | 完成日期 |
 |------|------|------|----------|

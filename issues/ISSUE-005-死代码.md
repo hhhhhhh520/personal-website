@@ -1,5 +1,5 @@
 # 死代码清理
-> 创建时间: 2026-06-25 | 状态: 🟡部分解决（2026-09-04，下表文件级死代码仍未清理）
+> 创建时间: 2026-06-25 | 状态: 🟢已解决（2026-09-04）
 
 ## 问题描述
 
@@ -66,3 +66,10 @@ rm hooks/usePreload.ts
 ## 参考资料
 
 - 提交 `ce13348` 删除了3D视图功能
+
+## 解决记录（2026-09-04）
+
+已删除 5 个文件（约 1311 行）+ 同步移除 barrel 导出：
+`stores/sceneStore.ts`、`hooks/usePreload.ts`、`components/ui/OptimizedImage.tsx`、`components/examples/`（整目录）、`components/effects/ProjectTransition.tsx`；改 `stores/index.ts`、`hooks/index.ts`、`components/effects/index.ts`。
+删除前用穷尽式检查确认 8 个导出符号（含字符串级）零消费者；删后 `npm run build` 全绿（8 项目页 ×2 语言 SSG 不变）+ `tsc` 0 + 243/243 测试通过。
+**顺带修复**：`zustand` 原为幻影依赖（novaStore 使用但未声明于 package.json），已显式声明 `^5.0.13`。
