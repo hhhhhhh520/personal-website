@@ -8,7 +8,7 @@
 | [001](ISSUE-001-测试与实现脱节.md) | 测试与实现脱节 | P0 | 🟢已解决 | 2026-09-04 四个STUB改测真实实现,假测试删除,测试数243→204 |
 | [002](ISSUE-002-route.ts代码重复.md) | route.ts代码重复 | P0 | 🟢已解决 | AI生成代码时的自包含模式 |
 | [003](ISSUE-003-无代码分割.md) | 无代码分割 | P1 | 🟢已解决 | 2026-09-04 LightRays/NovaGuide/TargetCursor 懒加载 |
-| [004](ISSUE-004-页面全用use-client.md) | 页面全用use client | P3 | 🟡排查中 | 项目早期架构决策 |
+| [004](ISSUE-004-页面全用use-client.md) | 页面全用use client | P3 | ⚪已评估·保留 | 2026-09-04 决策保留现状(成本高收益低,已由003/007覆盖真实痛点) |
 | [005](ISSUE-005-死代码.md) | 死代码清理 | P2 | 🟢已解决 | 2026-09-04 删5文件~1311行+barrel同步,顺带声明 zustand 幻影依赖 |
 | [006](ISSUE-006-env-example不同步.md) | .env.example不同步 | P2 | 🟢已解决 | API迁移时遗漏（2026-09-04，并修复 .gitignore 忽略 .env.example 的根因） |
 | [007](ISSUE-007-LightRays性能问题.md) | LightRays性能问题 | P2 | 🟢已解决 | 2026-09-04 依赖数组+60fps帧率上限+reduced-motion+catch补日志 |

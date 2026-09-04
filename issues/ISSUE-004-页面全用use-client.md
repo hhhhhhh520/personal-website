@@ -1,5 +1,5 @@
 # 所有页面都是 'use client' — 无真正SSR
-> 创建时间: 2026-06-25 | 状态: 🟡排查中
+> 创建时间: 2026-06-25 | 状态: ⚪已评估·保留现状（2026-09-04，决策记录见下）
 
 ## 问题描述
 
@@ -69,3 +69,12 @@ import { motion } from 'framer-motion';
 ## 参考资料
 
 - Next.js Server Components: https://nextjs.org/docs/app/building-your-application/rendering/server-components
+
+## 决策记录（2026-09-04）：**保留现状，不改造**
+
+按本文件「如果不改造」一节的评估结论执行：
+- 项目为个人作品集，页面已由 `generateStaticParams` 静态生成（SSG），`'use client'` 仍会预渲染 HTML，SEO/首屏影响有限；
+- 改为 Server/Client 拆分成本高（每页拆双组件 + 数据下传），收益与风险不成正比；
+- 本轮已通过 ISSUE-003（重型组件懒加载）与 ISSUE-007（LightRays 帧率/动画优化）覆盖了真实的加载/性能痛点。
+
+**结论**：维持全客户端渲染，不再投入改造。若未来页面数量/交互复杂度显著上升，再重新评估。
