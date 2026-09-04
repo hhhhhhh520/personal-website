@@ -1,14 +1,14 @@
 [
   {
     "id": "mini-claude_0",
-    "content": "项目名称: Mini Claude Code\n简介: 迷你版 Claude CLI，支持工具调用和多 Agent 并发\n详细描述: 基于 LangGraph 和 LiteLLM 构建的轻量级 AI 编程助手。支持多模型切换（DeepSeek、通义千问、讯飞星辰等），实现工具调用、文件操作、Shell 命令执行等核心功能。采用多 Agent 并发架构，支持任务分解和并行执行。完整测试覆盖，包含 1497 个测试用例。\n技术栈: Python, LiteLLM, LangGraph, asyncio\n特点: 1497 测试用例, 多模型支持, 并发 Agent, 工具调用\n分类: ai\n状态: completed",
+    "content": "项目名称: Mini Claude Code\n简介: 迷你版 Claude CLI，支持工具调用和多 Agent 并发\n详细描述: 基于 LangGraph 和 LiteLLM 构建的轻量级 AI 编程助手。支持多模型切换（DeepSeek、通义千问、讯飞星辰等），实现工具调用、文件操作、Shell 命令执行等核心功能。采用多 Agent 并发架构，支持任务分解和并行执行。完整测试覆盖，包含 1677 个测试用例。\n技术栈: Python, LiteLLM, LangGraph, asyncio\n特点: 1677 测试用例, 多模型支持, 并发 Agent, 工具调用\n分类: ai\n状态: completed",
     "source": "project",
     "source_id": "mini-claude",
     "title": "Mini Claude Code",
     "metadata": {
       "original_metadata": {
         "shortDesc": "迷你版 Claude CLI，支持工具调用和多 Agent 并发",
-        "fullDesc": "基于 LangGraph 和 LiteLLM 构建的轻量级 AI 编程助手。支持多模型切换（DeepSeek、通义千问、讯飞星辰等），实现工具调用、文件操作、Shell 命令执行等核心功能。采用多 Agent 并发架构，支持任务分解和并行执行。完整测试覆盖，包含 1497 个测试用例。",
+        "fullDesc": "基于 LangGraph 和 LiteLLM 构建的轻量级 AI 编程助手。支持多模型切换（DeepSeek、通义千问、讯飞星辰等），实现工具调用、文件操作、Shell 命令执行等核心功能。采用多 Agent 并发架构，支持任务分解和并行执行。完整测试覆盖，包含 1677 个测试用例。",
         "techStack": [
           "Python",
           "LiteLLM",
@@ -16,7 +16,7 @@
           "asyncio"
         ],
         "highlights": [
-          "1497 测试用例",
+          "1677 测试用例",
           "多模型支持",
           "并发 Agent",
           "工具调用"
@@ -26,14 +26,14 @@
         "source": "project",
         "source_id": "mini-claude",
         "title": "Mini Claude Code",
-        "doc_id": "18a94a371f3b"
+        "doc_id": "08064cca678d"
       },
       "chunk_type": "text"
     },
     "chunk_index": 0,
     "total_chunks": 1,
     "char_count": 308,
-    "embedding_hash": "7533fdf6"
+    "embedding_hash": "7779a7d2"
   },
   {
     "id": "codecraft-agent_0",
@@ -522,7 +522,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "Agent 容错设计：ToolDegradation + SQLite 持久化",
@@ -546,7 +546,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "问题场景",
@@ -570,7 +570,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "场景 1：工具调用失败",
@@ -594,7 +594,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "FileNotFoundError → 整个 Agent 链路中断",
@@ -618,7 +618,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "场景 2：进程重启",
@@ -642,7 +642,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "用户关闭终端 → 所有上下文丢失 → 重新开始",
@@ -666,7 +666,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "场景 3：网络抖动",
@@ -690,7 +690,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "ConnectionError → 重试 3 次后放弃 → 任务失败",
@@ -714,7 +714,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "ToolDegradation：优雅降级",
@@ -738,7 +738,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "降级策略设计",
@@ -762,7 +762,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "降级策略设计",
@@ -786,7 +786,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "各工具的降级逻辑",
@@ -810,7 +810,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "各工具的降级逻辑",
@@ -834,7 +834,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "集成到 ToolRegistry",
@@ -858,7 +858,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "降级后的 Agent 行为",
@@ -882,7 +882,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "Agent 收到降级响应后的处理",
@@ -906,7 +906,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "SQLite 持久化：会话不丢失",
@@ -930,7 +930,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "之前：内存 checkpointer",
@@ -954,7 +954,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "问题：进程重启后，所有会话状态丢失",
@@ -978,7 +978,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "之后：SQLite 持久化",
@@ -1002,7 +1002,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "好处：进程重启后，会话状态自动恢复",
@@ -1026,7 +1026,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "为什么选 SQLite",
@@ -1050,7 +1050,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "会话恢复流程",
@@ -1074,7 +1074,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "会话恢复流程",
@@ -1098,7 +1098,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "恢复时的状态重建",
@@ -1122,7 +1122,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "恢复时的状态重建",
@@ -1146,7 +1146,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "恢复时的状态重建",
@@ -1170,7 +1170,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "FAISS 更新修复",
@@ -1194,7 +1194,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "FAISS 更新修复",
@@ -1218,7 +1218,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "测试策略",
@@ -1242,7 +1242,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "测试降级路径",
@@ -1266,7 +1266,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "测试降级路径",
@@ -1290,7 +1290,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "测试会话恢复",
@@ -1314,7 +1314,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "测试会话恢复",
@@ -1327,7 +1327,7 @@
   },
   {
     "id": "agent-fault-tolerance_34",
-    "content": "## 性能影响\n\n| 指标 | 之前 | 之后 | 变化 |\n|------|------|------|------|\n| 工具失败时的行为 | 崩溃 | 降级 | ✅ 改善 |\n| 会话持久化 | 无 | SQLite | ~2ms 写入延迟 |\n| 内存占用 | 状态在内存 | 状态在磁盘 | ✅ 降低 |\n| 恢复时间 | 不可恢复 | <100ms | ✅ 改善 |\n\nSQLite 写入延迟约 2ms，对 Agent 执行链路来说可以忽略。",
+    "content": "## 性能影响\n\n| 指标 | 之前 | 之后 | 变化 |\n|------|------|------|------|\n| 工具失败时的行为 | 崩溃 | 降级 | ✅ 改善 |\n| 会话持久化 | 无 | SQLite | ~2ms 写入延迟 |\n| 内存占用 | 状态在内存 | 状态在磁盘 | ✅ 降低 |\n| 恢复时间 | 不可恢复 | `<100ms` | ✅ 改善 |\n\nSQLite 写入延迟约 2ms，对 Agent 执行链路来说可以忽略。",
     "source": "blog",
     "source_id": "agent-fault-tolerance",
     "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
@@ -1338,7 +1338,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "性能影响",
@@ -1346,8 +1346,8 @@
     },
     "chunk_index": 34,
     "total_chunks": 36,
-    "char_count": 227,
-    "embedding_hash": "d02cf7e7"
+    "char_count": 229,
+    "embedding_hash": "39187a8d"
   },
   {
     "id": "agent-fault-tolerance_35",
@@ -1362,7 +1362,7 @@
         "source": "blog",
         "source_id": "agent-fault-tolerance",
         "title": "Agent 容错设计：ToolDegradation + SQLite 持久化",
-        "doc_id": "4d36e58b5d8c"
+        "doc_id": "459c7aadb6ef"
       },
       "chunk_type": "text",
       "section_header": "经验总结",
@@ -2791,7 +2791,7 @@
   },
   {
     "id": "building-mini-claude-code-from-scratch_0",
-    "content": "# 从零构建 Mini Claude Code\n\n这不是一个教程，而是一段旅程的记录。从\"能不能做一个简化版的 Claude CLI\"的想法，到 1497 个测试用例的生产级项目。",
+    "content": "# 从零构建 Mini Claude Code\n\n这不是一个教程，而是一段旅程的记录。从\"能不能做一个简化版的 Claude CLI\"的想法，到 1677 个测试用例的生产级项目。",
     "source": "blog",
     "source_id": "building-mini-claude-code-from-scratch",
     "title": "从零构建 Mini Claude Code",
@@ -2802,7 +2802,7 @@
         "source": "blog",
         "source_id": "building-mini-claude-code-from-scratch",
         "title": "从零构建 Mini Claude Code",
-        "doc_id": "7b030f912d06"
+        "doc_id": "6a86963eb424"
       },
       "chunk_type": "text",
       "section_header": "从零构建 Mini Claude Code",
@@ -2811,7 +2811,7 @@
     "chunk_index": 0,
     "total_chunks": 9,
     "char_count": 90,
-    "embedding_hash": "0e3fdcd6"
+    "embedding_hash": "1aaa2a5c"
   },
   {
     "id": "building-mini-claude-code-from-scratch_1",
@@ -2826,7 +2826,7 @@
         "source": "blog",
         "source_id": "building-mini-claude-code-from-scratch",
         "title": "从零构建 Mini Claude Code",
-        "doc_id": "7b030f912d06"
+        "doc_id": "6a86963eb424"
       },
       "chunk_type": "text",
       "section_header": "起点：痛点驱动",
@@ -2850,7 +2850,7 @@
         "source": "blog",
         "source_id": "building-mini-claude-code-from-scratch",
         "title": "从零构建 Mini Claude Code",
-        "doc_id": "7b030f912d06"
+        "doc_id": "6a86963eb424"
       },
       "chunk_type": "text",
       "section_header": "第一周：MVP",
@@ -2874,7 +2874,7 @@
         "source": "blog",
         "source_id": "building-mini-claude-code-from-scratch",
         "title": "从零构建 Mini Claude Code",
-        "doc_id": "7b030f912d06"
+        "doc_id": "6a86963eb424"
       },
       "chunk_type": "text",
       "section_header": "核心循环",
@@ -2898,7 +2898,7 @@
         "source": "blog",
         "source_id": "building-mini-claude-code-from-scratch",
         "title": "从零构建 Mini Claude Code",
-        "doc_id": "7b030f912d06"
+        "doc_id": "6a86963eb424"
       },
       "chunk_type": "text",
       "section_header": "第二周：工具系统",
@@ -2922,7 +2922,7 @@
         "source": "blog",
         "source_id": "building-mini-claude-code-from-scratch",
         "title": "从零构建 Mini Claude Code",
-        "doc_id": "7b030f912d06"
+        "doc_id": "6a86963eb424"
       },
       "chunk_type": "text",
       "section_header": "第三周：状态机重构",
@@ -2935,7 +2935,7 @@
   },
   {
     "id": "building-mini-claude-code-from-scratch_6",
-    "content": "## 第四周：测试驱动\n\n写了 1497 个测试用例，覆盖：\n- 单元测试：每个工具、每个状态转换\n- 集成测试：端到端工作流\n- 并发测试：多 Agent 协作场景",
+    "content": "## 第四周：测试驱动\n\n写了 1677 个测试用例，覆盖：\n- 单元测试：每个工具、每个状态转换\n- 集成测试：端到端工作流\n- 并发测试：多 Agent 协作场景",
     "source": "blog",
     "source_id": "building-mini-claude-code-from-scratch",
     "title": "从零构建 Mini Claude Code",
@@ -2946,7 +2946,7 @@
         "source": "blog",
         "source_id": "building-mini-claude-code-from-scratch",
         "title": "从零构建 Mini Claude Code",
-        "doc_id": "7b030f912d06"
+        "doc_id": "6a86963eb424"
       },
       "chunk_type": "text",
       "section_header": "第四周：测试驱动",
@@ -2955,7 +2955,7 @@
     "chunk_index": 6,
     "total_chunks": 9,
     "char_count": 83,
-    "embedding_hash": "54d1dd83"
+    "embedding_hash": "36f18cec"
   },
   {
     "id": "building-mini-claude-code-from-scratch_7",
@@ -2970,7 +2970,7 @@
         "source": "blog",
         "source_id": "building-mini-claude-code-from-scratch",
         "title": "从零构建 Mini Claude Code",
-        "doc_id": "7b030f912d06"
+        "doc_id": "6a86963eb424"
       },
       "chunk_type": "text",
       "section_header": "经验总结",
@@ -2994,7 +2994,7 @@
         "source": "blog",
         "source_id": "building-mini-claude-code-from-scratch",
         "title": "从零构建 Mini Claude Code",
-        "doc_id": "7b030f912d06"
+        "doc_id": "6a86963eb424"
       },
       "chunk_type": "text",
       "section_header": "开源",
@@ -11759,7 +11759,7 @@
         "source": "project_doc",
         "source_id": "mini-claude_技术架构",
         "title": "Mini Claude Code - 技术架构",
-        "doc_id": "6552e8a56443"
+        "doc_id": "208475ec6c83"
       },
       "chunk_type": "text"
     },
@@ -11782,7 +11782,7 @@
         "source": "project_doc",
         "source_id": "mini-claude_技术架构",
         "title": "Mini Claude Code - 技术架构",
-        "doc_id": "6552e8a56443"
+        "doc_id": "208475ec6c83"
       },
       "chunk_type": "text"
     },
@@ -11805,7 +11805,7 @@
         "source": "project_doc",
         "source_id": "mini-claude_技术架构",
         "title": "Mini Claude Code - 技术架构",
-        "doc_id": "6552e8a56443"
+        "doc_id": "208475ec6c83"
       },
       "chunk_type": "text"
     },
@@ -11828,7 +11828,7 @@
         "source": "project_doc",
         "source_id": "mini-claude_技术架构",
         "title": "Mini Claude Code - 技术架构",
-        "doc_id": "6552e8a56443"
+        "doc_id": "208475ec6c83"
       },
       "chunk_type": "text"
     },
@@ -11851,7 +11851,7 @@
         "source": "project_doc",
         "source_id": "mini-claude_技术架构",
         "title": "Mini Claude Code - 技术架构",
-        "doc_id": "6552e8a56443"
+        "doc_id": "208475ec6c83"
       },
       "chunk_type": "text"
     },
@@ -11874,7 +11874,7 @@
         "source": "project_doc",
         "source_id": "mini-claude_技术架构",
         "title": "Mini Claude Code - 技术架构",
-        "doc_id": "6552e8a56443"
+        "doc_id": "208475ec6c83"
       },
       "chunk_type": "text"
     },
@@ -11897,7 +11897,7 @@
         "source": "project_doc",
         "source_id": "mini-claude_技术架构",
         "title": "Mini Claude Code - 技术架构",
-        "doc_id": "6552e8a56443"
+        "doc_id": "208475ec6c83"
       },
       "chunk_type": "text"
     },
@@ -11920,7 +11920,7 @@
         "source": "project_doc",
         "source_id": "mini-claude_技术架构",
         "title": "Mini Claude Code - 技术架构",
-        "doc_id": "6552e8a56443"
+        "doc_id": "208475ec6c83"
       },
       "chunk_type": "text"
     },
@@ -11931,7 +11931,7 @@
   },
   {
     "id": "mini-claude_技术架构_8",
-    "content": "├── session.py         # 会话管理\n│       └── memory.py          # 记忆系统\n└── tests/                      # 测试文件（1497个）\n```\n\n---",
+    "content": "├── session.py         # 会话管理\n│       └── memory.py          # 记忆系统\n└── tests/                      # 测试文件（1677个）\n```\n\n---",
     "source": "project_doc",
     "source_id": "mini-claude_技术架构",
     "title": "Mini Claude Code - 技术架构",
@@ -11943,14 +11943,14 @@
         "source": "project_doc",
         "source_id": "mini-claude_技术架构",
         "title": "Mini Claude Code - 技术架构",
-        "doc_id": "6552e8a56443"
+        "doc_id": "208475ec6c83"
       },
       "chunk_type": "text"
     },
     "chunk_index": 8,
     "total_chunks": 9,
     "char_count": 122,
-    "embedding_hash": "5adf7aa1"
+    "embedding_hash": "2ff6319a"
   },
   {
     "id": "mini-claude_核心功能_0",
@@ -12518,7 +12518,7 @@
         "source": "project_doc",
         "source_id": "mini-claude_测试覆盖",
         "title": "Mini Claude Code - 测试覆盖",
-        "doc_id": "5e00cf61efe8"
+        "doc_id": "b0ddb86f6f09"
       },
       "chunk_type": "text"
     },
@@ -12541,7 +12541,7 @@
         "source": "project_doc",
         "source_id": "mini-claude_测试覆盖",
         "title": "Mini Claude Code - 测试覆盖",
-        "doc_id": "5e00cf61efe8"
+        "doc_id": "b0ddb86f6f09"
       },
       "chunk_type": "text"
     },
@@ -12552,7 +12552,7 @@
   },
   {
     "id": "mini-claude_测试覆盖_2",
-    "content": "3  |   98.0  |\n utils/           |   93.5  |   85.6   |   88.9  |   92.8  |\n------------------|---------|----------|---------|---------|\n```\n\n### 测试统计\n\n| 指标 | 数值 |\n|------|------|\n| 测试文件数 | 68 |\n| 测试用例数 | 1497 |\n| 测试通过率 | 100% |\n\n### 测试命令\n\n```bash\n# 运行所有测试\npytest tests/\n\n# 运行单元测试\npytest tests/test_agent/ tests/test_tools/\n\n# 运行集成测试\npytest tests/test_integration/\n\n# 生成覆盖率报告",
+    "content": "3  |   98.0  |\n utils/           |   93.5  |   85.6   |   88.9  |   92.8  |\n------------------|---------|----------|---------|---------|\n```\n\n### 测试统计\n\n| 指标 | 数值 |\n|------|------|\n| 测试文件数 | 68 |\n| 测试用例数 | 1677 |\n| 测试通过率 | 100% |\n\n### 测试命令\n\n```bash\n# 运行所有测试\npytest tests/\n\n# 运行单元测试\npytest tests/test_agent/ tests/test_tools/\n\n# 运行集成测试\npytest tests/test_integration/\n\n# 生成覆盖率报告",
     "source": "project_doc",
     "source_id": "mini-claude_测试覆盖",
     "title": "Mini Claude Code - 测试覆盖",
@@ -12564,14 +12564,14 @@
         "source": "project_doc",
         "source_id": "mini-claude_测试覆盖",
         "title": "Mini Claude Code - 测试覆盖",
-        "doc_id": "5e00cf61efe8"
+        "doc_id": "b0ddb86f6f09"
       },
       "chunk_type": "text"
     },
     "chunk_index": 2,
     "total_chunks": 4,
     "char_count": 375,
-    "embedding_hash": "d0970b1b"
+    "embedding_hash": "fff81034"
   },
   {
     "id": "mini-claude_测试覆盖_3",
@@ -12587,7 +12587,7 @@
         "source": "project_doc",
         "source_id": "mini-claude_测试覆盖",
         "title": "Mini Claude Code - 测试覆盖",
-        "doc_id": "5e00cf61efe8"
+        "doc_id": "b0ddb86f6f09"
       },
       "chunk_type": "text"
     },
@@ -12679,7 +12679,7 @@
         "source": "project_doc",
         "source_id": "mini-claude_项目亮点",
         "title": "Mini Claude Code - 项目亮点",
-        "doc_id": "f85f9a13ac96"
+        "doc_id": "dd1984d9186e"
       },
       "chunk_type": "text"
     },
@@ -12702,7 +12702,7 @@
         "source": "project_doc",
         "source_id": "mini-claude_项目亮点",
         "title": "Mini Claude Code - 项目亮点",
-        "doc_id": "f85f9a13ac96"
+        "doc_id": "dd1984d9186e"
       },
       "chunk_type": "text"
     },
@@ -12713,7 +12713,7 @@
   },
   {
     "id": "mini-claude_项目亮点_2",
-    "content": "标值 | 实际值 | 说明 |\n|------|--------|--------|------|\n| 测试用例数 | `> 1000` | `1497` | 全面覆盖 |\n| 测试通过率 | `100%` | `100%` | 所有测试通过 |\n| 代码覆盖率 | `> 80%` | `95.2%` | 行覆盖率 |\n| 工具数量 | `> 10` | `18` | 丰富的工具集 |\n\n### 创新点\n\n1. **智能并行执行**：自动分析任务依赖，按层级并行执行，无需手动管理并发\n2. **文件锁机制**：乐观锁 + 哈希检测，支持多 Agent 安全并行开发同一项目\n3. **状态精简**：从 18 个字段精简到 11 个，降低状态复杂度同时保持功能完整\n\n---",
+    "content": "标值 | 实际值 | 说明 |\n|------|--------|--------|------|\n| 测试用例数 | `> 1000` | `1677` | 全面覆盖 |\n| 测试通过率 | `100%` | `100%` | 所有测试通过 |\n| 代码覆盖率 | `> 80%` | `95.2%` | 行覆盖率 |\n| 工具数量 | `> 10` | `18` | 丰富的工具集 |\n\n### 创新点\n\n1. **智能并行执行**：自动分析任务依赖，按层级并行执行，无需手动管理并发\n2. **文件锁机制**：乐观锁 + 哈希检测，支持多 Agent 安全并行开发同一项目\n3. **状态精简**：从 18 个字段精简到 11 个，降低状态复杂度同时保持功能完整\n\n---",
     "source": "project_doc",
     "source_id": "mini-claude_项目亮点",
     "title": "Mini Claude Code - 项目亮点",
@@ -12725,14 +12725,14 @@
         "source": "project_doc",
         "source_id": "mini-claude_项目亮点",
         "title": "Mini Claude Code - 项目亮点",
-        "doc_id": "f85f9a13ac96"
+        "doc_id": "dd1984d9186e"
       },
       "chunk_type": "text"
     },
     "chunk_index": 2,
     "total_chunks": 3,
     "char_count": 339,
-    "embedding_hash": "3a550330"
+    "embedding_hash": "b432ae19"
   },
   {
     "id": "mini-claude_附录_0",
