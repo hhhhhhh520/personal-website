@@ -1,5 +1,5 @@
 # 死代码清理
-> 创建时间: 2026-06-25 | 状态: 🔴未解决
+> 创建时间: 2026-06-25 | 状态: 🟡部分解决（2026-09-04，下表文件级死代码仍未清理）
 
 ## 问题描述
 
@@ -12,6 +12,7 @@
 | `components/ui/OptimizedImage.tsx` | 完整的图片优化组件，但所有页面直接用 `next/image` |
 | `components/effects/ProjectTransitionProvider` | 空壳组件，只渲染 children |
 | `components/examples/` | 示例目录 |
+| ~~`data/nova-prompts.ts` 的 `SYSTEM_PROMPT` / `PROACTIVE_MESSAGES`~~ | ✅ 2026-09-04 已删除：无引用且与 `chat/route.ts` 内联系统提示词冲突（改一处不生效的死配置） |
 
 ## 出现原因
 

@@ -9,8 +9,8 @@
 | [002](ISSUE-002-route.ts代码重复.md) | route.ts代码重复 | P0 | 🟢已解决 | AI生成代码时的自包含模式 |
 | [003](ISSUE-003-无代码分割.md) | 无代码分割 | P1 | 🔴未解决 | 快速开发未考虑性能优化 |
 | [004](ISSUE-004-页面全用use-client.md) | 页面全用use client | P3 | 🟡排查中 | 项目早期架构决策 |
-| [005](ISSUE-005-死代码.md) | 死代码清理 | P2 | 🔴未解决 | 功能迭代遗留 |
-| [006](ISSUE-006-env-example不同步.md) | .env.example不同步 | P2 | 🔴未解决 | API迁移时遗漏 |
+| [005](ISSUE-005-死代码.md) | 死代码清理 | P2 | 🟡部分解决 | 功能迭代遗留（nova-prompts 死配置已删，文件级待清） |
+| [006](ISSUE-006-env-example不同步.md) | .env.example不同步 | P2 | 🟢已解决 | API迁移时遗漏（2026-09-04，并修复 .gitignore 忽略 .env.example 的根因） |
 | [007](ISSUE-007-LightRays性能问题.md) | LightRays性能问题 | P2 | 🔴未解决 | 第三方组件未优化 |
 | [008](ISSUE-008-代码重复清单.md) | 代码重复 | P2 | 🔴未解决 | 快速开发未抽取公共模块 |
 | [009](ISSUE-009-占位符文本未更新.md) | 占位符文本未更新 | P3 | 🔴未解决 | 项目模板默认内容 |
