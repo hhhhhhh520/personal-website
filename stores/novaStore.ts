@@ -1,9 +1,7 @@
 import { create } from 'zustand';
+import type { Message } from '../types/chat';
 
-export interface Message {
-  role: 'user' | 'assistant';
-  content: string;
-}
+export type { Message };
 
 interface NovaError {
   type: string;

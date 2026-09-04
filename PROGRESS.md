@@ -8,6 +8,12 @@
 
 ### ✅ 已完成
 
+#### P27 — ISSUE-008 去重（2026-09-04）
+| 阶段 | 内容 | 文件 | 完成日期 |
+|------|------|------|----------|
+| 抽取 | CORS OPTIONS→lib/cors.ts；Message 类型→types/chat.ts（novaStore+lib/ai 共用） | lib/cors.ts, types/chat.ts, chat/route.ts, rag/route.ts, novaStore.ts, lib/ai.ts | 2026-09-04 |
+| 保留 | variants/路径解析/设备检测 经核实并非真重复(动画方向、locale 语义、阈值各异),不盲目合并 | — | 2026-09-04 |
+
 #### P26 — ISSUE-007 LightRays 性能优化（2026-09-04）
 | 阶段 | 内容 | 文件 | 完成日期 |
 |------|------|------|----------|

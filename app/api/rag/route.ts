@@ -4,6 +4,7 @@ import type { SearchResult } from '../../../rag/types/index';
 import { validateRequest } from '../../../rag/utils/validation';
 import { QueryCache } from '../../../rag/utils/cache';
 import { loadIndex, isIndexReady, getIndexLoadError, hybridSearch } from '../../../rag/utils/ragIndex';
+import { corsPreflightResponse } from '../../../lib/cors';
 
 interface RAGResponse {
   results: SearchResult[];
@@ -86,12 +87,5 @@ export async function POST(req: NextRequest): Promise<NextResponse<RAGResponse |
 
 // Handle OPTIONS for CORS preflight
 export async function OPTIONS(): Promise<NextResponse> {
-  return new NextResponse(null, {
-    status: 204,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type',
-    },
-  });
+  return corsPreflightResponse();
 }

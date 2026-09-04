@@ -12,7 +12,7 @@
 | [005](ISSUE-005-死代码.md) | 死代码清理 | P2 | 🟢已解决 | 2026-09-04 删5文件~1311行+barrel同步,顺带声明 zustand 幻影依赖 |
 | [006](ISSUE-006-env-example不同步.md) | .env.example不同步 | P2 | 🟢已解决 | API迁移时遗漏（2026-09-04，并修复 .gitignore 忽略 .env.example 的根因） |
 | [007](ISSUE-007-LightRays性能问题.md) | LightRays性能问题 | P2 | 🟢已解决 | 2026-09-04 依赖数组+60fps帧率上限+reduced-motion+catch补日志 |
-| [008](ISSUE-008-代码重复清单.md) | 代码重复 | P2 | 🔴未解决 | 快速开发未抽取公共模块 |
+| [008](ISSUE-008-代码重复清单.md) | 代码重复 | P2 | 🟡部分解决 | 2026-09-04 抽 CORS+Message;variants/路径/设备检测经核实非真重复而保留 |
 | [009](ISSUE-009-占位符文本未更新.md) | 占位符文本未更新 | P3 | 🔴未解决 | 项目模板默认内容 |
 
 ## 问题来源分析

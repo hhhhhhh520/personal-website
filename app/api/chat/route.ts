@@ -3,6 +3,7 @@ import OpenAI from 'openai';
 import { projects, type Project } from '@/data/projects';
 import { isIndexReady, hybridSearch } from '@/rag/utils/ragIndex';
 import { buildRAGContext } from '@/rag/utils/ragContext';
+import { corsPreflightResponse } from '@/lib/cors';
 
 // ============================================================================
 // RAG Integration Types
@@ -294,12 +295,5 @@ export async function POST(req: NextRequest) {
 
 // Handle OPTIONS for CORS preflight
 export async function OPTIONS() {
-  return new NextResponse(null, {
-    status: 204,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type',
-    },
-  });
+  return corsPreflightResponse();
 }

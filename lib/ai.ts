@@ -4,6 +4,9 @@
  */
 
 import { PROJECT_INTROS, ERROR_REPLIES } from '../data/nova-prompts';
+import type { Message } from '../types/chat';
+
+export type { Message };
 
 // 错误类型枚举
 export enum AIErrorType {
@@ -21,11 +24,7 @@ export interface AIError {
   retryable: boolean;
 }
 
-// 消息类型
-export interface Message {
-  role: 'user' | 'assistant' | 'system';
-  content: string;
-}
+// 消息类型（统一自 types/chat）
 
 // 对话上下文
 export interface ChatContext {
