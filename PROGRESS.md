@@ -18,7 +18,9 @@
 | RAG 索引 | 重建 546→563 片段，project 6→8，data_hash `f840f4a` | public/rag-index/*.json | 2026-09-04 |
 | 提交审查 | pre-commit 三视角审查（攻击者/生命周期/声明vs实现），修正 62.65 归因不实、train200、AgentHub status、9-action 计数 | — | 2026-09-04 |
 
-**pre-commit 审查发现的既有问题（本次未修，登记待办）**：`tsc --noEmit` 有 2 个 `topK: number\|undefined` 报错（`rag/utils/validation.ts` 返回值类型漏了非 optional）；详情页 OG 图指向不存在的 `.png`；`data/nova-prompts.ts` 的 `SYSTEM_PROMPT` 是与 route.ts 内联副本**重复的死配置**；JSON-LD `dangerouslySetInnerHTML` 未转义 `<`；`build_index.py:526` 报错提示写成 `extract_content.py`（实为 `extract_data.py`）。
+**pre-commit 审查 + 端到端 `npm run build` 发现的既有问题**：
+- ✅ 已修（不修则 `npm run build` 无法通过）：`rag/utils/validation.ts` 的 `topK: number|undefined` 类型报错——收紧 `ValidationResult` 成功分支返回类型（运行时本已默认 3、`api.test.ts` 已锁定，属纯类型修正）；`content/blog/agent-fault-tolerance.mdx:305` 表格单元 `<100ms` 被 MDX 当 JSX 报错——改行内代码。修后 `npm run build` 全绿，8 个项目详情页全部 SSG。
+- ⏳ 仍待办（不阻塞构建）：详情页 OG 图指向不存在的 `.png`（`app/[locale]/projects/[id]/page.tsx:42`，实际只有 `.svg`）；`data/nova-prompts.ts` 的 `SYSTEM_PROMPT`/`PROACTIVE_MESSAGES` 是与 `chat/route.ts` 内联副本重复的**死配置**；JSON-LD `dangerouslySetInnerHTML` 未转义 `<`（当前数据无可利用字符，属潜在 sink）；`build_index.py:526` 报错提示写成 `extract_content.py`（实为 `extract_data.py`）。
 
 #### P0 — 数据统一（2026-05-09）
 | 阶段 | 内容 | 文件 | 完成日期 |
