@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import { projects, type Project } from '@/data/projects';
+import { isIndexReady, hybridSearch } from '@/rag/utils/ragIndex';
 
 // ============================================================================
 // RAG Integration Types
@@ -14,42 +15,32 @@ interface RAGSearchResult {
   title: string;
 }
 
-interface RAGResponse {
-  results: RAGSearchResult[];
-  query: string;
-  duration: number;
-}
-
 // ============================================================================
 // RAG Integration
 // ============================================================================
 
 /**
- * Call RAG API to retrieve relevant documents
+ * Retrieve relevant documents directly from the RAG index (in-process).
+ *
+ * Previously this was an internal HTTP call back to /api/rag; that added a
+ * network round-trip and a serverless function invocation for every chat
+ * message. The index now loads on first use (see rag/utils/ragIndex).
+ *
  * @param query - User's message
  * @param topK - Number of results to retrieve
  * @returns Search results or empty array on failure
  */
-async function retrieveRelevantDocs(query: string, topK: number = 3): Promise<RAGSearchResult[]> {
+function retrieveRelevantDocs(query: string, topK: number = 3): RAGSearchResult[] {
   try {
-    // Use internal API call with absolute URL for server-side
-    const baseUrl = process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : 'http://localhost:3000';
-
-    const ragResponse = await fetch(`${baseUrl}/api/rag`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ query, topK }),
-    });
-
-    if (!ragResponse.ok) {
-      console.warn('[Chat API] RAG request failed:', ragResponse.status);
+    if (!isIndexReady()) {
+      console.warn('[Chat API] RAG index not available');
       return [];
     }
-
-    const data: RAGResponse = await ragResponse.json();
-    return data.results || [];
+    const results = hybridSearch(query, topK);
+    if (results.length > 0) {
+      console.log('[Chat API] RAG retrieved:', results.length, 'results');
+    }
+    return results;
   } catch (error) {
     console.warn('[Chat API] RAG retrieval error:', error);
     return [];
@@ -232,7 +223,7 @@ export async function POST(req: NextRequest) {
     // Skip RAG if projectId is provided (project context is already comprehensive)
     let ragResults: RAGSearchResult[] = [];
     if (!projectId) {
-      ragResults = await retrieveRelevantDocs(message, 3);
+      ragResults = retrieveRelevantDocs(message, 3);
       if (ragResults.length > 0) {
         console.log('[Chat API] RAG retrieved:', ragResults.length, 'results');
       }
