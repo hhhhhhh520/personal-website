@@ -39,7 +39,7 @@ export async function generateMetadata({
   const title = `${project.name} - Projects | ${AUTHOR_NAME}`;
   const description = localized.shortDesc;
   const url = `${SITE_URL}/${locale}/projects/${project.id}`;
-  const imageUrl = `${SITE_URL}/images/projects/${project.id}.png`;
+  const imageUrl = `${SITE_URL}/images/projects/${project.id}.svg`;
 
   return {
     title,

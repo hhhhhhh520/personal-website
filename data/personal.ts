@@ -131,13 +131,13 @@ export const personal: PersonalInfo = {
       startDate: '2024-01',
       location: '远程',
       description: [
-        '开发 Mini Claude Code — 轻量级 AI 编码助手，含 1497 个测试',
+        '开发 Mini Claude Code — 轻量级 AI 编码助手，含 1677 个测试',
         '构建校园百事通 — 基于 RAG 的校园智能问答系统',
         '创建手机选购助手 — AI 驱动的手机推荐系统',
         '实现 CV Generator — JD 关键词优化的简历生成工具',
       ],
       descriptionEn: [
-        'Developed Mini Claude Code — lightweight AI coding assistant with 1497 tests',
+        'Developed Mini Claude Code — lightweight AI coding assistant with 1677 tests',
         'Built Campus Assistant — RAG-powered campus Q&A system',
         'Created Phone Pick Assistant — AI-driven phone recommendation system',
         'Implemented CV Generator — JD keyword-optimized resume generation tool',

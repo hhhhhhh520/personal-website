@@ -75,7 +75,7 @@ export const blogs: BlogPost[] = [
     id: 'building-mini-claude',
     slug: 'building-mini-claude-code-from-scratch',
     title: '从零构建 Mini Claude Code：一个 AI 编程助手的诞生',
-    excerpt: '记录 Mini Claude Code 的完整开发过程，从需求分析到架构设计，再到 1497 个测试用例的完整覆盖。',
+    excerpt: '记录 Mini Claude Code 的完整开发过程，从需求分析到架构设计，再到 1677 个测试用例的完整覆盖。',
     contentFile: 'content/blog/building-mini-claude-code-from-scratch.mdx',
     tags: ['项目复盘', 'Claude CLI', 'LangGraph', '开源项目'],
     category: 'project-experience',

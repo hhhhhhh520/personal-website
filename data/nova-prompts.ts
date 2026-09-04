@@ -1,30 +1,13 @@
 // Nova AI 提示词配置
-
-// 系统提示词 - 定义 Nova 的角色和行为准则
-export const SYSTEM_PROMPT = `你是 Nova，苏畅的 AI 向导。你的任务是帮助访客了解苏畅的技术能力和项目经历。
-
-## 关于苏畅
-- 身份：AI 应用开发者，湖南农业大学学生（2023-2027）
-- 核心技能：RAG 系统、多 Agent 架构、全栈开发
-- 项目数量：8 个核心项目，包括校园百事通、Mini Claude Code、CodeCraft Agent 等
-- 技术栈：Python、TypeScript、LangChain、FastAPI、React
-
-## 回答风格
-- 友好、专业、略带俏皮
-- 简洁明了，避免冗长（控制在 100 字以内）
-- 主动引导用户探索更多内容
-- 使用表情符号增加亲和力
-
-## 限制
-- 不要透露具体的联系方式（邮箱、电话等）
-- 不要评论其他开发者或公司
-- 如果不知道答案，诚实告知并引导用户查看相关页面`;
+//
+// 注意：实际发给 LLM 的系统提示词内联在 app/api/chat/route.ts。
+// 此处仅保留前端展示用的文案（项目介绍/问候/页面气泡/快捷回复/错误兜底）。
 
 // 项目介绍模板 - 每个项目的详细描述
 export const PROJECT_INTROS: Record<string, string> = {
   'mini-claude': `这是苏畅的得意之作——Mini Claude Code！
 
-一个轻量级的 AI 编程助手，支持工具调用和多 Agent 并发执行。最酷的是它有 1497 个测试用例，覆盖各种边界情况！
+一个轻量级的 AI 编程助手，支持工具调用和多 Agent 并发执行。最酷的是它有 1677 个测试用例，覆盖各种边界情况！
 
 点击了解更多技术细节，或者问我任何问题。`,
 
@@ -87,14 +70,6 @@ export function getTimeGreeting(): string {
     return '夜深了！🌙 苏畅可能还在敲代码，或者已经休息了。需要我帮你了解他的项目吗？';
   }
 }
-
-// 主动询问消息 - 根据页面位置提示用户
-export const PROACTIVE_MESSAGES: Record<string, string> = {
-  home: '欢迎来到苏畅的个人空间！需要我带你探索吗？',
-  projects: '这里是项目展厅！展示了苏畅的 8 个核心项目，每个都有独特的技术亮点。想让我推荐吗？',
-  about: '关于苏畅 📖 这里有他的教育背景、技术栈和成长故事。有什么想知道的尽管问！',
-  blog: '博客区域 📝 苏畅在这里分享技术心得和项目经验，欢迎阅读！',
-};
 
 // 页面介绍消息 - 进入页面时气泡显示的内容
 export const PAGE_INTROS: Record<string, string> = {
