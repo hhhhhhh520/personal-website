@@ -34,9 +34,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ? { title: personal.titleEn || personal.title, summary: personal.summaryEn || personal.summary }
     : { title: personal.title, summary: personal.summary };
 
+  // title 可能为空（P9 起首页不展示职位），拼接时过滤空段避免 "名字 - " 悬空破折号
+  const fullTitle = [personal.name, localized.title].filter(Boolean).join(' - ');
+
   return {
     title: {
-      default: `${personal.name} - ${localized.title}`,
+      default: fullTitle,
       template: `%s | ${personal.name}`,
     },
     description: localized.summary,
@@ -51,13 +54,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       type: "website",
       locale: locale === 'zh' ? "zh_CN" : "en_US",
-      title: `${personal.name} - ${localized.title}`,
+      title: fullTitle,
       description: localized.summary,
       siteName: locale === 'en' ? `${personal.name}'s Portfolio` : `${personal.name}的个人网站`,
     },
     twitter: {
       card: "summary_large_image",
-      title: `${personal.name} - ${localized.title}`,
+      title: fullTitle,
       description: localized.summary,
     },
   };

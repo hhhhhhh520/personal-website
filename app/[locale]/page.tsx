@@ -85,20 +85,10 @@ export default function Home() {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="text-5xl sm:text-7xl font-bold mb-6 text-white"
+              className="text-5xl sm:text-7xl font-bold mb-8 text-white"
             >
               {personal.name}
             </motion.h1>
-
-            {/* Role */}
-            <motion.h2
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="text-2xl sm:text-3xl text-indigo-300 mb-8"
-            >
-              {t("title")}
-            </motion.h2>
 
             {/* Description */}
             <motion.p

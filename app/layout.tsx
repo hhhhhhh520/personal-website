@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="zh-CN"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
@@ -35,6 +35,10 @@ export default function RootLayout({
           id="theme-init"
           strategy="beforeInteractive"
         >{`(function(){try{var t=localStorage.getItem('theme');var d=t==='light'?'light':'dark';document.documentElement.classList.add(d)}catch(e){document.documentElement.classList.add('dark')}})()`}</Script>
+        <Script
+          id="lang-init"
+          strategy="beforeInteractive"
+        >{`if(location.pathname.indexOf('/en')===0){document.documentElement.lang='en'}`}</Script>
       </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
