@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
 import { getTranslations } from "next-intl/server";
 import { blogs, BlogPost, getBlogBySlug, getRelatedBlogs } from "@/data/blogs";
 import { getBlogContent } from "@/lib/blog-content";
@@ -286,7 +287,11 @@ export default async function BlogDetailPage({
             <AnimatedSection>
               <article className="glass rounded-xl p-6 sm:p-8 lg:p-10 mb-8">
                 <div className="prose prose-invert max-w-none">
-                  <MDXRemote source={content} components={mdxComponents} />
+                  <MDXRemote
+                    source={content}
+                    components={mdxComponents}
+                    options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+                  />
                 </div>
               </article>
             </AnimatedSection>
