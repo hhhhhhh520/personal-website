@@ -300,7 +300,7 @@ export default async function BlogDetailPage({
             <AnimatedSection>
               <div className="glass rounded-xl p-6 mb-8">
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+                  <div className="w-14 h-14 rounded-full brand-gradient flex items-center justify-center">
                     <span className="text-xl font-bold text-white">
                       {blog.author.name.charAt(0)}
                     </span>
@@ -318,7 +318,7 @@ export default async function BlogDetailPage({
               <AnimatedSection>
                 <div className="mb-8">
                   <h2 className="text-xl font-semibold text-foreground mb-6 flex items-center gap-2">
-                    <span className="w-1 h-6 rounded-full bg-gradient-to-b from-primary to-accent" />
+                    <span className="w-1 h-6 rounded-full brand-gradient" />
                     {t("detail.relatedArticles")}
                   </h2>
                   <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

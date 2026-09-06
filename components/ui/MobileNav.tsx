@@ -94,7 +94,7 @@ export default function MobileNav() {
                       {isActive && (
                         <motion.div
                           layoutId="mobileNavIndicator"
-                          className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-gradient-to-r from-primary to-accent"
+                          className="absolute -top-1 -right-1 w-2 h-2 rounded-full brand-gradient"
                           initial={{ scale: 0 }}
                           animate={{ scale: 1 }}
                           exit={{ scale: 0 }}

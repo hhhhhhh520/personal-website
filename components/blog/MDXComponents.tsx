@@ -5,7 +5,7 @@ export const mdxComponents: MDXComponents = {
   h1: () => null, // Skip main title (already shown in hero area)
   h2: ({ children }) => (
     <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4 flex items-center gap-2">
-      <span className="w-1 h-7 rounded-full bg-gradient-to-b from-primary to-accent" />
+      <span className="w-1 h-7 rounded-full brand-gradient" />
       {children}
     </h2>
   ),

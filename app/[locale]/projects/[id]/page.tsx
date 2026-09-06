@@ -314,7 +314,7 @@ export default async function ProjectDetailPage({
           <AnimatedSection>
             <div className="glass rounded-xl p-6 sm:p-8 mb-6">
               <h2 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-                <span className="w-1 h-6 rounded-full bg-gradient-to-b from-primary to-accent" />
+                <span className="w-1 h-6 rounded-full brand-gradient" />
                 {t("detail.description")}
               </h2>
               <p className="text-secondary leading-relaxed text-base sm:text-lg">
@@ -327,7 +327,7 @@ export default async function ProjectDetailPage({
           <AnimatedSection>
             <div className="glass rounded-xl p-6 sm:p-8 mb-6">
               <h2 className="text-xl font-semibold text-foreground mb-6 flex items-center gap-2">
-                <span className="w-1 h-6 rounded-full bg-gradient-to-b from-primary to-accent" />
+                <span className="w-1 h-6 rounded-full brand-gradient" />
                 {t("detail.techStackTitle")}
               </h2>
               <div className="flex flex-wrap gap-3">
@@ -352,7 +352,7 @@ export default async function ProjectDetailPage({
           <AnimatedSection>
             <div className="glass rounded-xl p-6 sm:p-8">
               <h2 className="text-xl font-semibold text-foreground mb-6 flex items-center gap-2">
-                <span className="w-1 h-6 rounded-full bg-gradient-to-b from-primary to-accent" />
+                <span className="w-1 h-6 rounded-full brand-gradient" />
                 {t("detail.highlights")}
               </h2>
               <ul className="space-y-4">

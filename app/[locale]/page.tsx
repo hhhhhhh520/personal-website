@@ -119,7 +119,7 @@ export default function Home() {
             >
               <Link
                 href="/projects"
-                className="px-8 py-3 rounded-full bg-gradient-to-r from-primary to-accent text-white font-medium hover:opacity-90 transition-opacity glow pointer-events-auto cursor-target"
+                className="px-8 py-3 rounded-full brand-gradient text-white font-medium hover:opacity-90 transition-opacity glow pointer-events-auto cursor-target"
               >
                 {t("viewProjects")}
               </Link>

@@ -60,7 +60,7 @@ export default function AboutPage() {
               <CardContent>
                 <div className="flex flex-col md:flex-row items-center gap-8">
                   {/* Avatar placeholder */}
-                  <div className="w-32 h-32 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-4xl font-bold text-white shrink-0">
+                  <div className="w-32 h-32 rounded-full brand-gradient flex items-center justify-center text-4xl font-bold text-white shrink-0">
                     {personal.name.charAt(0)}
                   </div>
 

@@ -69,7 +69,7 @@ export default function Navigation() {
               whileTap={{ scale: 0.95 }}
               className="flex items-center gap-2"
             >
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg brand-gradient flex items-center justify-center">
                 <span className="text-white font-bold text-sm">{personal.name.charAt(0)}</span>
               </div>
               <span className="font-semibold text-lg gradient-text hidden sm:block">
@@ -105,7 +105,7 @@ export default function Navigation() {
                   {pathname === link.href && (
                     <motion.div
                       layoutId="activeNav"
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-accent"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 brand-gradient"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ type: "spring", stiffness: 300, damping: 30 }}
@@ -195,7 +195,7 @@ export default function Navigation() {
                     {pathname === link.href && (
                       <motion.div
                         layoutId="mobileActiveLine"
-                        className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 rounded-r-full bg-gradient-to-b from-primary to-accent"
+                        className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 rounded-r-full brand-gradient"
                         initial={{ opacity: 0, scaleY: 0 }}
                         animate={{ opacity: 1, scaleY: 1 }}
                         exit={{ opacity: 0, scaleY: 0 }}
