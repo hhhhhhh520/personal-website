@@ -34,9 +34,9 @@ export interface Author {
 // Pre-defined authors
 const authors: Record<string, Author> = {
   default: {
-    name: 'AI Developer',
+    name: '苏畅',
     avatar: '/images/avatar.svg',
-    bio: 'AI application developer focused on LLM agents and automation tools.',
+    bio: 'AI 应用开发者，专注 LLM Agent 与自动化工具的全栈实现。',
   },
 };
 
