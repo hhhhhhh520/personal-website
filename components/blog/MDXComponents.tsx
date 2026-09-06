@@ -1,4 +1,5 @@
 import type { MDXComponents } from "mdx/types";
+import CodeBlock from "./CodeBlock";
 
 // Custom MDX components matching the existing renderContent() styles
 export const mdxComponents: MDXComponents = {
@@ -24,11 +25,7 @@ export const mdxComponents: MDXComponents = {
   li: ({ children }) => (
     <li className="mb-1">{children}</li>
   ),
-  pre: ({ children }) => (
-    <pre className="my-6 p-4 rounded-xl bg-foreground/5 border border-foreground/10 overflow-x-auto">
-      {children}
-    </pre>
-  ),
+  pre: ({ children }) => <CodeBlock>{children}</CodeBlock>,
   code: ({ children, className }) => {
     // Inline code (no className means not inside a code block)
     if (!className) {

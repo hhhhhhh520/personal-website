@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
+import rehypeHighlight from "rehype-highlight";
 import { getTranslations } from "next-intl/server";
 import { blogs, BlogPost, getBlogBySlug, getRelatedBlogs } from "@/data/blogs";
 import { getBlogContent } from "@/lib/blog-content";
@@ -290,7 +291,12 @@ export default async function BlogDetailPage({
                   <MDXRemote
                     source={content}
                     components={mdxComponents}
-                    options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+                    options={{
+                      mdxOptions: {
+                        remarkPlugins: [remarkGfm],
+                        rehypePlugins: [rehypeHighlight],
+                      },
+                    }}
                   />
                 </div>
               </article>

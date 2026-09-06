@@ -163,3 +163,57 @@
 }
 
 /* font-stack bump */
+
+/* ===== Code syntax highlight (rehype-highlight -> hljs classes), brand-tinted ===== */
+.hljs-comment,
+.hljs-quote {
+  color: oklch(0.62 0.02 275);
+  font-style: italic;
+}
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-section,
+.hljs-doctag,
+.hljs-type,
+.hljs-name,
+.hljs-strong {
+  color: oklch(0.74 0.12 300);
+}
+.hljs-string,
+.hljs-regexp,
+.hljs-addition,
+.hljs-attribute,
+.hljs-meta .hljs-string {
+  color: oklch(0.82 0.1 160);
+}
+.hljs-number,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-link,
+.hljs-selector-attr {
+  color: oklch(0.82 0.11 75);
+}
+.hljs-title,
+.hljs-title.function_,
+.hljs-built_in,
+.hljs-class .hljs-title {
+  color: oklch(0.8 0.1 230);
+}
+.hljs-attr,
+.hljs-property,
+.hljs-selector-class,
+.hljs-selector-id {
+  color: oklch(0.8 0.09 200);
+}
+.hljs-meta {
+  color: oklch(0.7 0.05 275);
+}
+.hljs-deletion {
+  color: oklch(0.72 0.15 25);
+}
+.hljs-emphasis {
+  font-style: italic;
+}
