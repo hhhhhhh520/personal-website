@@ -10,6 +10,7 @@
 import { useState, useMemo, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+import { Sparkles } from 'lucide-react';
 import { useChat } from '@/hooks/useChat';
 import { useNovaTriggers } from '@/hooks/useNovaTriggers';
 import { useTouchGestures } from '@/hooks/useTouchGestures';
@@ -179,7 +180,7 @@ export function NovaGuide() {
 
       {/* 快速简历按钮 - 移动端调整位置避开底部导航 */}
       <motion.button
-        className={`fixed w-12 h-12 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 shadow-lg flex items-center justify-center z-50 cursor-target ${
+        className={`fixed w-12 h-12 rounded-full brand-gradient shadow-lg flex items-center justify-center z-50 cursor-target ${
           isMobile ? 'bottom-20 left-4' : 'bottom-6 left-6'
         }`}
         onClick={() => {
@@ -195,7 +196,7 @@ export function NovaGuide() {
 
       {/* 悬浮头像按钮 - 移动端调整位置避开底部导航 */}
       <motion.button
-        className={`fixed w-14 h-14 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 shadow-lg flex items-center justify-center z-50 cursor-target ${
+        className={`fixed w-14 h-14 rounded-full brand-gradient shadow-lg flex items-center justify-center z-50 cursor-target ${
           isMobile ? 'bottom-20 right-4' : 'bottom-6 right-6'
         }`}
         onClick={() => setIsOpen(!isOpen)}
@@ -203,7 +204,7 @@ export function NovaGuide() {
         whileTap={{ scale: 0.95 }}
         aria-label={isOpen ? t('closeNova') : t('openNova')}
       >
-        <span className="text-2xl">✨</span>
+        <Sparkles className="w-6 h-6 text-white" />
         {/* 有消息时的脉冲提示 */}
         {messages.length > 0 && !isOpen && !showBubble && (
           <motion.span
@@ -241,8 +242,8 @@ export function NovaGuide() {
             {/* 头部 */}
             <div className="flex items-center justify-between p-4 border-b border-gray-700 flex-shrink-0">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-center">
-                  <span className="text-xl">✨</span>
+                <div className="w-10 h-10 rounded-full brand-gradient flex items-center justify-center">
+                  <Sparkles className="w-5 h-5 text-white" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-white">{t('title')}</h3>
