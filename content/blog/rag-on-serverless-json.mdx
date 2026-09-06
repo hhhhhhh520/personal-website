@@ -1,0 +1,157 @@
+# Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库
+
+所有 RAG 教程的第一步都是"装一个向量数据库"。我的个人网站 Nova 助手也走过了这条路的思考过程，最后的落点是：三个 JSON 文件，一个都没有装。
+
+这不是省事，是一轮约束分析之后的结论。这篇把决策依据、真实数字和升级触发条件都摊开写——如果你也在 Serverless 环境里做小规模 RAG，大概率会遇到一样的选择题。
+
+## 先看规模现实
+
+Nova 的知识库构成：8 个项目数据、1 份个人简介、17 篇博客、66 份项目文档。分块策略是 400 字符、重叠 50，构建完的索引全貌：
+
+| 指标 | 数值 |
+|------|------|
+| 原始文档 | 92 篇 |
+| 文档片段 | 563 个 |
+| 向量维度 | 1024（bge-large-zh-v1.5） |
+| documents.json | 约 634KB |
+| embeddings.json | 约 12.8MB |
+| metadata.json | 不到 1KB |
+
+先算一笔检索账：一次查询要对 563 个片段各算一次余弦相似度，每次是 1024 维的点积。563 × 1024 ≈ 57.6 万次乘加，用 Float32Array 在单核上跑，这是**亚毫秒到毫秒级**的活。暴力扫一遍的全量计算，甚至不需要任何近似算法（ANN）。
+
+这就是选型的起点：**当数据量小到暴力检索都够快的时候，为它引入一套专门的检索基础设施，成本结构就是错的**。
+
+## Serverless 的约束清单
+
+第二个输入是部署环境的硬约束。目标平台是 Serverless（Vercel 一类），它对"传统向量数据库方案"相当不友好：
+
+**没有常驻进程。** Milvus、Qdrant 开源版是常驻服务，Serverless 函数跑完就释放，没有地方让它们住。
+
+**没有 GPU。** Embedding 模型在 Serverless 运行时里完全不存在——而且这套方案连查询侧都不需要它。这里有个设计技巧，放在方案一节讲。
+
+**冷启动按秒计。** 函数实例闲置即销毁，每次唤醒都要付出初始化成本。任何"启动一个数据库连接池"的方案都在冷启动路径上加重量。
+
+**按调用计费。** 多一跳内网/公网调用就多一份开销，还多一个故障点。
+
+把候选项挨个过筛：
+
+| 方案 | 结果 | 淘汰原因 |
+|------|------|----------|
+| 云托管向量库（Pinecone 等） | ❌ | 按月固定费用 + 网络往返延迟，为 563 个向量买单 |
+| 自建向量库（Milvus/Qdrant） | ❌ | 需要常驻服务，Serverless 没有落脚点 |
+| 嵌入式引擎（FAISS） | ❌ | Python/C++ 二进制依赖，函数运行时带不动 |
+| **预构建索引 + JSON** | ✅ | 零基础设施，静态文件随站点部署 |
+
+## 预构建索引方案
+
+核心思路：**把"建索引"和"用索引"彻底分离，前者离线做一次，后者运行时零依赖**。
+
+### 构建时（本地，一次性）
+
+Embedding 用本地 bge-large-zh-v1.5 模型离线算完，写进 JSON：
+
+```bash
+# 1. 提取：从 data/、content/blog/、docs/projects/ 抽取内容并分块
+python rag/scripts/extract_data.py
+
+# 2. 构建：本地 GPU 算 embedding（CUDA 约 7 秒，CPU 约 30 秒）
+python rag/scripts/build_index.py
+```
+
+产物是三个 JSON 文件，直接放 `public/rag-index/`，随站点静态部署——不需要任何运行时存储服务。这里有个容易忽略的工程细节：**增量构建**。脚本会计算数据源的哈希写进 metadata.json，再次构建时先比对哈希，内容没变就跳过重算。563 个片段的 embedding 重算只要 7 秒，但这个习惯让"数据一改就全量重建"的焦虑消失了。
+
+### 运行时（函数内，按需加载）
+
+```ts
+// rag/utils/ragIndex.ts（简化）
+let documents: RagDocument[] | null = null;
+let embeddings: RagEmbeddings | null = null;
+let indexLoadError: string | null = null;
+
+export function loadIndex(): boolean {
+  if (documents && embeddings) return true;  // 进程内缓存，只加载一次
+  if (indexLoadError) return false;          // 失败也被记住，不反复重试
+  try {
+    documents = JSON.parse(
+      fs.readFileSync(path.join(indexPath, 'documents.json'), 'utf-8')
+    );
+    embeddings = JSON.parse(
+      fs.readFileSync(path.join(indexPath, 'embeddings.json'), 'utf-8')
+    );
+    return true;
+  } catch (error) {
+    indexLoadError = /* 记录错误信息，供 503 诊断 */;
+    return false;
+  }
+}
+```
+
+冷启动要多花一次 12.8MB 的读盘和 JSON.parse，量级在几百毫秒；之后这个函数实例存活期间的所有请求都走内存，检索回到毫秒级。加载失败的原因会被缓存（API 返回 503 时带出诊断信息），也不会每个请求都重试一遍大文件 IO。**几百毫秒的一次性成本，换掉一个按月计费的数据库**——这笔账在个人项目规模下没有悬念。
+
+检索侧还有一个把"运行时无模型"彻底闭环的技巧：**查询向量不靠 embedding 模型现算**。关键词检索先跑，取命中的 Top-3 片段的向量求平均，作为"伪查询向量"去做向量检索——embedding 模型被完全挡在运行时之外。代价是查询词与文档完全不重叠时召回会弱一些，恰好由关键词侧兜底。这套机制的细节写在《RAG 混合搜索实战》里，这篇不重复。
+
+## 一个真实优化：砍掉内部 HTTP 回环
+
+方案跑起来之后，代码审查抓到一个典型浪费：Chat API 检索资料的方式是**请求自己的另一个 API**。
+
+```
+改造前：/api/chat → fetch('/api/rag') → 再起一次函数调用 → 返回结果
+改造后：/api/chat → import { hybridSearch } → 进程内直接调用
+```
+
+Serverless 里那条 fetch 意味着：一次额外的网络往返，很可能还有一次额外的函数调用计费，外加 /api/rag 的 CORS、校验逻辑全部白跑一遍。而 /api/chat 和 /api/rag 在同一个进程里——它们共享同一个模块缓存，`hybridSearch` 直接 import 进来就是零成本调用。
+
+这个案例的通用教训：**同一个运行时里的两个函数之间，网络调用几乎总是错的**。模块边界用 import 表达，HTTP 边界留给真正跨进程的地方。
+
+## 增量更新流程
+
+数据有变化时的完整操作：
+
+```bash
+# 新增/修改博客或文档后，必须先重新提取（build 脚本只读提取产物）
+python rag/scripts/extract_data.py
+
+# 智能构建：哈希比对，有变化才重算 embedding
+python rag/scripts/build_index.py --check
+```
+
+整个流程在本机一分钟内完成，产物提交进 git，部署时随静态文件走。**索引的版本管理和代码是同一套**——这是个被低估的好处：索引、内容、代码三者永远原子地对齐，不存在"数据库里是新数据、代码里是旧分块逻辑"的中间态。
+
+## 什么时候该升级
+
+这套方案有明确的舒适区，也有明确的悬崖边界。四个信号出现任何一个，就该换方案了：
+
+| 信号 | 阈值参考 | 升级方向 |
+|------|----------|----------|
+| 片段数量 | 超过 1 万级 | pgvector / Qdrant，暴力扫描开始变慢 |
+| 检索延迟 | p95 超过 100ms | 近似检索（ANN）或专用引擎 |
+| 部署形态 | 多实例、多区域 | 集中式索引服务，避免每个实例各载一份 |
+| 更新频率 | 分钟级增量 | 预构建的重建周期跟不上写入速度 |
+
+我的判断是个人作品集网站十年内大概率都待在舒适区里：内容增长是线性的、可预期的，一年写 20 篇博客，片段数离 1 万还有两个数量级。
+
+## 总结
+
+| 问题 | 选择 | 依据 |
+|------|------|------|
+| 向量存哪 | 三个 JSON，随静态资源部署 | 12.8MB、563 条，暴力检索毫秒级 |
+| Embedding 谁来算 | 本地 GPU 离线预构建 + 伪查询向量 | 运行时无模型，构建只要 7 秒 |
+| 函数间怎么调用 | 进程内 import | Serverless 里 HTTP 回环是纯浪费 |
+| 索引怎么更新 | 数据哈希 + 增量构建 | 内容与代码原子对齐 |
+| 何时升级 | 万级片段 / p95 超 100ms | 边界清晰，到点再换 |
+
+一句话版本：**架构选型跟着规模走，不跟着教程走**。向量数据库解决的是"百万级向量、高并发检索"的问题，而我的问题规模差了三个数量级——为一个不存在的问题部署基础设施，才是真正的过度设计。
+
+## 相关文件
+
+- `rag/utils/ragIndex.ts` — 索引懒加载 + 进程内混合检索
+- `rag/scripts/build_index.py` — 增量构建（数据哈希 + 脏检查）
+- `rag/scripts/extract_data.py` — 内容提取与分块
+- `public/rag-index/` — 三个 JSON 产物
+
+## 参考资料
+
+- 互链文章：《RAG 混合搜索实战：关键词 + 向量 + RRF 融合》——检索算法实现细节
+- [bge-large-zh-v1.5 — BAAI Embedding 模型](https://huggingface.co/BAAI/bge-large-zh-v1.5)
+- [pgvector — PostgreSQL 向量扩展](https://github.com/pgvector/pgvector)
+- [Vercel Functions — 限制与冷启动](https://vercel.com/docs/functions)

@@ -72,7 +72,7 @@ npm run rag:force    # 强制重建
 > **踩坑**：`npm run rag:*` 用系统 `python`，指向 CPU 版 torch（慢）。要 GPU 加速直接用 `D:/python/project/.venv/Scripts/python.exe` 调脚本。新增博客/文档后必须先手动跑 `extract_data.py`，`build_index.py` 不自动提取。
 
 ### 索引文件
-- `public/rag-index/documents.json` - 文档片段（563 个）
+- `public/rag-index/documents.json` - 文档片段（607 个）
 - `public/rag-index/embeddings.json` - 1024 维向量
 - `public/rag-index/metadata.json` - 元数据（含数据哈希）
 
@@ -81,7 +81,7 @@ npm run rag:force    # 强制重建
 |------|------|------|
 | `data/projects.ts` | 8 | 项目概述 |
 | `data/personal.ts` | 1 | 个人简介 |
-| `content/blog/*.mdx` | 17 | 博客内容 |
+| `content/blog/*.mdx` | 20 | 博客内容 |
 | `docs/projects/*.md` | 66 | 项目详细文档 |
 
 ### Embedding 模型

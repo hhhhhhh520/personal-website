@@ -73,7 +73,7 @@
     "chunk_index": 1,
     "total_chunks": 2,
     "char_count": 286,
-    "embedding_hash": "961169ec"
+    "embedding_hash": "06775dd1"
   },
   {
     "id": "mini-claude_0",
@@ -109,7 +109,7 @@
     "chunk_index": 0,
     "total_chunks": 1,
     "char_count": 308,
-    "embedding_hash": "7779a7d2"
+    "embedding_hash": "3cb47878"
   },
   {
     "id": "codecraft-agent_0",
@@ -144,7 +144,7 @@
     "chunk_index": 0,
     "total_chunks": 1,
     "char_count": 224,
-    "embedding_hash": "9083b8b2"
+    "embedding_hash": "c7cd6e2c"
   },
   {
     "id": "campus-agent_0",
@@ -181,7 +181,7 @@
     "chunk_index": 0,
     "total_chunks": 1,
     "char_count": 230,
-    "embedding_hash": "a633592f"
+    "embedding_hash": "a13fb52a"
   },
   {
     "id": "phone-pick-assistant_0",
@@ -218,7 +218,7 @@
     "chunk_index": 0,
     "total_chunks": 1,
     "char_count": 234,
-    "embedding_hash": "734cd2d1"
+    "embedding_hash": "56449b8b"
   },
   {
     "id": "cv-generator_0",
@@ -325,7 +325,7 @@
     "chunk_index": 0,
     "total_chunks": 2,
     "char_count": 389,
-    "embedding_hash": "5ac6482b"
+    "embedding_hash": "e9c86997"
   },
   {
     "id": "iflytek-agent-challenge_1",
@@ -531,7 +531,7 @@
     "chunk_index": 0,
     "total_chunks": 36,
     "char_count": 178,
-    "embedding_hash": "e2e73e1d"
+    "embedding_hash": "3811e8a0"
   },
   {
     "id": "agent-fault-tolerance_1",
@@ -555,7 +555,7 @@
     "chunk_index": 1,
     "total_chunks": 36,
     "char_count": 18,
-    "embedding_hash": "7866b84f"
+    "embedding_hash": "63e740cf"
   },
   {
     "id": "agent-fault-tolerance_2",
@@ -579,7 +579,7 @@
     "chunk_index": 2,
     "total_chunks": 36,
     "char_count": 83,
-    "embedding_hash": "f6b58462"
+    "embedding_hash": "5e134a01"
   },
   {
     "id": "agent-fault-tolerance_3",
@@ -603,7 +603,7 @@
     "chunk_index": 3,
     "total_chunks": 36,
     "char_count": 35,
-    "embedding_hash": "d311c27d"
+    "embedding_hash": "8172a760"
   },
   {
     "id": "agent-fault-tolerance_4",
@@ -627,7 +627,7 @@
     "chunk_index": 4,
     "total_chunks": 36,
     "char_count": 33,
-    "embedding_hash": "d90e3890"
+    "embedding_hash": "b094ec0c"
   },
   {
     "id": "agent-fault-tolerance_5",
@@ -651,7 +651,7 @@
     "chunk_index": 5,
     "total_chunks": 36,
     "char_count": 25,
-    "embedding_hash": "4e5f44e8"
+    "embedding_hash": "4828bc22"
   },
   {
     "id": "agent-fault-tolerance_6",
@@ -675,7 +675,7 @@
     "chunk_index": 6,
     "total_chunks": 36,
     "char_count": 47,
-    "embedding_hash": "fd587a9d"
+    "embedding_hash": "5ae973f8"
   },
   {
     "id": "agent-fault-tolerance_7",
@@ -699,7 +699,7 @@
     "chunk_index": 7,
     "total_chunks": 36,
     "char_count": 79,
-    "embedding_hash": "4361cee3"
+    "embedding_hash": "a578b1f7"
   },
   {
     "id": "agent-fault-tolerance_8",
@@ -747,7 +747,7 @@
     "chunk_index": 9,
     "total_chunks": 36,
     "char_count": 391,
-    "embedding_hash": "59aec46d"
+    "embedding_hash": "89022cbe"
   },
   {
     "id": "agent-fault-tolerance_1",
@@ -771,7 +771,7 @@
     "chunk_index": 10,
     "total_chunks": 36,
     "char_count": 311,
-    "embedding_hash": "c3798c16"
+    "embedding_hash": "80b136b5"
   },
   {
     "id": "agent-fault-tolerance_0",
@@ -795,7 +795,7 @@
     "chunk_index": 11,
     "total_chunks": 36,
     "char_count": 389,
-    "embedding_hash": "b43d6c1e"
+    "embedding_hash": "a4d900af"
   },
   {
     "id": "agent-fault-tolerance_1",
@@ -843,7 +843,7 @@
     "chunk_index": 13,
     "total_chunks": 36,
     "char_count": 482,
-    "embedding_hash": "8b398e8a"
+    "embedding_hash": "5901e4ac"
   },
   {
     "id": "agent-fault-tolerance_14",
@@ -867,7 +867,7 @@
     "chunk_index": 14,
     "total_chunks": 36,
     "char_count": 28,
-    "embedding_hash": "0ab1aad3"
+    "embedding_hash": "f999cdcb"
   },
   {
     "id": "agent-fault-tolerance_15",
@@ -891,7 +891,7 @@
     "chunk_index": 15,
     "total_chunks": 36,
     "char_count": 547,
-    "embedding_hash": "84a8b48a"
+    "embedding_hash": "12638260"
   },
   {
     "id": "agent-fault-tolerance_16",
@@ -915,7 +915,7 @@
     "chunk_index": 16,
     "total_chunks": 36,
     "char_count": 81,
-    "embedding_hash": "116e45c1"
+    "embedding_hash": "52d56a04"
   },
   {
     "id": "agent-fault-tolerance_17",
@@ -939,7 +939,7 @@
     "chunk_index": 17,
     "total_chunks": 36,
     "char_count": 151,
-    "embedding_hash": "9f8b3ba1"
+    "embedding_hash": "cb3b9e33"
   },
   {
     "id": "agent-fault-tolerance_18",
@@ -963,7 +963,7 @@
     "chunk_index": 18,
     "total_chunks": 36,
     "char_count": 46,
-    "embedding_hash": "26fcf0dc"
+    "embedding_hash": "e7df1391"
   },
   {
     "id": "agent-fault-tolerance_19",
@@ -987,7 +987,7 @@
     "chunk_index": 19,
     "total_chunks": 36,
     "char_count": 179,
-    "embedding_hash": "34890f9a"
+    "embedding_hash": "d7e84c96"
   },
   {
     "id": "agent-fault-tolerance_20",
@@ -1011,7 +1011,7 @@
     "chunk_index": 20,
     "total_chunks": 36,
     "char_count": 23,
-    "embedding_hash": "cc2f6cb3"
+    "embedding_hash": "8ef3d1f8"
   },
   {
     "id": "agent-fault-tolerance_21",
@@ -1035,7 +1035,7 @@
     "chunk_index": 21,
     "total_chunks": 36,
     "char_count": 224,
-    "embedding_hash": "d879d225"
+    "embedding_hash": "ffcb2803"
   },
   {
     "id": "agent-fault-tolerance_0",
@@ -1131,7 +1131,7 @@
     "chunk_index": 25,
     "total_chunks": 36,
     "char_count": 362,
-    "embedding_hash": "a3f7988d"
+    "embedding_hash": "30d2b40a"
   },
   {
     "id": "agent-fault-tolerance_2",
@@ -1155,7 +1155,7 @@
     "chunk_index": 26,
     "total_chunks": 36,
     "char_count": 118,
-    "embedding_hash": "f0be1c8b"
+    "embedding_hash": "033d33d7"
   },
   {
     "id": "agent-fault-tolerance_0",
@@ -1203,7 +1203,7 @@
     "chunk_index": 28,
     "total_chunks": 36,
     "char_count": 301,
-    "embedding_hash": "afd9d39b"
+    "embedding_hash": "df06acf2"
   },
   {
     "id": "agent-fault-tolerance_29",
@@ -1275,7 +1275,7 @@
     "chunk_index": 31,
     "total_chunks": 36,
     "char_count": 285,
-    "embedding_hash": "663d239d"
+    "embedding_hash": "f7b4e3ed"
   },
   {
     "id": "agent-fault-tolerance_0",
@@ -1323,7 +1323,7 @@
     "chunk_index": 33,
     "total_chunks": 36,
     "char_count": 321,
-    "embedding_hash": "796be3d3"
+    "embedding_hash": "28300d6c"
   },
   {
     "id": "agent-fault-tolerance_34",
@@ -1347,7 +1347,7 @@
     "chunk_index": 34,
     "total_chunks": 36,
     "char_count": 229,
-    "embedding_hash": "39187a8d"
+    "embedding_hash": "c444e88c"
   },
   {
     "id": "agent-fault-tolerance_35",
@@ -1395,7 +1395,7 @@
     "chunk_index": 0,
     "total_chunks": 28,
     "char_count": 174,
-    "embedding_hash": "2d72cc3f"
+    "embedding_hash": "b14fc0fa"
   },
   {
     "id": "agenthub-contract-v1_1",
@@ -1419,7 +1419,7 @@
     "chunk_index": 1,
     "total_chunks": 28,
     "char_count": 321,
-    "embedding_hash": "6c32f94b"
+    "embedding_hash": "fefc5669"
   },
   {
     "id": "agenthub-contract-v1_2",
@@ -1443,7 +1443,7 @@
     "chunk_index": 2,
     "total_chunks": 28,
     "char_count": 402,
-    "embedding_hash": "58b96bd0"
+    "embedding_hash": "21dcdbf1"
   },
   {
     "id": "agenthub-contract-v1_3",
@@ -1467,7 +1467,7 @@
     "chunk_index": 3,
     "total_chunks": 28,
     "char_count": 18,
-    "embedding_hash": "a5a5f7d7"
+    "embedding_hash": "9dcd1fc5"
   },
   {
     "id": "agenthub-contract-v1_4",
@@ -1515,7 +1515,7 @@
     "chunk_index": 5,
     "total_chunks": 28,
     "char_count": 50,
-    "embedding_hash": "515b1e0c"
+    "embedding_hash": "160c1b02"
   },
   {
     "id": "agenthub-contract-v1_6",
@@ -1539,7 +1539,7 @@
     "chunk_index": 6,
     "total_chunks": 28,
     "char_count": 151,
-    "embedding_hash": "9da1488c"
+    "embedding_hash": "32c9a6e8"
   },
   {
     "id": "agenthub-contract-v1_7",
@@ -1611,7 +1611,7 @@
     "chunk_index": 9,
     "total_chunks": 28,
     "char_count": 151,
-    "embedding_hash": "a0ceec80"
+    "embedding_hash": "3831551d"
   },
   {
     "id": "agenthub-contract-v1_10",
@@ -1635,7 +1635,7 @@
     "chunk_index": 10,
     "total_chunks": 28,
     "char_count": 17,
-    "embedding_hash": "87059ccc"
+    "embedding_hash": "e4ea7b95"
   },
   {
     "id": "agenthub-contract-v1_11",
@@ -1659,7 +1659,7 @@
     "chunk_index": 11,
     "total_chunks": 28,
     "char_count": 81,
-    "embedding_hash": "a9de0500"
+    "embedding_hash": "0b113d3e"
   },
   {
     "id": "agenthub-contract-v1_12",
@@ -1683,7 +1683,7 @@
     "chunk_index": 12,
     "total_chunks": 28,
     "char_count": 347,
-    "embedding_hash": "0b2670ad"
+    "embedding_hash": "707de25b"
   },
   {
     "id": "agenthub-contract-v1_13",
@@ -1707,7 +1707,7 @@
     "chunk_index": 13,
     "total_chunks": 28,
     "char_count": 302,
-    "embedding_hash": "4fa6ac30"
+    "embedding_hash": "4aa84d19"
   },
   {
     "id": "agenthub-contract-v1_14",
@@ -1731,7 +1731,7 @@
     "chunk_index": 14,
     "total_chunks": 28,
     "char_count": 74,
-    "embedding_hash": "6c604f61"
+    "embedding_hash": "abecbd86"
   },
   {
     "id": "agenthub-contract-v1_15",
@@ -1755,7 +1755,7 @@
     "chunk_index": 15,
     "total_chunks": 28,
     "char_count": 85,
-    "embedding_hash": "b82ed3e0"
+    "embedding_hash": "e9ae0cd0"
   },
   {
     "id": "agenthub-contract-v1_0",
@@ -1803,7 +1803,7 @@
     "chunk_index": 17,
     "total_chunks": 28,
     "char_count": 268,
-    "embedding_hash": "5e5d3145"
+    "embedding_hash": "55f4113b"
   },
   {
     "id": "agenthub-contract-v1_18",
@@ -1827,7 +1827,7 @@
     "chunk_index": 18,
     "total_chunks": 28,
     "char_count": 18,
-    "embedding_hash": "3bd84e04"
+    "embedding_hash": "08349cab"
   },
   {
     "id": "agenthub-contract-v1_19",
@@ -1851,7 +1851,7 @@
     "chunk_index": 19,
     "total_chunks": 28,
     "char_count": 299,
-    "embedding_hash": "0ccfddaa"
+    "embedding_hash": "0ba4f8a4"
   },
   {
     "id": "agenthub-contract-v1_20",
@@ -1875,7 +1875,7 @@
     "chunk_index": 20,
     "total_chunks": 28,
     "char_count": 295,
-    "embedding_hash": "545e1483"
+    "embedding_hash": "9ecd8202"
   },
   {
     "id": "agenthub-contract-v1_0",
@@ -1923,7 +1923,7 @@
     "chunk_index": 22,
     "total_chunks": 28,
     "char_count": 388,
-    "embedding_hash": "b662d549"
+    "embedding_hash": "f586eaff"
   },
   {
     "id": "agenthub-contract-v1_2",
@@ -1947,7 +1947,7 @@
     "chunk_index": 23,
     "total_chunks": 28,
     "char_count": 145,
-    "embedding_hash": "63eca54c"
+    "embedding_hash": "92d1847f"
   },
   {
     "id": "agenthub-contract-v1_24",
@@ -1971,7 +1971,7 @@
     "chunk_index": 24,
     "total_chunks": 28,
     "char_count": 440,
-    "embedding_hash": "2a1b4420"
+    "embedding_hash": "d7c825c2"
   },
   {
     "id": "agenthub-contract-v1_25",
@@ -2067,7 +2067,7 @@
     "chunk_index": 0,
     "total_chunks": 18,
     "char_count": 85,
-    "embedding_hash": "e699cb01"
+    "embedding_hash": "411ebe18"
   },
   {
     "id": "agenthub-multi-agent-collaboration_1",
@@ -2091,7 +2091,7 @@
     "chunk_index": 1,
     "total_chunks": 18,
     "char_count": 182,
-    "embedding_hash": "ed8cdcde"
+    "embedding_hash": "769a9763"
   },
   {
     "id": "agenthub-multi-agent-collaboration_0",
@@ -2115,7 +2115,7 @@
     "chunk_index": 2,
     "total_chunks": 18,
     "char_count": 391,
-    "embedding_hash": "e08776ce"
+    "embedding_hash": "7d912eeb"
   },
   {
     "id": "agenthub-multi-agent-collaboration_1",
@@ -2139,7 +2139,7 @@
     "chunk_index": 3,
     "total_chunks": 18,
     "char_count": 386,
-    "embedding_hash": "c1cc25a1"
+    "embedding_hash": "d66a9d77"
   },
   {
     "id": "agenthub-multi-agent-collaboration_2",
@@ -2235,7 +2235,7 @@
     "chunk_index": 7,
     "total_chunks": 18,
     "char_count": 147,
-    "embedding_hash": "dabd9586"
+    "embedding_hash": "7509eae4"
   },
   {
     "id": "agenthub-multi-agent-collaboration_8",
@@ -2259,7 +2259,7 @@
     "chunk_index": 8,
     "total_chunks": 18,
     "char_count": 251,
-    "embedding_hash": "a6d930cd"
+    "embedding_hash": "4917d196"
   },
   {
     "id": "agenthub-multi-agent-collaboration_9",
@@ -2307,7 +2307,7 @@
     "chunk_index": 10,
     "total_chunks": 18,
     "char_count": 447,
-    "embedding_hash": "d7d2dd62"
+    "embedding_hash": "54be0b6f"
   },
   {
     "id": "agenthub-multi-agent-collaboration_11",
@@ -2355,7 +2355,7 @@
     "chunk_index": 12,
     "total_chunks": 18,
     "char_count": 232,
-    "embedding_hash": "c8191ba5"
+    "embedding_hash": "a9114b51"
   },
   {
     "id": "agenthub-multi-agent-collaboration_13",
@@ -2427,7 +2427,7 @@
     "chunk_index": 15,
     "total_chunks": 18,
     "char_count": 227,
-    "embedding_hash": "40219401"
+    "embedding_hash": "34fa57b5"
   },
   {
     "id": "agenthub-multi-agent-collaboration_16",
@@ -2499,7 +2499,7 @@
     "chunk_index": 0,
     "total_chunks": 13,
     "char_count": 50,
-    "embedding_hash": "24430fa0"
+    "embedding_hash": "ac5631a8"
   },
   {
     "id": "ai-application-engineer-job-hunting-guide-2026_1",
@@ -2547,7 +2547,7 @@
     "chunk_index": 2,
     "total_chunks": 13,
     "char_count": 153,
-    "embedding_hash": "e817d6e6"
+    "embedding_hash": "7cc52007"
   },
   {
     "id": "ai-application-engineer-job-hunting-guide-2026_3",
@@ -2643,7 +2643,7 @@
     "chunk_index": 6,
     "total_chunks": 13,
     "char_count": 84,
-    "embedding_hash": "e15108ae"
+    "embedding_hash": "71158de2"
   },
   {
     "id": "ai-application-engineer-job-hunting-guide-2026_7",
@@ -2691,7 +2691,7 @@
     "chunk_index": 8,
     "total_chunks": 13,
     "char_count": 87,
-    "embedding_hash": "4e2d4ccf"
+    "embedding_hash": "2df1a9f0"
   },
   {
     "id": "ai-application-engineer-job-hunting-guide-2026_9",
@@ -2739,7 +2739,7 @@
     "chunk_index": 10,
     "total_chunks": 13,
     "char_count": 73,
-    "embedding_hash": "28100114"
+    "embedding_hash": "f3ae8d2f"
   },
   {
     "id": "ai-application-engineer-job-hunting-guide-2026_11",
@@ -2763,7 +2763,7 @@
     "chunk_index": 11,
     "total_chunks": 13,
     "char_count": 43,
-    "embedding_hash": "1ec115fc"
+    "embedding_hash": "24a839d6"
   },
   {
     "id": "ai-application-engineer-job-hunting-guide-2026_12",
@@ -2787,7 +2787,7 @@
     "chunk_index": 12,
     "total_chunks": 13,
     "char_count": 67,
-    "embedding_hash": "a5354bd0"
+    "embedding_hash": "c433855b"
   },
   {
     "id": "building-mini-claude-code-from-scratch_0",
@@ -2859,7 +2859,7 @@
     "chunk_index": 2,
     "total_chunks": 9,
     "char_count": 51,
-    "embedding_hash": "8507b51c"
+    "embedding_hash": "cb3cf219"
   },
   {
     "id": "building-mini-claude-code-from-scratch_3",
@@ -2883,7 +2883,7 @@
     "chunk_index": 3,
     "total_chunks": 9,
     "char_count": 294,
-    "embedding_hash": "17c2b382"
+    "embedding_hash": "b471120b"
   },
   {
     "id": "building-mini-claude-code-from-scratch_4",
@@ -2907,7 +2907,7 @@
     "chunk_index": 4,
     "total_chunks": 9,
     "char_count": 307,
-    "embedding_hash": "5a158137"
+    "embedding_hash": "e2dacbd6"
   },
   {
     "id": "building-mini-claude-code-from-scratch_5",
@@ -2931,7 +2931,7 @@
     "chunk_index": 5,
     "total_chunks": 9,
     "char_count": 84,
-    "embedding_hash": "223f58fa"
+    "embedding_hash": "7a9af1c2"
   },
   {
     "id": "building-mini-claude-code-from-scratch_6",
@@ -2955,7 +2955,7 @@
     "chunk_index": 6,
     "total_chunks": 9,
     "char_count": 83,
-    "embedding_hash": "36f18cec"
+    "embedding_hash": "eeb2d342"
   },
   {
     "id": "building-mini-claude-code-from-scratch_7",
@@ -3003,7 +3003,7 @@
     "chunk_index": 8,
     "total_chunks": 9,
     "char_count": 68,
-    "embedding_hash": "e051d805"
+    "embedding_hash": "ff687f85"
   },
   {
     "id": "claude-code-vs-mini-claude-compression_0",
@@ -3075,7 +3075,7 @@
     "chunk_index": 2,
     "total_chunks": 11,
     "char_count": 20,
-    "embedding_hash": "984a673c"
+    "embedding_hash": "d63afc11"
   },
   {
     "id": "claude-code-vs-mini-claude-compression_3",
@@ -3147,7 +3147,7 @@
     "chunk_index": 5,
     "total_chunks": 11,
     "char_count": 148,
-    "embedding_hash": "54efa68f"
+    "embedding_hash": "b410dde3"
   },
   {
     "id": "claude-code-vs-mini-claude-compression_6",
@@ -3171,7 +3171,7 @@
     "chunk_index": 6,
     "total_chunks": 11,
     "char_count": 391,
-    "embedding_hash": "61f12042"
+    "embedding_hash": "2f89c5f0"
   },
   {
     "id": "claude-code-vs-mini-claude-compression_7",
@@ -3219,7 +3219,7 @@
     "chunk_index": 8,
     "total_chunks": 11,
     "char_count": 556,
-    "embedding_hash": "36445669"
+    "embedding_hash": "1f8f1963"
   },
   {
     "id": "claude-code-vs-mini-claude-compression_9",
@@ -3243,7 +3243,7 @@
     "chunk_index": 9,
     "total_chunks": 11,
     "char_count": 231,
-    "embedding_hash": "c3db8137"
+    "embedding_hash": "af892e3e"
   },
   {
     "id": "claude-code-vs-mini-claude-compression_10",
@@ -3268,6 +3268,630 @@
     "total_chunks": 11,
     "char_count": 198,
     "embedding_hash": "968950bc"
+  },
+  {
+    "id": "deleting-40-fake-tests_0",
+    "content": "# 我删了 40 个能通过的测试：一次测试治理复盘\n\n243 个测试全部绿灯，本地 vitest 从来没红过。直到有一天我打开一个测试文件的 import 区，发现它一行生产代码都没引入。\n\n那个测试测的是谁？测它自己——文件里用函数定义复制了一份被测逻辑，然后断言这份复制品行为正确。生产代码改了，它照样绿。这样的\"测试\"一共有 40 个，藏在 4 个文件里。这篇复盘整个发现、删除、重建的过程，以及为什么我认为这次\"测试数量下降 17%\"是项目测试质量最高的一刻。",
+    "source": "blog",
+    "source_id": "deleting-40-fake-tests",
+    "title": "我删了 40 个能通过的测试：一次测试治理复盘",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\deleting-40-fake-tests.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "deleting-40-fake-tests",
+        "title": "我删了 40 个能通过的测试：一次测试治理复盘",
+        "doc_id": "84dce5dd58d9"
+      },
+      "chunk_type": "text",
+      "section_header": "我删了 40 个能通过的测试：一次测试治理复盘",
+      "section_level": 1
+    },
+    "chunk_index": 0,
+    "total_chunks": 13,
+    "char_count": 234,
+    "embedding_hash": "21b13dcf"
+  },
+  {
+    "id": "deleting-40-fake-tests_1",
+    "content": "## 怎么发现假测试的\n\n起因不是测试失败，是一次代码审查时的较真。\n\n当时在给个人网站的 RAG 模块做一轮审查（这个项目踩过的坑记在 issues/ 目录里），第一条 ISSUE 就是\"测试与实现脱节\"。验证方法简单到离谱：\n\n```bash",
+    "source": "blog",
+    "source_id": "deleting-40-fake-tests",
+    "title": "我删了 40 个能通过的测试：一次测试治理复盘",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\deleting-40-fake-tests.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "deleting-40-fake-tests",
+        "title": "我删了 40 个能通过的测试：一次测试治理复盘",
+        "doc_id": "84dce5dd58d9"
+      },
+      "chunk_type": "text",
+      "section_header": "怎么发现假测试的",
+      "section_level": 2
+    },
+    "chunk_index": 1,
+    "total_chunks": 13,
+    "char_count": 123,
+    "embedding_hash": "698ed4a4"
+  },
+  {
+    "id": "deleting-40-fake-tests_2",
+    "content": "# 一个测试文件如果不 import 生产代码路径，它测的是谁？\ngrep -L \"\\.\\./utils\" rag/__tests__/*.test.ts\n```\n\n列出来的文件里，有几个长这样：\n\n```ts\n// STUB 测试的典型长相\n\n// ❌ 在测试文件里\"复制\"了一份实现\nfunction cosineSimilarity(a: number[], b: number[]): number {\n  let dot = 0, normA = 0, normB = 0;\n  for (let i = 0; i  {\n  it('平行向量相似度为 1', () => {\n    expect(cosineSimilarity([1, 0], [1, 0])).toBe(1);\n  });\n  // ……全部通过，永远通过\n});\n```\n\n这份复制品和 `rag/utils/similarity.ts` 里的真实实现高度相似——因为写测试的时候是从实现里拷出来的。但从此以后两者毫无关系：真实实现改出 bug，测试照绿；复制品自己有 bug，测试照红但和生产毫无关系。\n\n**它是一个绿色的圆圈，不是一张安全网。**",
+    "source": "blog",
+    "source_id": "deleting-40-fake-tests",
+    "title": "我删了 40 个能通过的测试：一次测试治理复盘",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\deleting-40-fake-tests.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "deleting-40-fake-tests",
+        "title": "我删了 40 个能通过的测试：一次测试治理复盘",
+        "doc_id": "84dce5dd58d9"
+      },
+      "chunk_type": "text",
+      "section_header": "一个测试文件如果不 import 生产代码路径，它测的是谁？",
+      "section_level": 1
+    },
+    "chunk_index": 2,
+    "total_chunks": 13,
+    "char_count": 518,
+    "embedding_hash": "2ef6df28"
+  },
+  {
+    "id": "deleting-40-fake-tests_3",
+    "content": "## 它们是怎么混进来的\n\n复盘成因比复盘 bug 更重要，因为假测试的滋生有明确的土壤：**把\"测试数量\"当进度指标**。\n\n当时的状态：CI 里跑着两百多个测试，数字很漂亮。于是新增模块时顺手写几个\"测试\"，最省事的路径就是把实现拷进来测一遍——既不用处理模块导出，也不用 mock 依赖，五分钟出一个全绿的测试文件。数量上涨，绿灯常亮，没有任何信号提示不对劲。\n\n还有一类更隐蔽：**测 mock 而不是测实现**。集成测试里 mock 了检索层，然后断言\"调用检索时传了正确的参数\"。至于真实的检索层返回什么、上下游拼接对不对，没人测。这类测试仪式感十足，防回归能力为零。\n\n回看有两个教训：\n\n1. **\"全绿\"是弱信号。** 243 个测试全绿和 243 个测试里 40 个是空转，在外部观察上完全一样。指标本身不提供保证。\n2. **覆盖率也救不了。** 对复制品做覆盖率统计，覆盖率照样是高的——因为\"被测代码\"（复制品）确实被执行了。覆盖率衡量的是执行，不是断言有效性。",
+    "source": "blog",
+    "source_id": "deleting-40-fake-tests",
+    "title": "我删了 40 个能通过的测试：一次测试治理复盘",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\deleting-40-fake-tests.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "deleting-40-fake-tests",
+        "title": "我删了 40 个能通过的测试：一次测试治理复盘",
+        "doc_id": "84dce5dd58d9"
+      },
+      "chunk_type": "text",
+      "section_header": "它们是怎么混进来的",
+      "section_level": 2
+    },
+    "chunk_index": 3,
+    "total_chunks": 13,
+    "char_count": 444,
+    "embedding_hash": "bfdae8d8"
+  },
+  {
+    "id": "deleting-40-fake-tests_0",
+    "content": "## 治理四步\n\n发现问题后没有立刻动手，先把治理方案拆成了四步，一次提交做完。\n\n**第一步：删除。** 4 个 STUB 文件整体移除，约 40 个测试。没有犹豫期——复制品测试的维护成本为负（你还以为它们在保护你）。\n\n**第二步：重写，指向真实模块。** 原来的 chat-integration、e2e、index 三组测试改成导入真实实现：\n\n```ts\n// 重写后：import 区必须出现生产代码路径\n\ndescribe('RAG 上下文构建（真实实现）', () => {\n  it('空检索结果时返回空上下文', () => {\n    expect(buildRAGContext([])).toBe('');\n  });\n});\n```\n\n规则只有一条：**import 区看不到生产代码路径的测试文件，不算测试**。\n\n**第三步：为\"测不了\"的逻辑恢复可测试性。",
+    "source": "blog",
+    "source_id": "deleting-40-fake-tests",
+    "title": "我删了 40 个能通过的测试：一次测试治理复盘",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\deleting-40-fake-tests.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "deleting-40-fake-tests",
+        "title": "我删了 40 个能通过的测试：一次测试治理复盘",
+        "doc_id": "84dce5dd58d9"
+      },
+      "chunk_type": "text",
+      "section_header": "治理四步",
+      "section_level": 2
+    },
+    "chunk_index": 4,
+    "total_chunks": 13,
+    "char_count": 396,
+    "embedding_hash": "9a8c184e"
+  },
+  {
+    "id": "deleting-40-fake-tests_1",
+    "content": "rt 区看不到生产代码路径的测试文件，不算测试**。\n\n**第三步：为\"测不了\"的逻辑恢复可测试性。** 重写时撞上一个结构问题：上下文构建逻辑原本内联在 `app/api/chat/route.ts` 的 handler 里，从测试文件根本 import 不到。解法是可测试性重构——把 `buildRAGContext` 抽成独立模块，route handler 只做调用；顺手删了一段没有调用方的死代码。\n\n这一步是假测试问题的根源之一：**逻辑藏在不可导入的地方，写测试的人只好复制一份**。可测试性差的地方，就是假测试的温床。\n\n**第四步：补上真实覆盖的空洞。** 删掉假测试后暴露了真实空洞——RAG 索引的增量更新逻辑（数据哈希比对、脏检查）此前只有\"复制品\"在测。用 Python 对着真实的 `build_index.py` 补了 8 个用例，专测哈希计算和增量跳过逻辑。",
+    "source": "blog",
+    "source_id": "deleting-40-fake-tests",
+    "title": "我删了 40 个能通过的测试：一次测试治理复盘",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\deleting-40-fake-tests.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "deleting-40-fake-tests",
+        "title": "我删了 40 个能通过的测试：一次测试治理复盘",
+        "doc_id": "84dce5dd58d9"
+      },
+      "chunk_type": "text",
+      "section_header": "治理四步",
+      "section_level": 2
+    },
+    "chunk_index": 5,
+    "total_chunks": 13,
+    "char_count": 396,
+    "embedding_hash": "4ca31ea8"
+  },
+  {
+    "id": "deleting-40-fake-tests_6",
+    "content": "## 243 → 204：数字降了，信心升了\n\n治理结果：\n\n- TypeScript 测试 204/204 通过，Python 测试 8/8\n- 测试总数 243 → 204，降了 17%\n- 新增的每一行测试都指向真实生产代码\n\n数字下降反而是这次治理里我最满意的部分。判断一个测试套件的价值，别数测试有多少个，做这个思想实验：**往生产代码里故意注入一个 bug，哪个测试会红？** 治理前，注入到 RAG 工具函数里的 bug 只有部分会被抓到——因为有一半\"测试\"测的是复制品。治理后，所有红灯都意味着生产代码真的坏了。\n\n现在维护 issues/ 的时候，\"测试与实现脱节\"这一条的处理经验也沉淀成了规矩：新测试合入前看一眼 import 区，PR 里新增的测试文件如果没有任何生产代码导入，直接打回。",
+    "source": "blog",
+    "source_id": "deleting-40-fake-tests",
+    "title": "我删了 40 个能通过的测试：一次测试治理复盘",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\deleting-40-fake-tests.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "deleting-40-fake-tests",
+        "title": "我删了 40 个能通过的测试：一次测试治理复盘",
+        "doc_id": "84dce5dd58d9"
+      },
+      "chunk_type": "text",
+      "section_header": "243 → 204：数字降了，信心升了",
+      "section_level": 2
+    },
+    "chunk_index": 6,
+    "total_chunks": 13,
+    "char_count": 357,
+    "embedding_hash": "cfef7237"
+  },
+  {
+    "id": "deleting-40-fake-tests_7",
+    "content": "## 检测假测试的三个信号\n\n这套方法可以迁移到任何项目，人工审查盯这三个信号：\n\n| 信号 | 检查方法 | 危险等级 |\n|------|----------|----------|\n| import 区没有生产代码路径 | `grep -L` 扫测试目录 | 🔴 致命：测的是复制品 |\n| 测试文件里有与实现同名的本地函数 | 全局搜索函数定义重复 | 🔴 致命：双份实现必然漂移 |\n| 断言全是恒真式 | 看有没有对真实输出值的断言 | 🟡 高危：仪式性测试 |\n\n想自动化的话，第一个信号一条命令就能接进 CI：\n\n```bash",
+    "source": "blog",
+    "source_id": "deleting-40-fake-tests",
+    "title": "我删了 40 个能通过的测试：一次测试治理复盘",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\deleting-40-fake-tests.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "deleting-40-fake-tests",
+        "title": "我删了 40 个能通过的测试：一次测试治理复盘",
+        "doc_id": "84dce5dd58d9"
+      },
+      "chunk_type": "text",
+      "section_header": "检测假测试的三个信号",
+      "section_level": 2
+    },
+    "chunk_index": 7,
+    "total_chunks": 13,
+    "char_count": 272,
+    "embedding_hash": "e0c53990"
+  },
+  {
+    "id": "deleting-40-fake-tests_8",
+    "content": "# 测试文件必须 import 生产代码，否则本地检查/CI 失败\nfor f in rag/__tests__/*.test.ts; do\n  grep -q \"\\.\\./utils\" \"$f\" || { echo \"$f 未导入生产代码\"; exit 1; }\ndone\n```",
+    "source": "blog",
+    "source_id": "deleting-40-fake-tests",
+    "title": "我删了 40 个能通过的测试：一次测试治理复盘",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\deleting-40-fake-tests.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "deleting-40-fake-tests",
+        "title": "我删了 40 个能通过的测试：一次测试治理复盘",
+        "doc_id": "84dce5dd58d9"
+      },
+      "chunk_type": "text",
+      "section_header": "测试文件必须 import 生产代码，否则本地检查/CI 失败",
+      "section_level": 1
+    },
+    "chunk_index": 8,
+    "total_chunks": 13,
+    "char_count": 141,
+    "embedding_hash": "b4110325"
+  },
+  {
+    "id": "deleting-40-fake-tests_9",
+    "content": "## 与\"多测试之路\"的对照\n\n我另一篇写 Mini Claude Code 的测试之路，那是\"数量\"的故事——1700 多个测试怎么随功能迭代自然长出来。这一篇是\"质量\"的故事：数量增长到某个阶段，如果不治理有效性，套件会悄悄烂掉。两个项目现在遵循同一条底线：**测试的价值不在于它存在，而在于它失败的时候你真的出事了**。",
+    "source": "blog",
+    "source_id": "deleting-40-fake-tests",
+    "title": "我删了 40 个能通过的测试：一次测试治理复盘",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\deleting-40-fake-tests.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "deleting-40-fake-tests",
+        "title": "我删了 40 个能通过的测试：一次测试治理复盘",
+        "doc_id": "84dce5dd58d9"
+      },
+      "chunk_type": "text",
+      "section_header": "与\"多测试之路\"的对照",
+      "section_level": 2
+    },
+    "chunk_index": 9,
+    "total_chunks": 13,
+    "char_count": 163,
+    "embedding_hash": "c568d1bd"
+  },
+  {
+    "id": "deleting-40-fake-tests_10",
+    "content": "## 总结\n\n| 阶段 | 动作 | 结果 |\n|------|------|------|\n| 发现 | 审查测试文件的 import 区 | 找到 4 个 STUB 文件 |\n| 删除 | 移除约 40 个复制品测试 | 243 → 204 |\n| 重写 | 指向真实模块 + 可测试性重构 | buildRAGContext 抽为独立模块 |\n| 补洞 | Python 测真实增量逻辑 | 8 个用例覆盖哈希/脏检查 |\n| 防回归 | \"import 生产代码\"规则进审查清单 | 假测试不再有温床 |\n\n一句话版本：**先怀疑\"全绿\"，再相信\"全绿\"**。你的测试套件里，可能正躺着几个只会在自己世界里通过的家伙。",
+    "source": "blog",
+    "source_id": "deleting-40-fake-tests",
+    "title": "我删了 40 个能通过的测试：一次测试治理复盘",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\deleting-40-fake-tests.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "deleting-40-fake-tests",
+        "title": "我删了 40 个能通过的测试：一次测试治理复盘",
+        "doc_id": "84dce5dd58d9"
+      },
+      "chunk_type": "text",
+      "section_header": "总结",
+      "section_level": 2
+    },
+    "chunk_index": 10,
+    "total_chunks": 13,
+    "char_count": 313,
+    "embedding_hash": "87d1dae3"
+  },
+  {
+    "id": "deleting-40-fake-tests_11",
+    "content": "## 相关文件\n\n- `rag/__tests__/` — 治理后的测试（全部导入真实实现）\n- `rag/utils/ragContext.ts` — 可测试性重构的产物\n- `issues/ISSUE-001-测试与实现脱节.md` — 问题的完整记录\n- `rag/scripts/test_build_index.py` — 增量逻辑的 Python 测试",
+    "source": "blog",
+    "source_id": "deleting-40-fake-tests",
+    "title": "我删了 40 个能通过的测试：一次测试治理复盘",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\deleting-40-fake-tests.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "deleting-40-fake-tests",
+        "title": "我删了 40 个能通过的测试：一次测试治理复盘",
+        "doc_id": "84dce5dd58d9"
+      },
+      "chunk_type": "text",
+      "section_header": "相关文件",
+      "section_level": 2
+    },
+    "chunk_index": 11,
+    "total_chunks": 13,
+    "char_count": 182,
+    "embedding_hash": "8207e034"
+  },
+  {
+    "id": "deleting-40-fake-tests_12",
+    "content": "## 参考资料\n\n- [Vitest — 测试框架文档](https://vitest.dev/guide/)\n- 互链文章：《从零到 1733 测试：Mini Claude Code 的测试之路》《三轮代码审查实战：从\"能跑\"到\"能扛\"》",
+    "source": "blog",
+    "source_id": "deleting-40-fake-tests",
+    "title": "我删了 40 个能通过的测试：一次测试治理复盘",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\deleting-40-fake-tests.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "deleting-40-fake-tests",
+        "title": "我删了 40 个能通过的测试：一次测试治理复盘",
+        "doc_id": "84dce5dd58d9"
+      },
+      "chunk_type": "text",
+      "section_header": "参考资料",
+      "section_level": 2
+    },
+    "chunk_index": 12,
+    "total_chunks": 13,
+    "char_count": 120,
+    "embedding_hash": "a6a5013f"
+  },
+  {
+    "id": "from-3d-lab-to-light-rays_0",
+    "content": "# 从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑\n\n这个网站最初的设计文档里，它不是一个网站，是一个\"虚拟 AI 实验室\"。\n\n3D 场景、能量核心、传送门、AI 向导带你探索不同区域——设计文档写了两万多字。两个月后上线时，3D 组件全删了，首页背景只剩一道光线。这不是妥协，是三次踩坑之后的主动决策。这篇复盘每一步为什么走，坑在哪里，给同样想给个人网站加 3D 的朋友省点时间。",
+    "source": "blog",
+    "source_id": "from-3d-lab-to-light-rays",
+    "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\from-3d-lab-to-light-rays.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "from-3d-lab-to-light-rays",
+        "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
+        "doc_id": "be8082df58e3"
+      },
+      "chunk_type": "text",
+      "section_header": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
+      "section_level": 1
+    },
+    "chunk_index": 0,
+    "total_chunks": 13,
+    "char_count": 210,
+    "embedding_hash": "b8ca3d97"
+  },
+  {
+    "id": "from-3d-lab-to-light-rays_1",
+    "content": "## 起点：一个\"沉浸式实验室\"的野心\n\n最初的设想是标准的沉浸式方案：\n\n- **Next.js + React Three Fiber + drei**：3D 场景渲染\n- **四个区域**：核心大厅（介绍）、项目展厅（项目球体悬浮）、知识图书馆（博客）、创造工坊\n- **AI 向导 Nova**：问答机器人引导探索\n\n第一版确实做出来了。能量核心是多层嵌套球体 + 呼吸渐变色，传送门是多环嵌套 + 颜色区分区域。看起来很酷，然后问题一个一个来了。",
+    "source": "blog",
+    "source_id": "from-3d-lab-to-light-rays",
+    "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\from-3d-lab-to-light-rays.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "from-3d-lab-to-light-rays",
+        "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
+        "doc_id": "be8082df58e3"
+      },
+      "chunk_type": "text",
+      "section_header": "起点：一个\"沉浸式实验室\"的野心",
+      "section_level": 2
+    },
+    "chunk_index": 1,
+    "total_chunks": 13,
+    "char_count": 228,
+    "embedding_hash": "21627684"
+  },
+  {
+    "id": "from-3d-lab-to-light-rays_0",
+    "content": "## 第一坑：AnimatePresence 偷走了 WebGL context\n\n症状很诡异：首页正常，点进\"关于\"再返回，背景消失，控制台一片 `WebGL context lost`。\n\n排查了两天，凶手是页面过渡动画里最常见的一行写法：\n\n```tsx\n// 出问题的写法\n\n  \n    {children}\n  \n\n```\n\n`key={pathname}` 意味着每次路由切换，整棵子树卸载重挂。如果 WebGL Canvas 挂在这棵子树里，每次切换都要销毁旧 context、创建新 context。而浏览器对活跃 WebGL context 数量有上限（Chrome 大约 16 个），旧 context 的释放是异步的——新 context 创建太快，旧的还没释放干净，超过上限后浏览器直接把最旧的标记为 lost，而且**丢了就不恢复**。\n\n修复分两步：\n\n```tsx",
+    "source": "blog",
+    "source_id": "from-3d-lab-to-light-rays",
+    "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\from-3d-lab-to-light-rays.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "from-3d-lab-to-light-rays",
+        "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
+        "doc_id": "be8082df58e3"
+      },
+      "chunk_type": "text",
+      "section_header": "第一坑：AnimatePresence 偷走了 WebGL context",
+      "section_level": 2
+    },
+    "chunk_index": 2,
+    "total_chunks": 13,
+    "char_count": 398,
+    "embedding_hash": "61ac8540"
+  },
+  {
+    "id": "from-3d-lab-to-light-rays_1",
+    "content": "限后浏览器直接把最旧的标记为 lost，而且**丢了就不恢复**。\n\n修复分两步：\n\n```tsx\n// 1. PageTransition 去掉 AnimatePresence + key={pathname}\n//    路由切换时不再卸载重挂整棵子树\n\n// 2. WebGL 组件挂到根布局，只挂载一次\n   // 根布局里，路由切换时不动它\n```\n\n代价是过渡动画从\"出入场\"退化成简单的淡入淡出。但背景再也不消失了。这个教训一句话总结：**路由级动画库默认会卸载子树，而 WebGL context 是稀缺资源，两者天生冲突**。",
+    "source": "blog",
+    "source_id": "from-3d-lab-to-light-rays",
+    "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\from-3d-lab-to-light-rays.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "from-3d-lab-to-light-rays",
+        "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
+        "doc_id": "be8082df58e3"
+      },
+      "chunk_type": "text",
+      "section_header": "第一坑：AnimatePresence 偷走了 WebGL context",
+      "section_level": 2
+    },
+    "chunk_index": 3,
+    "total_chunks": 13,
+    "char_count": 272,
+    "embedding_hash": "f152c662"
+  },
+  {
+    "id": "from-3d-lab-to-light-rays_4",
+    "content": "## 第二坑：依赖链上的暗雷\n\n3D 方案依赖链太长，坑不止一个：\n\n**`next-themes` 与 React 19 不兼容。** 主题切换一挂上就 hydration 报错，最后自己写了个 60 行的 `ThemeProvider` 顶上。\n\n**`@react-three/postprocessing` 的 GlowEffect 在项目环境里始终报错。** 想给能量核心加辉光，装上就崩，查了一圈是 Three.js 版本兼容问题。辉光这个效果最后也没加回来——因为后来连 Three.js 本身都删了。\n\n依赖不是越多越好。每多一个依赖，就多一个和 React 19、Next.js 版本矩阵的交叉项。个人项目没有精力维护这个矩阵。",
+    "source": "blog",
+    "source_id": "from-3d-lab-to-light-rays",
+    "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\from-3d-lab-to-light-rays.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "from-3d-lab-to-light-rays",
+        "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
+        "doc_id": "be8082df58e3"
+      },
+      "chunk_type": "text",
+      "section_header": "第二坑：依赖链上的暗雷",
+      "section_level": 2
+    },
+    "chunk_index": 4,
+    "total_chunks": 13,
+    "char_count": 323,
+    "embedding_hash": "dd039649"
+  },
+  {
+    "id": "from-3d-lab-to-light-rays_0",
+    "content": "## 减法：从 3D 实验室到一行光线\n\n于是开始做减法，而且是分三刀砍的：\n\n**第一刀：砍页面。** 技能页删掉（信息重复，关于页足够），项目页的 3D 视图删掉（纯列表信息密度更高），`components/three/` 整个目录删除。\n\n**第二刀：砍技术栈。** 首页背景换成 `ogl` 实现的 Light Rays。`ogl` 是一个极简的 WebGL 库，体积和依赖深度都比 \"three + R3F + drei\" 的组合链小一个量级，一个着色器画光线，视觉效果反而更聚焦——一道光比一个能量核心更像\"AI 实验室\"。Three.js + R3F + drei 三个包整体退场。\n\n**第三刀：砍遗产。** 这是三个月后才发现的：删掉 3D 之后，仓库里还躺着 5 个没人引用的文件——`sceneStore`、`usePreload`、`OptimizedImage`、`Pro",
+    "source": "blog",
+    "source_id": "from-3d-lab-to-light-rays",
+    "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\from-3d-lab-to-light-rays.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "from-3d-lab-to-light-rays",
+        "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
+        "doc_id": "be8082df58e3"
+      },
+      "chunk_type": "text",
+      "section_header": "减法：从 3D 实验室到一行光线",
+      "section_level": 2
+    },
+    "chunk_index": 5,
+    "total_chunks": 13,
+    "char_count": 400,
+    "embedding_hash": "27c8269e"
+  },
+  {
+    "id": "from-3d-lab-to-light-rays_1",
+    "content": "件——`sceneStore`、`usePreload`、`OptimizedImage`、`ProjectTransition`，全都是 3D/转场时代的遗留，加起来约 1300 行死代码。它们不报错、不被引用、不参与构建，只是安静地躺在那里骗搜索。一次死代码清理才连根拔掉。\n\n减法做完的直观感受：**网站反而更像设计文档想要的东西了**。世界观的核心是\"AI 向导带你探索\"，而不是\"3D 渲染技术堆砌\"。Nova 向导、游戏化文案都还在，只是载体从 3D 场景换成了简历式页面 + 自定义光标。",
+    "source": "blog",
+    "source_id": "from-3d-lab-to-light-rays",
+    "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\from-3d-lab-to-light-rays.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "from-3d-lab-to-light-rays",
+        "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
+        "doc_id": "be8082df58e3"
+      },
+      "chunk_type": "text",
+      "section_header": "减法：从 3D 实验室到一行光线",
+      "section_level": 2
+    },
+    "chunk_index": 6,
+    "total_chunks": 13,
+    "char_count": 251,
+    "embedding_hash": "b043de11"
+  },
+  {
+    "id": "from-3d-lab-to-light-rays_0",
+    "content": "## 性能三连：分割、限帧、降级\n\n架构稳定后做了三轮性能优化，每轮都有可复用的手法。\n\n**代码分割：重型库一律不进首屏关键路径。** 根布局是 Server Component，`LightRays`（WebGL）、`NovaGuide`（AI 对话）、`TargetCursor`（GSAP 光标）这三样重但非必需，全部改成客户端懒加载包装：\n\n```tsx\n// components/lazy/LazyOverlays.tsx\nconst LightRays = dynamic(\n  () => import('@/components/effects/LightRays'),\n  { ssr: false }  // WebGL 组件本来就不能 SSR\n);\nconst NovaGuide = dynamic(",
+    "source": "blog",
+    "source_id": "from-3d-lab-to-light-rays",
+    "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\from-3d-lab-to-light-rays.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "from-3d-lab-to-light-rays",
+        "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
+        "doc_id": "be8082df58e3"
+      },
+      "chunk_type": "text",
+      "section_header": "性能三连：分割、限帧、降级",
+      "section_level": 2
+    },
+    "chunk_index": 7,
+    "total_chunks": 13,
+    "char_count": 364,
+    "embedding_hash": "8038268b"
+  },
+  {
+    "id": "from-3d-lab-to-light-rays_1",
+    "content": "/ WebGL 组件本来就不能 SSR\n);\nconst NovaGuide = dynamic(\n  () => import('@/components/ai/NovaGuide')\n);\n```\n\n注意 `ssr: false` 只对 WebGL 组件用——它本来就无法服务端渲染，提前分割等于把 three/ogl/GSAP 全部移出首屏 chunk。构建产物从单一巨型 chunk 变成 30 个按需加载的小 chunk。\n\n**帧率上限：着色器全速跑是浪费。** Light Rays 的动画循环原来每帧都重绘，但这道光的变化很慢，60fps 和 24fps 肉眼几乎无差别。加一个时间戳判断：\n\n```ts\nconst FRAME_INTERVAL = 1000 / 60;\nlet lastFrame = 0;\n\nfunction loop(now: number) {",
+    "source": "blog",
+    "source_id": "from-3d-lab-to-light-rays",
+    "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\from-3d-lab-to-light-rays.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "from-3d-lab-to-light-rays",
+        "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
+        "doc_id": "be8082df58e3"
+      },
+      "chunk_type": "text",
+      "section_header": "性能三连：分割、限帧、降级",
+      "section_level": 2
+    },
+    "chunk_index": 8,
+    "total_chunks": 13,
+    "char_count": 393,
+    "embedding_hash": "bf10d10e"
+  },
+  {
+    "id": "from-3d-lab-to-light-rays_2",
+    "content": "let lastFrame = 0;\n\nfunction loop(now: number) {\n  if (now - lastFrame >= FRAME_INTERVAL) {\n    lastFrame = now;\n    render();\n  }\n  rafId = requestAnimationFrame(loop);\n}\n```\n\n**静态帧降级：尊重系统设置。** `prefers-reduced-motion` 的用户不需要动画，直接渲染一帧静态图，动画循环都不启动。这类用户往往是前庭功能障碍者，动画对他们不是\"酷\"而是眩晕。\n\n**顺手修了一个小恶疾：** 组件里有个空 `catch {}` 把着色器编译错误吞了，排查时浪费了不少时间。空 catch 补上日志，一分钟的事，但没它的时候要靠二分法找问题。",
+    "source": "blog",
+    "source_id": "from-3d-lab-to-light-rays",
+    "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\from-3d-lab-to-light-rays.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "from-3d-lab-to-light-rays",
+        "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
+        "doc_id": "be8082df58e3"
+      },
+      "chunk_type": "text",
+      "section_header": "性能三连：分割、限帧、降级",
+      "section_level": 2
+    },
+    "chunk_index": 9,
+    "total_chunks": 13,
+    "char_count": 369,
+    "embedding_hash": "0788b1a4"
+  },
+  {
+    "id": "from-3d-lab-to-light-rays_10",
+    "content": "## 复盘：决策表\n\n| 决策 | 放弃的方案 | 换来的 |\n|------|-----------|--------|\n| 移除 AnimatePresence + key={pathname} | 路由级出入场动画 | WebGL context 不再丢失 |\n| 自定义 ThemeProvider → 固定深色 | next-themes | 兼容 React 19，少一个依赖 |\n| ogl 替代 Three.js + R3F + drei | 3D 场景 | 包体积骤减，视觉更聚焦 |\n| 删除技能页 / 3D 视图 | 页面丰富度 | 信息密度、维护成本 |\n| 懒加载 + 30 chunks | 首屏完整加载 | 关键路径不再驮着 WebGL 库 |\n| 60fps 上限 + 静态帧降级 | 全速渲染 | GPU 占用下降，可访问性达标 |\n\n如果要提炼成一条原则：**沉浸感来自交互设计和内容世界观的统一，不来自渲染技术**。传送门很酷，但访客（HR）要在 30 秒内找到你的项目列表和联系方式——简历式页面 + 一个会聊天的 Nova，完成这件事比 3D 场景高效得多。",
+    "source": "blog",
+    "source_id": "from-3d-lab-to-light-rays",
+    "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\from-3d-lab-to-light-rays.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "from-3d-lab-to-light-rays",
+        "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
+        "doc_id": "be8082df58e3"
+      },
+      "chunk_type": "text",
+      "section_header": "复盘：决策表",
+      "section_level": 2
+    },
+    "chunk_index": 10,
+    "total_chunks": 13,
+    "char_count": 500,
+    "embedding_hash": "91a34b8e"
+  },
+  {
+    "id": "from-3d-lab-to-light-rays_11",
+    "content": "## 相关文件\n\n- `components/effects/LightRays.tsx` — ogl 光线背景（含限帧 + 静态帧降级）\n- `components/lazy/LazyOverlays.tsx` — 重型组件懒加载包装\n- `components/ui/PageTransition.tsx` — 去除 AnimatePresence 的页面过渡\n- `DESIGN.md` — 最初的设计文档（可以看看野心膨胀的样子）",
+    "source": "blog",
+    "source_id": "from-3d-lab-to-light-rays",
+    "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\from-3d-lab-to-light-rays.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "from-3d-lab-to-light-rays",
+        "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
+        "doc_id": "be8082df58e3"
+      },
+      "chunk_type": "text",
+      "section_header": "相关文件",
+      "section_level": 2
+    },
+    "chunk_index": 11,
+    "total_chunks": 13,
+    "char_count": 219,
+    "embedding_hash": "b154122d"
+  },
+  {
+    "id": "from-3d-lab-to-light-rays_12",
+    "content": "## 参考资料\n\n- [ogl — Minimal WebGL library](https://github.com/oframe/ogl)\n- [MDN: WebGL best practices（context 丢失处理）](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/WebGL_best_practices)\n- [prefers-reduced-motion — MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion)\n- [next/dynamic — Next.js 文档](https://nextjs.org/docs/app/building-your-application/optimizing/lazy-loading)",
+    "source": "blog",
+    "source_id": "from-3d-lab-to-light-rays",
+    "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\from-3d-lab-to-light-rays.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "from-3d-lab-to-light-rays",
+        "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
+        "doc_id": "be8082df58e3"
+      },
+      "chunk_type": "text",
+      "section_header": "参考资料",
+      "section_level": 2
+    },
+    "chunk_index": 12,
+    "total_chunks": 13,
+    "char_count": 418,
+    "embedding_hash": "484a5f44"
   },
   {
     "id": "langgraph-state-machine-best-practices_0",
@@ -3363,7 +3987,7 @@
     "chunk_index": 3,
     "total_chunks": 10,
     "char_count": 23,
-    "embedding_hash": "457f0547"
+    "embedding_hash": "c52e555f"
   },
   {
     "id": "langgraph-state-machine-best-practices_4",
@@ -3387,7 +4011,7 @@
     "chunk_index": 4,
     "total_chunks": 10,
     "char_count": 149,
-    "embedding_hash": "adb44fea"
+    "embedding_hash": "d57923d6"
   },
   {
     "id": "langgraph-state-machine-best-practices_5",
@@ -3435,7 +4059,7 @@
     "chunk_index": 6,
     "total_chunks": 10,
     "char_count": 223,
-    "embedding_hash": "8980932e"
+    "embedding_hash": "adb8bf3d"
   },
   {
     "id": "langgraph-state-machine-best-practices_7",
@@ -3459,7 +4083,7 @@
     "chunk_index": 7,
     "total_chunks": 10,
     "char_count": 263,
-    "embedding_hash": "9f6448a4"
+    "embedding_hash": "fd007d5a"
   },
   {
     "id": "langgraph-state-machine-best-practices_8",
@@ -3555,7 +4179,7 @@
     "chunk_index": 1,
     "total_chunks": 18,
     "char_count": 582,
-    "embedding_hash": "591bdda5"
+    "embedding_hash": "3d896a98"
   },
   {
     "id": "llm-app-security-hardening_0",
@@ -3579,7 +4203,7 @@
     "chunk_index": 2,
     "total_chunks": 18,
     "char_count": 391,
-    "embedding_hash": "52b86344"
+    "embedding_hash": "684887c0"
   },
   {
     "id": "llm-app-security-hardening_1",
@@ -3627,7 +4251,7 @@
     "chunk_index": 4,
     "total_chunks": 18,
     "char_count": 364,
-    "embedding_hash": "da2c46f2"
+    "embedding_hash": "16a30bf8"
   },
   {
     "id": "llm-app-security-hardening_1",
@@ -3843,7 +4467,7 @@
     "chunk_index": 13,
     "total_chunks": 18,
     "char_count": 389,
-    "embedding_hash": "5185815d"
+    "embedding_hash": "48f789dc"
   },
   {
     "id": "llm-app-security-hardening_2",
@@ -3867,7 +4491,7 @@
     "chunk_index": 14,
     "total_chunks": 18,
     "char_count": 337,
-    "embedding_hash": "fa6ae989"
+    "embedding_hash": "58011e86"
   },
   {
     "id": "llm-app-security-hardening_15",
@@ -3891,7 +4515,7 @@
     "chunk_index": 15,
     "total_chunks": 18,
     "char_count": 496,
-    "embedding_hash": "f1465e1b"
+    "embedding_hash": "0dd76f61"
   },
   {
     "id": "llm-app-security-hardening_16",
@@ -3939,7 +4563,7 @@
     "chunk_index": 17,
     "total_chunks": 18,
     "char_count": 305,
-    "embedding_hash": "8f47013f"
+    "embedding_hash": "d16ee78d"
   },
   {
     "id": "llm-tool-calling-design-patterns_0",
@@ -3963,7 +4587,7 @@
     "chunk_index": 0,
     "total_chunks": 15,
     "char_count": 50,
-    "embedding_hash": "bb1fc1c2"
+    "embedding_hash": "16e2e5bc"
   },
   {
     "id": "llm-tool-calling-design-patterns_1",
@@ -4011,7 +4635,7 @@
     "chunk_index": 2,
     "total_chunks": 15,
     "char_count": 42,
-    "embedding_hash": "fca9edf3"
+    "embedding_hash": "1da8de7a"
   },
   {
     "id": "llm-tool-calling-design-patterns_3",
@@ -4059,7 +4683,7 @@
     "chunk_index": 4,
     "total_chunks": 15,
     "char_count": 169,
-    "embedding_hash": "49e522c1"
+    "embedding_hash": "3bdcc551"
   },
   {
     "id": "llm-tool-calling-design-patterns_5",
@@ -4083,7 +4707,7 @@
     "chunk_index": 5,
     "total_chunks": 15,
     "char_count": 174,
-    "embedding_hash": "b70e71f6"
+    "embedding_hash": "c1864212"
   },
   {
     "id": "llm-tool-calling-design-patterns_6",
@@ -4107,7 +4731,7 @@
     "chunk_index": 6,
     "total_chunks": 15,
     "char_count": 233,
-    "embedding_hash": "f986a734"
+    "embedding_hash": "21032e4b"
   },
   {
     "id": "llm-tool-calling-design-patterns_7",
@@ -4155,7 +4779,7 @@
     "chunk_index": 8,
     "total_chunks": 15,
     "char_count": 29,
-    "embedding_hash": "c0d2f173"
+    "embedding_hash": "184fdcfd"
   },
   {
     "id": "llm-tool-calling-design-patterns_9",
@@ -4179,7 +4803,7 @@
     "chunk_index": 9,
     "total_chunks": 15,
     "char_count": 75,
-    "embedding_hash": "ec8d6428"
+    "embedding_hash": "13be1635"
   },
   {
     "id": "llm-tool-calling-design-patterns_10",
@@ -4203,7 +4827,7 @@
     "chunk_index": 10,
     "total_chunks": 15,
     "char_count": 69,
-    "embedding_hash": "b4ed4505"
+    "embedding_hash": "6162a2ab"
   },
   {
     "id": "llm-tool-calling-design-patterns_11",
@@ -4227,7 +4851,7 @@
     "chunk_index": 11,
     "total_chunks": 15,
     "char_count": 276,
-    "embedding_hash": "2a3055df"
+    "embedding_hash": "78ba7af8"
   },
   {
     "id": "llm-tool-calling-design-patterns_12",
@@ -4275,7 +4899,7 @@
     "chunk_index": 13,
     "total_chunks": 15,
     "char_count": 33,
-    "embedding_hash": "bf599d8e"
+    "embedding_hash": "8cc98eb9"
   },
   {
     "id": "llm-tool-calling-design-patterns_14",
@@ -4299,7 +4923,7 @@
     "chunk_index": 14,
     "total_chunks": 15,
     "char_count": 40,
-    "embedding_hash": "86fb3182"
+    "embedding_hash": "5c6408f8"
   },
   {
     "id": "mini-claude-testing-journey_0",
@@ -4347,7 +4971,7 @@
     "chunk_index": 1,
     "total_chunks": 13,
     "char_count": 157,
-    "embedding_hash": "145148bf"
+    "embedding_hash": "9b77e6fd"
   },
   {
     "id": "mini-claude-testing-journey_2",
@@ -4395,7 +5019,7 @@
     "chunk_index": 3,
     "total_chunks": 13,
     "char_count": 45,
-    "embedding_hash": "311e3910"
+    "embedding_hash": "771a8489"
   },
   {
     "id": "mini-claude-testing-journey_4",
@@ -4419,7 +5043,7 @@
     "chunk_index": 4,
     "total_chunks": 13,
     "char_count": 552,
-    "embedding_hash": "035fc76d"
+    "embedding_hash": "837464f1"
   },
   {
     "id": "mini-claude-testing-journey_5",
@@ -4467,7 +5091,7 @@
     "chunk_index": 6,
     "total_chunks": 13,
     "char_count": 411,
-    "embedding_hash": "071b7272"
+    "embedding_hash": "5bcb66e8"
   },
   {
     "id": "mini-claude-testing-journey_7",
@@ -4491,7 +5115,7 @@
     "chunk_index": 7,
     "total_chunks": 13,
     "char_count": 458,
-    "embedding_hash": "17cccd76"
+    "embedding_hash": "4d1b5072"
   },
   {
     "id": "mini-claude-testing-journey_8",
@@ -4515,7 +5139,7 @@
     "chunk_index": 8,
     "total_chunks": 13,
     "char_count": 18,
-    "embedding_hash": "42fe6a97"
+    "embedding_hash": "d651a118"
   },
   {
     "id": "mini-claude-testing-journey_9",
@@ -4539,7 +5163,7 @@
     "chunk_index": 9,
     "total_chunks": 13,
     "char_count": 395,
-    "embedding_hash": "e2a7d155"
+    "embedding_hash": "a581b6ed"
   },
   {
     "id": "mini-claude-testing-journey_10",
@@ -4563,7 +5187,7 @@
     "chunk_index": 10,
     "total_chunks": 13,
     "char_count": 260,
-    "embedding_hash": "69a32265"
+    "embedding_hash": "0666b946"
   },
   {
     "id": "mini-claude-testing-journey_11",
@@ -4587,7 +5211,7 @@
     "chunk_index": 11,
     "total_chunks": 13,
     "char_count": 151,
-    "embedding_hash": "d4a7e62c"
+    "embedding_hash": "11b05d4b"
   },
   {
     "id": "mini-claude-testing-journey_12",
@@ -4611,7 +5235,7 @@
     "chunk_index": 12,
     "total_chunks": 13,
     "char_count": 87,
-    "embedding_hash": "fef1354b"
+    "embedding_hash": "7e6d871c"
   },
   {
     "id": "multi-agent-concurrency-patterns_0",
@@ -4635,7 +5259,7 @@
     "chunk_index": 0,
     "total_chunks": 12,
     "char_count": 84,
-    "embedding_hash": "0ab6ba15"
+    "embedding_hash": "c86da224"
   },
   {
     "id": "multi-agent-concurrency-patterns_1",
@@ -4707,7 +5331,7 @@
     "chunk_index": 3,
     "total_chunks": 12,
     "char_count": 275,
-    "embedding_hash": "9149c70b"
+    "embedding_hash": "de9d8060"
   },
   {
     "id": "multi-agent-concurrency-patterns_4",
@@ -4731,7 +5355,7 @@
     "chunk_index": 4,
     "total_chunks": 12,
     "char_count": 30,
-    "embedding_hash": "aae8d634"
+    "embedding_hash": "038c3f73"
   },
   {
     "id": "multi-agent-concurrency-patterns_5",
@@ -4755,7 +5379,7 @@
     "chunk_index": 5,
     "total_chunks": 12,
     "char_count": 244,
-    "embedding_hash": "dc79d4b6"
+    "embedding_hash": "b2181aa3"
   },
   {
     "id": "multi-agent-concurrency-patterns_6",
@@ -4827,7 +5451,7 @@
     "chunk_index": 8,
     "total_chunks": 12,
     "char_count": 231,
-    "embedding_hash": "75507ac7"
+    "embedding_hash": "dcf1971a"
   },
   {
     "id": "multi-agent-concurrency-patterns_9",
@@ -4851,7 +5475,7 @@
     "chunk_index": 9,
     "total_chunks": 12,
     "char_count": 174,
-    "embedding_hash": "f08e11ad"
+    "embedding_hash": "1760ae60"
   },
   {
     "id": "multi-agent-concurrency-patterns_10",
@@ -4875,7 +5499,7 @@
     "chunk_index": 10,
     "total_chunks": 12,
     "char_count": 68,
-    "embedding_hash": "fc553994"
+    "embedding_hash": "0bf9d503"
   },
   {
     "id": "multi-agent-concurrency-patterns_11",
@@ -4899,7 +5523,7 @@
     "chunk_index": 11,
     "total_chunks": 12,
     "char_count": 42,
-    "embedding_hash": "d61ce03f"
+    "embedding_hash": "ef4fc27a"
   },
   {
     "id": "multi-round-code-review_0",
@@ -4923,7 +5547,7 @@
     "chunk_index": 0,
     "total_chunks": 42,
     "char_count": 150,
-    "embedding_hash": "ff7b8798"
+    "embedding_hash": "8d22410b"
   },
   {
     "id": "multi-round-code-review_1",
@@ -4947,7 +5571,7 @@
     "chunk_index": 1,
     "total_chunks": 42,
     "char_count": 366,
-    "embedding_hash": "c2416b5b"
+    "embedding_hash": "922913b1"
   },
   {
     "id": "multi-round-code-review_2",
@@ -4995,7 +5619,7 @@
     "chunk_index": 3,
     "total_chunks": 42,
     "char_count": 27,
-    "embedding_hash": "bc7b0c40"
+    "embedding_hash": "766816a9"
   },
   {
     "id": "multi-round-code-review_4",
@@ -5043,7 +5667,7 @@
     "chunk_index": 5,
     "total_chunks": 42,
     "char_count": 117,
-    "embedding_hash": "05844197"
+    "embedding_hash": "9cfbb3ad"
   },
   {
     "id": "multi-round-code-review_6",
@@ -5067,7 +5691,7 @@
     "chunk_index": 6,
     "total_chunks": 42,
     "char_count": 21,
-    "embedding_hash": "d569d6ba"
+    "embedding_hash": "c4d0b7f3"
   },
   {
     "id": "multi-round-code-review_7",
@@ -5091,7 +5715,7 @@
     "chunk_index": 7,
     "total_chunks": 42,
     "char_count": 119,
-    "embedding_hash": "0a04f1eb"
+    "embedding_hash": "f671f4b5"
   },
   {
     "id": "multi-round-code-review_8",
@@ -5115,7 +5739,7 @@
     "chunk_index": 8,
     "total_chunks": 42,
     "char_count": 25,
-    "embedding_hash": "ec0385cf"
+    "embedding_hash": "9d106dbd"
   },
   {
     "id": "multi-round-code-review_9",
@@ -5139,7 +5763,7 @@
     "chunk_index": 9,
     "total_chunks": 42,
     "char_count": 67,
-    "embedding_hash": "725b1fc9"
+    "embedding_hash": "1296b52e"
   },
   {
     "id": "multi-round-code-review_10",
@@ -5187,7 +5811,7 @@
     "chunk_index": 11,
     "total_chunks": 42,
     "char_count": 23,
-    "embedding_hash": "5952b1b8"
+    "embedding_hash": "d818eb81"
   },
   {
     "id": "multi-round-code-review_12",
@@ -5211,7 +5835,7 @@
     "chunk_index": 12,
     "total_chunks": 42,
     "char_count": 36,
-    "embedding_hash": "02bdc344"
+    "embedding_hash": "372205ad"
   },
   {
     "id": "multi-round-code-review_13",
@@ -5283,7 +5907,7 @@
     "chunk_index": 15,
     "total_chunks": 42,
     "char_count": 28,
-    "embedding_hash": "f4005a60"
+    "embedding_hash": "83a73931"
   },
   {
     "id": "multi-round-code-review_16",
@@ -5379,7 +6003,7 @@
     "chunk_index": 19,
     "total_chunks": 42,
     "char_count": 25,
-    "embedding_hash": "2de61367"
+    "embedding_hash": "bcf0ebfb"
   },
   {
     "id": "multi-round-code-review_20",
@@ -5475,7 +6099,7 @@
     "chunk_index": 23,
     "total_chunks": 42,
     "char_count": 388,
-    "embedding_hash": "af850542"
+    "embedding_hash": "1c3b5338"
   },
   {
     "id": "multi-round-code-review_1",
@@ -5547,7 +6171,7 @@
     "chunk_index": 26,
     "total_chunks": 42,
     "char_count": 70,
-    "embedding_hash": "94b77b89"
+    "embedding_hash": "d75544ad"
   },
   {
     "id": "multi-round-code-review_27",
@@ -5619,7 +6243,7 @@
     "chunk_index": 29,
     "total_chunks": 42,
     "char_count": 277,
-    "embedding_hash": "6d445976"
+    "embedding_hash": "f16f4508"
   },
   {
     "id": "multi-round-code-review_30",
@@ -5667,7 +6291,7 @@
     "chunk_index": 31,
     "total_chunks": 42,
     "char_count": 179,
-    "embedding_hash": "98d5683f"
+    "embedding_hash": "4e518782"
   },
   {
     "id": "multi-round-code-review_32",
@@ -5739,7 +6363,7 @@
     "chunk_index": 34,
     "total_chunks": 42,
     "char_count": 317,
-    "embedding_hash": "6299b265"
+    "embedding_hash": "591e8c4b"
   },
   {
     "id": "multi-round-code-review_35",
@@ -5763,7 +6387,7 @@
     "chunk_index": 35,
     "total_chunks": 42,
     "char_count": 32,
-    "embedding_hash": "e01ae2cd"
+    "embedding_hash": "5afa86fb"
   },
   {
     "id": "multi-round-code-review_36",
@@ -5787,7 +6411,7 @@
     "chunk_index": 36,
     "total_chunks": 42,
     "char_count": 179,
-    "embedding_hash": "d62f78bb"
+    "embedding_hash": "ec387aa2"
   },
   {
     "id": "multi-round-code-review_37",
@@ -5811,7 +6435,7 @@
     "chunk_index": 37,
     "total_chunks": 42,
     "char_count": 40,
-    "embedding_hash": "835b3b32"
+    "embedding_hash": "95a22a27"
   },
   {
     "id": "multi-round-code-review_38",
@@ -5835,7 +6459,7 @@
     "chunk_index": 38,
     "total_chunks": 42,
     "char_count": 42,
-    "embedding_hash": "a3c838ff"
+    "embedding_hash": "013b0b06"
   },
   {
     "id": "multi-round-code-review_39",
@@ -5859,7 +6483,7 @@
     "chunk_index": 39,
     "total_chunks": 42,
     "char_count": 29,
-    "embedding_hash": "43716a02"
+    "embedding_hash": "5ba8f1b4"
   },
   {
     "id": "multi-round-code-review_40",
@@ -5883,7 +6507,7 @@
     "chunk_index": 40,
     "total_chunks": 42,
     "char_count": 273,
-    "embedding_hash": "83e06e85"
+    "embedding_hash": "b879d3fb"
   },
   {
     "id": "multi-round-code-review_41",
@@ -5931,7 +6555,7 @@
     "chunk_index": 0,
     "total_chunks": 23,
     "char_count": 167,
-    "embedding_hash": "9bc02492"
+    "embedding_hash": "80e2ee3d"
   },
   {
     "id": "python-format-string-brace-dos_1",
@@ -5955,7 +6579,7 @@
     "chunk_index": 1,
     "total_chunks": 23,
     "char_count": 476,
-    "embedding_hash": "b941dc9b"
+    "embedding_hash": "066afba5"
   },
   {
     "id": "python-format-string-brace-dos_2",
@@ -5979,7 +6603,7 @@
     "chunk_index": 2,
     "total_chunks": 23,
     "char_count": 354,
-    "embedding_hash": "730ca81c"
+    "embedding_hash": "6123ced1"
   },
   {
     "id": "python-format-string-brace-dos_3",
@@ -6003,7 +6627,7 @@
     "chunk_index": 3,
     "total_chunks": 23,
     "char_count": 69,
-    "embedding_hash": "128f9cea"
+    "embedding_hash": "b93cbc6a"
   },
   {
     "id": "python-format-string-brace-dos_4",
@@ -6027,7 +6651,7 @@
     "chunk_index": 4,
     "total_chunks": 23,
     "char_count": 19,
-    "embedding_hash": "a82211b6"
+    "embedding_hash": "d2af8142"
   },
   {
     "id": "python-format-string-brace-dos_5",
@@ -6051,7 +6675,7 @@
     "chunk_index": 5,
     "total_chunks": 23,
     "char_count": 158,
-    "embedding_hash": "2fcff782"
+    "embedding_hash": "60a6bb19"
   },
   {
     "id": "python-format-string-brace-dos_6",
@@ -6075,7 +6699,7 @@
     "chunk_index": 6,
     "total_chunks": 23,
     "char_count": 228,
-    "embedding_hash": "d4ac6d89"
+    "embedding_hash": "3b9d8c7c"
   },
   {
     "id": "python-format-string-brace-dos_7",
@@ -6099,7 +6723,7 @@
     "chunk_index": 7,
     "total_chunks": 23,
     "char_count": 48,
-    "embedding_hash": "5a62f09a"
+    "embedding_hash": "d9390cda"
   },
   {
     "id": "python-format-string-brace-dos_8",
@@ -6123,7 +6747,7 @@
     "chunk_index": 8,
     "total_chunks": 23,
     "char_count": 539,
-    "embedding_hash": "16c0c192"
+    "embedding_hash": "809cf740"
   },
   {
     "id": "python-format-string-brace-dos_9",
@@ -6171,7 +6795,7 @@
     "chunk_index": 10,
     "total_chunks": 23,
     "char_count": 413,
-    "embedding_hash": "dafbf91a"
+    "embedding_hash": "6bfbd397"
   },
   {
     "id": "python-format-string-brace-dos_11",
@@ -6219,7 +6843,7 @@
     "chunk_index": 12,
     "total_chunks": 23,
     "char_count": 253,
-    "embedding_hash": "ee93b3f2"
+    "embedding_hash": "0d732f90"
   },
   {
     "id": "python-format-string-brace-dos_0",
@@ -6243,7 +6867,7 @@
     "chunk_index": 13,
     "total_chunks": 23,
     "char_count": 366,
-    "embedding_hash": "d8962b55"
+    "embedding_hash": "e5b482a4"
   },
   {
     "id": "python-format-string-brace-dos_1",
@@ -6267,7 +6891,7 @@
     "chunk_index": 14,
     "total_chunks": 23,
     "char_count": 363,
-    "embedding_hash": "9df6ca5c"
+    "embedding_hash": "5f733e19"
   },
   {
     "id": "python-format-string-brace-dos_2",
@@ -6315,7 +6939,7 @@
     "chunk_index": 16,
     "total_chunks": 23,
     "char_count": 343,
-    "embedding_hash": "f427f1cb"
+    "embedding_hash": "a11d473d"
   },
   {
     "id": "python-format-string-brace-dos_17",
@@ -6339,7 +6963,7 @@
     "chunk_index": 17,
     "total_chunks": 23,
     "char_count": 78,
-    "embedding_hash": "0853c5cf"
+    "embedding_hash": "dd48641f"
   },
   {
     "id": "python-format-string-brace-dos_18",
@@ -6363,7 +6987,7 @@
     "chunk_index": 18,
     "total_chunks": 23,
     "char_count": 323,
-    "embedding_hash": "48378a51"
+    "embedding_hash": "0c9292b7"
   },
   {
     "id": "python-format-string-brace-dos_19",
@@ -6387,7 +7011,7 @@
     "chunk_index": 19,
     "total_chunks": 23,
     "char_count": 242,
-    "embedding_hash": "7c952375"
+    "embedding_hash": "a4ce0e17"
   },
   {
     "id": "python-format-string-brace-dos_20",
@@ -6411,7 +7035,7 @@
     "chunk_index": 20,
     "total_chunks": 23,
     "char_count": 475,
-    "embedding_hash": "05ba3966"
+    "embedding_hash": "7922d728"
   },
   {
     "id": "python-format-string-brace-dos_21",
@@ -6459,7 +7083,7 @@
     "chunk_index": 22,
     "total_chunks": 23,
     "char_count": 287,
-    "embedding_hash": "3595f6c1"
+    "embedding_hash": "8fdefbd1"
   },
   {
     "id": "rag-hybrid-search-implementation_0",
@@ -6483,7 +7107,7 @@
     "chunk_index": 0,
     "total_chunks": 12,
     "char_count": 117,
-    "embedding_hash": "fc9affa5"
+    "embedding_hash": "0434db01"
   },
   {
     "id": "rag-hybrid-search-implementation_1",
@@ -6507,7 +7131,7 @@
     "chunk_index": 1,
     "total_chunks": 12,
     "char_count": 154,
-    "embedding_hash": "8ac989e8"
+    "embedding_hash": "1b93af31"
   },
   {
     "id": "rag-hybrid-search-implementation_2",
@@ -6555,7 +7179,7 @@
     "chunk_index": 3,
     "total_chunks": 12,
     "char_count": 367,
-    "embedding_hash": "1d8a68fa"
+    "embedding_hash": "03486bcd"
   },
   {
     "id": "rag-hybrid-search-implementation_1",
@@ -6603,7 +7227,7 @@
     "chunk_index": 5,
     "total_chunks": 12,
     "char_count": 162,
-    "embedding_hash": "1d3b32c4"
+    "embedding_hash": "d15443f2"
   },
   {
     "id": "rag-hybrid-search-implementation_0",
@@ -6651,7 +7275,7 @@
     "chunk_index": 7,
     "total_chunks": 12,
     "char_count": 342,
-    "embedding_hash": "b5a8141c"
+    "embedding_hash": "010fb831"
   },
   {
     "id": "rag-hybrid-search-implementation_8",
@@ -6675,7 +7299,7 @@
     "chunk_index": 8,
     "total_chunks": 12,
     "char_count": 164,
-    "embedding_hash": "670f02d4"
+    "embedding_hash": "5fa057b9"
   },
   {
     "id": "rag-hybrid-search-implementation_9",
@@ -6750,6 +7374,438 @@
     "embedding_hash": "918b5e23"
   },
   {
+    "id": "rag-on-serverless-json_0",
+    "content": "# Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库\n\n所有 RAG 教程的第一步都是\"装一个向量数据库\"。我的个人网站 Nova 助手也走过了这条路的思考过程，最后的落点是：三个 JSON 文件，一个都没有装。\n\n这不是省事，是一轮约束分析之后的结论。这篇把决策依据、真实数字和升级触发条件都摊开写——如果你也在 Serverless 环境里做小规模 RAG，大概率会遇到一样的选择题。",
+    "source": "blog",
+    "source_id": "rag-on-serverless-json",
+    "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\rag-on-serverless-json.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "rag-on-serverless-json",
+        "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+        "doc_id": "3902415dd0cb"
+      },
+      "chunk_type": "text",
+      "section_header": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+      "section_level": 1
+    },
+    "chunk_index": 0,
+    "total_chunks": 18,
+    "char_count": 216,
+    "embedding_hash": "43c5675f"
+  },
+  {
+    "id": "rag-on-serverless-json_1",
+    "content": "## 先看规模现实\n\nNova 的知识库构成：8 个项目数据、1 份个人简介、17 篇博客、66 份项目文档。分块策略是 400 字符、重叠 50，构建完的索引全貌：\n\n| 指标 | 数值 |\n|------|------|\n| 原始文档 | 92 篇 |\n| 文档片段 | 563 个 |\n| 向量维度 | 1024（bge-large-zh-v1.5） |\n| documents.json | 约 634KB |\n| embeddings.json | 约 12.8MB |\n| metadata.json | 不到 1KB |\n\n先算一笔检索账：一次查询要对 563 个片段各算一次余弦相似度，每次是 1024 维的点积。563 × 1024 ≈ 57.6 万次乘加，用 Float32Array 在单核上跑，这是**亚毫秒到毫秒级**的活。暴力扫一遍的全量计算，甚至不需要任何近似算法（ANN）。\n\n这就是选型的起点：**当数据量小到暴力检索都够快的时候，为它引入一套专门的检索基础设施，成本结构就是错的**。",
+    "source": "blog",
+    "source_id": "rag-on-serverless-json",
+    "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\rag-on-serverless-json.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "rag-on-serverless-json",
+        "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+        "doc_id": "3902415dd0cb"
+      },
+      "chunk_type": "text",
+      "section_header": "先看规模现实",
+      "section_level": 2
+    },
+    "chunk_index": 1,
+    "total_chunks": 18,
+    "char_count": 460,
+    "embedding_hash": "e07e421c"
+  },
+  {
+    "id": "rag-on-serverless-json_2",
+    "content": "## Serverless 的约束清单\n\n第二个输入是部署环境的硬约束。目标平台是 Serverless（Vercel 一类），它对\"传统向量数据库方案\"相当不友好：\n\n**没有常驻进程。** Milvus、Qdrant 开源版是常驻服务，Serverless 函数跑完就释放，没有地方让它们住。\n\n**没有 GPU。** Embedding 模型在 Serverless 运行时里完全不存在——而且这套方案连查询侧都不需要它。这里有个设计技巧，放在方案一节讲。\n\n**冷启动按秒计。** 函数实例闲置即销毁，每次唤醒都要付出初始化成本。任何\"启动一个数据库连接池\"的方案都在冷启动路径上加重量。\n\n**按调用计费。** 多一跳内网/公网调用就多一份开销，还多一个故障点。\n\n把候选项挨个过筛：\n\n| 方案 | 结果 | 淘汰原因 |\n|------|------|----------|\n| 云托管向量库（Pinecone 等） | ❌ | 按月固定费用 + 网络往返延迟，为 563 个向量买单 |\n| 自建向量库（Milvus/Qdrant） | ❌ | 需要常驻服务，Serverless 没有落脚点 |\n| 嵌入式引擎（FAISS） | ❌ | Python/C++ 二进制依赖，函数运行时带不动 |\n| **预构建索引 + JSON** | ✅ | 零基础设施，静态文件随站点部署 |",
+    "source": "blog",
+    "source_id": "rag-on-serverless-json",
+    "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\rag-on-serverless-json.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "rag-on-serverless-json",
+        "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+        "doc_id": "3902415dd0cb"
+      },
+      "chunk_type": "text",
+      "section_header": "Serverless 的约束清单",
+      "section_level": 2
+    },
+    "chunk_index": 2,
+    "total_chunks": 18,
+    "char_count": 598,
+    "embedding_hash": "3952a360"
+  },
+  {
+    "id": "rag-on-serverless-json_3",
+    "content": "## 预构建索引方案\n\n核心思路：**把\"建索引\"和\"用索引\"彻底分离，前者离线做一次，后者运行时零依赖**。",
+    "source": "blog",
+    "source_id": "rag-on-serverless-json",
+    "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\rag-on-serverless-json.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "rag-on-serverless-json",
+        "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+        "doc_id": "3902415dd0cb"
+      },
+      "chunk_type": "text",
+      "section_header": "预构建索引方案",
+      "section_level": 2
+    },
+    "chunk_index": 3,
+    "total_chunks": 18,
+    "char_count": 55,
+    "embedding_hash": "2cbd7d2d"
+  },
+  {
+    "id": "rag-on-serverless-json_4",
+    "content": "### 构建时（本地，一次性）\n\nEmbedding 用本地 bge-large-zh-v1.5 模型离线算完，写进 JSON：\n\n```bash",
+    "source": "blog",
+    "source_id": "rag-on-serverless-json",
+    "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\rag-on-serverless-json.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "rag-on-serverless-json",
+        "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+        "doc_id": "3902415dd0cb"
+      },
+      "chunk_type": "text",
+      "section_header": "构建时（本地，一次性）",
+      "section_level": 3
+    },
+    "chunk_index": 4,
+    "total_chunks": 18,
+    "char_count": 73,
+    "embedding_hash": "8fe7345d"
+  },
+  {
+    "id": "rag-on-serverless-json_5",
+    "content": "# 1. 提取：从 data/、content/blog/、docs/projects/ 抽取内容并分块\npython rag/scripts/extract_data.py",
+    "source": "blog",
+    "source_id": "rag-on-serverless-json",
+    "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\rag-on-serverless-json.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "rag-on-serverless-json",
+        "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+        "doc_id": "3902415dd0cb"
+      },
+      "chunk_type": "text",
+      "section_header": "1. 提取：从 data/、content/blog/、docs/projects/ 抽取内容并分块",
+      "section_level": 1
+    },
+    "chunk_index": 5,
+    "total_chunks": 18,
+    "char_count": 87,
+    "embedding_hash": "7aaece0c"
+  },
+  {
+    "id": "rag-on-serverless-json_6",
+    "content": "# 2. 构建：本地 GPU 算 embedding（CUDA 约 7 秒，CPU 约 30 秒）\npython rag/scripts/build_index.py\n```\n\n产物是三个 JSON 文件，直接放 `public/rag-index/`，随站点静态部署——不需要任何运行时存储服务。这里有个容易忽略的工程细节：**增量构建**。脚本会计算数据源的哈希写进 metadata.json，再次构建时先比对哈希，内容没变就跳过重算。563 个片段的 embedding 重算只要 7 秒，但这个习惯让\"数据一改就全量重建\"的焦虑消失了。",
+    "source": "blog",
+    "source_id": "rag-on-serverless-json",
+    "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\rag-on-serverless-json.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "rag-on-serverless-json",
+        "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+        "doc_id": "3902415dd0cb"
+      },
+      "chunk_type": "text",
+      "section_header": "2. 构建：本地 GPU 算 embedding（CUDA 约 7 秒，CPU 约 30 秒）",
+      "section_level": 1
+    },
+    "chunk_index": 6,
+    "total_chunks": 18,
+    "char_count": 273,
+    "embedding_hash": "5bf491f3"
+  },
+  {
+    "id": "rag-on-serverless-json_0",
+    "content": "### 运行时（函数内，按需加载）\n\n```ts\n// rag/utils/ragIndex.ts（简化）\nlet documents: RagDocument[] | null = null;\nlet embeddings: RagEmbeddings | null = null;\nlet indexLoadError: string | null = null;\n\n  if (documents && embeddings) return true;  // 进程内缓存，只加载一次\n  if (indexLoadError) return false;          // 失败也被记住，不反复重试\n  try {\n    documents = JSON.parse(\n      fs.readFileSync(path.join(indexPath, 'documents.",
+    "source": "blog",
+    "source_id": "rag-on-serverless-json",
+    "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\rag-on-serverless-json.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "rag-on-serverless-json",
+        "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+        "doc_id": "3902415dd0cb"
+      },
+      "chunk_type": "text",
+      "section_header": "运行时（函数内，按需加载）",
+      "section_level": 3
+    },
+    "chunk_index": 7,
+    "total_chunks": 18,
+    "char_count": 397,
+    "embedding_hash": "28706522"
+  },
+  {
+    "id": "rag-on-serverless-json_1",
+    "content": "fs.readFileSync(path.join(indexPath, 'documents.json'), 'utf-8')\n    );\n    embeddings = JSON.parse(\n      fs.readFileSync(path.join(indexPath, 'embeddings.json'), 'utf-8')\n    );\n    return true;\n  } catch (error) {\n    indexLoadError = /* 记录错误信息，供 503 诊断 */;\n    return false;\n  }\n}\n```\n\n冷启动要多花一次 12.8MB 的读盘和 JSON.parse，量级在几百毫秒；之后这个函数实例存活期间的所有请求都走内存，检索回到毫秒级。",
+    "source": "blog",
+    "source_id": "rag-on-serverless-json",
+    "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\rag-on-serverless-json.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "rag-on-serverless-json",
+        "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+        "doc_id": "3902415dd0cb"
+      },
+      "chunk_type": "text",
+      "section_header": "运行时（函数内，按需加载）",
+      "section_level": 3
+    },
+    "chunk_index": 8,
+    "total_chunks": 18,
+    "char_count": 360,
+    "embedding_hash": "1d0bc126"
+  },
+  {
+    "id": "rag-on-serverless-json_2",
+    "content": "JSON.parse，量级在几百毫秒；之后这个函数实例存活期间的所有请求都走内存，检索回到毫秒级。加载失败的原因会被缓存（API 返回 503 时带出诊断信息），也不会每个请求都重试一遍大文件 IO。**几百毫秒的一次性成本，换掉一个按月计费的数据库**——这笔账在个人项目规模下没有悬念。\n\n检索侧还有一个把\"运行时无模型\"彻底闭环的技巧：**查询向量不靠 embedding 模型现算**。关键词检索先跑，取命中的 Top-3 片段的向量求平均，作为\"伪查询向量\"去做向量检索——embedding 模型被完全挡在运行时之外。代价是查询词与文档完全不重叠时召回会弱一些，恰好由关键词侧兜底。这套机制的细节写在《RAG 混合搜索实战》里，这篇不重复。",
+    "source": "blog",
+    "source_id": "rag-on-serverless-json",
+    "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\rag-on-serverless-json.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "rag-on-serverless-json",
+        "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+        "doc_id": "3902415dd0cb"
+      },
+      "chunk_type": "text",
+      "section_header": "运行时（函数内，按需加载）",
+      "section_level": 3
+    },
+    "chunk_index": 9,
+    "total_chunks": 18,
+    "char_count": 326,
+    "embedding_hash": "fe20dc3c"
+  },
+  {
+    "id": "rag-on-serverless-json_10",
+    "content": "## 一个真实优化：砍掉内部 HTTP 回环\n\n方案跑起来之后，代码审查抓到一个典型浪费：Chat API 检索资料的方式是**请求自己的另一个 API**。\n\n```\n改造前：/api/chat → fetch('/api/rag') → 再起一次函数调用 → 返回结果\n改造后：/api/chat → import { hybridSearch } → 进程内直接调用\n```\n\nServerless 里那条 fetch 意味着：一次额外的网络往返，很可能还有一次额外的函数调用计费，外加 /api/rag 的 CORS、校验逻辑全部白跑一遍。而 /api/chat 和 /api/rag 在同一个进程里——它们共享同一个模块缓存，`hybridSearch` 直接 import 进来就是零成本调用。\n\n这个案例的通用教训：**同一个运行时里的两个函数之间，网络调用几乎总是错的**。模块边界用 import 表达，HTTP 边界留给真正跨进程的地方。",
+    "source": "blog",
+    "source_id": "rag-on-serverless-json",
+    "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\rag-on-serverless-json.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "rag-on-serverless-json",
+        "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+        "doc_id": "3902415dd0cb"
+      },
+      "chunk_type": "text",
+      "section_header": "一个真实优化：砍掉内部 HTTP 回环",
+      "section_level": 2
+    },
+    "chunk_index": 10,
+    "total_chunks": 18,
+    "char_count": 429,
+    "embedding_hash": "b68027d3"
+  },
+  {
+    "id": "rag-on-serverless-json_11",
+    "content": "## 增量更新流程\n\n数据有变化时的完整操作：\n\n```bash",
+    "source": "blog",
+    "source_id": "rag-on-serverless-json",
+    "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\rag-on-serverless-json.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "rag-on-serverless-json",
+        "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+        "doc_id": "3902415dd0cb"
+      },
+      "chunk_type": "text",
+      "section_header": "增量更新流程",
+      "section_level": 2
+    },
+    "chunk_index": 11,
+    "total_chunks": 18,
+    "char_count": 32,
+    "embedding_hash": "14f5a112"
+  },
+  {
+    "id": "rag-on-serverless-json_12",
+    "content": "# 新增/修改博客或文档后，必须先重新提取（build 脚本只读提取产物）\npython rag/scripts/extract_data.py",
+    "source": "blog",
+    "source_id": "rag-on-serverless-json",
+    "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\rag-on-serverless-json.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "rag-on-serverless-json",
+        "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+        "doc_id": "3902415dd0cb"
+      },
+      "chunk_type": "text",
+      "section_header": "新增/修改博客或文档后，必须先重新提取（build 脚本只读提取产物）",
+      "section_level": 1
+    },
+    "chunk_index": 12,
+    "total_chunks": 18,
+    "char_count": 72,
+    "embedding_hash": "d900727d"
+  },
+  {
+    "id": "rag-on-serverless-json_13",
+    "content": "# 智能构建：哈希比对，有变化才重算 embedding\npython rag/scripts/build_index.py --check\n```\n\n整个流程在本机一分钟内完成，产物提交进 git，部署时随静态文件走。**索引的版本管理和代码是同一套**——这是个被低估的好处：索引、内容、代码三者永远原子地对齐，不存在\"数据库里是新数据、代码里是旧分块逻辑\"的中间态。",
+    "source": "blog",
+    "source_id": "rag-on-serverless-json",
+    "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\rag-on-serverless-json.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "rag-on-serverless-json",
+        "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+        "doc_id": "3902415dd0cb"
+      },
+      "chunk_type": "text",
+      "section_header": "智能构建：哈希比对，有变化才重算 embedding",
+      "section_level": 1
+    },
+    "chunk_index": 13,
+    "total_chunks": 18,
+    "char_count": 186,
+    "embedding_hash": "332c7e22"
+  },
+  {
+    "id": "rag-on-serverless-json_14",
+    "content": "## 什么时候该升级\n\n这套方案有明确的舒适区，也有明确的悬崖边界。四个信号出现任何一个，就该换方案了：\n\n| 信号 | 阈值参考 | 升级方向 |\n|------|----------|----------|\n| 片段数量 | 超过 1 万级 | pgvector / Qdrant，暴力扫描开始变慢 |\n| 检索延迟 | p95 超过 100ms | 近似检索（ANN）或专用引擎 |\n| 部署形态 | 多实例、多区域 | 集中式索引服务，避免每个实例各载一份 |\n| 更新频率 | 分钟级增量 | 预构建的重建周期跟不上写入速度 |\n\n我的判断是个人作品集网站十年内大概率都待在舒适区里：内容增长是线性的、可预期的，一年写 20 篇博客，片段数离 1 万还有两个数量级。",
+    "source": "blog",
+    "source_id": "rag-on-serverless-json",
+    "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\rag-on-serverless-json.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "rag-on-serverless-json",
+        "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+        "doc_id": "3902415dd0cb"
+      },
+      "chunk_type": "text",
+      "section_header": "什么时候该升级",
+      "section_level": 2
+    },
+    "chunk_index": 14,
+    "total_chunks": 18,
+    "char_count": 338,
+    "embedding_hash": "4b09896d"
+  },
+  {
+    "id": "rag-on-serverless-json_15",
+    "content": "## 总结\n\n| 问题 | 选择 | 依据 |\n|------|------|------|\n| 向量存哪 | 三个 JSON，随静态资源部署 | 12.8MB、563 条，暴力检索毫秒级 |\n| Embedding 谁来算 | 本地 GPU 离线预构建 + 伪查询向量 | 运行时无模型，构建只要 7 秒 |\n| 函数间怎么调用 | 进程内 import | Serverless 里 HTTP 回环是纯浪费 |\n| 索引怎么更新 | 数据哈希 + 增量构建 | 内容与代码原子对齐 |\n| 何时升级 | 万级片段 / p95 超 100ms | 边界清晰，到点再换 |\n\n一句话版本：**架构选型跟着规模走，不跟着教程走**。向量数据库解决的是\"百万级向量、高并发检索\"的问题，而我的问题规模差了三个数量级——为一个不存在的问题部署基础设施，才是真正的过度设计。",
+    "source": "blog",
+    "source_id": "rag-on-serverless-json",
+    "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\rag-on-serverless-json.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "rag-on-serverless-json",
+        "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+        "doc_id": "3902415dd0cb"
+      },
+      "chunk_type": "text",
+      "section_header": "总结",
+      "section_level": 2
+    },
+    "chunk_index": 15,
+    "total_chunks": 18,
+    "char_count": 383,
+    "embedding_hash": "4338f7e3"
+  },
+  {
+    "id": "rag-on-serverless-json_16",
+    "content": "## 相关文件\n\n- `rag/utils/ragIndex.ts` — 索引懒加载 + 进程内混合检索\n- `rag/scripts/build_index.py` — 增量构建（数据哈希 + 脏检查）\n- `rag/scripts/extract_data.py` — 内容提取与分块\n- `public/rag-index/` — 三个 JSON 产物",
+    "source": "blog",
+    "source_id": "rag-on-serverless-json",
+    "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\rag-on-serverless-json.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "rag-on-serverless-json",
+        "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+        "doc_id": "3902415dd0cb"
+      },
+      "chunk_type": "text",
+      "section_header": "相关文件",
+      "section_level": 2
+    },
+    "chunk_index": 16,
+    "total_chunks": 18,
+    "char_count": 179,
+    "embedding_hash": "6dfd85d2"
+  },
+  {
+    "id": "rag-on-serverless-json_17",
+    "content": "## 参考资料\n\n- 互链文章：《RAG 混合搜索实战：关键词 + 向量 + RRF 融合》——检索算法实现细节\n- [bge-large-zh-v1.5 — BAAI Embedding 模型](https://huggingface.co/BAAI/bge-large-zh-v1.5)\n- [pgvector — PostgreSQL 向量扩展](https://github.com/pgvector/pgvector)\n- [Vercel Functions — 限制与冷启动](https://vercel.com/docs/functions)",
+    "source": "blog",
+    "source_id": "rag-on-serverless-json",
+    "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+    "metadata": {
+      "original_metadata": {
+        "file": "content\\blog\\rag-on-serverless-json.mdx",
+        "type": "mdx",
+        "source": "blog",
+        "source_id": "rag-on-serverless-json",
+        "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
+        "doc_id": "3902415dd0cb"
+      },
+      "chunk_type": "text",
+      "section_header": "参考资料",
+      "section_level": 2
+    },
+    "chunk_index": 17,
+    "total_chunks": 18,
+    "char_count": 279,
+    "embedding_hash": "ed0316d3"
+  },
+  {
     "id": "rag-powered-campus-assistant_0",
     "content": "# RAG 技术实战\n\nRAG (Retrieval-Augmented Generation) 是让 LLM 接入私有知识的关键技术。本文分享校园百事通项目的技术选型和实现。",
     "source": "blog",
@@ -6771,7 +7827,7 @@
     "chunk_index": 0,
     "total_chunks": 16,
     "char_count": 88,
-    "embedding_hash": "a332c39f"
+    "embedding_hash": "8c83571f"
   },
   {
     "id": "rag-powered-campus-assistant_1",
@@ -6819,7 +7875,7 @@
     "chunk_index": 2,
     "total_chunks": 16,
     "char_count": 240,
-    "embedding_hash": "6824e3f8"
+    "embedding_hash": "d98ae899"
   },
   {
     "id": "rag-powered-campus-assistant_3",
@@ -6891,7 +7947,7 @@
     "chunk_index": 5,
     "total_chunks": 16,
     "char_count": 75,
-    "embedding_hash": "c2d65505"
+    "embedding_hash": "7f4198aa"
   },
   {
     "id": "rag-powered-campus-assistant_6",
@@ -6915,7 +7971,7 @@
     "chunk_index": 6,
     "total_chunks": 16,
     "char_count": 19,
-    "embedding_hash": "afc6727b"
+    "embedding_hash": "7af6d2c0"
   },
   {
     "id": "rag-powered-campus-assistant_7",
@@ -6939,7 +7995,7 @@
     "chunk_index": 7,
     "total_chunks": 16,
     "char_count": 151,
-    "embedding_hash": "bfd86995"
+    "embedding_hash": "0f36d5c2"
   },
   {
     "id": "rag-powered-campus-assistant_8",
@@ -6963,7 +8019,7 @@
     "chunk_index": 8,
     "total_chunks": 16,
     "char_count": 18,
-    "embedding_hash": "8593e33e"
+    "embedding_hash": "66b020b6"
   },
   {
     "id": "rag-powered-campus-assistant_9",
@@ -6987,7 +8043,7 @@
     "chunk_index": 9,
     "total_chunks": 16,
     "char_count": 182,
-    "embedding_hash": "7bcc3f61"
+    "embedding_hash": "533fdd5a"
   },
   {
     "id": "rag-powered-campus-assistant_10",
@@ -7059,7 +8115,7 @@
     "chunk_index": 12,
     "total_chunks": 16,
     "char_count": 41,
-    "embedding_hash": "ddc5f3ad"
+    "embedding_hash": "952a74ae"
   },
   {
     "id": "rag-powered-campus-assistant_13",
@@ -7107,7 +8163,7 @@
     "chunk_index": 14,
     "total_chunks": 16,
     "char_count": 80,
-    "embedding_hash": "8f9f0b2a"
+    "embedding_hash": "d6ad8fb4"
   },
   {
     "id": "rag-powered-campus-assistant_15",
@@ -7131,7 +8187,7 @@
     "chunk_index": 15,
     "total_chunks": 16,
     "char_count": 72,
-    "embedding_hash": "a0582274"
+    "embedding_hash": "5da64187"
   },
   {
     "id": "sse-streaming-for-ai-apps_0",
@@ -7227,7 +8283,7 @@
     "chunk_index": 3,
     "total_chunks": 21,
     "char_count": 400,
-    "embedding_hash": "7ce35e04"
+    "embedding_hash": "a073540f"
   },
   {
     "id": "sse-streaming-for-ai-apps_1",
@@ -7275,7 +8331,7 @@
     "chunk_index": 5,
     "total_chunks": 21,
     "char_count": 321,
-    "embedding_hash": "d257e708"
+    "embedding_hash": "60837c9f"
   },
   {
     "id": "sse-streaming-for-ai-apps_6",
@@ -7323,7 +8379,7 @@
     "chunk_index": 7,
     "total_chunks": 21,
     "char_count": 394,
-    "embedding_hash": "0fc3d7e8"
+    "embedding_hash": "a0a63de3"
   },
   {
     "id": "sse-streaming-for-ai-apps_1",
@@ -7371,7 +8427,7 @@
     "chunk_index": 9,
     "total_chunks": 21,
     "char_count": 365,
-    "embedding_hash": "fa76df83"
+    "embedding_hash": "eda36592"
   },
   {
     "id": "sse-streaming-for-ai-apps_3",
@@ -7395,7 +8451,7 @@
     "chunk_index": 10,
     "total_chunks": 21,
     "char_count": 279,
-    "embedding_hash": "b9c94fac"
+    "embedding_hash": "4a7ebdda"
   },
   {
     "id": "sse-streaming-for-ai-apps_11",
@@ -7491,7 +8547,7 @@
     "chunk_index": 14,
     "total_chunks": 21,
     "char_count": 170,
-    "embedding_hash": "310cc650"
+    "embedding_hash": "8fef0b05"
   },
   {
     "id": "sse-streaming-for-ai-apps_15",
@@ -7515,7 +8571,7 @@
     "chunk_index": 15,
     "total_chunks": 21,
     "char_count": 149,
-    "embedding_hash": "9938b6fd"
+    "embedding_hash": "b07a6755"
   },
   {
     "id": "sse-streaming-for-ai-apps_16",
@@ -7539,7 +8595,7 @@
     "chunk_index": 16,
     "total_chunks": 21,
     "char_count": 330,
-    "embedding_hash": "34c62a6c"
+    "embedding_hash": "8f654a44"
   },
   {
     "id": "sse-streaming-for-ai-apps_17",
@@ -7659,7 +8715,7 @@
     "chunk_index": 0,
     "total_chunks": 14,
     "char_count": 117,
-    "embedding_hash": "9d861df1"
+    "embedding_hash": "4fbf0f0e"
   },
   {
     "id": "windows-ci-pitfalls_1",
@@ -7683,7 +8739,7 @@
     "chunk_index": 1,
     "total_chunks": 14,
     "char_count": 422,
-    "embedding_hash": "1127801d"
+    "embedding_hash": "45399eb0"
   },
   {
     "id": "windows-ci-pitfalls_2",
@@ -7707,7 +8763,7 @@
     "chunk_index": 2,
     "total_chunks": 14,
     "char_count": 75,
-    "embedding_hash": "f9dc5fa9"
+    "embedding_hash": "f0a7aa60"
   },
   {
     "id": "windows-ci-pitfalls_3",
@@ -7731,7 +8787,7 @@
     "chunk_index": 3,
     "total_chunks": 14,
     "char_count": 81,
-    "embedding_hash": "420dca83"
+    "embedding_hash": "ae7fac1f"
   },
   {
     "id": "windows-ci-pitfalls_4",
@@ -7779,7 +8835,7 @@
     "chunk_index": 5,
     "total_chunks": 14,
     "char_count": 156,
-    "embedding_hash": "31a0ff11"
+    "embedding_hash": "86110c02"
   },
   {
     "id": "windows-ci-pitfalls_6",
@@ -7803,7 +8859,7 @@
     "chunk_index": 6,
     "total_chunks": 14,
     "char_count": 119,
-    "embedding_hash": "828933bd"
+    "embedding_hash": "8b916125"
   },
   {
     "id": "windows-ci-pitfalls_7",
@@ -7827,7 +8883,7 @@
     "chunk_index": 7,
     "total_chunks": 14,
     "char_count": 84,
-    "embedding_hash": "06d3b169"
+    "embedding_hash": "b5a12045"
   },
   {
     "id": "windows-ci-pitfalls_8",
@@ -7851,7 +8907,7 @@
     "chunk_index": 8,
     "total_chunks": 14,
     "char_count": 74,
-    "embedding_hash": "ce69342a"
+    "embedding_hash": "0e60229b"
   },
   {
     "id": "windows-ci-pitfalls_9",
@@ -7875,7 +8931,7 @@
     "chunk_index": 9,
     "total_chunks": 14,
     "char_count": 76,
-    "embedding_hash": "91f49496"
+    "embedding_hash": "133447f8"
   },
   {
     "id": "windows-ci-pitfalls_10",
@@ -7899,7 +8955,7 @@
     "chunk_index": 10,
     "total_chunks": 14,
     "char_count": 78,
-    "embedding_hash": "0630477b"
+    "embedding_hash": "5f9ec3be"
   },
   {
     "id": "windows-ci-pitfalls_11",
@@ -7923,7 +8979,7 @@
     "chunk_index": 11,
     "total_chunks": 14,
     "char_count": 71,
-    "embedding_hash": "83addf59"
+    "embedding_hash": "f7ae8d79"
   },
   {
     "id": "windows-ci-pitfalls_12",
@@ -7947,7 +9003,7 @@
     "chunk_index": 12,
     "total_chunks": 14,
     "char_count": 465,
-    "embedding_hash": "e708aa6e"
+    "embedding_hash": "087f36b7"
   },
   {
     "id": "windows-ci-pitfalls_13",
@@ -7994,7 +9050,7 @@
     "chunk_index": 0,
     "total_chunks": 1,
     "char_count": 80,
-    "embedding_hash": "8176a8ca"
+    "embedding_hash": "3b9fbb0f"
   },
   {
     "id": "agenthub_项目概述_0",
@@ -8017,7 +9073,7 @@
     "chunk_index": 0,
     "total_chunks": 1,
     "char_count": 326,
-    "embedding_hash": "9411c2bb"
+    "embedding_hash": "675c0672"
   },
   {
     "id": "agenthub_核心架构_0",
@@ -8086,7 +9142,7 @@
     "chunk_index": 0,
     "total_chunks": 1,
     "char_count": 309,
-    "embedding_hash": "0b2a0fdb"
+    "embedding_hash": "8ada40d6"
   },
   {
     "id": "agenthub_测试质量方法论_0",
@@ -8132,7 +9188,7 @@
     "chunk_index": 0,
     "total_chunks": 1,
     "char_count": 145,
-    "embedding_hash": "47f377eb"
+    "embedding_hash": "cfda5083"
   },
   {
     "id": "campus-agent_overview_0",
@@ -8178,7 +9234,7 @@
     "chunk_index": 0,
     "total_chunks": 1,
     "char_count": 254,
-    "embedding_hash": "58586f39"
+    "embedding_hash": "4885d53c"
   },
   {
     "id": "campus-agent_技术架构_0",
@@ -8201,7 +9257,7 @@
     "chunk_index": 0,
     "total_chunks": 6,
     "char_count": 400,
-    "embedding_hash": "a3867415"
+    "embedding_hash": "19b28f7e"
   },
   {
     "id": "campus-agent_技术架构_1",
@@ -8270,7 +9326,7 @@
     "chunk_index": 3,
     "total_chunks": 6,
     "char_count": 367,
-    "embedding_hash": "16c3daaa"
+    "embedding_hash": "803e3624"
   },
   {
     "id": "campus-agent_技术架构_4",
@@ -8293,7 +9349,7 @@
     "chunk_index": 4,
     "total_chunks": 6,
     "char_count": 353,
-    "embedding_hash": "cb937d2c"
+    "embedding_hash": "363ade09"
   },
   {
     "id": "campus-agent_技术架构_5",
@@ -8316,7 +9372,7 @@
     "chunk_index": 5,
     "total_chunks": 6,
     "char_count": 235,
-    "embedding_hash": "df8fee4c"
+    "embedding_hash": "e348c82c"
   },
   {
     "id": "campus-agent_核心功能_0",
@@ -8385,7 +9441,7 @@
     "chunk_index": 2,
     "total_chunks": 13,
     "char_count": 394,
-    "embedding_hash": "853ba551"
+    "embedding_hash": "98b0ebdc"
   },
   {
     "id": "campus-agent_核心功能_3",
@@ -8408,7 +9464,7 @@
     "chunk_index": 3,
     "total_chunks": 13,
     "char_count": 367,
-    "embedding_hash": "55b38805"
+    "embedding_hash": "68f5bff4"
   },
   {
     "id": "campus-agent_核心功能_4",
@@ -8477,7 +9533,7 @@
     "chunk_index": 6,
     "total_chunks": 13,
     "char_count": 388,
-    "embedding_hash": "a45e5067"
+    "embedding_hash": "15d567ae"
   },
   {
     "id": "campus-agent_核心功能_7",
@@ -8615,7 +9671,7 @@
     "chunk_index": 12,
     "total_chunks": 13,
     "char_count": 248,
-    "embedding_hash": "47380f35"
+    "embedding_hash": "d04340f2"
   },
   {
     "id": "campus-agent_设计决策_0",
@@ -8638,7 +9694,7 @@
     "chunk_index": 0,
     "total_chunks": 3,
     "char_count": 366,
-    "embedding_hash": "ee71d7a2"
+    "embedding_hash": "7ed2e8c1"
   },
   {
     "id": "campus-agent_设计决策_1",
@@ -8661,7 +9717,7 @@
     "chunk_index": 1,
     "total_chunks": 3,
     "char_count": 394,
-    "embedding_hash": "37fecea9"
+    "embedding_hash": "5da808bd"
   },
   {
     "id": "campus-agent_设计决策_2",
@@ -8684,7 +9740,7 @@
     "chunk_index": 2,
     "total_chunks": 3,
     "char_count": 320,
-    "embedding_hash": "fa415c6a"
+    "embedding_hash": "ca711b41"
   },
   {
     "id": "campus-agent_测试覆盖_0",
@@ -8822,7 +9878,7 @@
     "chunk_index": 2,
     "total_chunks": 3,
     "char_count": 300,
-    "embedding_hash": "a403c1df"
+    "embedding_hash": "48a3b04e"
   },
   {
     "id": "campus-agent_项目亮点_0",
@@ -8868,7 +9924,7 @@
     "chunk_index": 1,
     "total_chunks": 2,
     "char_count": 352,
-    "embedding_hash": "56cc469e"
+    "embedding_hash": "46718e12"
   },
   {
     "id": "campus-agent_附录_0",
@@ -8960,7 +10016,7 @@
     "chunk_index": 0,
     "total_chunks": 2,
     "char_count": 389,
-    "embedding_hash": "a4e9bd74"
+    "embedding_hash": "56da47c5"
   },
   {
     "id": "codecraft-agent_project_overview_1",
@@ -9006,7 +10062,7 @@
     "chunk_index": 0,
     "total_chunks": 8,
     "char_count": 368,
-    "embedding_hash": "87fcd9ee"
+    "embedding_hash": "8c7fb65c"
   },
   {
     "id": "codecraft-agent_technical_architecture_1",
@@ -9121,7 +10177,7 @@
     "chunk_index": 5,
     "total_chunks": 8,
     "char_count": 364,
-    "embedding_hash": "5756b3de"
+    "embedding_hash": "fc6d724f"
   },
   {
     "id": "codecraft-agent_technical_architecture_6",
@@ -9144,7 +10200,7 @@
     "chunk_index": 6,
     "total_chunks": 8,
     "char_count": 391,
-    "embedding_hash": "3c998305"
+    "embedding_hash": "47eb9385"
   },
   {
     "id": "codecraft-agent_technical_architecture_7",
@@ -9190,7 +10246,7 @@
     "chunk_index": 0,
     "total_chunks": 20,
     "char_count": 388,
-    "embedding_hash": "15c0e58c"
+    "embedding_hash": "724079fc"
   },
   {
     "id": "codecraft-agent_core_features_1",
@@ -9213,7 +10269,7 @@
     "chunk_index": 1,
     "total_chunks": 20,
     "char_count": 400,
-    "embedding_hash": "ebc027f9"
+    "embedding_hash": "72748243"
   },
   {
     "id": "codecraft-agent_core_features_2",
@@ -9236,7 +10292,7 @@
     "chunk_index": 2,
     "total_chunks": 20,
     "char_count": 400,
-    "embedding_hash": "ce1e4ada"
+    "embedding_hash": "2f6d3f50"
   },
   {
     "id": "codecraft-agent_core_features_3",
@@ -9282,7 +10338,7 @@
     "chunk_index": 4,
     "total_chunks": 20,
     "char_count": 400,
-    "embedding_hash": "c8f7ebce"
+    "embedding_hash": "e0f8a975"
   },
   {
     "id": "codecraft-agent_core_features_5",
@@ -9305,7 +10361,7 @@
     "chunk_index": 5,
     "total_chunks": 20,
     "char_count": 352,
-    "embedding_hash": "30e609cd"
+    "embedding_hash": "fcc8cee7"
   },
   {
     "id": "codecraft-agent_core_features_6",
@@ -9328,7 +10384,7 @@
     "chunk_index": 6,
     "total_chunks": 20,
     "char_count": 390,
-    "embedding_hash": "eec549f6"
+    "embedding_hash": "217e25f4"
   },
   {
     "id": "codecraft-agent_core_features_7",
@@ -9374,7 +10430,7 @@
     "chunk_index": 8,
     "total_chunks": 20,
     "char_count": 389,
-    "embedding_hash": "d73c6433"
+    "embedding_hash": "26af830e"
   },
   {
     "id": "codecraft-agent_core_features_9",
@@ -9397,7 +10453,7 @@
     "chunk_index": 9,
     "total_chunks": 20,
     "char_count": 351,
-    "embedding_hash": "ea8db349"
+    "embedding_hash": "1e69ce09"
   },
   {
     "id": "codecraft-agent_core_features_10",
@@ -9443,7 +10499,7 @@
     "chunk_index": 11,
     "total_chunks": 20,
     "char_count": 395,
-    "embedding_hash": "659b89d4"
+    "embedding_hash": "c4c13e95"
   },
   {
     "id": "codecraft-agent_core_features_12",
@@ -9558,7 +10614,7 @@
     "chunk_index": 16,
     "total_chunks": 20,
     "char_count": 342,
-    "embedding_hash": "da6e0bd9"
+    "embedding_hash": "9003112e"
   },
   {
     "id": "codecraft-agent_core_features_17",
@@ -9581,7 +10637,7 @@
     "chunk_index": 17,
     "total_chunks": 20,
     "char_count": 354,
-    "embedding_hash": "32a54436"
+    "embedding_hash": "168229c7"
   },
   {
     "id": "codecraft-agent_core_features_18",
@@ -9604,7 +10660,7 @@
     "chunk_index": 18,
     "total_chunks": 20,
     "char_count": 387,
-    "embedding_hash": "375c1b39"
+    "embedding_hash": "d102c0f9"
   },
   {
     "id": "codecraft-agent_core_features_19",
@@ -9650,7 +10706,7 @@
     "chunk_index": 0,
     "total_chunks": 7,
     "char_count": 395,
-    "embedding_hash": "e499d8f4"
+    "embedding_hash": "05d75872"
   },
   {
     "id": "codecraft-agent_design_decisions_1",
@@ -9673,7 +10729,7 @@
     "chunk_index": 1,
     "total_chunks": 7,
     "char_count": 400,
-    "embedding_hash": "00f12c6f"
+    "embedding_hash": "7aa33e42"
   },
   {
     "id": "codecraft-agent_design_decisions_2",
@@ -9696,7 +10752,7 @@
     "chunk_index": 2,
     "total_chunks": 7,
     "char_count": 391,
-    "embedding_hash": "ed3c51dd"
+    "embedding_hash": "5d88f75d"
   },
   {
     "id": "codecraft-agent_design_decisions_3",
@@ -9742,7 +10798,7 @@
     "chunk_index": 4,
     "total_chunks": 7,
     "char_count": 388,
-    "embedding_hash": "ed2e64f1"
+    "embedding_hash": "2f51e840"
   },
   {
     "id": "codecraft-agent_design_decisions_5",
@@ -9765,7 +10821,7 @@
     "chunk_index": 5,
     "total_chunks": 7,
     "char_count": 389,
-    "embedding_hash": "cffff161"
+    "embedding_hash": "b71372f5"
   },
   {
     "id": "codecraft-agent_design_decisions_6",
@@ -9811,7 +10867,7 @@
     "chunk_index": 0,
     "total_chunks": 6,
     "char_count": 390,
-    "embedding_hash": "c3ea7ed0"
+    "embedding_hash": "d80c69e3"
   },
   {
     "id": "codecraft-agent_test_coverage_1",
@@ -9834,7 +10890,7 @@
     "chunk_index": 1,
     "total_chunks": 6,
     "char_count": 390,
-    "embedding_hash": "07325270"
+    "embedding_hash": "78a4479c"
   },
   {
     "id": "codecraft-agent_test_coverage_2",
@@ -9857,7 +10913,7 @@
     "chunk_index": 2,
     "total_chunks": 6,
     "char_count": 394,
-    "embedding_hash": "a659bfc0"
+    "embedding_hash": "21e92ac8"
   },
   {
     "id": "codecraft-agent_test_coverage_3",
@@ -9926,7 +10982,7 @@
     "chunk_index": 5,
     "total_chunks": 6,
     "char_count": 164,
-    "embedding_hash": "ac483b94"
+    "embedding_hash": "2dd9404b"
   },
   {
     "id": "codecraft-agent_deployment_instructions_0",
@@ -9972,7 +11028,7 @@
     "chunk_index": 1,
     "total_chunks": 5,
     "char_count": 394,
-    "embedding_hash": "67ea8858"
+    "embedding_hash": "abf95395"
   },
   {
     "id": "codecraft-agent_deployment_instructions_2",
@@ -9995,7 +11051,7 @@
     "chunk_index": 2,
     "total_chunks": 5,
     "char_count": 394,
-    "embedding_hash": "143daf4e"
+    "embedding_hash": "bd118853"
   },
   {
     "id": "codecraft-agent_deployment_instructions_3",
@@ -10041,7 +11097,7 @@
     "chunk_index": 4,
     "total_chunks": 5,
     "char_count": 320,
-    "embedding_hash": "deb47b57"
+    "embedding_hash": "39de0a52"
   },
   {
     "id": "codecraft-agent_project_highlights_0",
@@ -10064,7 +11120,7 @@
     "chunk_index": 0,
     "total_chunks": 6,
     "char_count": 362,
-    "embedding_hash": "fa0db6de"
+    "embedding_hash": "f97c748a"
   },
   {
     "id": "codecraft-agent_project_highlights_1",
@@ -10110,7 +11166,7 @@
     "chunk_index": 2,
     "total_chunks": 6,
     "char_count": 395,
-    "embedding_hash": "7f929f2f"
+    "embedding_hash": "356e28e0"
   },
   {
     "id": "codecraft-agent_project_highlights_3",
@@ -10271,7 +11327,7 @@
     "chunk_index": 0,
     "total_chunks": 1,
     "char_count": 250,
-    "embedding_hash": "b4ce4a06"
+    "embedding_hash": "a79d62b8"
   },
   {
     "id": "cv-generator_技术架构_0",
@@ -10409,7 +11465,7 @@
     "chunk_index": 2,
     "total_chunks": 8,
     "char_count": 394,
-    "embedding_hash": "f06caf97"
+    "embedding_hash": "f3c297f5"
   },
   {
     "id": "cv-generator_核心功能_3",
@@ -10455,7 +11511,7 @@
     "chunk_index": 4,
     "total_chunks": 8,
     "char_count": 395,
-    "embedding_hash": "5b483031"
+    "embedding_hash": "9d03cd82"
   },
   {
     "id": "cv-generator_核心功能_5",
@@ -10570,7 +11626,7 @@
     "chunk_index": 1,
     "total_chunks": 3,
     "char_count": 389,
-    "embedding_hash": "dec5d8a1"
+    "embedding_hash": "3b8f4151"
   },
   {
     "id": "cv-generator_设计决策_2",
@@ -10593,7 +11649,7 @@
     "chunk_index": 2,
     "total_chunks": 3,
     "char_count": 319,
-    "embedding_hash": "3089998d"
+    "embedding_hash": "b0aeb69d"
   },
   {
     "id": "cv-generator_测试覆盖_0",
@@ -10639,7 +11695,7 @@
     "chunk_index": 1,
     "total_chunks": 2,
     "char_count": 304,
-    "embedding_hash": "66cafce9"
+    "embedding_hash": "8379eba1"
   },
   {
     "id": "cv-generator_部署说明_0",
@@ -10685,7 +11741,7 @@
     "chunk_index": 1,
     "total_chunks": 2,
     "char_count": 303,
-    "embedding_hash": "5351c470"
+    "embedding_hash": "d5823299"
   },
   {
     "id": "cv-generator_项目亮点_0",
@@ -10731,7 +11787,7 @@
     "chunk_index": 1,
     "total_chunks": 2,
     "char_count": 312,
-    "embedding_hash": "7c53ebc5"
+    "embedding_hash": "126138e7"
   },
   {
     "id": "cv-generator_附录_0",
@@ -10754,7 +11810,7 @@
     "chunk_index": 0,
     "total_chunks": 1,
     "char_count": 297,
-    "embedding_hash": "a843cfbf"
+    "embedding_hash": "1f2e4883"
   },
   {
     "id": "game-agent_overview_0",
@@ -10800,7 +11856,7 @@
     "chunk_index": 0,
     "total_chunks": 1,
     "char_count": 256,
-    "embedding_hash": "bf22d368"
+    "embedding_hash": "9d5a2208"
   },
   {
     "id": "game-agent_技术架构_0",
@@ -10892,7 +11948,7 @@
     "chunk_index": 3,
     "total_chunks": 5,
     "char_count": 387,
-    "embedding_hash": "050ec319"
+    "embedding_hash": "dc2b6baa"
   },
   {
     "id": "game-agent_技术架构_4",
@@ -10915,7 +11971,7 @@
     "chunk_index": 4,
     "total_chunks": 5,
     "char_count": 235,
-    "embedding_hash": "4b21b288"
+    "embedding_hash": "762a73db"
   },
   {
     "id": "game-agent_核心功能_0",
@@ -11030,7 +12086,7 @@
     "chunk_index": 4,
     "total_chunks": 16,
     "char_count": 390,
-    "embedding_hash": "40709ca5"
+    "embedding_hash": "e80edb9e"
   },
   {
     "id": "game-agent_核心功能_5",
@@ -11076,7 +12132,7 @@
     "chunk_index": 6,
     "total_chunks": 16,
     "char_count": 353,
-    "embedding_hash": "a003043e"
+    "embedding_hash": "b44ca667"
   },
   {
     "id": "game-agent_核心功能_7",
@@ -11191,7 +12247,7 @@
     "chunk_index": 11,
     "total_chunks": 16,
     "char_count": 394,
-    "embedding_hash": "5b3dadfd"
+    "embedding_hash": "2cd9b4e1"
   },
   {
     "id": "game-agent_核心功能_12",
@@ -11260,7 +12316,7 @@
     "chunk_index": 14,
     "total_chunks": 16,
     "char_count": 387,
-    "embedding_hash": "ac6650f7"
+    "embedding_hash": "e2ad8129"
   },
   {
     "id": "game-agent_核心功能_15",
@@ -11283,7 +12339,7 @@
     "chunk_index": 15,
     "total_chunks": 16,
     "char_count": 70,
-    "embedding_hash": "e6e85c34"
+    "embedding_hash": "33d31b64"
   },
   {
     "id": "game-agent_设计决策_0",
@@ -11352,7 +12408,7 @@
     "chunk_index": 2,
     "total_chunks": 3,
     "char_count": 78,
-    "embedding_hash": "544e3a75"
+    "embedding_hash": "95618483"
   },
   {
     "id": "game-agent_测试覆盖_0",
@@ -11467,7 +12523,7 @@
     "chunk_index": 2,
     "total_chunks": 3,
     "char_count": 253,
-    "embedding_hash": "79c8e788"
+    "embedding_hash": "5650aa6a"
   },
   {
     "id": "game-agent_项目亮点_0",
@@ -11490,7 +12546,7 @@
     "chunk_index": 0,
     "total_chunks": 3,
     "char_count": 394,
-    "embedding_hash": "fa52f52a"
+    "embedding_hash": "70699181"
   },
   {
     "id": "game-agent_项目亮点_1",
@@ -11513,7 +12569,7 @@
     "chunk_index": 1,
     "total_chunks": 3,
     "char_count": 388,
-    "embedding_hash": "5f3cc44e"
+    "embedding_hash": "ebf1fb2b"
   },
   {
     "id": "game-agent_项目亮点_2",
@@ -11536,7 +12592,7 @@
     "chunk_index": 2,
     "total_chunks": 3,
     "char_count": 242,
-    "embedding_hash": "6b04ed94"
+    "embedding_hash": "c70472a2"
   },
   {
     "id": "game-agent_附录_0",
@@ -11582,7 +12638,7 @@
     "chunk_index": 0,
     "total_chunks": 1,
     "char_count": 70,
-    "embedding_hash": "a394e8ea"
+    "embedding_hash": "5283caf5"
   },
   {
     "id": "iflytek-agent-challenge_项目概述_0",
@@ -11605,7 +12661,7 @@
     "chunk_index": 0,
     "total_chunks": 1,
     "char_count": 236,
-    "embedding_hash": "f04bae51"
+    "embedding_hash": "406e2725"
   },
   {
     "id": "iflytek-agent-challenge_评分规则_0",
@@ -11651,7 +12707,7 @@
     "chunk_index": 0,
     "total_chunks": 1,
     "char_count": 261,
-    "embedding_hash": "0b4c52e2"
+    "embedding_hash": "afc1ba95"
   },
   {
     "id": "iflytek-agent-challenge_工程实践_0",
@@ -11674,7 +12730,7 @@
     "chunk_index": 0,
     "total_chunks": 1,
     "char_count": 278,
-    "embedding_hash": "7b65531f"
+    "embedding_hash": "5e18974e"
   },
   {
     "id": "iflytek-agent-challenge_设计亮点_0",
@@ -11720,7 +12776,7 @@
     "chunk_index": 0,
     "total_chunks": 1,
     "char_count": 68,
-    "embedding_hash": "f1d8520d"
+    "embedding_hash": "eba609b1"
   },
   {
     "id": "mini-claude_项目概述_0",
@@ -11743,7 +12799,7 @@
     "chunk_index": 0,
     "total_chunks": 1,
     "char_count": 290,
-    "embedding_hash": "10c8e192"
+    "embedding_hash": "c269aebd"
   },
   {
     "id": "mini-claude_技术架构_0",
@@ -11766,7 +12822,7 @@
     "chunk_index": 0,
     "total_chunks": 9,
     "char_count": 394,
-    "embedding_hash": "9be5a977"
+    "embedding_hash": "4bbd47fe"
   },
   {
     "id": "mini-claude_技术架构_1",
@@ -12042,7 +13098,7 @@
     "chunk_index": 3,
     "total_chunks": 20,
     "char_count": 395,
-    "embedding_hash": "47279dcb"
+    "embedding_hash": "6a36cad8"
   },
   {
     "id": "mini-claude_核心功能_4",
@@ -12065,7 +13121,7 @@
     "chunk_index": 4,
     "total_chunks": 20,
     "char_count": 390,
-    "embedding_hash": "cf183a7a"
+    "embedding_hash": "25302dc4"
   },
   {
     "id": "mini-claude_核心功能_5",
@@ -12134,7 +13190,7 @@
     "chunk_index": 7,
     "total_chunks": 20,
     "char_count": 394,
-    "embedding_hash": "bb8799b6"
+    "embedding_hash": "19a331a4"
   },
   {
     "id": "mini-claude_核心功能_8",
@@ -12226,7 +13282,7 @@
     "chunk_index": 11,
     "total_chunks": 20,
     "char_count": 400,
-    "embedding_hash": "05ccb211"
+    "embedding_hash": "1588d81a"
   },
   {
     "id": "mini-claude_核心功能_12",
@@ -12249,7 +13305,7 @@
     "chunk_index": 12,
     "total_chunks": 20,
     "char_count": 364,
-    "embedding_hash": "780c7122"
+    "embedding_hash": "5fde3c27"
   },
   {
     "id": "mini-claude_核心功能_13",
@@ -12318,7 +13374,7 @@
     "chunk_index": 15,
     "total_chunks": 20,
     "char_count": 387,
-    "embedding_hash": "cca601b0"
+    "embedding_hash": "0ffb4417"
   },
   {
     "id": "mini-claude_核心功能_16",
@@ -12410,7 +13466,7 @@
     "chunk_index": 19,
     "total_chunks": 20,
     "char_count": 231,
-    "embedding_hash": "a6531e74"
+    "embedding_hash": "ee3e31f9"
   },
   {
     "id": "mini-claude_设计决策_0",
@@ -12456,7 +13512,7 @@
     "chunk_index": 1,
     "total_chunks": 4,
     "char_count": 391,
-    "embedding_hash": "fbceb876"
+    "embedding_hash": "674f7ee8"
   },
   {
     "id": "mini-claude_设计决策_2",
@@ -12525,7 +13581,7 @@
     "chunk_index": 0,
     "total_chunks": 4,
     "char_count": 387,
-    "embedding_hash": "83132b0b"
+    "embedding_hash": "a4f74927"
   },
   {
     "id": "mini-claude_测试覆盖_1",
@@ -12571,7 +13627,7 @@
     "chunk_index": 2,
     "total_chunks": 4,
     "char_count": 395,
-    "embedding_hash": "00df7480"
+    "embedding_hash": "b35f9eb9"
   },
   {
     "id": "mini-claude_测试覆盖_3",
@@ -12594,7 +13650,7 @@
     "chunk_index": 3,
     "total_chunks": 4,
     "char_count": 145,
-    "embedding_hash": "924223e2"
+    "embedding_hash": "36264eac"
   },
   {
     "id": "mini-claude_部署说明_0",
@@ -12640,7 +13696,7 @@
     "chunk_index": 1,
     "total_chunks": 3,
     "char_count": 395,
-    "embedding_hash": "c70d76cc"
+    "embedding_hash": "1a4a059b"
   },
   {
     "id": "mini-claude_部署说明_2",
@@ -12663,7 +13719,7 @@
     "chunk_index": 2,
     "total_chunks": 3,
     "char_count": 302,
-    "embedding_hash": "cfd3acfe"
+    "embedding_hash": "63e28899"
   },
   {
     "id": "mini-claude_项目亮点_0",
@@ -12686,7 +13742,7 @@
     "chunk_index": 0,
     "total_chunks": 3,
     "char_count": 353,
-    "embedding_hash": "0ff6ac05"
+    "embedding_hash": "99c9fdcd"
   },
   {
     "id": "mini-claude_项目亮点_1",
@@ -12801,7 +13857,7 @@
     "chunk_index": 0,
     "total_chunks": 1,
     "char_count": 13,
-    "embedding_hash": "dd080807"
+    "embedding_hash": "b23f7ef1"
   },
   {
     "id": "phone-pick-assistant_项目概述_0",
@@ -12824,7 +13880,7 @@
     "chunk_index": 0,
     "total_chunks": 1,
     "char_count": 280,
-    "embedding_hash": "99859a22"
+    "embedding_hash": "edd3276d"
   },
   {
     "id": "phone-pick-assistant_技术架构_0",
@@ -12939,7 +13995,7 @@
     "chunk_index": 4,
     "total_chunks": 5,
     "char_count": 224,
-    "embedding_hash": "ca841fb2"
+    "embedding_hash": "32bddf45"
   },
   {
     "id": "phone-pick-assistant_核心功能_0",
@@ -13054,7 +14110,7 @@
     "chunk_index": 4,
     "total_chunks": 9,
     "char_count": 394,
-    "embedding_hash": "d0808516"
+    "embedding_hash": "2bd7df0f"
   },
   {
     "id": "phone-pick-assistant_核心功能_5",
@@ -13215,7 +14271,7 @@
     "chunk_index": 2,
     "total_chunks": 3,
     "char_count": 333,
-    "embedding_hash": "99594da0"
+    "embedding_hash": "c651bb09"
   },
   {
     "id": "phone-pick-assistant_测试覆盖_0",
@@ -13261,7 +14317,7 @@
     "chunk_index": 1,
     "total_chunks": 3,
     "char_count": 364,
-    "embedding_hash": "1bd6f8c0"
+    "embedding_hash": "c07f5381"
   },
   {
     "id": "phone-pick-assistant_测试覆盖_2",
@@ -13376,7 +14432,7 @@
     "chunk_index": 3,
     "total_chunks": 4,
     "char_count": 250,
-    "embedding_hash": "a4402703"
+    "embedding_hash": "941a0524"
   },
   {
     "id": "phone-pick-assistant_项目亮点_0",
@@ -13422,7 +14478,7 @@
     "chunk_index": 1,
     "total_chunks": 4,
     "char_count": 391,
-    "embedding_hash": "9e01e6d5"
+    "embedding_hash": "81f9fa91"
   },
   {
     "id": "phone-pick-assistant_项目亮点_2",
@@ -13491,6 +14547,6 @@
     "chunk_index": 0,
     "total_chunks": 1,
     "char_count": 306,
-    "embedding_hash": "468dc7af"
+    "embedding_hash": "134bc252"
   }
 ]

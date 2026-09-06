@@ -1,5 +1,5 @@
 # 个人网站项目进度
-> 创建时间: 2026-05-09 | 最后更新: 2026-09-04
+> 创建时间: 2026-05-09 | 最后更新: 2026-09-06
 
 ## 项目概述
 **项目地址**: D:\my project\web\personal-website | **技术选型**: Next.js 16 + TypeScript + Tailwind CSS v4 + Three.js + Framer Motion | **目标**: AI 应用开发者的个人作品集网站
@@ -7,6 +7,18 @@
 ## 当前进度
 
 ### ✅ 已完成
+
+#### P31 — 新增 3 篇博客（2026-09-06）
+| 阶段 | 内容 | 文件 | 完成日期 |
+|------|------|------|----------|
+| 博客新增 | 网站 3D→Light Rays 架构演进 + WebGL 踩坑复盘 | content/blog/from-3d-lab-to-light-rays.mdx | 2026-09-06 |
+| 博客新增 | 删除 40 个假测试的治理复盘（ISSUE-001 经验沉淀） | content/blog/deleting-40-fake-tests.mdx | 2026-09-06 |
+| 博客新增 | Serverless RAG 预构建索引选型分析（与混合搜索博客互补） | content/blog/rag-on-serverless-json.mdx | 2026-09-06 |
+| 封面图 | 3 个 SVG 封面（仿现有风格） | public/images/blogs/{light-rays,fake-tests,rag-serverless}.svg | 2026-09-06 |
+| 博客元数据 | 新增 3 篇博客配置（17→20） | data/blogs.ts | 2026-09-06 |
+| RAG 索引重建 | 563→607 片段，blog 17→20，data_hash `592d0e42` | public/rag-index/*.json | 2026-09-06 |
+| 文档同步 | 统计数字更新（README/CLAUDE/MAINTENANCE/rag-index README） | docs | 2026-09-06 |
+| 验证 | vitest 204/204 + tsc 0 错误 + build 70 页 SSG 全绿 | — | 2026-09-06 |
 
 #### P30 — AgentHub 提到项目前列（2026-09-04）
 | 阶段 | 内容 | 文件 | 完成日期 |

@@ -81,7 +81,7 @@ embedding 模型用 `bge-large-zh-v1.5`，需要 `sentence-transformers` + `torc
 "D:/python/project/.venv/Scripts/python.exe" rag/scripts/build_index.py --force
 ```
 
-约 563 片段：CPU 版约 30-60 秒，CUDA 版约 7 秒。
+约 607 片段：CPU 版约 30-60 秒，CUDA 版约 7 秒。
 
 ### extract_data 是前置步骤
 

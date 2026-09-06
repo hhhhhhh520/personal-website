@@ -1,0 +1,131 @@
+# 从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑
+
+这个网站最初的设计文档里，它不是一个网站，是一个"虚拟 AI 实验室"。
+
+3D 场景、能量核心、传送门、AI 向导带你探索不同区域——设计文档写了两万多字。两个月后上线时，3D 组件全删了，首页背景只剩一道光线。这不是妥协，是三次踩坑之后的主动决策。这篇复盘每一步为什么走，坑在哪里，给同样想给个人网站加 3D 的朋友省点时间。
+
+## 起点：一个"沉浸式实验室"的野心
+
+最初的设想是标准的沉浸式方案：
+
+- **Next.js + React Three Fiber + drei**：3D 场景渲染
+- **四个区域**：核心大厅（介绍）、项目展厅（项目球体悬浮）、知识图书馆（博客）、创造工坊
+- **AI 向导 Nova**：问答机器人引导探索
+
+第一版确实做出来了。能量核心是多层嵌套球体 + 呼吸渐变色，传送门是多环嵌套 + 颜色区分区域。看起来很酷，然后问题一个一个来了。
+
+## 第一坑：AnimatePresence 偷走了 WebGL context
+
+症状很诡异：首页正常，点进"关于"再返回，背景消失，控制台一片 `WebGL context lost`。
+
+排查了两天，凶手是页面过渡动画里最常见的一行写法：
+
+```tsx
+// 出问题的写法
+<AnimatePresence mode="wait">
+  <motion.div key={pathname}>
+    {children}
+  </motion.div>
+</AnimatePresence>
+```
+
+`key={pathname}` 意味着每次路由切换，整棵子树卸载重挂。如果 WebGL Canvas 挂在这棵子树里，每次切换都要销毁旧 context、创建新 context。而浏览器对活跃 WebGL context 数量有上限（Chrome 大约 16 个），旧 context 的释放是异步的——新 context 创建太快，旧的还没释放干净，超过上限后浏览器直接把最旧的标记为 lost，而且**丢了就不恢复**。
+
+修复分两步：
+
+```tsx
+// 1. PageTransition 去掉 AnimatePresence + key={pathname}
+//    路由切换时不再卸载重挂整棵子树
+
+// 2. WebGL 组件挂到根布局，只挂载一次
+<LightRays />   // 根布局里，路由切换时不动它
+```
+
+代价是过渡动画从"出入场"退化成简单的淡入淡出。但背景再也不消失了。这个教训一句话总结：**路由级动画库默认会卸载子树，而 WebGL context 是稀缺资源，两者天生冲突**。
+
+## 第二坑：依赖链上的暗雷
+
+3D 方案依赖链太长，坑不止一个：
+
+**`next-themes` 与 React 19 不兼容。** 主题切换一挂上就 hydration 报错，最后自己写了个 60 行的 `ThemeProvider` 顶上。
+
+**`@react-three/postprocessing` 的 GlowEffect 在项目环境里始终报错。** 想给能量核心加辉光，装上就崩，查了一圈是 Three.js 版本兼容问题。辉光这个效果最后也没加回来——因为后来连 Three.js 本身都删了。
+
+依赖不是越多越好。每多一个依赖，就多一个和 React 19、Next.js 版本矩阵的交叉项。个人项目没有精力维护这个矩阵。
+
+## 减法：从 3D 实验室到一行光线
+
+于是开始做减法，而且是分三刀砍的：
+
+**第一刀：砍页面。** 技能页删掉（信息重复，关于页足够），项目页的 3D 视图删掉（纯列表信息密度更高），`components/three/` 整个目录删除。
+
+**第二刀：砍技术栈。** 首页背景换成 `ogl` 实现的 Light Rays。`ogl` 是一个极简的 WebGL 库，体积和依赖深度都比 "three + R3F + drei" 的组合链小一个量级，一个着色器画光线，视觉效果反而更聚焦——一道光比一个能量核心更像"AI 实验室"。Three.js + R3F + drei 三个包整体退场。
+
+**第三刀：砍遗产。** 这是三个月后才发现的：删掉 3D 之后，仓库里还躺着 5 个没人引用的文件——`sceneStore`、`usePreload`、`OptimizedImage`、`ProjectTransition`，全都是 3D/转场时代的遗留，加起来约 1300 行死代码。它们不报错、不被引用、不参与构建，只是安静地躺在那里骗搜索。一次死代码清理才连根拔掉。
+
+减法做完的直观感受：**网站反而更像设计文档想要的东西了**。世界观的核心是"AI 向导带你探索"，而不是"3D 渲染技术堆砌"。Nova 向导、游戏化文案都还在，只是载体从 3D 场景换成了简历式页面 + 自定义光标。
+
+## 性能三连：分割、限帧、降级
+
+架构稳定后做了三轮性能优化，每轮都有可复用的手法。
+
+**代码分割：重型库一律不进首屏关键路径。** 根布局是 Server Component，`LightRays`（WebGL）、`NovaGuide`（AI 对话）、`TargetCursor`（GSAP 光标）这三样重但非必需，全部改成客户端懒加载包装：
+
+```tsx
+// components/lazy/LazyOverlays.tsx
+const LightRays = dynamic(
+  () => import('@/components/effects/LightRays'),
+  { ssr: false }  // WebGL 组件本来就不能 SSR
+);
+const NovaGuide = dynamic(
+  () => import('@/components/ai/NovaGuide')
+);
+```
+
+注意 `ssr: false` 只对 WebGL 组件用——它本来就无法服务端渲染，提前分割等于把 three/ogl/GSAP 全部移出首屏 chunk。构建产物从单一巨型 chunk 变成 30 个按需加载的小 chunk。
+
+**帧率上限：着色器全速跑是浪费。** Light Rays 的动画循环原来每帧都重绘，但这道光的变化很慢，60fps 和 24fps 肉眼几乎无差别。加一个时间戳判断：
+
+```ts
+const FRAME_INTERVAL = 1000 / 60;
+let lastFrame = 0;
+
+function loop(now: number) {
+  if (now - lastFrame >= FRAME_INTERVAL) {
+    lastFrame = now;
+    render();
+  }
+  rafId = requestAnimationFrame(loop);
+}
+```
+
+**静态帧降级：尊重系统设置。** `prefers-reduced-motion` 的用户不需要动画，直接渲染一帧静态图，动画循环都不启动。这类用户往往是前庭功能障碍者，动画对他们不是"酷"而是眩晕。
+
+**顺手修了一个小恶疾：** 组件里有个空 `catch {}` 把着色器编译错误吞了，排查时浪费了不少时间。空 catch 补上日志，一分钟的事，但没它的时候要靠二分法找问题。
+
+## 复盘：决策表
+
+| 决策 | 放弃的方案 | 换来的 |
+|------|-----------|--------|
+| 移除 AnimatePresence + key={pathname} | 路由级出入场动画 | WebGL context 不再丢失 |
+| 自定义 ThemeProvider → 固定深色 | next-themes | 兼容 React 19，少一个依赖 |
+| ogl 替代 Three.js + R3F + drei | 3D 场景 | 包体积骤减，视觉更聚焦 |
+| 删除技能页 / 3D 视图 | 页面丰富度 | 信息密度、维护成本 |
+| 懒加载 + 30 chunks | 首屏完整加载 | 关键路径不再驮着 WebGL 库 |
+| 60fps 上限 + 静态帧降级 | 全速渲染 | GPU 占用下降，可访问性达标 |
+
+如果要提炼成一条原则：**沉浸感来自交互设计和内容世界观的统一，不来自渲染技术**。传送门很酷，但访客（HR）要在 30 秒内找到你的项目列表和联系方式——简历式页面 + 一个会聊天的 Nova，完成这件事比 3D 场景高效得多。
+
+## 相关文件
+
+- `components/effects/LightRays.tsx` — ogl 光线背景（含限帧 + 静态帧降级）
+- `components/lazy/LazyOverlays.tsx` — 重型组件懒加载包装
+- `components/ui/PageTransition.tsx` — 去除 AnimatePresence 的页面过渡
+- `DESIGN.md` — 最初的设计文档（可以看看野心膨胀的样子）
+
+## 参考资料
+
+- [ogl — Minimal WebGL library](https://github.com/oframe/ogl)
+- [MDN: WebGL best practices（context 丢失处理）](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/WebGL_best_practices)
+- [prefers-reduced-motion — MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion)
+- [next/dynamic — Next.js 文档](https://nextjs.org/docs/app/building-your-application/optimizing/lazy-loading)
