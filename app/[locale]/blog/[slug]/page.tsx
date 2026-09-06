@@ -182,13 +182,8 @@ export default async function BlogDetailPage({
                 </div>
               </div>
 
-              {/* Gradient Overlay */}
-              <div
-                className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent"
-                style={{
-                  background: `linear-gradient(to top, rgba(15,15,35,1) 0%, rgba(15,15,35,0.7) 40%, rgba(15,15,35,0.2) 100%)`,
-                }}
-              />
+              {/* Gradient Overlay：渐隐到页面背景 token，与正文自然衔接 */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
 
               {/* Bottom Content */}
               <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
