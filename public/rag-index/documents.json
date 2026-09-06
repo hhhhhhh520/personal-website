@@ -3271,7 +3271,7 @@
   },
   {
     "id": "deleting-40-fake-tests_0",
-    "content": "# 我删了 40 个能通过的测试：一次测试治理复盘\n\n243 个测试全部绿灯，本地 vitest 从来没红过。直到有一天我打开一个测试文件的 import 区，发现它一行生产代码都没引入。\n\n那个测试测的是谁？测它自己——文件里用函数定义复制了一份被测逻辑，然后断言这份复制品行为正确。生产代码改了，它照样绿。这样的\"测试\"一共有 40 个，藏在 4 个文件里。这篇复盘整个发现、删除、重建的过程，以及为什么我认为这次\"测试数量下降 17%\"是项目测试质量最高的一刻。",
+    "content": "# 我删了 40 个能通过的测试：一次测试治理复盘\n\n243 个测试全部绿灯，本地 vitest 从来没红过。直到有一天我打开一个测试文件的 import 区，发现它一行生产代码都没引入。\n\n那个测试测的是谁？测它自己——文件里用函数定义复制了一份被测逻辑，然后断言这份复制品行为正确。生产代码改了，它照样绿。这样的「测试」一共有 40 个，藏在 4 个文件里。这篇复盘整个发现、删除、重建的过程，以及为什么我认为这次「测试数量下降 17%」是项目测试质量最高的一刻。",
     "source": "blog",
     "source_id": "deleting-40-fake-tests",
     "title": "我删了 40 个能通过的测试：一次测试治理复盘",
@@ -3282,7 +3282,7 @@
         "source": "blog",
         "source_id": "deleting-40-fake-tests",
         "title": "我删了 40 个能通过的测试：一次测试治理复盘",
-        "doc_id": "84dce5dd58d9"
+        "doc_id": "0579f04fcb1d"
       },
       "chunk_type": "text",
       "section_header": "我删了 40 个能通过的测试：一次测试治理复盘",
@@ -3291,11 +3291,11 @@
     "chunk_index": 0,
     "total_chunks": 13,
     "char_count": 234,
-    "embedding_hash": "21b13dcf"
+    "embedding_hash": "6b3d9ca2"
   },
   {
     "id": "deleting-40-fake-tests_1",
-    "content": "## 怎么发现假测试的\n\n起因不是测试失败，是一次代码审查时的较真。\n\n当时在给个人网站的 RAG 模块做一轮审查（这个项目踩过的坑记在 issues/ 目录里），第一条 ISSUE 就是\"测试与实现脱节\"。验证方法简单到离谱：\n\n```bash",
+    "content": "## 怎么发现假测试的\n\n起因不是测试失败，是一次代码审查时的较真。\n\n当时在给个人网站的 RAG 模块做一轮审查（这个项目踩过的坑记在 issues/ 目录里），第一条 ISSUE 就是「测试与实现脱节」。验证方法简单到离谱：\n\n```bash",
     "source": "blog",
     "source_id": "deleting-40-fake-tests",
     "title": "我删了 40 个能通过的测试：一次测试治理复盘",
@@ -3306,7 +3306,7 @@
         "source": "blog",
         "source_id": "deleting-40-fake-tests",
         "title": "我删了 40 个能通过的测试：一次测试治理复盘",
-        "doc_id": "84dce5dd58d9"
+        "doc_id": "0579f04fcb1d"
       },
       "chunk_type": "text",
       "section_header": "怎么发现假测试的",
@@ -3315,7 +3315,7 @@
     "chunk_index": 1,
     "total_chunks": 13,
     "char_count": 123,
-    "embedding_hash": "698ed4a4"
+    "embedding_hash": "da7435b8"
   },
   {
     "id": "deleting-40-fake-tests_2",
@@ -3330,7 +3330,7 @@
         "source": "blog",
         "source_id": "deleting-40-fake-tests",
         "title": "我删了 40 个能通过的测试：一次测试治理复盘",
-        "doc_id": "84dce5dd58d9"
+        "doc_id": "0579f04fcb1d"
       },
       "chunk_type": "text",
       "section_header": "一个测试文件如果不 import 生产代码路径，它测的是谁？",
@@ -3343,7 +3343,7 @@
   },
   {
     "id": "deleting-40-fake-tests_3",
-    "content": "## 它们是怎么混进来的\n\n复盘成因比复盘 bug 更重要，因为假测试的滋生有明确的土壤：**把\"测试数量\"当进度指标**。\n\n当时的状态：CI 里跑着两百多个测试，数字很漂亮。于是新增模块时顺手写几个\"测试\"，最省事的路径就是把实现拷进来测一遍——既不用处理模块导出，也不用 mock 依赖，五分钟出一个全绿的测试文件。数量上涨，绿灯常亮，没有任何信号提示不对劲。\n\n还有一类更隐蔽：**测 mock 而不是测实现**。集成测试里 mock 了检索层，然后断言\"调用检索时传了正确的参数\"。至于真实的检索层返回什么、上下游拼接对不对，没人测。这类测试仪式感十足，防回归能力为零。\n\n回看有两个教训：\n\n1. **\"全绿\"是弱信号。** 243 个测试全绿和 243 个测试里 40 个是空转，在外部观察上完全一样。指标本身不提供保证。\n2. **覆盖率也救不了。** 对复制品做覆盖率统计，覆盖率照样是高的——因为\"被测代码\"（复制品）确实被执行了。覆盖率衡量的是执行，不是断言有效性。",
+    "content": "## 它们是怎么混进来的\n\n复盘成因比复盘 bug 更重要，因为假测试的滋生有明确的土壤：**把「测试数量」当进度指标**。\n\n当时的状态：CI 里跑着两百多个测试，数字很漂亮。于是新增模块时顺手写几个「测试」，最省事的路径就是把实现拷进来测一遍——既不用处理模块导出，也不用 mock 依赖，五分钟出一个全绿的测试文件。数量上涨，绿灯常亮，没有任何信号提示不对劲。\n\n还有一类更隐蔽：**测 mock 而不是测实现**。集成测试里 mock 了检索层，然后断言「调用检索时传了正确的参数」。至于真实的检索层返回什么、上下游拼接对不对，没人测。这类测试仪式感十足，防回归能力为零。\n\n回看有两个教训：\n\n1. **「全绿」是弱信号。** 243 个测试全绿和 243 个测试里 40 个是空转，在外部观察上完全一样。指标本身不提供保证。\n2. **覆盖率也救不了。** 对复制品做覆盖率统计，覆盖率照样是高的——因为「被测代码」（复制品）确实被执行了。覆盖率衡量的是执行，不是断言有效性。",
     "source": "blog",
     "source_id": "deleting-40-fake-tests",
     "title": "我删了 40 个能通过的测试：一次测试治理复盘",
@@ -3354,7 +3354,7 @@
         "source": "blog",
         "source_id": "deleting-40-fake-tests",
         "title": "我删了 40 个能通过的测试：一次测试治理复盘",
-        "doc_id": "84dce5dd58d9"
+        "doc_id": "0579f04fcb1d"
       },
       "chunk_type": "text",
       "section_header": "它们是怎么混进来的",
@@ -3363,11 +3363,11 @@
     "chunk_index": 3,
     "total_chunks": 13,
     "char_count": 444,
-    "embedding_hash": "bfdae8d8"
+    "embedding_hash": "1840e9b1"
   },
   {
     "id": "deleting-40-fake-tests_0",
-    "content": "## 治理四步\n\n发现问题后没有立刻动手，先把治理方案拆成了四步，一次提交做完。\n\n**第一步：删除。** 4 个 STUB 文件整体移除，约 40 个测试。没有犹豫期——复制品测试的维护成本为负（你还以为它们在保护你）。\n\n**第二步：重写，指向真实模块。** 原来的 chat-integration、e2e、index 三组测试改成导入真实实现：\n\n```ts\n// 重写后：import 区必须出现生产代码路径\n\ndescribe('RAG 上下文构建（真实实现）', () => {\n  it('空检索结果时返回空上下文', () => {\n    expect(buildRAGContext([])).toBe('');\n  });\n});\n```\n\n规则只有一条：**import 区看不到生产代码路径的测试文件，不算测试**。\n\n**第三步：为\"测不了\"的逻辑恢复可测试性。",
+    "content": "## 治理四步\n\n发现问题后没有立刻动手，先把治理方案拆成了四步，一次提交做完。\n\n**第一步：删除。** 4 个 STUB 文件整体移除，约 40 个测试。没有犹豫期——复制品测试的维护成本为负（你还以为它们在保护你）。\n\n**第二步：重写，指向真实模块。** 原来的 chat-integration、e2e、index 三组测试改成导入真实实现：\n\n```ts\n// 重写后：import 区必须出现生产代码路径\n\ndescribe('RAG 上下文构建（真实实现）', () => {\n  it('空检索结果时返回空上下文', () => {\n    expect(buildRAGContext([])).toBe('');\n  });\n});\n```\n\n规则只有一条：**import 区看不到生产代码路径的测试文件，不算测试**。\n\n**第三步：为「测不了」的逻辑恢复可测试性。",
     "source": "blog",
     "source_id": "deleting-40-fake-tests",
     "title": "我删了 40 个能通过的测试：一次测试治理复盘",
@@ -3378,7 +3378,7 @@
         "source": "blog",
         "source_id": "deleting-40-fake-tests",
         "title": "我删了 40 个能通过的测试：一次测试治理复盘",
-        "doc_id": "84dce5dd58d9"
+        "doc_id": "0579f04fcb1d"
       },
       "chunk_type": "text",
       "section_header": "治理四步",
@@ -3387,11 +3387,11 @@
     "chunk_index": 4,
     "total_chunks": 13,
     "char_count": 396,
-    "embedding_hash": "9a8c184e"
+    "embedding_hash": "91b6d100"
   },
   {
     "id": "deleting-40-fake-tests_1",
-    "content": "rt 区看不到生产代码路径的测试文件，不算测试**。\n\n**第三步：为\"测不了\"的逻辑恢复可测试性。** 重写时撞上一个结构问题：上下文构建逻辑原本内联在 `app/api/chat/route.ts` 的 handler 里，从测试文件根本 import 不到。解法是可测试性重构——把 `buildRAGContext` 抽成独立模块，route handler 只做调用；顺手删了一段没有调用方的死代码。\n\n这一步是假测试问题的根源之一：**逻辑藏在不可导入的地方，写测试的人只好复制一份**。可测试性差的地方，就是假测试的温床。\n\n**第四步：补上真实覆盖的空洞。** 删掉假测试后暴露了真实空洞——RAG 索引的增量更新逻辑（数据哈希比对、脏检查）此前只有\"复制品\"在测。用 Python 对着真实的 `build_index.py` 补了 8 个用例，专测哈希计算和增量跳过逻辑。",
+    "content": "rt 区看不到生产代码路径的测试文件，不算测试**。\n\n**第三步：为「测不了」的逻辑恢复可测试性。** 重写时撞上一个结构问题：上下文构建逻辑原本内联在 `app/api/chat/route.ts` 的 handler 里，从测试文件根本 import 不到。解法是可测试性重构——把 `buildRAGContext` 抽成独立模块，route handler 只做调用；顺手删了一段没有调用方的死代码。\n\n这一步是假测试问题的根源之一：**逻辑藏在不可导入的地方，写测试的人只好复制一份**。可测试性差的地方，就是假测试的温床。\n\n**第四步：补上真实覆盖的空洞。** 删掉假测试后暴露了真实空洞——RAG 索引的增量更新逻辑（数据哈希比对、脏检查）此前只有「复制品」在测。用 Python 对着真实的 `build_index.py` 补了 8 个用例，专测哈希计算和增量跳过逻辑。",
     "source": "blog",
     "source_id": "deleting-40-fake-tests",
     "title": "我删了 40 个能通过的测试：一次测试治理复盘",
@@ -3402,7 +3402,7 @@
         "source": "blog",
         "source_id": "deleting-40-fake-tests",
         "title": "我删了 40 个能通过的测试：一次测试治理复盘",
-        "doc_id": "84dce5dd58d9"
+        "doc_id": "0579f04fcb1d"
       },
       "chunk_type": "text",
       "section_header": "治理四步",
@@ -3411,11 +3411,11 @@
     "chunk_index": 5,
     "total_chunks": 13,
     "char_count": 396,
-    "embedding_hash": "4ca31ea8"
+    "embedding_hash": "df33200c"
   },
   {
     "id": "deleting-40-fake-tests_6",
-    "content": "## 243 → 204：数字降了，信心升了\n\n治理结果：\n\n- TypeScript 测试 204/204 通过，Python 测试 8/8\n- 测试总数 243 → 204，降了 17%\n- 新增的每一行测试都指向真实生产代码\n\n数字下降反而是这次治理里我最满意的部分。判断一个测试套件的价值，别数测试有多少个，做这个思想实验：**往生产代码里故意注入一个 bug，哪个测试会红？** 治理前，注入到 RAG 工具函数里的 bug 只有部分会被抓到——因为有一半\"测试\"测的是复制品。治理后，所有红灯都意味着生产代码真的坏了。\n\n现在维护 issues/ 的时候，\"测试与实现脱节\"这一条的处理经验也沉淀成了规矩：新测试合入前看一眼 import 区，PR 里新增的测试文件如果没有任何生产代码导入，直接打回。",
+    "content": "## 243 → 204：数字降了，信心升了\n\n治理结果：\n\n- TypeScript 测试 204/204 通过，Python 测试 8/8\n- 测试总数 243 → 204，降了 17%\n- 新增的每一行测试都指向真实生产代码\n\n数字下降反而是这次治理里我最满意的部分。判断一个测试套件的价值，别数测试有多少个，做这个思想实验：**往生产代码里故意注入一个 bug，哪个测试会红？** 治理前，注入到 RAG 工具函数里的 bug 只有部分会被抓到——因为有一半「测试」测的是复制品。治理后，所有红灯都意味着生产代码真的坏了。\n\n现在维护 issues/ 的时候，「测试与实现脱节」这一条的处理经验也沉淀成了规矩：新测试合入前看一眼 import 区，PR 里新增的测试文件如果没有任何生产代码导入，直接打回。",
     "source": "blog",
     "source_id": "deleting-40-fake-tests",
     "title": "我删了 40 个能通过的测试：一次测试治理复盘",
@@ -3426,7 +3426,7 @@
         "source": "blog",
         "source_id": "deleting-40-fake-tests",
         "title": "我删了 40 个能通过的测试：一次测试治理复盘",
-        "doc_id": "84dce5dd58d9"
+        "doc_id": "0579f04fcb1d"
       },
       "chunk_type": "text",
       "section_header": "243 → 204：数字降了，信心升了",
@@ -3435,7 +3435,7 @@
     "chunk_index": 6,
     "total_chunks": 13,
     "char_count": 357,
-    "embedding_hash": "cfef7237"
+    "embedding_hash": "30288474"
   },
   {
     "id": "deleting-40-fake-tests_7",
@@ -3450,7 +3450,7 @@
         "source": "blog",
         "source_id": "deleting-40-fake-tests",
         "title": "我删了 40 个能通过的测试：一次测试治理复盘",
-        "doc_id": "84dce5dd58d9"
+        "doc_id": "0579f04fcb1d"
       },
       "chunk_type": "text",
       "section_header": "检测假测试的三个信号",
@@ -3474,7 +3474,7 @@
         "source": "blog",
         "source_id": "deleting-40-fake-tests",
         "title": "我删了 40 个能通过的测试：一次测试治理复盘",
-        "doc_id": "84dce5dd58d9"
+        "doc_id": "0579f04fcb1d"
       },
       "chunk_type": "text",
       "section_header": "测试文件必须 import 生产代码，否则本地检查/CI 失败",
@@ -3487,7 +3487,7 @@
   },
   {
     "id": "deleting-40-fake-tests_9",
-    "content": "## 与\"多测试之路\"的对照\n\n我另一篇写 Mini Claude Code 的测试之路，那是\"数量\"的故事——1700 多个测试怎么随功能迭代自然长出来。这一篇是\"质量\"的故事：数量增长到某个阶段，如果不治理有效性，套件会悄悄烂掉。两个项目现在遵循同一条底线：**测试的价值不在于它存在，而在于它失败的时候你真的出事了**。",
+    "content": "## 与「多测试之路」的对照\n\n我另一篇写 Mini Claude Code 的测试之路，那是「数量」的故事——1700 多个测试怎么随功能迭代自然长出来。这一篇是「质量」的故事：数量增长到某个阶段，如果不治理有效性，套件会悄悄烂掉。两个项目现在遵循同一条底线：**测试的价值不在于它存在，而在于它失败的时候你真的出事了**。",
     "source": "blog",
     "source_id": "deleting-40-fake-tests",
     "title": "我删了 40 个能通过的测试：一次测试治理复盘",
@@ -3498,20 +3498,20 @@
         "source": "blog",
         "source_id": "deleting-40-fake-tests",
         "title": "我删了 40 个能通过的测试：一次测试治理复盘",
-        "doc_id": "84dce5dd58d9"
+        "doc_id": "0579f04fcb1d"
       },
       "chunk_type": "text",
-      "section_header": "与\"多测试之路\"的对照",
+      "section_header": "与「多测试之路」的对照",
       "section_level": 2
     },
     "chunk_index": 9,
     "total_chunks": 13,
     "char_count": 163,
-    "embedding_hash": "c568d1bd"
+    "embedding_hash": "f290df84"
   },
   {
     "id": "deleting-40-fake-tests_10",
-    "content": "## 总结\n\n| 阶段 | 动作 | 结果 |\n|------|------|------|\n| 发现 | 审查测试文件的 import 区 | 找到 4 个 STUB 文件 |\n| 删除 | 移除约 40 个复制品测试 | 243 → 204 |\n| 重写 | 指向真实模块 + 可测试性重构 | buildRAGContext 抽为独立模块 |\n| 补洞 | Python 测真实增量逻辑 | 8 个用例覆盖哈希/脏检查 |\n| 防回归 | \"import 生产代码\"规则进审查清单 | 假测试不再有温床 |\n\n一句话版本：**先怀疑\"全绿\"，再相信\"全绿\"**。你的测试套件里，可能正躺着几个只会在自己世界里通过的家伙。",
+    "content": "## 总结\n\n| 阶段 | 动作 | 结果 |\n|------|------|------|\n| 发现 | 审查测试文件的 import 区 | 找到 4 个 STUB 文件 |\n| 删除 | 移除约 40 个复制品测试 | 243 → 204 |\n| 重写 | 指向真实模块 + 可测试性重构 | buildRAGContext 抽为独立模块 |\n| 补洞 | Python 测真实增量逻辑 | 8 个用例覆盖哈希/脏检查 |\n| 防回归 | 「import 生产代码」规则进审查清单 | 假测试不再有温床 |\n\n一句话版本：**先怀疑「全绿」，再相信「全绿」**。你的测试套件里，可能正躺着几个只会在自己世界里通过的家伙。",
     "source": "blog",
     "source_id": "deleting-40-fake-tests",
     "title": "我删了 40 个能通过的测试：一次测试治理复盘",
@@ -3522,7 +3522,7 @@
         "source": "blog",
         "source_id": "deleting-40-fake-tests",
         "title": "我删了 40 个能通过的测试：一次测试治理复盘",
-        "doc_id": "84dce5dd58d9"
+        "doc_id": "0579f04fcb1d"
       },
       "chunk_type": "text",
       "section_header": "总结",
@@ -3531,7 +3531,7 @@
     "chunk_index": 10,
     "total_chunks": 13,
     "char_count": 313,
-    "embedding_hash": "87d1dae3"
+    "embedding_hash": "1a5451b0"
   },
   {
     "id": "deleting-40-fake-tests_11",
@@ -3546,7 +3546,7 @@
         "source": "blog",
         "source_id": "deleting-40-fake-tests",
         "title": "我删了 40 个能通过的测试：一次测试治理复盘",
-        "doc_id": "84dce5dd58d9"
+        "doc_id": "0579f04fcb1d"
       },
       "chunk_type": "text",
       "section_header": "相关文件",
@@ -3559,7 +3559,7 @@
   },
   {
     "id": "deleting-40-fake-tests_12",
-    "content": "## 参考资料\n\n- [Vitest — 测试框架文档](https://vitest.dev/guide/)\n- 互链文章：《从零到 1733 测试：Mini Claude Code 的测试之路》《三轮代码审查实战：从\"能跑\"到\"能扛\"》",
+    "content": "## 参考资料\n\n- [Vitest — 测试框架文档](https://vitest.dev/guide/)\n- 互链文章：《从零到 1733 测试：Mini Claude Code 的测试之路》《三轮代码审查实战：从「能跑」到「能扛」》",
     "source": "blog",
     "source_id": "deleting-40-fake-tests",
     "title": "我删了 40 个能通过的测试：一次测试治理复盘",
@@ -3570,7 +3570,7 @@
         "source": "blog",
         "source_id": "deleting-40-fake-tests",
         "title": "我删了 40 个能通过的测试：一次测试治理复盘",
-        "doc_id": "84dce5dd58d9"
+        "doc_id": "0579f04fcb1d"
       },
       "chunk_type": "text",
       "section_header": "参考资料",
@@ -3579,11 +3579,11 @@
     "chunk_index": 12,
     "total_chunks": 13,
     "char_count": 120,
-    "embedding_hash": "a6a5013f"
+    "embedding_hash": "5114dd29"
   },
   {
     "id": "from-3d-lab-to-light-rays_0",
-    "content": "# 从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑\n\n这个网站最初的设计文档里，它不是一个网站，是一个\"虚拟 AI 实验室\"。\n\n3D 场景、能量核心、传送门、AI 向导带你探索不同区域——设计文档写了两万多字。两个月后上线时，3D 组件全删了，首页背景只剩一道光线。这不是妥协，是三次踩坑之后的主动决策。这篇复盘每一步为什么走，坑在哪里，给同样想给个人网站加 3D 的朋友省点时间。",
+    "content": "# 从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑\n\n这个网站最初的设计文档里，它不是一个网站，是一个「虚拟 AI 实验室」。\n\n3D 场景、能量核心、传送门、AI 向导带你探索不同区域——设计文档写了两万多字。两个月后上线时，3D 组件全删了，首页背景只剩一道光线。这不是妥协，是三次踩坑之后的主动决策。这篇复盘每一步为什么走，坑在哪里，给同样想给个人网站加 3D 的朋友省点时间。",
     "source": "blog",
     "source_id": "from-3d-lab-to-light-rays",
     "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
@@ -3594,7 +3594,7 @@
         "source": "blog",
         "source_id": "from-3d-lab-to-light-rays",
         "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
-        "doc_id": "be8082df58e3"
+        "doc_id": "f065ac7f709d"
       },
       "chunk_type": "text",
       "section_header": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
@@ -3603,11 +3603,11 @@
     "chunk_index": 0,
     "total_chunks": 13,
     "char_count": 210,
-    "embedding_hash": "b8ca3d97"
+    "embedding_hash": "0c99f6a9"
   },
   {
     "id": "from-3d-lab-to-light-rays_1",
-    "content": "## 起点：一个\"沉浸式实验室\"的野心\n\n最初的设想是标准的沉浸式方案：\n\n- **Next.js + React Three Fiber + drei**：3D 场景渲染\n- **四个区域**：核心大厅（介绍）、项目展厅（项目球体悬浮）、知识图书馆（博客）、创造工坊\n- **AI 向导 Nova**：问答机器人引导探索\n\n第一版确实做出来了。能量核心是多层嵌套球体 + 呼吸渐变色，传送门是多环嵌套 + 颜色区分区域。看起来很酷，然后问题一个一个来了。",
+    "content": "## 起点：一个「沉浸式实验室」的野心\n\n最初的设想是标准的沉浸式方案：\n\n- **Next.js + React Three Fiber + drei**：3D 场景渲染\n- **四个区域**：核心大厅（介绍）、项目展厅（项目球体悬浮）、知识图书馆（博客）、创造工坊\n- **AI 向导 Nova**：问答机器人引导探索\n\n第一版确实做出来了。能量核心是多层嵌套球体 + 呼吸渐变色，传送门是多环嵌套 + 颜色区分区域。看起来很酷，然后问题一个一个来了。",
     "source": "blog",
     "source_id": "from-3d-lab-to-light-rays",
     "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
@@ -3618,20 +3618,20 @@
         "source": "blog",
         "source_id": "from-3d-lab-to-light-rays",
         "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
-        "doc_id": "be8082df58e3"
+        "doc_id": "f065ac7f709d"
       },
       "chunk_type": "text",
-      "section_header": "起点：一个\"沉浸式实验室\"的野心",
+      "section_header": "起点：一个「沉浸式实验室」的野心",
       "section_level": 2
     },
     "chunk_index": 1,
     "total_chunks": 13,
     "char_count": 228,
-    "embedding_hash": "21627684"
+    "embedding_hash": "778ec2ee"
   },
   {
     "id": "from-3d-lab-to-light-rays_0",
-    "content": "## 第一坑：AnimatePresence 偷走了 WebGL context\n\n症状很诡异：首页正常，点进\"关于\"再返回，背景消失，控制台一片 `WebGL context lost`。\n\n排查了两天，凶手是页面过渡动画里最常见的一行写法：\n\n```tsx\n// 出问题的写法\n\n  \n    {children}\n  \n\n```\n\n`key={pathname}` 意味着每次路由切换，整棵子树卸载重挂。如果 WebGL Canvas 挂在这棵子树里，每次切换都要销毁旧 context、创建新 context。而浏览器对活跃 WebGL context 数量有上限（Chrome 大约 16 个），旧 context 的释放是异步的——新 context 创建太快，旧的还没释放干净，超过上限后浏览器直接把最旧的标记为 lost，而且**丢了就不恢复**。\n\n修复分两步：\n\n```tsx",
+    "content": "## 第一坑：AnimatePresence 偷走了 WebGL context\n\n症状很诡异：首页正常，点进「关于」再返回，背景消失，控制台一片 `WebGL context lost`。\n\n排查了两天，凶手是页面过渡动画里最常见的一行写法：\n\n```tsx\n// 出问题的写法\n\n  \n    {children}\n  \n\n```\n\n`key={pathname}` 意味着每次路由切换，整棵子树卸载重挂。如果 WebGL Canvas 挂在这棵子树里，每次切换都要销毁旧 context、创建新 context。而浏览器对活跃 WebGL context 数量有上限（Chrome 大约 16 个），旧 context 的释放是异步的——新 context 创建太快，旧的还没释放干净，超过上限后浏览器直接把最旧的标记为 lost，而且**丢了就不恢复**。\n\n修复分两步：\n\n```tsx",
     "source": "blog",
     "source_id": "from-3d-lab-to-light-rays",
     "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
@@ -3642,7 +3642,7 @@
         "source": "blog",
         "source_id": "from-3d-lab-to-light-rays",
         "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
-        "doc_id": "be8082df58e3"
+        "doc_id": "f065ac7f709d"
       },
       "chunk_type": "text",
       "section_header": "第一坑：AnimatePresence 偷走了 WebGL context",
@@ -3651,11 +3651,11 @@
     "chunk_index": 2,
     "total_chunks": 13,
     "char_count": 398,
-    "embedding_hash": "61ac8540"
+    "embedding_hash": "b642d67a"
   },
   {
     "id": "from-3d-lab-to-light-rays_1",
-    "content": "限后浏览器直接把最旧的标记为 lost，而且**丢了就不恢复**。\n\n修复分两步：\n\n```tsx\n// 1. PageTransition 去掉 AnimatePresence + key={pathname}\n//    路由切换时不再卸载重挂整棵子树\n\n// 2. WebGL 组件挂到根布局，只挂载一次\n   // 根布局里，路由切换时不动它\n```\n\n代价是过渡动画从\"出入场\"退化成简单的淡入淡出。但背景再也不消失了。这个教训一句话总结：**路由级动画库默认会卸载子树，而 WebGL context 是稀缺资源，两者天生冲突**。",
+    "content": "限后浏览器直接把最旧的标记为 lost，而且**丢了就不恢复**。\n\n修复分两步：\n\n```tsx\n// 1. PageTransition 去掉 AnimatePresence + key={pathname}\n//    路由切换时不再卸载重挂整棵子树\n\n// 2. WebGL 组件挂到根布局，只挂载一次\n   // 根布局里，路由切换时不动它\n```\n\n代价是过渡动画从「出入场」退化成简单的淡入淡出。但背景再也不消失了。这个教训一句话总结：**路由级动画库默认会卸载子树，而 WebGL context 是稀缺资源，两者天生冲突**。",
     "source": "blog",
     "source_id": "from-3d-lab-to-light-rays",
     "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
@@ -3666,7 +3666,7 @@
         "source": "blog",
         "source_id": "from-3d-lab-to-light-rays",
         "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
-        "doc_id": "be8082df58e3"
+        "doc_id": "f065ac7f709d"
       },
       "chunk_type": "text",
       "section_header": "第一坑：AnimatePresence 偷走了 WebGL context",
@@ -3675,7 +3675,7 @@
     "chunk_index": 3,
     "total_chunks": 13,
     "char_count": 272,
-    "embedding_hash": "f152c662"
+    "embedding_hash": "52be9e70"
   },
   {
     "id": "from-3d-lab-to-light-rays_4",
@@ -3690,7 +3690,7 @@
         "source": "blog",
         "source_id": "from-3d-lab-to-light-rays",
         "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
-        "doc_id": "be8082df58e3"
+        "doc_id": "f065ac7f709d"
       },
       "chunk_type": "text",
       "section_header": "第二坑：依赖链上的暗雷",
@@ -3703,7 +3703,7 @@
   },
   {
     "id": "from-3d-lab-to-light-rays_0",
-    "content": "## 减法：从 3D 实验室到一行光线\n\n于是开始做减法，而且是分三刀砍的：\n\n**第一刀：砍页面。** 技能页删掉（信息重复，关于页足够），项目页的 3D 视图删掉（纯列表信息密度更高），`components/three/` 整个目录删除。\n\n**第二刀：砍技术栈。** 首页背景换成 `ogl` 实现的 Light Rays。`ogl` 是一个极简的 WebGL 库，体积和依赖深度都比 \"three + R3F + drei\" 的组合链小一个量级，一个着色器画光线，视觉效果反而更聚焦——一道光比一个能量核心更像\"AI 实验室\"。Three.js + R3F + drei 三个包整体退场。\n\n**第三刀：砍遗产。** 这是三个月后才发现的：删掉 3D 之后，仓库里还躺着 5 个没人引用的文件——`sceneStore`、`usePreload`、`OptimizedImage`、`Pro",
+    "content": "## 减法：从 3D 实验室到一行光线\n\n于是开始做减法，而且是分三刀砍的：\n\n**第一刀：砍页面。** 技能页删掉（信息重复，关于页足够），项目页的 3D 视图删掉（纯列表信息密度更高），`components/three/` 整个目录删除。\n\n**第二刀：砍技术栈。** 首页背景换成 `ogl` 实现的 Light Rays。`ogl` 是一个极简的 WebGL 库，体积和依赖深度都比 「three + R3F + drei」 的组合链小一个量级，一个着色器画光线，视觉效果反而更聚焦——一道光比一个能量核心更像「AI 实验室」。Three.js + R3F + drei 三个包整体退场。\n\n**第三刀：砍遗产。** 这是三个月后才发现的：删掉 3D 之后，仓库里还躺着 5 个没人引用的文件——`sceneStore`、`usePreload`、`OptimizedImage`、`Pro",
     "source": "blog",
     "source_id": "from-3d-lab-to-light-rays",
     "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
@@ -3714,7 +3714,7 @@
         "source": "blog",
         "source_id": "from-3d-lab-to-light-rays",
         "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
-        "doc_id": "be8082df58e3"
+        "doc_id": "f065ac7f709d"
       },
       "chunk_type": "text",
       "section_header": "减法：从 3D 实验室到一行光线",
@@ -3723,11 +3723,11 @@
     "chunk_index": 5,
     "total_chunks": 13,
     "char_count": 400,
-    "embedding_hash": "27c8269e"
+    "embedding_hash": "5ce311d4"
   },
   {
     "id": "from-3d-lab-to-light-rays_1",
-    "content": "件——`sceneStore`、`usePreload`、`OptimizedImage`、`ProjectTransition`，全都是 3D/转场时代的遗留，加起来约 1300 行死代码。它们不报错、不被引用、不参与构建，只是安静地躺在那里骗搜索。一次死代码清理才连根拔掉。\n\n减法做完的直观感受：**网站反而更像设计文档想要的东西了**。世界观的核心是\"AI 向导带你探索\"，而不是\"3D 渲染技术堆砌\"。Nova 向导、游戏化文案都还在，只是载体从 3D 场景换成了简历式页面 + 自定义光标。",
+    "content": "件——`sceneStore`、`usePreload`、`OptimizedImage`、`ProjectTransition`，全都是 3D/转场时代的遗留，加起来约 1300 行死代码。它们不报错、不被引用、不参与构建，只是安静地躺在那里骗搜索。一次死代码清理才连根拔掉。\n\n减法做完的直观感受：**网站反而更像设计文档想要的东西了**。世界观的核心是「AI 向导带你探索」，而不是「3D 渲染技术堆砌」。Nova 向导、游戏化文案都还在，只是载体从 3D 场景换成了简历式页面 + 自定义光标。",
     "source": "blog",
     "source_id": "from-3d-lab-to-light-rays",
     "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
@@ -3738,7 +3738,7 @@
         "source": "blog",
         "source_id": "from-3d-lab-to-light-rays",
         "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
-        "doc_id": "be8082df58e3"
+        "doc_id": "f065ac7f709d"
       },
       "chunk_type": "text",
       "section_header": "减法：从 3D 实验室到一行光线",
@@ -3747,7 +3747,7 @@
     "chunk_index": 6,
     "total_chunks": 13,
     "char_count": 251,
-    "embedding_hash": "b043de11"
+    "embedding_hash": "904f9d15"
   },
   {
     "id": "from-3d-lab-to-light-rays_0",
@@ -3762,7 +3762,7 @@
         "source": "blog",
         "source_id": "from-3d-lab-to-light-rays",
         "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
-        "doc_id": "be8082df58e3"
+        "doc_id": "f065ac7f709d"
       },
       "chunk_type": "text",
       "section_header": "性能三连：分割、限帧、降级",
@@ -3786,7 +3786,7 @@
         "source": "blog",
         "source_id": "from-3d-lab-to-light-rays",
         "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
-        "doc_id": "be8082df58e3"
+        "doc_id": "f065ac7f709d"
       },
       "chunk_type": "text",
       "section_header": "性能三连：分割、限帧、降级",
@@ -3799,7 +3799,7 @@
   },
   {
     "id": "from-3d-lab-to-light-rays_2",
-    "content": "let lastFrame = 0;\n\nfunction loop(now: number) {\n  if (now - lastFrame >= FRAME_INTERVAL) {\n    lastFrame = now;\n    render();\n  }\n  rafId = requestAnimationFrame(loop);\n}\n```\n\n**静态帧降级：尊重系统设置。** `prefers-reduced-motion` 的用户不需要动画，直接渲染一帧静态图，动画循环都不启动。这类用户往往是前庭功能障碍者，动画对他们不是\"酷\"而是眩晕。\n\n**顺手修了一个小恶疾：** 组件里有个空 `catch {}` 把着色器编译错误吞了，排查时浪费了不少时间。空 catch 补上日志，一分钟的事，但没它的时候要靠二分法找问题。",
+    "content": "let lastFrame = 0;\n\nfunction loop(now: number) {\n  if (now - lastFrame >= FRAME_INTERVAL) {\n    lastFrame = now;\n    render();\n  }\n  rafId = requestAnimationFrame(loop);\n}\n```\n\n**静态帧降级：尊重系统设置。** `prefers-reduced-motion` 的用户不需要动画，直接渲染一帧静态图，动画循环都不启动。这类用户往往是前庭功能障碍者，动画对他们不是「酷」而是眩晕。\n\n**顺手修了一个小恶疾：** 组件里有个空 `catch {}` 把着色器编译错误吞了，排查时浪费了不少时间。空 catch 补上日志，一分钟的事，但没它的时候要靠二分法找问题。",
     "source": "blog",
     "source_id": "from-3d-lab-to-light-rays",
     "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
@@ -3810,7 +3810,7 @@
         "source": "blog",
         "source_id": "from-3d-lab-to-light-rays",
         "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
-        "doc_id": "be8082df58e3"
+        "doc_id": "f065ac7f709d"
       },
       "chunk_type": "text",
       "section_header": "性能三连：分割、限帧、降级",
@@ -3819,7 +3819,7 @@
     "chunk_index": 9,
     "total_chunks": 13,
     "char_count": 369,
-    "embedding_hash": "0788b1a4"
+    "embedding_hash": "4ae85905"
   },
   {
     "id": "from-3d-lab-to-light-rays_10",
@@ -3834,7 +3834,7 @@
         "source": "blog",
         "source_id": "from-3d-lab-to-light-rays",
         "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
-        "doc_id": "be8082df58e3"
+        "doc_id": "f065ac7f709d"
       },
       "chunk_type": "text",
       "section_header": "复盘：决策表",
@@ -3858,7 +3858,7 @@
         "source": "blog",
         "source_id": "from-3d-lab-to-light-rays",
         "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
-        "doc_id": "be8082df58e3"
+        "doc_id": "f065ac7f709d"
       },
       "chunk_type": "text",
       "section_header": "相关文件",
@@ -3882,7 +3882,7 @@
         "source": "blog",
         "source_id": "from-3d-lab-to-light-rays",
         "title": "从 3D 实验室到 Light Rays：我的个人网站架构演进与 WebGL 踩坑",
-        "doc_id": "be8082df58e3"
+        "doc_id": "f065ac7f709d"
       },
       "chunk_type": "text",
       "section_header": "参考资料",
@@ -7375,7 +7375,7 @@
   },
   {
     "id": "rag-on-serverless-json_0",
-    "content": "# Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库\n\n所有 RAG 教程的第一步都是\"装一个向量数据库\"。我的个人网站 Nova 助手也走过了这条路的思考过程，最后的落点是：三个 JSON 文件，一个都没有装。\n\n这不是省事，是一轮约束分析之后的结论。这篇把决策依据、真实数字和升级触发条件都摊开写——如果你也在 Serverless 环境里做小规模 RAG，大概率会遇到一样的选择题。",
+    "content": "# Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库\n\n所有 RAG 教程的第一步都是「装一个向量数据库」。我的个人网站 Nova 助手也走过了这条路的思考过程，最后的落点是：三个 JSON 文件，一个都没有装。\n\n这不是省事，是一轮约束分析之后的结论。这篇把决策依据、真实数字和升级触发条件都摊开写——如果你也在 Serverless 环境里做小规模 RAG，大概率会遇到一样的选择题。",
     "source": "blog",
     "source_id": "rag-on-serverless-json",
     "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
@@ -7386,7 +7386,7 @@
         "source": "blog",
         "source_id": "rag-on-serverless-json",
         "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
-        "doc_id": "3902415dd0cb"
+        "doc_id": "1993659615b9"
       },
       "chunk_type": "text",
       "section_header": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
@@ -7395,7 +7395,7 @@
     "chunk_index": 0,
     "total_chunks": 18,
     "char_count": 216,
-    "embedding_hash": "43c5675f"
+    "embedding_hash": "b728fb58"
   },
   {
     "id": "rag-on-serverless-json_1",
@@ -7410,7 +7410,7 @@
         "source": "blog",
         "source_id": "rag-on-serverless-json",
         "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
-        "doc_id": "3902415dd0cb"
+        "doc_id": "1993659615b9"
       },
       "chunk_type": "text",
       "section_header": "先看规模现实",
@@ -7423,7 +7423,7 @@
   },
   {
     "id": "rag-on-serverless-json_2",
-    "content": "## Serverless 的约束清单\n\n第二个输入是部署环境的硬约束。目标平台是 Serverless（Vercel 一类），它对\"传统向量数据库方案\"相当不友好：\n\n**没有常驻进程。** Milvus、Qdrant 开源版是常驻服务，Serverless 函数跑完就释放，没有地方让它们住。\n\n**没有 GPU。** Embedding 模型在 Serverless 运行时里完全不存在——而且这套方案连查询侧都不需要它。这里有个设计技巧，放在方案一节讲。\n\n**冷启动按秒计。** 函数实例闲置即销毁，每次唤醒都要付出初始化成本。任何\"启动一个数据库连接池\"的方案都在冷启动路径上加重量。\n\n**按调用计费。** 多一跳内网/公网调用就多一份开销，还多一个故障点。\n\n把候选项挨个过筛：\n\n| 方案 | 结果 | 淘汰原因 |\n|------|------|----------|\n| 云托管向量库（Pinecone 等） | ❌ | 按月固定费用 + 网络往返延迟，为 563 个向量买单 |\n| 自建向量库（Milvus/Qdrant） | ❌ | 需要常驻服务，Serverless 没有落脚点 |\n| 嵌入式引擎（FAISS） | ❌ | Python/C++ 二进制依赖，函数运行时带不动 |\n| **预构建索引 + JSON** | ✅ | 零基础设施，静态文件随站点部署 |",
+    "content": "## Serverless 的约束清单\n\n第二个输入是部署环境的硬约束。目标平台是 Serverless（Vercel 一类），它对「传统向量数据库方案」相当不友好：\n\n**没有常驻进程。** Milvus、Qdrant 开源版是常驻服务，Serverless 函数跑完就释放，没有地方让它们住。\n\n**没有 GPU。** Embedding 模型在 Serverless 运行时里完全不存在——而且这套方案连查询侧都不需要它。这里有个设计技巧，放在方案一节讲。\n\n**冷启动按秒计。** 函数实例闲置即销毁，每次唤醒都要付出初始化成本。任何「启动一个数据库连接池」的方案都在冷启动路径上加重量。\n\n**按调用计费。** 多一跳内网/公网调用就多一份开销，还多一个故障点。\n\n把候选项挨个过筛：\n\n| 方案 | 结果 | 淘汰原因 |\n|------|------|----------|\n| 云托管向量库（Pinecone 等） | ❌ | 按月固定费用 + 网络往返延迟，为 563 个向量买单 |\n| 自建向量库（Milvus/Qdrant） | ❌ | 需要常驻服务，Serverless 没有落脚点 |\n| 嵌入式引擎（FAISS） | ❌ | Python/C++ 二进制依赖，函数运行时带不动 |\n| **预构建索引 + JSON** | ✅ | 零基础设施，静态文件随站点部署 |",
     "source": "blog",
     "source_id": "rag-on-serverless-json",
     "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
@@ -7434,7 +7434,7 @@
         "source": "blog",
         "source_id": "rag-on-serverless-json",
         "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
-        "doc_id": "3902415dd0cb"
+        "doc_id": "1993659615b9"
       },
       "chunk_type": "text",
       "section_header": "Serverless 的约束清单",
@@ -7443,11 +7443,11 @@
     "chunk_index": 2,
     "total_chunks": 18,
     "char_count": 598,
-    "embedding_hash": "3952a360"
+    "embedding_hash": "eb637257"
   },
   {
     "id": "rag-on-serverless-json_3",
-    "content": "## 预构建索引方案\n\n核心思路：**把\"建索引\"和\"用索引\"彻底分离，前者离线做一次，后者运行时零依赖**。",
+    "content": "## 预构建索引方案\n\n核心思路：**把「建索引」和「用索引」彻底分离，前者离线做一次，后者运行时零依赖**。",
     "source": "blog",
     "source_id": "rag-on-serverless-json",
     "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
@@ -7458,7 +7458,7 @@
         "source": "blog",
         "source_id": "rag-on-serverless-json",
         "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
-        "doc_id": "3902415dd0cb"
+        "doc_id": "1993659615b9"
       },
       "chunk_type": "text",
       "section_header": "预构建索引方案",
@@ -7467,7 +7467,7 @@
     "chunk_index": 3,
     "total_chunks": 18,
     "char_count": 55,
-    "embedding_hash": "2cbd7d2d"
+    "embedding_hash": "024b15d0"
   },
   {
     "id": "rag-on-serverless-json_4",
@@ -7482,7 +7482,7 @@
         "source": "blog",
         "source_id": "rag-on-serverless-json",
         "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
-        "doc_id": "3902415dd0cb"
+        "doc_id": "1993659615b9"
       },
       "chunk_type": "text",
       "section_header": "构建时（本地，一次性）",
@@ -7506,7 +7506,7 @@
         "source": "blog",
         "source_id": "rag-on-serverless-json",
         "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
-        "doc_id": "3902415dd0cb"
+        "doc_id": "1993659615b9"
       },
       "chunk_type": "text",
       "section_header": "1. 提取：从 data/、content/blog/、docs/projects/ 抽取内容并分块",
@@ -7519,7 +7519,7 @@
   },
   {
     "id": "rag-on-serverless-json_6",
-    "content": "# 2. 构建：本地 GPU 算 embedding（CUDA 约 7 秒，CPU 约 30 秒）\npython rag/scripts/build_index.py\n```\n\n产物是三个 JSON 文件，直接放 `public/rag-index/`，随站点静态部署——不需要任何运行时存储服务。这里有个容易忽略的工程细节：**增量构建**。脚本会计算数据源的哈希写进 metadata.json，再次构建时先比对哈希，内容没变就跳过重算。563 个片段的 embedding 重算只要 7 秒，但这个习惯让\"数据一改就全量重建\"的焦虑消失了。",
+    "content": "# 2. 构建：本地 GPU 算 embedding（CUDA 约 7 秒，CPU 约 30 秒）\npython rag/scripts/build_index.py\n```\n\n产物是三个 JSON 文件，直接放 `public/rag-index/`，随站点静态部署——不需要任何运行时存储服务。这里有个容易忽略的工程细节：**增量构建**。脚本会计算数据源的哈希写进 metadata.json，再次构建时先比对哈希，内容没变就跳过重算。563 个片段的 embedding 重算只要 7 秒，但这个习惯让「数据一改就全量重建」的焦虑消失了。",
     "source": "blog",
     "source_id": "rag-on-serverless-json",
     "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
@@ -7530,7 +7530,7 @@
         "source": "blog",
         "source_id": "rag-on-serverless-json",
         "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
-        "doc_id": "3902415dd0cb"
+        "doc_id": "1993659615b9"
       },
       "chunk_type": "text",
       "section_header": "2. 构建：本地 GPU 算 embedding（CUDA 约 7 秒，CPU 约 30 秒）",
@@ -7539,7 +7539,7 @@
     "chunk_index": 6,
     "total_chunks": 18,
     "char_count": 273,
-    "embedding_hash": "5bf491f3"
+    "embedding_hash": "bd1a9c53"
   },
   {
     "id": "rag-on-serverless-json_0",
@@ -7554,7 +7554,7 @@
         "source": "blog",
         "source_id": "rag-on-serverless-json",
         "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
-        "doc_id": "3902415dd0cb"
+        "doc_id": "1993659615b9"
       },
       "chunk_type": "text",
       "section_header": "运行时（函数内，按需加载）",
@@ -7578,7 +7578,7 @@
         "source": "blog",
         "source_id": "rag-on-serverless-json",
         "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
-        "doc_id": "3902415dd0cb"
+        "doc_id": "1993659615b9"
       },
       "chunk_type": "text",
       "section_header": "运行时（函数内，按需加载）",
@@ -7591,7 +7591,7 @@
   },
   {
     "id": "rag-on-serverless-json_2",
-    "content": "JSON.parse，量级在几百毫秒；之后这个函数实例存活期间的所有请求都走内存，检索回到毫秒级。加载失败的原因会被缓存（API 返回 503 时带出诊断信息），也不会每个请求都重试一遍大文件 IO。**几百毫秒的一次性成本，换掉一个按月计费的数据库**——这笔账在个人项目规模下没有悬念。\n\n检索侧还有一个把\"运行时无模型\"彻底闭环的技巧：**查询向量不靠 embedding 模型现算**。关键词检索先跑，取命中的 Top-3 片段的向量求平均，作为\"伪查询向量\"去做向量检索——embedding 模型被完全挡在运行时之外。代价是查询词与文档完全不重叠时召回会弱一些，恰好由关键词侧兜底。这套机制的细节写在《RAG 混合搜索实战》里，这篇不重复。",
+    "content": "JSON.parse，量级在几百毫秒；之后这个函数实例存活期间的所有请求都走内存，检索回到毫秒级。加载失败的原因会被缓存（API 返回 503 时带出诊断信息），也不会每个请求都重试一遍大文件 IO。**几百毫秒的一次性成本，换掉一个按月计费的数据库**——这笔账在个人项目规模下没有悬念。\n\n检索侧还有一个把「运行时无模型」彻底闭环的技巧：**查询向量不靠 embedding 模型现算**。关键词检索先跑，取命中的 Top-3 片段的向量求平均，作为「伪查询向量」去做向量检索——embedding 模型被完全挡在运行时之外。代价是查询词与文档完全不重叠时召回会弱一些，恰好由关键词侧兜底。这套机制的细节写在《RAG 混合搜索实战》里，这篇不重复。",
     "source": "blog",
     "source_id": "rag-on-serverless-json",
     "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
@@ -7602,7 +7602,7 @@
         "source": "blog",
         "source_id": "rag-on-serverless-json",
         "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
-        "doc_id": "3902415dd0cb"
+        "doc_id": "1993659615b9"
       },
       "chunk_type": "text",
       "section_header": "运行时（函数内，按需加载）",
@@ -7611,7 +7611,7 @@
     "chunk_index": 9,
     "total_chunks": 18,
     "char_count": 326,
-    "embedding_hash": "fe20dc3c"
+    "embedding_hash": "e39ba6a8"
   },
   {
     "id": "rag-on-serverless-json_10",
@@ -7626,7 +7626,7 @@
         "source": "blog",
         "source_id": "rag-on-serverless-json",
         "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
-        "doc_id": "3902415dd0cb"
+        "doc_id": "1993659615b9"
       },
       "chunk_type": "text",
       "section_header": "一个真实优化：砍掉内部 HTTP 回环",
@@ -7650,7 +7650,7 @@
         "source": "blog",
         "source_id": "rag-on-serverless-json",
         "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
-        "doc_id": "3902415dd0cb"
+        "doc_id": "1993659615b9"
       },
       "chunk_type": "text",
       "section_header": "增量更新流程",
@@ -7674,7 +7674,7 @@
         "source": "blog",
         "source_id": "rag-on-serverless-json",
         "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
-        "doc_id": "3902415dd0cb"
+        "doc_id": "1993659615b9"
       },
       "chunk_type": "text",
       "section_header": "新增/修改博客或文档后，必须先重新提取（build 脚本只读提取产物）",
@@ -7687,7 +7687,7 @@
   },
   {
     "id": "rag-on-serverless-json_13",
-    "content": "# 智能构建：哈希比对，有变化才重算 embedding\npython rag/scripts/build_index.py --check\n```\n\n整个流程在本机一分钟内完成，产物提交进 git，部署时随静态文件走。**索引的版本管理和代码是同一套**——这是个被低估的好处：索引、内容、代码三者永远原子地对齐，不存在\"数据库里是新数据、代码里是旧分块逻辑\"的中间态。",
+    "content": "# 智能构建：哈希比对，有变化才重算 embedding\npython rag/scripts/build_index.py --check\n```\n\n整个流程在本机一分钟内完成，产物提交进 git，部署时随静态文件走。**索引的版本管理和代码是同一套**——这是个被低估的好处：索引、内容、代码三者永远原子地对齐，不存在「数据库里是新数据、代码里是旧分块逻辑」的中间态。",
     "source": "blog",
     "source_id": "rag-on-serverless-json",
     "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
@@ -7698,7 +7698,7 @@
         "source": "blog",
         "source_id": "rag-on-serverless-json",
         "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
-        "doc_id": "3902415dd0cb"
+        "doc_id": "1993659615b9"
       },
       "chunk_type": "text",
       "section_header": "智能构建：哈希比对，有变化才重算 embedding",
@@ -7707,7 +7707,7 @@
     "chunk_index": 13,
     "total_chunks": 18,
     "char_count": 186,
-    "embedding_hash": "332c7e22"
+    "embedding_hash": "024921f8"
   },
   {
     "id": "rag-on-serverless-json_14",
@@ -7722,7 +7722,7 @@
         "source": "blog",
         "source_id": "rag-on-serverless-json",
         "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
-        "doc_id": "3902415dd0cb"
+        "doc_id": "1993659615b9"
       },
       "chunk_type": "text",
       "section_header": "什么时候该升级",
@@ -7735,7 +7735,7 @@
   },
   {
     "id": "rag-on-serverless-json_15",
-    "content": "## 总结\n\n| 问题 | 选择 | 依据 |\n|------|------|------|\n| 向量存哪 | 三个 JSON，随静态资源部署 | 12.8MB、563 条，暴力检索毫秒级 |\n| Embedding 谁来算 | 本地 GPU 离线预构建 + 伪查询向量 | 运行时无模型，构建只要 7 秒 |\n| 函数间怎么调用 | 进程内 import | Serverless 里 HTTP 回环是纯浪费 |\n| 索引怎么更新 | 数据哈希 + 增量构建 | 内容与代码原子对齐 |\n| 何时升级 | 万级片段 / p95 超 100ms | 边界清晰，到点再换 |\n\n一句话版本：**架构选型跟着规模走，不跟着教程走**。向量数据库解决的是\"百万级向量、高并发检索\"的问题，而我的问题规模差了三个数量级——为一个不存在的问题部署基础设施，才是真正的过度设计。",
+    "content": "## 总结\n\n| 问题 | 选择 | 依据 |\n|------|------|------|\n| 向量存哪 | 三个 JSON，随静态资源部署 | 12.8MB、563 条，暴力检索毫秒级 |\n| Embedding 谁来算 | 本地 GPU 离线预构建 + 伪查询向量 | 运行时无模型，构建只要 7 秒 |\n| 函数间怎么调用 | 进程内 import | Serverless 里 HTTP 回环是纯浪费 |\n| 索引怎么更新 | 数据哈希 + 增量构建 | 内容与代码原子对齐 |\n| 何时升级 | 万级片段 / p95 超 100ms | 边界清晰，到点再换 |\n\n一句话版本：**架构选型跟着规模走，不跟着教程走**。向量数据库解决的是「百万级向量、高并发检索」的问题，而我的问题规模差了三个数量级——为一个不存在的问题部署基础设施，才是真正的过度设计。",
     "source": "blog",
     "source_id": "rag-on-serverless-json",
     "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
@@ -7746,7 +7746,7 @@
         "source": "blog",
         "source_id": "rag-on-serverless-json",
         "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
-        "doc_id": "3902415dd0cb"
+        "doc_id": "1993659615b9"
       },
       "chunk_type": "text",
       "section_header": "总结",
@@ -7755,7 +7755,7 @@
     "chunk_index": 15,
     "total_chunks": 18,
     "char_count": 383,
-    "embedding_hash": "4338f7e3"
+    "embedding_hash": "6e99d822"
   },
   {
     "id": "rag-on-serverless-json_16",
@@ -7770,7 +7770,7 @@
         "source": "blog",
         "source_id": "rag-on-serverless-json",
         "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
-        "doc_id": "3902415dd0cb"
+        "doc_id": "1993659615b9"
       },
       "chunk_type": "text",
       "section_header": "相关文件",
@@ -7794,7 +7794,7 @@
         "source": "blog",
         "source_id": "rag-on-serverless-json",
         "title": "Serverless 上跑 RAG：为什么我用 12.8MB 的 JSON 而不是向量数据库",
-        "doc_id": "3902415dd0cb"
+        "doc_id": "1993659615b9"
       },
       "chunk_type": "text",
       "section_header": "参考资料",

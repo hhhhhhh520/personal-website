@@ -10,7 +10,7 @@ This directory stores the generated vector index files for the Nova RAG system.
 | `embeddings.json` | Vector embeddings (1024 dimensions, normalized) |
 | `metadata.json` | Index metadata (version, stats, build time, data_hash) |
 
-## Index Statistics (last build: 2026-09-06)
+## Index Statistics (last build: 2026-09-07)
 
 - **Total chunks**: 607
 - **Total source documents**: 95

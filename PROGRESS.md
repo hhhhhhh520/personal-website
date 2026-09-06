@@ -1,5 +1,5 @@
 # 个人网站项目进度
-> 创建时间: 2026-05-09 | 最后更新: 2026-09-06
+> 创建时间: 2026-05-09 | 最后更新: 2026-09-07
 
 ## 项目概述
 **项目地址**: D:\my project\web\personal-website | **技术选型**: Next.js 16 + TypeScript + Tailwind CSS v4 + Three.js + Framer Motion | **目标**: AI 应用开发者的个人作品集网站
@@ -7,6 +7,25 @@
 ## 当前进度
 
 ### ✅ 已完成
+
+#### P32 — 前端审美升级（2026-09-07）
+| 阶段 | 内容 | 文件 | 完成日期 |
+|------|------|------|----------|
+| P0-1 修复 | MDX 启用 remark-gfm，15 篇博客表格从纯文本管道符恢复为真表格 | app/[locale]/blog/[slug]/page.tsx | 2026-09-07 |
+| P1-1 品牌 | 靛蓝/紫罗兰品牌色落入主题 token（--primary/--ring/--chart/--brand-from/to），新增 .brand-gradient 替换全部 from-primary to-accent，修复渐变标题/CTA 融底 | app/globals.css 等 8 文件 | 2026-09-07 |
+| P1-2 统一 | 暗色基底加蓝调（--background/card/popover/sidebar/muted），光斑换品牌家族色，LightRays saturation 0.8→1.15 | globals.css, [locale]/layout.tsx, page.tsx | 2026-09-07 |
+| P0-3 修复 | 元数据悬空"苏畅 -"（filter 空段）+ 删除渲染为空的职位 h2（尊重 P9 决策）+ html lang 按 locale（zh-CN/en script） | [locale]/layout.tsx, page.tsx, layout.tsx | 2026-09-07 |
+| P1-4 字体 | 修复 --font-sans 自引用（Geist 此前从未生效）+ 中文回退栈（PingFang/HarmonyOS/MiSans/Noto/雅黑） | globals.css | 2026-09-07 |
+| P2 标签云 | 博客列表标签默认 16 个 + 「更多标签(+N)」展开 | blog/page.tsx, messages/*.json | 2026-09-07 |
+| P2 代码块 | rehype-highlight 语法高亮 + 语言标签 + 一键复制（新 CodeBlock 组件）+ 品牌 hljs 配色 | CodeBlock.tsx, MDXComponents.tsx, globals.css | 2026-09-07 |
+| P2 署名 | 博客作者 AI Developer→苏畅；补上缺失的 avatar.svg（原引用 404），品牌渐变+"苏" | data/blogs.ts, public/images/avatar.svg | 2026-09-07 |
+| P2 Nova | CV/Nova 悬浮按钮绿色→品牌渐变，✨ emoji→Sparkles 图标 | components/ai/NovaGuide.tsx | 2026-09-07 |
+| P2 引号 | 新增 3 篇博客正文/摘要直引号→「」 | content/blog/*.mdx ×3, data/blogs.ts | 2026-09-07 |
+| P2 衔接 | 详情页 hero 内联 rgba(15,15,35) 移除，改 from-background 渐变，与正文无痕过渡 | blog/[slug]/page.tsx | 2026-09-07 |
+| P1-3 封面 | 全站 28 张封面（8 项目+20 博客）品牌化重绘：低饱和靛蓝基底+细线装饰+色相微移，文字全保留 | public/images/{blogs,projects}/*.svg | 2026-09-07 |
+| RAG 索引 | 重建（引号/署名变化），仍 607 片段，data_hash `d0ccd006` | public/rag-index/*.json | 2026-09-07 |
+
+> 回滚基线：`git tag baseline-pre-design-upgrade`（5240a74），不满意可 `git reset --hard baseline-pre-design-upgrade`。
 
 #### P31 — 新增 3 篇博客（2026-09-06）
 | 阶段 | 内容 | 文件 | 完成日期 |
