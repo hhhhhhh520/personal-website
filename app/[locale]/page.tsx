@@ -40,8 +40,8 @@ export default function Home() {
           followMouse={true}
           mouseInfluence={0.15}
           pulsating={false}
-          fadeDistance={1.2}
-          saturation={0.8}
+          fadeDistance={1.35}
+          saturation={1.15}
         />
       </div>
 
