@@ -59,6 +59,8 @@
     "categoryFilter": "Category Filter",
     "all": "All",
     "tagFilter": "Tag Filter",
+    "moreTags": "More tags",
+    "fewerTags": "Show fewer",
     "selected": "Selected",
     "foundArticles": "Found {count} articles",
     "totalArticles": "{count} articles total",

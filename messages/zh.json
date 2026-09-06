@@ -59,6 +59,8 @@
     "categoryFilter": "分类筛选",
     "all": "全部",
     "tagFilter": "标签筛选",
+    "moreTags": "更多标签",
+    "fewerTags": "收起标签",
     "selected": "已选",
     "foundArticles": "找到 {count} 篇文章",
     "totalArticles": "共 {count} 篇文章",

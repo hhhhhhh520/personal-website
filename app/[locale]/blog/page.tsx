@@ -156,10 +156,15 @@ export default function BlogPage() {
   const [selectedCategory, setSelectedCategory] = useState<BlogCategory | null>(null);
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
+  // 标签云默认收敛，避免几十个标签占满首屏
+  const [showAllTags, setShowAllTags] = useState(false);
 
   // Get all unique tags and categories
   const allTags = useMemo(() => getAllTags(), []);
   const allCategories = useMemo(() => getAllCategories(), []);
+  const MAX_VISIBLE_TAGS = 16;
+  const visibleTags = showAllTags ? allTags : allTags.slice(0, MAX_VISIBLE_TAGS);
+  const hiddenTagCount = allTags.length - visibleTags.length;
 
   // Filter blogs based on selected filters and search
   const filteredBlogs = useMemo(() => {
@@ -310,8 +315,8 @@ export default function BlogPage() {
                 </motion.span>
               )}
             </div>
-            <div className="flex flex-wrap gap-1.5">
-              {allTags.map((tag) => (
+            <div className="flex flex-wrap gap-1.5 items-center">
+              {visibleTags.map((tag) => (
                 <motion.button
                   key={tag}
                   onClick={() =>
@@ -328,6 +333,16 @@ export default function BlogPage() {
                   {tag}
                 </motion.button>
               ))}
+              {(hiddenTagCount > 0 || showAllTags) && (
+                <button
+                  onClick={() => setShowAllTags((prev) => !prev)}
+                  className="px-2 py-0.5 text-xs rounded border border-primary/30 text-primary/90 hover:bg-primary/10 transition-all cursor-target"
+                >
+                  {showAllTags
+                    ? t("fewerTags")
+                    : `${t("moreTags")} (+${hiddenTagCount})`}
+                </button>
+              )}
             </div>
           </div>
         </motion.div>
