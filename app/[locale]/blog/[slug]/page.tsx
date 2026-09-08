@@ -8,6 +8,7 @@ import rehypeHighlight from "rehype-highlight";
 import { getTranslations } from "next-intl/server";
 import { blogs, BlogPost, getBlogBySlug, getRelatedBlogs } from "@/data/blogs";
 import { getBlogContent } from "@/lib/blog-content";
+import { jsonLdSafeStringify } from "@/lib/jsonld";
 import { mdxComponents } from "@/components/blog/MDXComponents";
 import BlogDetailClient, {
   AnimatedSection,
@@ -165,7 +166,7 @@ export default async function BlogDetailPage({
       {/* JSON-LD structured data for SEO */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdSafeStringify(jsonLd) }}
       />
 
       <div className="min-h-screen pt-16 pb-12">

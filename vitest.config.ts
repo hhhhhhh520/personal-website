@@ -5,7 +5,7 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'node',
-    include: ['rag/__tests__/**/*.test.ts', 'rag/scripts/**/*.test.py'],
+    include: ['rag/__tests__/**/*.test.ts', 'rag/scripts/**/*.test.py', '__tests__/**/*.test.ts'],
     exclude: ['node_modules', 'rag/venv'],
     coverage: {
       provider: 'v8',

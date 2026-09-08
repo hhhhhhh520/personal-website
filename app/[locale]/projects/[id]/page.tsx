@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { projects, Project, getLocalizedProject } from "@/data/projects";
+import { jsonLdSafeStringify } from "@/lib/jsonld";
 import ProjectDetailClient, {
   AnimatedSection,
   AnimatedFade,
@@ -39,7 +40,7 @@ export async function generateMetadata({
   const title = `${project.name} - Projects | ${AUTHOR_NAME}`;
   const description = localized.shortDesc;
   const url = `${SITE_URL}/${locale}/projects/${project.id}`;
-  const imageUrl = `${SITE_URL}/images/projects/${project.id}.svg`;
+  const imageUrl = `${SITE_URL}${project.image}`;
 
   return {
     title,
@@ -100,25 +101,13 @@ function generateProjectJsonLd(project: Project) {
     dateCreated: project.startDate,
     ...(project.endDate && { dateModified: project.endDate }),
     programmingLanguage: project.techStack.join(", "),
-    screenshot: `${SITE_URL}/images/projects/${project.id}.svg`,
+    screenshot: `${SITE_URL}${project.image}`,
   };
 }
 
 // Get project by ID
 function getProject(id: string): Project | undefined {
   return projects.find((p) => p.id === id);
-}
-
-/**
- * 把 JSON 安全嵌入 <script type="application/ld+json">。
- * JSON.stringify 只转义 " 和 \，不转义 < / 等；若数据里出现 </script>
- * 会逃出 script 元素造成存储型 XSS。按 HTML 内嵌 JSON 惯例做字符转义。
- */
-function jsonLdSafeStringify(value: unknown): string {
-  return JSON.stringify(value)
-    .replace(/</g, "\\u003c")
-    .replace(/>/g, "\\u003e")
-    .replace(/\//g, "\\u002f");
 }
 
 export default async function ProjectDetailPage({
@@ -184,7 +173,7 @@ export default async function ProjectDetailPage({
             {/* Background Image */}
             <div className="absolute inset-0">
               <Image
-                src={`/images/projects/${project.id}.svg`}
+                src={project.image}
                 alt={project.name}
                 fill
                 className="object-cover"

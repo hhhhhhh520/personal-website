@@ -1,5 +1,5 @@
 # 个人网站项目进度
-> 创建时间: 2026-05-09 | 最后更新: 2026-09-07
+> 创建时间: 2026-05-09 | 最后更新: 2026-09-08
 
 ## 项目概述
 **项目地址**: D:\my project\web\personal-website | **技术选型**: Next.js 16 + TypeScript + Tailwind CSS v4 + Three.js + Framer Motion | **目标**: AI 应用开发者的个人作品集网站
@@ -7,6 +7,15 @@
 ## 当前进度
 
 ### ✅ 已完成
+
+#### P33 — 技术债核实清理（2026-09-08）
+| 阶段 | 内容 | 文件 | 完成日期 |
+|------|------|------|----------|
+| 核实 | P22 遗留 4 项中 3 项代码早已修复（OG 图 svg=`d0a2a2e`、Nova 死配置=`d0a2a2e`、build_index 错字=`e97ff23`），仅本清单未同步 | — | 2026-09-08 |
+| JSON-LD | 发现 blog/[slug] 页仍裸 `JSON.stringify`（`29408ec` 只修了 projects 页，横切漏第二条路径）→ 抽 `lib/jsonld.ts` 公共函数，两页面统一接线 | lib/jsonld.ts, projects/[id]/page.tsx, blog/[slug]/page.tsx | 2026-09-08 |
+| OG 模板 | 详情页三处内联封面模板 → 复用 Project 已有的 `image` 字段（列表页同源），消除第三处重复来源 | projects/[id]/page.tsx | 2026-09-08 |
+| 回归测试 | 新增 `__tests__/`：JSON-LD 转义 4 用例（`</script>` payload+round-trip）、图片存在性 2 用例（项目封面 8 张循环+头像），vitest include 增 `__tests__/` | `__tests__/*.test.ts`, vitest.config.ts | 2026-09-08 |
+| 验证 | vitest 210/210 + tsc 0 错误 + build 70 页 SSG 全绿 | — | 2026-09-08 |
 
 #### P32 — 前端审美升级（2026-09-07）
 | 阶段 | 内容 | 文件 | 完成日期 |
@@ -100,7 +109,7 @@
 
 **pre-commit 审查 + 端到端 `npm run build` 发现的既有问题**：
 - ✅ 已修（不修则 `npm run build` 无法通过）：`rag/utils/validation.ts` 的 `topK: number|undefined` 类型报错——收紧 `ValidationResult` 成功分支返回类型（运行时本已默认 3、`api.test.ts` 已锁定，属纯类型修正）；`content/blog/agent-fault-tolerance.mdx:305` 表格单元 `<100ms` 被 MDX 当 JSX 报错——改行内代码。修后 `npm run build` 全绿，8 个项目详情页全部 SSG。
-- ⏳ 仍待办（不阻塞构建）：详情页 OG 图指向不存在的 `.png`（`app/[locale]/projects/[id]/page.tsx:42`，实际只有 `.svg`）；`data/nova-prompts.ts` 的 `SYSTEM_PROMPT`/`PROACTIVE_MESSAGES` 是与 `chat/route.ts` 内联副本重复的**死配置**；JSON-LD `dangerouslySetInnerHTML` 未转义 `<`（当前数据无可利用字符，属潜在 sink）；`build_index.py:526` 报错提示写成 `extract_content.py`（实为 `extract_data.py`）。
+- ⏳ 仍待办（不阻塞构建）→ ✅ 全部关闭（P33 核实，2026-09-08）：OG 图 `.png` 已改 `.svg`（`d0a2a2e`）；Nova 死配置已删（`d0a2a2e`，见 ISSUE-005）；JSON-LD 转义 projects 页 `29408ec` 已修、blog 页 P33 抽 `lib/jsonld.ts` 补齐；build_index.py 错字已修（`e97ff23`）。回归守护测试见 `__tests__/`。
 
 #### P0 — 数据统一（2026-05-09）
 | 阶段 | 内容 | 文件 | 完成日期 |
